@@ -1,0 +1,17 @@
+{
+    "files.associations": {
+        "qudpsocket": "cpp",
+        "qhostaddress": "cpp",
+        "qcoreapplication": "cpp",
+        "*.inc": "cpp",
+        "qobject": "cpp",
+        "thread": "cpp",
+        "algorithm": "cpp",
+        "format": "cpp",
+        "chrono": "cpp",
+        "qdebug": "cpp",
+        "qbrush": "cpp",
+        "qbytearray": "cpp",
+        "qthread": "cpp"
+    }
+}

@@ -12,6 +12,7 @@
         "qdebug": "cpp",
         "qbrush": "cpp",
         "qbytearray": "cpp",
-        "qthread": "cpp"
+        "qthread": "cpp",
+        "qapplication": "cpp"
     }
 }

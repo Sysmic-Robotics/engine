@@ -20,4 +20,3 @@ target_link_libraries(SysmicSoftware
     PRIVATE grsim
     PRIVATE Qt6::Widgets  # ✅ Ensure Qt6::Widgets is linked
 )
-

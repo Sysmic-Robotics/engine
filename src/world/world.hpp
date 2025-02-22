@@ -12,7 +12,7 @@
 class World : public QObject {
     Q_OBJECT  // Ensure Qt's meta-object system works
     public:
-        explicit World(QObject *parent = nullptr);
+        explicit World(int n_blue, int n_yellow, QObject *parent = nullptr);
         
         void update();
 

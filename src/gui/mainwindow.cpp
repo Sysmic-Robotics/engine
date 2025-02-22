@@ -6,7 +6,7 @@
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     // Create scene (9x6 field)
     scene = new QGraphicsScene(0, 0, 900, 600, this);  // 900x600 pixels
-
+    scene->setBackgroundBrush(QBrush(Qt::lightGray)); // Set bright background color
     // Create view
     view = new QGraphicsView(scene, this);
     setCentralWidget(view);

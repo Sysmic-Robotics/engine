@@ -1,5 +1,5 @@
 //#include <QApplication>
-#include <QCoreApplication>
+#include <QApplication>
 #include <QThread>
 #include <QTimer>
 #include "vision.hpp"
@@ -17,17 +17,17 @@ public:
         m_vision->moveToThread(m_visionThread);
 
         m_worldThread = new QThread(this);
-        m_world = new World();
+        m_world = new World(1,1);
         m_world->moveToThread(m_visionThread);
 
         // Create the GUI
-        //m_mainWindow = new MainWindow();
-        //m_mainWindow->show();
+        m_mainWindow = new MainWindow();
+        m_mainWindow->show();
 
         // Connect signals and slots
         connect(m_visionThread, &QThread::started, m_vision, &Vision::startListen);
         connect(m_vision, &Vision::robotReceived, m_world, &World::updateRobot);
-        //connect(m_world, &World::robotUpdated, m_mainWindow, &MainWindow::updateRobot); // NEW!
+        connect(m_world, &World::robotUpdated, m_mainWindow, &MainWindow::updateRobot); // NEW!
         
         // Start the thread
         m_visionThread->start();
@@ -73,7 +73,7 @@ private:
 };
 
 int main(int argc, char *argv[]){
-    QCoreApplication a(argc, argv);
+    QApplication a(argc, argv);
     MainApp app;
     return a.exec();
 }

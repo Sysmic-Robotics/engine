@@ -31,7 +31,6 @@ void Grsim::communicate_grsim(int id, int team, double velangular, double kicksp
     
     QByteArray data;
     std::string serializedData = package.SerializeAsString();
-    qDebug() << "Serialized Data (Hex):" << QByteArray::fromStdString(serializedData).toHex();
     data.append(serializedData.c_str(), static_cast<int>(serializedData.size()));
 
 

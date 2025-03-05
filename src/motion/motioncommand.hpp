@@ -6,18 +6,19 @@
 
 class MotionCommand {
 public:
-    MotionCommand();
-    MotionCommand(double vx, double vy, double omega);
+    MotionCommand(int id, int team);
 
     // Getters
+    int getId() const;
+    int getTeam() const;
     double getVx() const;
     double getVy() const;
-    double getOmega() const;
+    double getAngular() const;
 
     // Setters
     void setVx(double vx);
     void setVy(double vy);
-    void setOmega(double omega);
+    void setAngular(double omega);
 
     // Debugging helper (for Qt logging)
     QString toString() const;
@@ -25,7 +26,9 @@ public:
 private:
     double vx = 0.0;  // Linear velocity in the X direction
     double vy = 0.0;  // Linear velocity in the Y direction
-    double omega = 0.0;  // Angular velocity (rotation)
+    double angular = 0.0;  // Angular velocity (rotation)
+    int team;
+    int id;
 };
 
 #endif // MOTION_COMMAND_HPP

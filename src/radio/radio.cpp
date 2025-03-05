@@ -14,9 +14,9 @@ void Radio::sendCommands() {
 
     for (const MotionCommand& cmd : commandQueue) {
         grsim.communicate_grsim(
-            1, // ID
-            1, // Team
-            2, // Vel angular
+            cmd.getId(), // ID
+            cmd.getTeam(), // Team
+            cmd.getAngular(), // Vel angular
             0, // KickSpeedX
             0, // KickSpeedZ
             0, // Vel x

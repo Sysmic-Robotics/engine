@@ -15,6 +15,8 @@ class World : public QObject {
         explicit World(int n_blue, int n_yellow, QObject *parent = nullptr);
         
         void update();
+        // Returns the RobotState of a robot given its team and ID
+        RobotState getRobotState(int id, int team) const;
 
     public slots:
         void updateRobot(int id, int team, QVector2D position, float orientation);
@@ -25,6 +27,7 @@ class World : public QObject {
     private:
         QMap<int, RobotState> yellowRobots;  // Key: robot ID, Value: yellow team robot state
         QMap<int, RobotState> blueRobots;  // Key: robot ID, Value: blue team robot state
+        
 };
 
 #endif // WORLD_HPP

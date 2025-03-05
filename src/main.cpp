@@ -18,7 +18,7 @@ public:
         m_vision->moveToThread(m_visionThread);
 
         m_worldThread = new QThread(this);
-        m_world = new World(1,1);
+        m_world = new World(4,4);
         m_world->moveToThread(m_visionThread);
 
         // Create the GUI
@@ -57,20 +57,28 @@ public:
     }
 
 private slots:
-    void update() {
+void update() {
+    // Call the World update function
+    m_world->update();
 
-        // Call the World update function
-        m_world->update();
+    // Compute control commands based on path
+    static Motion motion;
 
-        // Compute control commands based on path
-        static Motion motion;
-        MotionCommand cmd = motion.to_point();
+    // Example: Assuming we're controlling a robot with ID 0 in the blue team (team = 0)
+    int robotId = 1;
+    int team = 0;
 
+    // Get the robot's state from the world
+    RobotState robotState = m_world->getRobotState(robotId, team);
 
-        
-        radio.appendCommand(cmd);
-        radio.sendCommands();
-    }
+    // Compute the motion command using the robot's state
+    MotionCommand cmd = motion.to_point(robotState);
+
+    // Send the computed command
+    radio.appendCommand(cmd);
+    radio.sendCommands();
+}
+
 
 private:
     QThread *m_visionThread;

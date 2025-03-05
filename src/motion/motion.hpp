@@ -9,7 +9,7 @@ public:
     Motion() = default;
 
     // Computes a motion command to move the robot towards a target point
-    MotionCommand to_point();
+    MotionCommand to_point(const RobotState& robotState);
 };
 
 #endif // MOTION_HPP

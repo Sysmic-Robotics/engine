@@ -10,6 +10,18 @@ World::World(int n_blue, int n_yellow, QObject *parent) : QObject(parent) {
     }
 }
 
+RobotState World::getRobotState(int id, int team) const {
+    if (team == 0) {  // Blue team
+        if (blueRobots.contains(id)) {
+            return blueRobots.value(id);
+        }
+    } else if (team == 1) {  // Yellow team
+        if (yellowRobots.contains(id)) {
+            return yellowRobots.value(id);
+        }
+    }
+    return RobotState();  // Return a default RobotState if not found
+}
 
 void World::update() {
     for (const RobotState &robot : blueRobots) { // Use reference to avoid unnecessary copies

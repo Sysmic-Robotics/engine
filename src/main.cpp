@@ -5,7 +5,8 @@
 #include "vision.hpp"
 #include "world.hpp"
 #include "mainwindow.hpp"
-#include "grsim.hpp"
+#include "radio.hpp"
+#include "motion.hpp"
 
 class MainApp : public QObject{
     Q_OBJECT
@@ -33,9 +34,11 @@ public:
         m_visionThread->start();
         m_worldThread->start();
 
+        radio = Radio();
+
         // Setup Timer for updateWorld()
         m_updateTimer = new QTimer(this);
-        connect(m_updateTimer, &QTimer::timeout, this, &MainApp::updateWorld);
+        connect(m_updateTimer, &QTimer::timeout, this, &MainApp::update);
         m_updateTimer->start(16);  // Approx. 60 FPS (16ms per frame)
     }
 
@@ -54,17 +57,25 @@ public:
     }
 
 private slots:
-    void updateWorld() {
+    void update() {
+
         // Call the World update function
         m_world->update();
-        static Grsim grsim;
-        grsim.communicate_grsim(1, 0, 1.0, 0.0, 0.0, 1.5, 0.0, 0, false);
+
+        // Compute control commands based on path
+        static Motion motion;
+        MotionCommand cmd = motion.to_point();
+
+
+        
+        radio.appendCommand(cmd);
+        radio.sendCommands();
     }
 
 private:
     QThread *m_visionThread;
     Vision *m_vision;
-
+    Radio radio;
     World *m_world;
     QThread *m_worldThread;
     QTimer *m_updateTimer;

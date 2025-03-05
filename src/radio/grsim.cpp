@@ -30,8 +30,11 @@ void Grsim::communicate_grsim(int id, int team, double velangular, double kicksp
     package.mutable_commands()->set_isteamyellow(team);
     
     QByteArray data;
-    data.append(package.SerializeAsString().c_str(), package.ByteSizeLong());
-    
+    std::string serializedData = package.SerializeAsString();
+    qDebug() << "Serialized Data (Hex):" << QByteArray::fromStdString(serializedData).toHex();
+    data.append(serializedData.c_str(), static_cast<int>(serializedData.size()));
+
+
     if (!data.isEmpty()) {
         sendSocket->writeDatagram(data, QHostAddress("127.0.0.1"), GRSIM_COMMAND_PORT);
     }

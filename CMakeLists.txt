@@ -11,3 +11,4 @@ qt_standard_project_setup()
 
 # Add the src directory
 add_subdirectory(src)
+message(STATUS "Qt6::Gui Linked to motion: ${Qt6Gui_FOUND}")

@@ -1,6 +1,7 @@
 # Create a library target from vision.cpp
 add_library(utilities STATIC
     robotstate.cpp
+    motioncommand.cpp
 )
 
 # Link Qt6 libraries to the Vision library

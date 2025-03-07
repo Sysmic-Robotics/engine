@@ -1,16 +1,18 @@
-# Create a library target
+add_subdirectory(bangbangcontrol)  # ✅ Ensure bangbangcontrol is added
+
 add_library(motion STATIC
     motion.cpp
-    motioncommand.cpp
 )
 
-# Link Qt6 modules, including GUI for QVector2D
 target_link_libraries(motion
-    PUBLIC Qt6::Gui  # Ensure Qt6Gui is linked for QVector2D
+    PUBLIC Qt6::Gui
     PRIVATE Qt6::Core
     PRIVATE protobuf
-    PRIVATE utilities
+    PRIVATE utilities  # ✅ Now correctly linking to utilities for MotionCommand
+    PRIVATE bangbangcontrol  # ✅ Still linking to bangbangcontrol
 )
 
-# Include the current directory for header files
-target_include_directories(motion PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(motion PUBLIC 
+    ${CMAKE_CURRENT_SOURCE_DIR}  
+    ${CMAKE_CURRENT_SOURCE_DIR}/bangbangcontrol
+)

@@ -7,6 +7,7 @@
 class MotionCommand {
 public:
     MotionCommand(int id, int team);
+    MotionCommand(int id, int team, double vx, double vy);
 
     // Getters
     int getId() const;

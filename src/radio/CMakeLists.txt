@@ -8,7 +8,7 @@ target_link_libraries(radio
     #PRIVATE Qt6::Gui
     PRIVATE Qt6::Core
     PRIVATE Qt6::Network
-    PRIVATE motion
+    PRIVATE utilities
     PRIVATE protobuf
 )
 

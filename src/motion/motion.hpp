@@ -3,6 +3,7 @@
 
 #include "robotstate.hpp"
 #include "motioncommand.hpp"
+#include "bangbangcontrol.hpp"
 
 class Motion {
 public:

@@ -6,6 +6,9 @@
 MotionCommand::MotionCommand(int id, int team)
     : id(id), team(team) {}
 
+MotionCommand::MotionCommand(int id, int team, double vx, double vy)
+    : id(id), team(team), vx(vx), vy(vy) {}
+
 // Getters
 int MotionCommand::getId() const { return id; }
 int MotionCommand::getTeam() const { return team; }

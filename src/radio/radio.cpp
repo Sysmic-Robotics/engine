@@ -19,8 +19,8 @@ void Radio::sendCommands() {
             cmd.getAngular(), // Vel angular
             0, // KickSpeedX
             0, // KickSpeedZ
-            0, // Vel x
-            0, // Vel y
+            cmd.getVx(), // Vel x
+            cmd.getVy(), // Vel y
             0, // Spinner
             false);
     }

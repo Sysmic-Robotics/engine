@@ -15,5 +15,4 @@ MotionCommand Motion::to_point(const RobotState& robotState) {
 
     // Set angular velocity (example value, adjust as needed)
     return cmd;
-
 }

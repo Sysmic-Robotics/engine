@@ -21,9 +21,8 @@ MotionCommand BangBangControl::computeMotion(const RobotState& state,
         goal = path.takeFirst();
     }
 
-    //Trajectory2D newTraj(m_A_MAX, m_V_MAX, state.getVelocity(), state.getPosition(), goal);
-    //QVector2D newVelocity = newTraj.getNextVelocity();
-    QVector2D newVelocity = QVector2D(1.0,1.0);
+    Trajectory2D newTraj(m_A_MAX, m_V_MAX, state.getVelocity(), state.getPosition(), goal);
+    QVector2D newVelocity = newTraj.getNextVelocity();
 
     // Convert to local frame of reference
     float orientation = state.getOrientation();

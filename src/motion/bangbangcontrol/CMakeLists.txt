@@ -1,5 +1,7 @@
 add_library(bangbangcontrol STATIC
     bangbangcontrol.cpp
+    trajectory2d.cpp
+    trajectory1d.cpp
 )
 
 # Link required libraries

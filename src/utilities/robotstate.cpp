@@ -22,6 +22,10 @@ QVector2D RobotState::getPosition() const {
     return position;
 }
 
+QVector2D RobotState::getVelocity() const {
+    return velocity;
+}
+
 float RobotState::getOrientation() const {
     return orientation;
 }
@@ -41,6 +45,11 @@ void RobotState::setTeam(int team) {
 void RobotState::setPosition(const QVector2D &position) {
     this->position = position;
 }
+
+void RobotState::setVelocity(const QVector2D &velocity) {
+    this->velocity = velocity;
+}
+
 
 void RobotState::setOrientation(float orientation) {
     this->orientation = orientation;

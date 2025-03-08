@@ -5,6 +5,7 @@
 #include <QList>
 #include "motioncommand.hpp"
 #include "robotstate.hpp"
+#include "trajectory2d.hpp"
 
 class BangBangControl {
 public:

@@ -19,7 +19,7 @@ public:
 
         m_worldThread = new QThread(this);
         m_world = new World(4,4);
-        m_world->moveToThread(m_visionThread);
+        m_world->moveToThread(m_worldThread);
 
         // Create the GUI
         m_mainWindow = new MainWindow();
@@ -34,8 +34,6 @@ public:
         m_visionThread->start();
         m_worldThread->start();
 
-        radio = Radio();
-
         // Setup Timer for updateWorld()
         m_updateTimer = new QTimer(this);
         connect(m_updateTimer, &QTimer::timeout, this, &MainApp::update);
@@ -46,11 +44,12 @@ public:
         // Stop threads properly
         m_visionThread->quit();
         m_visionThread->wait();
-        delete m_vision;
+        m_vision->deleteLater();
 
         m_worldThread->quit();
         m_worldThread->wait();
-        delete m_world;
+        m_world->deleteLater();
+
         //delete m_mainWindow;
         delete m_updateTimer;
         

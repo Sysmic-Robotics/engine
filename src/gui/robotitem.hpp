@@ -16,6 +16,7 @@ public:
     void setSelected(bool selected);
 
     int getId() const { return robotId; }
+    QVector2D getPosition();
 
 private:
     int robotId;

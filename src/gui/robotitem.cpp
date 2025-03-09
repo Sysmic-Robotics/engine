@@ -49,4 +49,8 @@ void RobotItem::setSelected(bool selected) {
     robotShape->setBrush(QBrush(selected ? highlightColor : defaultColor));
 }
 
+QVector2D RobotItem::getPosition() {
+    return QVector2D(this->x(), this->y());  // ✅ Use `this->x()` and `this->y()` to get scene position
+}
+
 

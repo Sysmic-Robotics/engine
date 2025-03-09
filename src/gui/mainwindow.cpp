@@ -135,7 +135,21 @@ void MainWindow::selectNextRobot(int direction) {
 
     updateInfoPanel();
     emit robotSelected(selectedRobotId, selectedTeam);
+
+    // ✅ Get scene coordinates
+    QVector2D scenePos = (selectedTeam == 0) 
+                             ? blueRobots[selectedRobotId]->getPosition()
+                             : yellowRobots[selectedRobotId]->getPosition();
+
+    // ✅ Convert to field coordinates
+    QVector2D fieldPos(
+        (scenePos.x() / 100) - 4.5,   // Convert X from scene to field
+        -((scenePos.y() / 100) - 3.0) // Convert Y from scene to field
+    );
+    drawTargetMarker(QVector2D(-20,-20)); // Hide target
+    emit targetPointSelected(fieldPos);
 }
+
 
 
 void MainWindow::updateInfoPanel() {

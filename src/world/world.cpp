@@ -37,7 +37,7 @@ void World::update() {
 
 
 void World::updateRobot(int id, int team, QVector2D position, float orientation) {
-    constexpr double timeStep = 0.01; // 1/100 in seconds
+    constexpr double timeStep = 0.016; // 1/60 in seconds
     if (team == 0){
         if (blueRobots.contains(id)) {
             blueRobots[id].setVelocity( ( position - blueRobots[id].getPosition() )/timeStep );

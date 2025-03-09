@@ -1,4 +1,5 @@
 #include "mainwindow.hpp"
+#include "colors.hpp"  // ✅ Include the color definitions
 #include <QMouseEvent>
 #include <QHBoxLayout>
 
@@ -12,14 +13,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
 
     // Initialize scene and view
     scene = new QGraphicsScene(0, 0, 900, 600, this);
-    scene->setBackgroundBrush(Qt::lightGray);
+    scene->setBackgroundBrush(GUIColors::FIELD_BACKGROUND);
     view = new QGraphicsView(scene, this);
     mainLayout->addWidget(view);
 
     setCentralWidget(centralWidget);
 
-    // Draw field boundaries
-    scene->addRect(0, 0, 900, 600, QPen(Qt::white));
 }
 
 void MainWindow::setupLeftPanel() {
@@ -64,7 +63,7 @@ void MainWindow::setupLeftPanel() {
 
 void MainWindow::updateRobot(int id, int team, QVector2D position, float orientation) {
     auto &robots = (team == 0) ? blueRobots : yellowRobots;
-    QColor color = (team == 0) ? Qt::blue : Qt::yellow;
+    QColor color = (team == 0) ? GUIColors::BLUE_ROBOT : GUIColors::YELLOW_ROBOT;
 
     if (!robots.contains(id)) {
         RobotItem *robot = new RobotItem(id, color);

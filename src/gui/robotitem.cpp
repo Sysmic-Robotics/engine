@@ -1,8 +1,10 @@
+#include "colors.hpp"
 #include "robotitem.hpp"
 #include <QBrush>
 #include <QPen>
 #include <QtMath>
 #include <QFont>
+
 
 RobotItem::RobotItem(int id, QColor color) : robotId(id) {
     // Create the robot shape
@@ -13,7 +15,7 @@ RobotItem::RobotItem(int id, QColor color) : robotId(id) {
 
     // Create orientation line
     orientationLine = new QGraphicsLineItem(0, 0, 10, 0);
-    orientationLine->setPen(QPen(Qt::red, 2));
+    orientationLine->setPen(QPen(GUIColors::ORIENTATION_COLOR, 1));
 
     // Create ID text
     idText = new QGraphicsTextItem(QString::number(id));
@@ -41,7 +43,7 @@ void RobotItem::setOrientation(float angle) {
 }
 
 void RobotItem::setSelected(bool selected) {
-    QColor defaultColor = (robotId < 6) ? Qt::blue : Qt::yellow;
+    QColor defaultColor = (robotId < 6) ? GUIColors::BLUE_ROBOT : GUIColors::YELLOW_ROBOT;
 
     // ✅ Make the color brighter when selected
     QColor highlightColor = defaultColor.lighter(150); // 150% brightness

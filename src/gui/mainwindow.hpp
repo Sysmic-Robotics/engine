@@ -6,9 +6,11 @@
 #include <QGraphicsView>
 #include <QVBoxLayout>
 #include <QPushButton>
+#include <QCheckBox>
 #include <QLabel>
 #include <QMap>
 #include <QVector2D>
+#include <QGraphicsPathItem>
 #include "robotitem.hpp"
 #include "targetmarker.hpp"
 
@@ -28,8 +30,11 @@ private:
     void drawTargetMarker(QVector2D point);
     void selectNextRobot(int direction);
     void updateInfoPanel();
+    void updateRobotTrace(QVector2D position);
+    void clearSelectedRobotTrace();
     void mousePressEvent(QMouseEvent *event);
     void onTargetPointButtonClicked();
+    void onTraceCheckboxToggled(bool checked);
 
     QGraphicsScene *scene;
     QGraphicsView *view;
@@ -40,6 +45,7 @@ private:
     QPushButton *leftArrowBtn;
     QPushButton *rightArrowBtn;
     QPushButton *targetPointBtn;
+    QCheckBox *showTraceCheckbox;
     QLabel *robotInfoLabel;
 
     QMap<int, RobotItem *> blueRobots;
@@ -52,6 +58,10 @@ private:
 
     TargetMarker *targetMarker = nullptr;
     bool waitingForTargetPoint = false;
+
+    QPainterPath selectedRobotTrace;   // ✅ Stores the trace for the selected robot
+    QGraphicsPathItem *traceItem = nullptr; // ✅ Holds the graphics item for the trace
+    bool showTrace = false; // ✅ Tracks whether the trace is enabled
 };
 
 #endif // MAINWINDOW_HPP

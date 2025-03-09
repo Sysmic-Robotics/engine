@@ -38,6 +38,10 @@ void MainWindow::setupLeftPanel() {
     robotInfoLabel = new QLabel("No robot selected");
     robotInfoLabel->setAlignment(Qt::AlignCenter);
 
+    // Trace Toggle Checkbox
+    showTraceCheckbox = new QCheckBox("Show Trace");
+    connect(showTraceCheckbox, &QCheckBox::toggled, this, &MainWindow::onTraceCheckboxToggled);
+
     // Target Point Selection Button
     targetPointBtn = new QPushButton("Select Target Point");
     connect(targetPointBtn, &QPushButton::clicked, this, &MainWindow::onTargetPointButtonClicked);
@@ -45,6 +49,7 @@ void MainWindow::setupLeftPanel() {
     // Layout setup
     buttonLayout->addLayout(arrowLayout);
     buttonLayout->addWidget(robotInfoLabel);
+    buttonLayout->addWidget(showTraceCheckbox);
     buttonLayout->addWidget(targetPointBtn);
     buttonLayout->addStretch();
 
@@ -54,6 +59,8 @@ void MainWindow::setupLeftPanel() {
 
     leftPanel->setLayout(buttonLayout);
 }
+
+
 
 void MainWindow::updateRobot(int id, int team, QVector2D position, float orientation) {
     auto &robots = (team == 0) ? blueRobots : yellowRobots;
@@ -68,11 +75,60 @@ void MainWindow::updateRobot(int id, int team, QVector2D position, float orienta
 
     robots[id]->setPosition(position);
     robots[id]->setOrientation(orientation);
+
+    // ✅ Update trace only if it's the selected robot
+    if (showTrace && id == selectedRobotId && team == 0) {
+        updateRobotTrace(position);
+    }
 }
+
+
+void MainWindow::updateRobotTrace(QVector2D position) {
+    if (!showTrace || selectedRobotId == -1) return;
+
+    // Convert field position to scene coordinates
+    float x = (position.x() + 4.5) * 100;
+    float y = (-position.y() + 3.0) * 100;
+    QPointF newPoint(x, y);
+
+    // ✅ If trace is uninitialized, create it
+    if (!traceItem) {
+        selectedRobotTrace = QPainterPath(newPoint);  // ✅ Start the path at the first position
+        traceItem = new QGraphicsPathItem(selectedRobotTrace);  // ✅ Initialize the trace item with the path
+        traceItem->setPen(QPen(Qt::red, 2));
+        scene->addItem(traceItem);
+    } else {
+        selectedRobotTrace.lineTo(newPoint);  // ✅ Append new position to the path
+        traceItem->setPath(selectedRobotTrace);  // ✅ Update path in the scene
+    }
+}
+
+void MainWindow::clearSelectedRobotTrace() {
+    if (traceItem) {
+        scene->removeItem(traceItem);
+        delete traceItem;
+        traceItem = nullptr;
+    }
+    selectedRobotTrace = QPainterPath();  // Clear stored trace data
+}
+
+
+void MainWindow::onTraceCheckboxToggled(bool checked) {
+    showTrace = checked;
+    if (!showTrace) {
+        clearSelectedRobotTrace();
+    }
+}
+
+
 
 void MainWindow::selectNextRobot(int direction) {
     if (robotIds.isEmpty()) return;
 
+    // Clear previous robot's trace
+    clearSelectedRobotTrace();
+
+    // Update selected robot index
     selectedRobotIndex = (selectedRobotIndex + direction + robotIds.size()) % robotIds.size();
     selectedRobotId = robotIds[selectedRobotIndex];
     selectedTeam = blueRobots.contains(selectedRobotId) ? 0 : 1;
@@ -80,6 +136,7 @@ void MainWindow::selectNextRobot(int direction) {
     updateInfoPanel();
     emit robotSelected(selectedRobotId, selectedTeam);
 }
+
 
 void MainWindow::updateInfoPanel() {
     if (selectedRobotId == -1) {
@@ -144,3 +201,4 @@ void MainWindow::drawTargetMarker(QVector2D point) {
     }
     targetMarker->setPosition(point);
 }
+

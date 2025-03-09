@@ -61,7 +61,12 @@ void MainWindow::setupLeftPanel() {
 
 
 
-void MainWindow::updateRobot(int id, int team, QVector2D position, float orientation) {
+void MainWindow::updateRobot(const RobotState &robotState) {
+    int id = robotState.getId();
+    int team = robotState.getTeam();
+    QVector2D position = robotState.getPosition();
+    float orientation = robotState.getOrientation();
+
     auto &robots = (team == 0) ? blueRobots : yellowRobots;
     QColor color = (team == 0) ? GUIColors::BLUE_ROBOT : GUIColors::YELLOW_ROBOT;
 
@@ -75,11 +80,19 @@ void MainWindow::updateRobot(int id, int team, QVector2D position, float orienta
     robots[id]->setPosition(position);
     robots[id]->setOrientation(orientation);
 
-    // ✅ Update trace only if it's the selected robot
-    if (showTrace && id == selectedRobotId && team == 0) {
+    if (id == selectedRobotId && selectedTeam == team) {
+        selectedRobotState.setPosition(position);  // ✅ Explicit update
+        selectedRobotState.setVelocity(robotState.getVelocity());  // ✅ Explicit update
+        selectedRobotState.setOrientation(orientation);  // ✅ Explicit update
+
+        updateInfoPanel();  // ✅ Ensure UI reflects the latest data
+    }
+
+    if (showTrace && id == selectedRobotId && selectedTeam == team) {
         updateRobotTrace(position);
     }
 }
+
 
 
 void MainWindow::updateRobotTrace(QVector2D position) {
@@ -118,8 +131,6 @@ void MainWindow::onTraceCheckboxToggled(bool checked) {
         clearSelectedRobotTrace();
     }
 }
-
-
 
 void MainWindow::selectNextRobot(int direction) {
     if (robotIds.isEmpty()) return;
@@ -168,15 +179,17 @@ void MainWindow::updateInfoPanel() {
         RobotItem *robot = robots[selectedRobotId];
         robot->setSelected(true);
 
-        QVector2D pos(robot->x(), robot->y());
-        float x = (pos.x() / 100) - 4.5;
-        float y = -((pos.y() / 100) - 3.0);
+        float x = selectedRobotState.getPosition().x(); 
+        float y = selectedRobotState.getPosition().y();
+        QVector2D velocity = selectedRobotState.getVelocity();
+        float velocityNorm = velocity.length();  // Compute magnitude
 
-        robotInfoLabel->setText(QString("Robot %1\nX: %2\nY: %3")
+        robotInfoLabel->setText(QString("Robot %1\nX: %2\nY: %3\n speed: %4 [m/s]")
                                 .arg(selectedRobotId)
                                 .arg(x, 0, 'f', 2)
-                                .arg(y, 0, 'f', 2));
-
+                                .arg(y, 0, 'f', 2)
+                                .arg(velocityNorm, 0, 'f', 2));
+        
         lastSelectedRobotId = selectedRobotId;
     }
 }

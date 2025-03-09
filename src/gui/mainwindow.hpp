@@ -13,13 +13,14 @@
 #include <QGraphicsPathItem>
 #include "robotitem.hpp"
 #include "targetmarker.hpp"
+#include "robotstate.hpp"
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
 
 public:
     explicit MainWindow(QWidget *parent = nullptr);
-    void updateRobot(int id, int team, QVector2D position, float orientation);
+    void updateRobot(const RobotState &robotState);
 
 signals:
     void robotSelected(int id, int team);
@@ -62,6 +63,8 @@ private:
     QPainterPath selectedRobotTrace;   // ✅ Stores the trace for the selected robot
     QGraphicsPathItem *traceItem = nullptr; // ✅ Holds the graphics item for the trace
     bool showTrace = false; // ✅ Tracks whether the trace is enabled
+    RobotState selectedRobotState = RobotState(-1, -1);;  // ✅ Store the latest state of the selected robot
+
 };
 
 #endif // MAINWINDOW_HPP

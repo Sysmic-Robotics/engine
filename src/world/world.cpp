@@ -26,12 +26,12 @@ RobotState World::getRobotState(int id, int team) const {
 void World::update() {
     for (const RobotState &robot : blueRobots) { // Use reference to avoid unnecessary copies
         if ( robot.isActive() );
-            emit robotUpdated(robot.getId(), robot.getTeam(), robot.getPosition(), robot.getOrientation());
+            emit robotUpdated(robot);
     }
     
     for (const RobotState &robot : yellowRobots) { // Use reference here too
         if ( robot.isActive() );
-            emit robotUpdated(robot.getId(), robot.getTeam(), robot.getPosition(), robot.getOrientation());
+            emit robotUpdated(robot);
     }
 }
 

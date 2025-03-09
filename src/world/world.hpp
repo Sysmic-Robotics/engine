@@ -22,7 +22,7 @@ class World : public QObject {
         void updateRobot(int id, int team, QVector2D position, float orientation);
 
     signals:
-        void robotUpdated(int id, int team, QVector2D position, float orientation); // New Signal
+        void robotUpdated(const RobotState &robotState); // New Signal
     
     private:
         QMap<int, RobotState> yellowRobots;  // Key: robot ID, Value: yellow team robot state

@@ -19,6 +19,7 @@
         "qgraphicsellipseitem": "cpp",
         "qgraphicsitemgroup": "cpp",
         "qpushbutton": "cpp",
-        "qgraphicsview": "cpp"
+        "qgraphicsview": "cpp",
+        "qgraphicspathitem": "cpp"
     }
 }

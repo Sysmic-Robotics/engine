@@ -1,76 +1,116 @@
 #include "mainwindow.hpp"
-#include <QGraphicsTextItem>
-#include <QGraphicsLineItem>
-#include <QBrush>
-#include <QPen>
-#include <QTransform>
+#include <QMouseEvent>
+#include <QHBoxLayout>
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
-    // Create scene (9x6 field)
+    QWidget *centralWidget = new QWidget(this);
+    QHBoxLayout *mainLayout = new QHBoxLayout(centralWidget);
+
+    setupLeftPanel();
+    mainLayout->addWidget(leftPanel);
+
     scene = new QGraphicsScene(0, 0, 900, 600, this);
     scene->setBackgroundBrush(QBrush(Qt::lightGray));
-
-    // Create view
     view = new QGraphicsView(scene, this);
-    setCentralWidget(view);
+    mainLayout->addWidget(view);
 
-    // Draw field boundaries
+    setCentralWidget(centralWidget);
+
     QPen pen(Qt::white);
     scene->addRect(0, 0, 900, 600, pen);
 }
 
+void MainWindow::setupLeftPanel() {
+    leftPanel = new QWidget(this);
+    buttonLayout = new QVBoxLayout(leftPanel);
+
+    // Arrow Buttons
+    leftArrowBtn = new QPushButton("←");
+    rightArrowBtn = new QPushButton("→");
+    
+    QHBoxLayout *arrowLayout = new QHBoxLayout();
+    arrowLayout->addWidget(leftArrowBtn);
+    arrowLayout->addWidget(rightArrowBtn);
+
+    // Info Panel
+    robotInfoLabel = new QLabel("No robot selected");
+    robotInfoLabel->setAlignment(Qt::AlignCenter);
+
+    buttonLayout->addLayout(arrowLayout);
+    buttonLayout->addWidget(robotInfoLabel);
+    buttonLayout->addStretch();
+
+    // Connect buttons
+    connect(leftArrowBtn, &QPushButton::clicked, [=]() { selectNextRobot(-1); });
+    connect(rightArrowBtn, &QPushButton::clicked, [=]() { selectNextRobot(1); });
+
+    leftPanel->setLayout(buttonLayout);
+}
+
 void MainWindow::updateRobot(int id, int team, QVector2D position, float orientation) {
-    QMap<int, QGraphicsItemGroup *> &robots = (team == 0) ? blueRobots : yellowRobots;
+    QMap<int, RobotItem *> &robots = (team == 0) ? blueRobots : yellowRobots;
     QColor color = (team == 0) ? Qt::blue : Qt::yellow;
 
-    QGraphicsItemGroup *robotGroup;
-
     if (!robots.contains(id)) {
-        // Create a group for the robot
-        robotGroup = new QGraphicsItemGroup();
-
-        // Create robot ellipse
-        QGraphicsEllipseItem *robot = new QGraphicsEllipseItem(-10, -10, 20, 20); // Centered at (0,0)
-        robot->setBrush(QBrush(color));
-        robot->setPen(QPen(Qt::black));
-
-        // Create robot ID text
-        QGraphicsTextItem *text = new QGraphicsTextItem(QString::number(id));
-        text->setDefaultTextColor(Qt::white);
-        text->setFont(QFont("Arial", 10, QFont::Bold));
-        text->setPos(-6, -6); // Center text
-
-        // Create orientation line (initially straight up)
-        QGraphicsLineItem *orientationLine = new QGraphicsLineItem(0, 0, 10, 0, robotGroup); // ✅ Inside the group
-        orientationLine->setPen(QPen(Qt::red, 2));  // Red line for visibility
-
-        // Add items to group
-        robotGroup->addToGroup(robot);
-        robotGroup->addToGroup(text);
-        robotGroup->addToGroup(orientationLine);
-
-        // Add to scene and map
-        scene->addItem(robotGroup);
-        robots.insert(id, robotGroup);
-    } else {
-        robotGroup = robots[id]; // Retrieve existing group
+        RobotItem *robot = new RobotItem(id, color);
+        scene->addItem(robot);
+        robots.insert(id, robot);
+        robotIds.append(id);
     }
 
-    // Convert 9x6 field coordinates to 900x600 pixel space
-    float x = (position.x() + 4.5) * 100; // Centered at 450
-    float y = (-position.y() + 3.0) * 100; // Centered at 300
-
-    // Move robot group
-    robotGroup->setPos(x, y);
-
-    // Find the orientation line inside the group (it was added first)
-    QGraphicsLineItem *orientationLine = static_cast<QGraphicsLineItem *>(robotGroup->childItems().last());
-
-    // Calculate new end point based on orientation
-    float lineLength = 10; // Length of the orientation line
-    float dx = lineLength * qCos(orientation);
-    float dy = lineLength * qSin(orientation);
-
-    // Update line position (center remains at (0,0) relative to the group)
-    orientationLine->setLine(0, 0, dx, -dy);
+    robots[id]->setPosition(position);
+    robots[id]->setOrientation(orientation);
 }
+
+void MainWindow::selectNextRobot(int direction) {
+    if (robotIds.isEmpty()) return;
+
+    selectedRobotIndex += direction;
+    if (selectedRobotIndex >= robotIds.size()) selectedRobotIndex = 0;
+    if (selectedRobotIndex < 0) selectedRobotIndex = robotIds.size() - 1;
+
+    selectedRobotId = robotIds[selectedRobotIndex];
+    selectedTeam = (blueRobots.contains(selectedRobotId)) ? 0 : 1;
+
+    updateInfoPanel();
+    emit robotSelected(selectedRobotId, selectedTeam);
+}
+
+void MainWindow::updateInfoPanel() {
+    if (selectedRobotId == -1) {
+        robotInfoLabel->setText("No robot selected");
+        return;
+    }
+
+    // Get the correct robot map based on the team
+    QMap<int, RobotItem *> &robots = (selectedTeam == 0) ? blueRobots : yellowRobots;
+
+    // Restore the previous robot's color if it's different
+    static int lastSelectedRobotId = -1;
+    static int lastSelectedTeam = -1;
+
+    if (lastSelectedRobotId != -1 && robots.contains(lastSelectedRobotId)) {
+        robots[lastSelectedRobotId]->setSelected(false);
+    }
+
+    // Update the currently selected robot
+    if (robots.contains(selectedRobotId)) {
+        RobotItem *robot = robots[selectedRobotId];
+        robot->setSelected(true);  // ✅ Highlight selected robot
+
+        // Convert position to field coordinates
+        QVector2D pos = QVector2D(robot->x(), robot->y());
+        float x = (pos.x() / 100) - 4.5;
+        float y = -((pos.y() / 100) - 3.0);
+
+        robotInfoLabel->setText(QString("Robot %1\nX: %2\nY: %3")
+                                .arg(selectedRobotId)
+                                .arg(x, 0, 'f', 2)
+                                .arg(y, 0, 'f', 2));
+
+        // Store last selected robot for future unhighlighting
+        lastSelectedRobotId = selectedRobotId;
+        lastSelectedTeam = selectedTeam;
+    }
+}
+

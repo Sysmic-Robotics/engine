@@ -15,6 +15,8 @@
         "qthread": "cpp",
         "qapplication": "cpp",
         "qlist": "cpp",
-        "qelapsedtimer": "cpp"
+        "qelapsedtimer": "cpp",
+        "qgraphicsellipseitem": "cpp",
+        "qgraphicsitemgroup": "cpp"
     }
 }

@@ -73,7 +73,6 @@ void update() {
     // Compute the motion command using the robot's state
     MotionCommand cmd = motion.to_point(robotState);
     radio.appendCommand(cmd);
-    //qDebug() <<  cmd.toString();
 
     // Send the computed command
     radio.sendCommands();

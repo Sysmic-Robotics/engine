@@ -42,6 +42,11 @@ void RobotItem::setOrientation(float angle) {
 
 void RobotItem::setSelected(bool selected) {
     QColor defaultColor = (robotId < 6) ? Qt::blue : Qt::yellow;
-    robotShape->setBrush(selected ? QBrush(Qt::red) : QBrush(defaultColor));
+
+    // ✅ Make the color brighter when selected
+    QColor highlightColor = defaultColor.lighter(150); // 150% brightness
+
+    robotShape->setBrush(QBrush(selected ? highlightColor : defaultColor));
 }
+
 

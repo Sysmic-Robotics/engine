@@ -17,6 +17,7 @@
         "qlist": "cpp",
         "qelapsedtimer": "cpp",
         "qgraphicsellipseitem": "cpp",
-        "qgraphicsitemgroup": "cpp"
+        "qgraphicsitemgroup": "cpp",
+        "qpushbutton": "cpp"
     }
 }

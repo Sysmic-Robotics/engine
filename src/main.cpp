@@ -20,10 +20,13 @@ public:
         m_worldThread = new QThread(this);
         m_world = new World(4,4);
         m_world->moveToThread(m_worldThread);
+        
 
         // Create the GUI
         m_mainWindow = new MainWindow();
         m_mainWindow->show();
+        connect(m_mainWindow, &MainWindow::robotSelected, this, &MainApp::onRobotSelected);
+        connect(m_mainWindow, &MainWindow::targetPointSelected, this, &MainApp::onTargetPointSelected);
 
         // Connect signals and slots
         connect(m_visionThread, &QThread::started, m_vision, &Vision::startListen);
@@ -56,30 +59,42 @@ public:
     }
 
 private slots:
-void update() {
-    // Call the World update function
-    m_world->update();
+    void update() {
+        // Call the World update function
+        m_world->update();
 
-    // Compute control commands based on path
-    static Motion motion;
+        // Compute control commands based on path
+        static Motion motion;
 
-    // Example: Assuming we're controlling a robot with ID 0 in the blue team (team = 0)
-    int robotId = 1;
-    int team = 0;
+        // Example: Assuming we're controlling a robot with ID 0 in the blue team (team = 0)
+        int robotId = 1;
+        int team = 0;
 
-    // Get the robot's state from the world
-    RobotState robotState = m_world->getRobotState(robotId, team);
+        // Get the robot's state from the world
+        RobotState robotState = m_world->getRobotState(selectedRobotId, selectedTeam);
 
-    // Compute the motion command using the robot's state
-    MotionCommand cmd = motion.to_point(robotState);
-    radio.appendCommand(cmd);
+        // Compute the motion command using the robot's state
+        MotionCommand cmd = motion.to_point(robotState, targetPoint);
+        radio.appendCommand(cmd);
 
-    // Send the computed command
-    radio.sendCommands();
+        // Send the computed command
+        radio.sendCommands();
+    }
+
+void onRobotSelected(int id, int team) {
+    selectedRobotId = id;
+    selectedTeam = team;
 }
 
+void onTargetPointSelected(QVector2D point) {
+    targetPoint = point;
+}
 
 private:
+    int selectedRobotId = -1;
+    int selectedTeam = -1;
+    QVector2D targetPoint;
+
     QThread *m_visionThread;
     Vision *m_vision;
     Radio radio;

@@ -5,6 +5,7 @@ add_subdirectory(world)
 add_subdirectory(gui)
 add_subdirectory(motion)
 add_subdirectory(radio)
+add_subdirectory(stp)
 
 # Specify sources in the src directory
 qt_add_executable(SysmicSoftware
@@ -23,4 +24,5 @@ target_link_libraries(SysmicSoftware
     PRIVATE gui
     PRIVATE motion
     PRIVATE radio
+    PRIVATE skills
 )

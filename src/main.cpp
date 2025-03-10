@@ -7,6 +7,8 @@
 #include "mainwindow.hpp"
 #include "radio.hpp"
 #include "motion.hpp"
+// Testing move skill
+#include "move.hpp"
 
 class MainApp : public QObject{
     Q_OBJECT
@@ -64,7 +66,6 @@ private slots:
         m_world->update();
 
         // Compute control commands based on path
-        static Motion motion;
 
         // Example: Assuming we're controlling a robot with ID 0 in the blue team (team = 0)
         int robotId = 1;
@@ -74,7 +75,8 @@ private slots:
         RobotState robotState = m_world->getRobotState(selectedRobotId, selectedTeam);
 
         // Compute the motion command using the robot's state
-        MotionCommand cmd = motion.to_point(robotState, targetPoint);
+        static Move move;
+        MotionCommand cmd = move.process(robotState, targetPoint);
         radio.appendCommand(cmd);
 
         // Send the computed command

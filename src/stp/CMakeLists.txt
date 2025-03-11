@@ -2,6 +2,7 @@
 add_library(skills
     move.cpp
     skill.cpp
+    capture.cpp
 )
 
 # Link Qt6 libraries to the Vision library

@@ -1,4 +1,5 @@
 add_subdirectory(bangbangcontrol)  # ✅ Ensure bangbangcontrol is added
+add_subdirectory(pid)  # ✅ Ensure bangbangcontrol is added
 
 add_library(motion STATIC
     motion.cpp
@@ -10,6 +11,7 @@ target_link_libraries(motion
     PRIVATE protobuf
     PRIVATE utilities  # ✅ Now correctly linking to utilities for MotionCommand
     PRIVATE bangbangcontrol  # ✅ Still linking to bangbangcontrol
+    PRIVATE pid
 )
 
 target_include_directories(motion PUBLIC 

@@ -18,6 +18,7 @@ class World : public QObject {
         void update();
         // Returns the RobotState of a robot given its team and ID
         RobotState getRobotState(int id, int team) const;
+        BallState getBallState() const;
 
     public slots:
         void updateRobot(int id, int team, QVector2D position, float orientation);

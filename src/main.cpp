@@ -8,7 +8,7 @@
 #include "radio.hpp"
 #include "motion.hpp"
 // Testing move skill
-#include "move.hpp"
+#include "capture.hpp"
 
 class MainApp : public QObject{
     Q_OBJECT
@@ -79,8 +79,9 @@ private slots:
         RobotState robotState = m_world->getRobotState(selectedRobotId, selectedTeam);
 
         // Compute the motion command using the robot's state
-        static Move move;
-        MotionCommand cmd = move.process(robotState, targetPoint);
+        //static Capture capture;
+        static Motion motion;
+        MotionCommand cmd = motion.face_to(robotState, targetPoint);//capture.process(robotState, m_world->getBallState());
         radio.appendCommand(cmd);
 
         // Send the computed command

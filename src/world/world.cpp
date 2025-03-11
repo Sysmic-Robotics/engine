@@ -24,6 +24,10 @@ RobotState World::getRobotState(int id, int team) const {
     return RobotState();  // Return a default RobotState if not found
 }
 
+BallState World::getBallState() const {
+    return ball;
+}
+
 void World::update() {
     // Robot is not being updated here; maybe a better name should be chosen for "robotUpdated" signal
     for (const RobotState &robot : blueRobots) { // Use reference to avoid unnecessary copies

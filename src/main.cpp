@@ -29,6 +29,7 @@ public:
         m_mainWindow->show();
         connect(m_mainWindow, &MainWindow::robotSelected, this, &MainApp::onRobotSelected);
         connect(m_mainWindow, &MainWindow::targetPointSelected, this, &MainApp::onTargetPointSelected);
+        connect(m_mainWindow, &MainWindow::faceToDebug, this, &MainApp::onFaceToDebug);
 
         // Connect vision to world
         connect(m_visionThread, &QThread::started, m_vision, &Vision::startListen);
@@ -65,28 +66,35 @@ public:
     }
 
 private slots:
-    void update() {
-        // Call the World update function
-        m_world->update();
+void update() {
+    // Call the World update function
+    m_world->update();
 
-        // Compute control commands based on path
+    if (selectedRobotId == -1) return;
 
-        // Example: Assuming we're controlling a robot with ID 0 in the blue team (team = 0)
-        int robotId = 1;
-        int team = 0;
+    // Get the robot's state from the world
+    RobotState robotState = m_world->getRobotState(selectedRobotId, selectedTeam);
 
-        // Get the robot's state from the world
-        RobotState robotState = m_world->getRobotState(selectedRobotId, selectedTeam);
+    static Motion motion;
+    MotionCommand cmd(selectedRobotId, selectedTeam);
 
-        // Compute the motion command using the robot's state
-        //static Capture capture;
-        static Motion motion;
-        MotionCommand cmd = motion.face_to(robotState, targetPoint);//capture.process(robotState, m_world->getBallState());
-        radio.appendCommand(cmd);
-
-        // Send the computed command
-        radio.sendCommands();
+    if (faceToActive) {
+        // Apply face_to if enabled
+        cmd = motion.face_to(robotState, faceToTarget);
+    } else {
+        // Apply move_to command
+        cmd = motion.to_point(robotState, targetPoint);
     }
+
+    radio.appendCommand(cmd);
+    radio.sendCommands();
+}
+
+
+void onFaceToDebug(QVector2D point) {
+    faceToTarget = point;
+    faceToActive = true;  // Enable face_to control
+}
 
 void onRobotSelected(int id, int team) {
     selectedRobotId = id;
@@ -95,6 +103,7 @@ void onRobotSelected(int id, int team) {
 
 void onTargetPointSelected(QVector2D point) {
     targetPoint = point;
+    faceToActive = false;
 }
 
 private:
@@ -108,7 +117,8 @@ private:
     World *m_world;
     QThread *m_worldThread;
     QTimer *m_updateTimer;
-
+    QVector2D faceToTarget;
+    bool faceToActive = false;
     MainWindow *m_mainWindow;  // New GUI window
 };
 

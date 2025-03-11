@@ -2,6 +2,7 @@
 #include "pid.hpp"
 #include <QDebug>
 
+// CHANGE THE NAME TO move_to_point
 MotionCommand Motion::to_point(const RobotState& robotState, QVector2D targetPoint) {
     // Define BangBangControl with acceleration & velocity limits
     static BangBangControl bangbangControl(2.5f, 5.0f); // Example values for A_MAX and V_MAX

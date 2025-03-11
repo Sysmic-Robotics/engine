@@ -44,15 +44,22 @@ void MainWindow::setupLeftPanel() {
     showTraceCheckbox = new QCheckBox("Show Trace");
     connect(showTraceCheckbox, &QCheckBox::toggled, this, &MainWindow::onTraceCheckboxToggled);
 
-    // Target Point Selection Button
-    targetPointBtn = new QPushButton("Select Target Point");
+    // Motion debug
+
+    // to_point Selection Button
+    targetPointBtn = new QPushButton("Select point to move");
     connect(targetPointBtn, &QPushButton::clicked, this, &MainWindow::onTargetPointButtonClicked);
+
+    // face_to
+    faceToBtn = new QPushButton("Select point to aim");
+    connect(faceToBtn, &QPushButton::clicked, this, &MainWindow::onFaceToPointButtonClicked);
 
     // Layout setup
     buttonLayout->addLayout(arrowLayout);
     buttonLayout->addWidget(robotInfoLabel);
     buttonLayout->addWidget(showTraceCheckbox);
     buttonLayout->addWidget(targetPointBtn);
+    buttonLayout->addWidget(faceToBtn);
     buttonLayout->addStretch();
 
     // Connect arrow buttons
@@ -207,9 +214,8 @@ void MainWindow::mousePressEvent(QMouseEvent *event) {
     QPointF scenePos = view->mapToScene(QPoint(adjustedX, event->pos().y()));
 
     if (waitingForTargetPoint) {
-        QRectF fieldRect = scene->sceneRect();
-        float x = ((scenePos.x() - fieldRect.left()) / fieldRect.width()) * 9.0 - 4.5;
-        float y = -((scenePos.y() - fieldRect.top()) / fieldRect.height()) * 6.0 + 3.0;
+        float x = ((scenePos.x() - scene->sceneRect().left()) / scene->sceneRect().width()) * 9.0 - 4.5;
+        float y = -((scenePos.y() - scene->sceneRect().top()) / scene->sceneRect().height()) * 6.0 + 3.0;
 
         QVector2D targetPoint(x, y);
         drawTargetMarker(targetPoint);
@@ -217,13 +223,43 @@ void MainWindow::mousePressEvent(QMouseEvent *event) {
 
         targetPointBtn->setText("Select Target Point");
         waitingForTargetPoint = false;
+        faceToBtn->setEnabled(true); // Re-enable faceToBtn
+
         return;
+    }
+
+    if (waitingForFaceTo) {
+        float x = ((scenePos.x() - scene->sceneRect().left()) / scene->sceneRect().width()) * 9.0 - 4.5;
+        float y = -((scenePos.y() - scene->sceneRect().top()) / scene->sceneRect().height()) * 6.0 + 3.0;
+
+        QVector2D faceToTarget(x, y);
+        drawTargetMarker(faceToTarget);
+        emit faceToDebug(faceToTarget);
+
+        faceToBtn->setText("Select point to aim");
+        waitingForFaceTo = false;
+        targetPointBtn->setEnabled(true); // Re-enable targetPointBtn
     }
 }
 
 void MainWindow::onTargetPointButtonClicked() {
+    if (waitingForFaceTo) return;  // Prevent conflict
+
     waitingForTargetPoint = true;
+    waitingForFaceTo = false;
+    
     targetPointBtn->setText("Click on Field...");
+    faceToBtn->setEnabled(false); // Disable faceToBtn while selecting target
+}
+
+void MainWindow::onFaceToPointButtonClicked() {
+    if (waitingForTargetPoint) return;  // Prevent conflict
+
+    waitingForFaceTo = true;
+    waitingForTargetPoint = false;
+
+    faceToBtn->setText("Click on Field...");
+    targetPointBtn->setEnabled(false); // Disable targetPointBtn while debugging face_to
 }
 
 void MainWindow::drawTargetMarker(QVector2D point) {

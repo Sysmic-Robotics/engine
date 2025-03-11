@@ -31,6 +31,7 @@ public slots:
 signals:
     void robotSelected(int id, int team);
     void targetPointSelected(QVector2D point);
+    void faceToDebug(QVector2D target);
 
 private:
     void setupLeftPanel();
@@ -41,6 +42,7 @@ private:
     void clearSelectedRobotTrace();
     void mousePressEvent(QMouseEvent *event);
     void onTargetPointButtonClicked();
+    void onFaceToPointButtonClicked();
     void onTraceCheckboxToggled(bool checked);
 
     QGraphicsScene *scene;
@@ -52,6 +54,7 @@ private:
     QPushButton *leftArrowBtn;
     QPushButton *rightArrowBtn;
     QPushButton *targetPointBtn;
+    QPushButton *faceToBtn;
     QCheckBox *showTraceCheckbox;
     QLabel *robotInfoLabel;
 
@@ -66,6 +69,7 @@ private:
 
     TargetMarker *targetMarker = nullptr;
     bool waitingForTargetPoint = false;
+    bool waitingForFaceTo = false;
 
     QPainterPath selectedRobotTrace;   // ✅ Stores the trace for the selected robot
     QGraphicsPathItem *traceItem = nullptr; // ✅ Holds the graphics item for the trace

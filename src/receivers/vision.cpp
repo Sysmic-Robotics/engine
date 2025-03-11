@@ -73,7 +73,7 @@ void Vision::deserializePacket(const QByteArray &datagram){
 
             // Process detected balls
             for (const SSL_DetectionBall &ball : detectionFrame.balls()){
-
+                emit ballReceived(QVector2D(ball.x()/1000, ball.y()/1000));
             }
 
             // Process yellow robots

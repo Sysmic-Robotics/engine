@@ -3,6 +3,7 @@ add_library(utilities STATIC
     robotstate.cpp
     motioncommand.cpp
     statechecker.cpp
+    ballstate.cpp
 )
 
 # Link Qt6 libraries to the Vision library

@@ -3,6 +3,7 @@ add_library(gui STATIC
     mainwindow.cpp
     robotitem.cpp
     targetmarker.cpp  # ✅ Fixed filename
+    ballitem.cpp
 )
 
 # Link Qt6 libraries to the GUI library

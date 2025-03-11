@@ -18,7 +18,7 @@ public:
 
 signals:
     void robotReceived(int id, int team, QVector2D position, float orientation);  // Signal to notify when packet is received
-    
+    void ballReceived(QVector2D position);
 
 private:
     QUdpSocket *m_udpSocket;

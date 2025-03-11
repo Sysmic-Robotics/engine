@@ -2,6 +2,7 @@
 #define WORLD_HPP
 
 #include "robotstate.hpp"
+#include "ballstate.hpp"
 #include <QMap>
 #include <QVector2D>
 #include <QObject>
@@ -20,14 +21,17 @@ class World : public QObject {
 
     public slots:
         void updateRobot(int id, int team, QVector2D position, float orientation);
+        void updateBall(QVector2D position);
 
     signals:
         void robotUpdated(const RobotState &robotState); // New Signal
+        void ballUpdated(const BallState &ball);
     
     private:
         QMap<int, RobotState> yellowRobots;  // Key: robot ID, Value: yellow team robot state
         QMap<int, RobotState> blueRobots;  // Key: robot ID, Value: blue team robot state
-        
+        BallState ball;
+
 };
 
 #endif // WORLD_HPP

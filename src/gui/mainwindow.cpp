@@ -18,6 +18,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     mainLayout->addWidget(view);
 
     setCentralWidget(centralWidget);
+    ball = new BallItem();
+
+    scene->addItem(ball);
 
 }
 
@@ -59,7 +62,10 @@ void MainWindow::setupLeftPanel() {
     leftPanel->setLayout(buttonLayout);
 }
 
-
+void MainWindow::updateBall(const BallState &ballState) {
+    QVector2D position = ballState.getPosition();
+    ball->setPosition(position);
+}
 
 void MainWindow::updateRobot(const RobotState &robotState) {
     int id = robotState.getId();

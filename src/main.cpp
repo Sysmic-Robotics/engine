@@ -30,11 +30,15 @@ public:
         connect(m_mainWindow, &MainWindow::robotSelected, this, &MainApp::onRobotSelected);
         connect(m_mainWindow, &MainWindow::targetPointSelected, this, &MainApp::onTargetPointSelected);
 
-        // Connect signals and slots
+        // Connect vision to world
         connect(m_visionThread, &QThread::started, m_vision, &Vision::startListen);
         connect(m_vision, &Vision::robotReceived, m_world, &World::updateRobot);
-        connect(m_world, &World::robotUpdated, m_mainWindow, &MainWindow::updateRobot); // NEW!
-        
+        connect(m_vision, &Vision::ballReceived, m_world, &World::updateBall);
+
+        // Connect world to GUI
+        connect(m_world, &World::robotUpdated, m_mainWindow, &MainWindow::updateRobot);
+        connect(m_world, &World::ballUpdated, m_mainWindow, &MainWindow::updateBall);
+
         // Start the thread
         m_visionThread->start();
         m_worldThread->start();

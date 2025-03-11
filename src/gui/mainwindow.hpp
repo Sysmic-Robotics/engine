@@ -14,13 +14,19 @@
 #include "robotitem.hpp"
 #include "targetmarker.hpp"
 #include "robotstate.hpp"
+#include "ballstate.hpp"
+#include "ballitem.hpp"
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
 
 public:
     explicit MainWindow(QWidget *parent = nullptr);
+    
+
+public slots:
     void updateRobot(const RobotState &robotState);
+    void updateBall(const BallState &ballState);
 
 signals:
     void robotSelected(int id, int team);
@@ -51,6 +57,7 @@ private:
 
     QMap<int, RobotItem *> blueRobots;
     QMap<int, RobotItem *> yellowRobots;
+    BallItem* ball;
 
     QVector<int> robotIds;
     int selectedRobotIndex = 0;

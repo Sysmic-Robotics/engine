@@ -11,6 +11,7 @@ namespace GUIColors {
     const QColor BLUE_ROBOT = Qt::blue;  // Bright blue for blue team
     const QColor YELLOW_ROBOT = QColor(255, 204, 0);  // Bright yellow for yellow team
     const QColor ORIENTATION_COLOR = QColor(246, 248, 213);
+    const QColor BALL = QColor(255,165,0);  // Bright blue for blue team
 
     // ✅ Target Marker
     const QColor TARGET_MARKER = QColor(0, 255, 0);  // Green target point

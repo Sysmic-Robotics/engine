@@ -2,6 +2,7 @@
 
 
 World::World(int n_blue, int n_yellow, QObject *parent) : QObject(parent) {
+    ball = BallState();
     for (int id = 0; id < n_blue; id++) {   
         blueRobots.insert(id, RobotState(id, 0));
     }
@@ -24,6 +25,7 @@ RobotState World::getRobotState(int id, int team) const {
 }
 
 void World::update() {
+    // Robot is not being updated here; maybe a better name should be chosen for "robotUpdated" signal
     for (const RobotState &robot : blueRobots) { // Use reference to avoid unnecessary copies
         if ( robot.isActive() );
             emit robotUpdated(robot);
@@ -33,6 +35,7 @@ void World::update() {
         if ( robot.isActive() );
             emit robotUpdated(robot);
     }
+    emit ballUpdated(ball);
 }
 
 
@@ -53,4 +56,8 @@ void World::updateRobot(int id, int team, QVector2D position, float orientation)
             yellowRobots[id].setActive(true);
         }
     }
+}
+
+void World::updateBall(QVector2D position){
+    ball.setPosition(position);
 }

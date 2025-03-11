@@ -8,9 +8,12 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address -g")
 set(CMAKE_LINKER_FLAGS "${CMAKE_LINKER_FLAGS} -fsanitize=address")
 
-
-
 find_package(Qt6 REQUIRED COMPONENTS Core Network Gui Widgets)
+
+# Add lua
+find_package(Lua REQUIRED)
+include_directories(${LUA_INCLUDE_DIR})
+
 # The qt_standard_project_setup command sets project-wide defaults for a typical Qt application.
 qt_standard_project_setup()
 

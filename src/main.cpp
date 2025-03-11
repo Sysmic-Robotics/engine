@@ -9,6 +9,7 @@
 #include "motion.hpp"
 // Testing move skill
 #include "capture.hpp"
+#include "luainterface.hpp"
 
 class MainApp : public QObject{
     Q_OBJECT
@@ -90,7 +91,6 @@ void update() {
     radio.sendCommands();
 }
 
-
 void onFaceToDebug(QVector2D point) {
     faceToTarget = point;
     faceToActive = true;  // Enable face_to control
@@ -120,6 +120,8 @@ private:
     QVector2D faceToTarget;
     bool faceToActive = false;
     MainWindow *m_mainWindow;  // New GUI window
+    LuaInterface luaInterface;
+    
 };
 
 int main(int argc, char *argv[]){

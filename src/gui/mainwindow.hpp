@@ -32,6 +32,8 @@ signals:
     void robotSelected(int id, int team);
     void targetPointSelected(QVector2D point);
     void faceToDebug(QVector2D target);
+    void scriptLoaded(QString filePath);
+    void scriptRunRequested();
 
 private:
     void setupLeftPanel();
@@ -44,6 +46,10 @@ private:
     void onTargetPointButtonClicked();
     void onFaceToPointButtonClicked();
     void onTraceCheckboxToggled(bool checked);
+    // Script
+    void onLoadScriptClicked();
+    void onRunScriptClicked();
+
 
     QGraphicsScene *scene;
     QGraphicsView *view;
@@ -57,6 +63,8 @@ private:
     QPushButton *faceToBtn;
     QCheckBox *showTraceCheckbox;
     QLabel *robotInfoLabel;
+    QPushButton *loadScriptBtn;
+    QPushButton *runScriptBtn;
 
     QMap<int, RobotItem *> blueRobots;
     QMap<int, RobotItem *> yellowRobots;

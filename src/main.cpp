@@ -40,14 +40,18 @@ public:
         connect(m_world, &World::robotUpdated, m_mainWindow, &MainWindow::updateRobot);
         connect(m_world, &World::ballUpdated, m_mainWindow, &MainWindow::updateBall);
 
+
         // Start the thread
         m_visionThread->start();
         m_worldThread->start();
 
         // Setup lua interface
         radio = new Radio();
-        luaInterface = new LuaInterface(radio);
+        luaInterface = new LuaInterface(radio, m_world);
+        //luaInterface->runScript("/home/gerson/Sysmic/CondorSSL/src/luainterface/script.lua");
 
+        connect(m_mainWindow, &MainWindow::scriptLoaded, this, &MainApp::onScriptLoaded);
+        connect(m_mainWindow, &MainWindow::scriptRunRequested, this, &MainApp::onScriptRunRequested);
         // Setup Timer for updateWorld()
         m_updateTimer = new QTimer(this);
         connect(m_updateTimer, &QTimer::timeout, this, &MainApp::update);
@@ -66,33 +70,38 @@ public:
 
         //delete m_mainWindow;
         delete m_updateTimer;
+        delete luaInterface;
         
     }
 
 private slots:
-void update() {
-    // Call the World update function
-    m_world->update();
+    void update() {
+        // Call the World update function
+        m_world->update();
 
-    if (selectedRobotId == -1) return;
+        if (selectedRobotId == -1) return;
 
-    // Get the robot's state from the world
-    RobotState robotState = m_world->getRobotState(selectedRobotId, selectedTeam);
+        if (luaInterface->haveScript()){
+            luaInterface->callProcess();
+        }
+        
+        // Get the robot's state from the world
+        RobotState robotState = m_world->getRobotState(selectedRobotId, selectedTeam);
 
-    static Motion motion;
-    MotionCommand cmd(selectedRobotId, selectedTeam);
+        static Motion motion;
+        MotionCommand cmd(selectedRobotId, selectedTeam);
 
-    if (faceToActive) {
-        // Apply face_to if enabled
-        cmd = motion.face_to(robotState, faceToTarget);
-    } else {
-        // Apply move_to command
-        cmd = motion.to_point(robotState, targetPoint);
+        if (faceToActive) {
+            // Apply face_to if enabled
+            cmd = motion.face_to(robotState, faceToTarget);
+        } else {
+            // Apply move_to command
+            cmd = motion.to_point(robotState, targetPoint);
+        }
+
+        radio->appendCommand(cmd);
+        radio->sendCommands();
     }
-
-    radio->appendCommand(cmd);
-    radio->sendCommands();
-}
 
 void onFaceToDebug(QVector2D point) {
     faceToTarget = point;
@@ -107,6 +116,14 @@ void onRobotSelected(int id, int team) {
 void onTargetPointSelected(QVector2D point) {
     targetPoint = point;
     faceToActive = false;
+}
+
+void onScriptLoaded(QString filePath) {
+    luaInterface->runScript("/home/gerson/Sysmic/CondorSSL/src/luainterface/script.lua");
+}
+
+void onScriptRunRequested() {
+    luaInterface->runScript("/home/gerson/Sysmic/CondorSSL/src/luainterface/script.lua");
 }
 
 private:

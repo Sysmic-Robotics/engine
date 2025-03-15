@@ -9,6 +9,7 @@ target_link_libraries(luainterface
     PRIVATE radio
     PRIVATE utilities
     PRIVATE motion
+    PRIVATE world
 )
 
 target_include_directories(luainterface 

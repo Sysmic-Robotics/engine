@@ -2,6 +2,7 @@
 #include "colors.hpp"  // ✅ Include the color definitions
 #include <QMouseEvent>
 #include <QHBoxLayout>
+#include <QFileDialog>
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     // Setup main layout
@@ -29,8 +30,8 @@ void MainWindow::setupLeftPanel() {
     buttonLayout = new QVBoxLayout(leftPanel);
 
     // Arrow Buttons
-    leftArrowBtn = new QPushButton("←");
-    rightArrowBtn = new QPushButton("→");
+    leftArrowBtn = new QPushButton("⬅️");// new QPushButton(QIcon(":/icons/left_arrow.png"), "");
+    rightArrowBtn = new QPushButton("➡️"); //new QPushButton(QIcon(":/icons/right_arrow.png"), "");
     
     QHBoxLayout *arrowLayout = new QHBoxLayout();
     arrowLayout->addWidget(leftArrowBtn);
@@ -44,13 +45,20 @@ void MainWindow::setupLeftPanel() {
     showTraceCheckbox = new QCheckBox("Show Trace");
     connect(showTraceCheckbox, &QCheckBox::toggled, this, &MainWindow::onTraceCheckboxToggled);
 
-    // Motion debug
-
-    // to_point Selection Button
-    targetPointBtn = new QPushButton("Select point to move");
+    // Target Point Selection Button
+    targetPointBtn = new QPushButton("🎯 Select Target");
     connect(targetPointBtn, &QPushButton::clicked, this, &MainWindow::onTargetPointButtonClicked);
 
-    // face_to
+    // Load Script Button
+    loadScriptBtn = new QPushButton("📂 Load Script");
+    loadScriptBtn->setEnabled(false); // Re-enable faceToBtn
+    connect(loadScriptBtn, &QPushButton::clicked, this, &MainWindow::onLoadScriptClicked);
+
+    // Run Script Button
+    runScriptBtn = new QPushButton("▶️ Run Script");
+    connect(runScriptBtn, &QPushButton::clicked, this, &MainWindow::onRunScriptClicked);
+
+    // Face to Button
     faceToBtn = new QPushButton("Select point to aim");
     connect(faceToBtn, &QPushButton::clicked, this, &MainWindow::onFaceToPointButtonClicked);
 
@@ -60,6 +68,8 @@ void MainWindow::setupLeftPanel() {
     buttonLayout->addWidget(showTraceCheckbox);
     buttonLayout->addWidget(targetPointBtn);
     buttonLayout->addWidget(faceToBtn);
+    buttonLayout->addWidget(loadScriptBtn);
+    buttonLayout->addWidget(runScriptBtn);
     buttonLayout->addStretch();
 
     // Connect arrow buttons
@@ -67,6 +77,17 @@ void MainWindow::setupLeftPanel() {
     connect(rightArrowBtn, &QPushButton::clicked, [=]() { selectNextRobot(1); });
 
     leftPanel->setLayout(buttonLayout);
+}
+
+void MainWindow::onLoadScriptClicked() {
+    QString filePath = QFileDialog::getOpenFileName(this, "Select Lua Script", "", "Lua Files (*.lua)");
+    if (!filePath.isEmpty()) {
+        emit scriptLoaded(filePath);  // Send signal with selected script path
+    }
+}
+
+void MainWindow::onRunScriptClicked() {
+    emit scriptRunRequested();  // Send signal to execute script
 }
 
 void MainWindow::updateBall(const BallState &ballState) {

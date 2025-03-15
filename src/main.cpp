@@ -24,7 +24,6 @@ public:
         m_world = new World(4,4);
         m_world->moveToThread(m_worldThread);
         
-
         // Create the GUI
         m_mainWindow = new MainWindow();
         m_mainWindow->show();
@@ -44,6 +43,10 @@ public:
         // Start the thread
         m_visionThread->start();
         m_worldThread->start();
+
+        // Setup lua interface
+        radio = new Radio();
+        luaInterface = new LuaInterface(radio);
 
         // Setup Timer for updateWorld()
         m_updateTimer = new QTimer(this);
@@ -87,8 +90,8 @@ void update() {
         cmd = motion.to_point(robotState, targetPoint);
     }
 
-    radio.appendCommand(cmd);
-    radio.sendCommands();
+    radio->appendCommand(cmd);
+    radio->sendCommands();
 }
 
 void onFaceToDebug(QVector2D point) {
@@ -113,14 +116,14 @@ private:
 
     QThread *m_visionThread;
     Vision *m_vision;
-    Radio radio;
+    Radio* radio;
     World *m_world;
     QThread *m_worldThread;
     QTimer *m_updateTimer;
     QVector2D faceToTarget;
     bool faceToActive = false;
     MainWindow *m_mainWindow;  // New GUI window
-    LuaInterface luaInterface;
+    LuaInterface* luaInterface;
     
 };
 

@@ -7,9 +7,9 @@ add_library(radio STATIC
 target_link_libraries(radio
     #PRIVATE Qt6::Gui
     PRIVATE Qt6::Core
-    PRIVATE Qt6::Network
+    PUBLIC Qt6::Network
     PRIVATE utilities
-    PRIVATE protobuf
+    PUBLIC protobuf
 )
 
 # Include the current directory for header files

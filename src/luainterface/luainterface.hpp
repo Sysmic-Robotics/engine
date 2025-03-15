@@ -3,10 +3,11 @@
 
 #include <lua.hpp>
 #include <QVector2D>
+#include "radio.hpp"
 
 class LuaInterface {
 public:
-    LuaInterface();
+    LuaInterface(Radio* radio);
     ~LuaInterface();
 
     void runScript(const std::string& scriptFile);
@@ -16,6 +17,7 @@ public:
 
 private:
     lua_State* L;
+    Radio* radio;
 };
 
 #endif // LUA_INTERFACE_HPP

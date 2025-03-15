@@ -1,8 +1,11 @@
 #include "luainterface.hpp"
+#include "motion.hpp"
 #include <iostream>
 
 // Constructor: Initialize Lua
-LuaInterface::LuaInterface() {
+LuaInterface::LuaInterface(Radio* radio_) {
+    radio = radio_;
+
     L = luaL_newstate();
     luaL_openlibs(L); // Load Lua standard libraries
 
@@ -35,6 +38,9 @@ int LuaInterface::lua_move_to(lua_State* L) {
 
     // Call your actual C++ move_to function (to be connected in MainApp)
     // Example: MainApp::getInstance()->moveRobot(robotId, QVector2D(x, y));
+    static Motion motion;
+    //motion.to_point()
+    radio->appendCommand();
 
     return 0;
 }

@@ -7,7 +7,6 @@ add_subdirectory(motion)
 add_subdirectory(radio)
 add_subdirectory(stp)
 add_subdirectory(luainterface)
-add_subdirectory(pathplanning)
 
 # Specify sources in the src directory
 qt_add_executable(SysmicSoftware
@@ -27,5 +26,4 @@ target_link_libraries(SysmicSoftware
     PRIVATE radio
     PRIVATE skills
     PRIVATE luainterface
-    PRIVATE pathplanning
 )

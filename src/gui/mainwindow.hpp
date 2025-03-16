@@ -34,6 +34,7 @@ signals:
     void faceToDebug(QVector2D target);
     void scriptLoaded(QString filePath);
     void scriptRunRequested();
+    void setRobotControl(bool flag);
 
 private:
     void setupLeftPanel();
@@ -46,6 +47,7 @@ private:
     void onTargetPointButtonClicked();
     void onFaceToPointButtonClicked();
     void onTraceCheckboxToggled(bool checked);
+    void onTabChanged(int index);
     // Script
     void onLoadScriptClicked();
     void onRunScriptClicked();

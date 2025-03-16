@@ -30,7 +30,7 @@ public:
         connect(m_mainWindow, &MainWindow::robotSelected, this, &MainApp::onRobotSelected);
         connect(m_mainWindow, &MainWindow::targetPointSelected, this, &MainApp::onTargetPointSelected);
         connect(m_mainWindow, &MainWindow::faceToDebug, this, &MainApp::onFaceToDebug);
-
+        connect(m_mainWindow, &MainWindow::setRobotControl, this, &MainApp::onSetRobotControl);
         // Connect vision to world
         connect(m_visionThread, &QThread::started, m_vision, &Vision::startListen);
         connect(m_vision, &Vision::robotReceived, m_world, &World::updateRobot);
@@ -81,25 +81,30 @@ private slots:
 
         if (selectedRobotId == -1) return;
 
-        if (luaInterface->haveScript()){
-            luaInterface->callProcess();
-        }
-        
         // Get the robot's state from the world
-        RobotState robotState = m_world->getRobotState(selectedRobotId, selectedTeam);
 
-        static Motion motion;
-        MotionCommand cmd(selectedRobotId, selectedTeam);
+        if(debug_control){ // On Robot Control Panel
+            RobotState robotState = m_world->getRobotState(selectedRobotId, selectedTeam);
 
-        if (faceToActive) {
-            // Apply face_to if enabled
-            cmd = motion.face_to(robotState, faceToTarget);
-        } else {
-            // Apply move_to command
-            cmd = motion.to_point(robotState, targetPoint);
+            static Motion motion;
+            MotionCommand cmd(selectedRobotId, selectedTeam);
+        
+            if (faceToActive) {
+                // Apply face_to if enabled
+                cmd = motion.face_to(robotState, faceToTarget);
+            } else {
+                // Apply move_to command
+                cmd = motion.to_point(robotState, targetPoint);
+            }
+            radio->appendCommand(cmd);
+        }else{ // On Lua Interface Panel
+            faceToActive = true;
+            if (luaInterface->haveScript()){
+                luaInterface->callProcess();
+            }
         }
 
-        radio->appendCommand(cmd);
+        
         radio->sendCommands();
     }
 
@@ -111,6 +116,10 @@ void onFaceToDebug(QVector2D point) {
 void onRobotSelected(int id, int team) {
     selectedRobotId = id;
     selectedTeam = team;
+}
+
+void onSetRobotControl(bool flag){
+    debug_control = flag;
 }
 
 void onTargetPointSelected(QVector2D point) {
@@ -130,6 +139,7 @@ private:
     int selectedRobotId = -1;
     int selectedTeam = -1;
     QVector2D targetPoint;
+    bool debug_control = true;
 
     QThread *m_visionThread;
     Vision *m_vision;

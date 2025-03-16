@@ -1,6 +1,7 @@
 #include "mainwindow.hpp"
 #include "colors.hpp"  // ✅ Include the color definitions
 #include <QMouseEvent>
+#include <QTabWidget>
 #include <QHBoxLayout>
 #include <QFileDialog>
 
@@ -25,59 +26,115 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
 
 }
 
+
 void MainWindow::setupLeftPanel() {
     leftPanel = new QWidget(this);
-    buttonLayout = new QVBoxLayout(leftPanel);
+    QVBoxLayout *mainLayout = new QVBoxLayout(leftPanel);
 
-    // Arrow Buttons
-    leftArrowBtn = new QPushButton("⬅️");// new QPushButton(QIcon(":/icons/left_arrow.png"), "");
-    rightArrowBtn = new QPushButton("➡️"); //new QPushButton(QIcon(":/icons/right_arrow.png"), "");
-    
+    // **Select Robot Panel (Above Tabs)**
+    QWidget *selectRobotPanel = new QWidget();
+    QVBoxLayout *selectRobotLayout = new QVBoxLayout(selectRobotPanel);
+
+    QLabel *selectRobotLabel = new QLabel("🤖 Robot Info");
+    selectRobotLabel->setAlignment(Qt::AlignCenter);
+    selectRobotLabel->setStyleSheet("font-weight: bold;");
+
     QHBoxLayout *arrowLayout = new QHBoxLayout();
+    leftArrowBtn = new QPushButton("⬅️");
+    rightArrowBtn = new QPushButton("➡️");
     arrowLayout->addWidget(leftArrowBtn);
     arrowLayout->addWidget(rightArrowBtn);
 
-    // Robot Info Panel
-    robotInfoLabel = new QLabel("No robot selected");
+    robotInfoLabel = new QLabel(QString("Robot ID: No selected\nX: 0\nY: 0\n speed: 0 [m/s]") );
     robotInfoLabel->setAlignment(Qt::AlignCenter);
-
+    
     // Trace Toggle Checkbox
     showTraceCheckbox = new QCheckBox("Show Trace");
     connect(showTraceCheckbox, &QCheckBox::toggled, this, &MainWindow::onTraceCheckboxToggled);
+    selectRobotLayout->addWidget(selectRobotLabel);
+    selectRobotLayout->addLayout(arrowLayout);
+    selectRobotLayout->addWidget(robotInfoLabel);
+    selectRobotLayout->addWidget(showTraceCheckbox);
+    selectRobotPanel->setLayout(selectRobotLayout);
 
-    // Target Point Selection Button
+    // **Tab Widget for Controls**
+    QTabWidget *tabWidget = new QTabWidget(leftPanel);
+
+    // **Tab 1: Robot Control**
+    QWidget *robotControlTab = new QWidget();
+    QVBoxLayout *robotLayout = new QVBoxLayout(robotControlTab);
+
+    QLabel *robotControlLabel = new QLabel("🔹 Robot Control");
+    robotControlLabel->setAlignment(Qt::AlignCenter);
+    robotControlLabel->setStyleSheet("font-weight: bold;");
+
     targetPointBtn = new QPushButton("🎯 Select Target");
     connect(targetPointBtn, &QPushButton::clicked, this, &MainWindow::onTargetPointButtonClicked);
 
-    // Load Script Button
+    faceToBtn = new QPushButton("🎯 Point to Aim");
+    connect(faceToBtn, &QPushButton::clicked, this, &MainWindow::onFaceToPointButtonClicked);
+
+    robotLayout->addWidget(robotControlLabel);
+    robotLayout->addWidget(targetPointBtn);
+    robotLayout->addWidget(faceToBtn);
+    robotLayout->addStretch();
+    robotControlTab->setLayout(robotLayout);
+
+    // **Tab 2: Script Run**
+    QWidget *scriptRunTab = new QWidget();
+    QVBoxLayout *scriptLayout = new QVBoxLayout(scriptRunTab);
+
+    QLabel *scriptControlLabel = new QLabel("📜 Script Control");
+    scriptControlLabel->setAlignment(Qt::AlignCenter);
+    scriptControlLabel->setStyleSheet("font-weight: bold;");
+
     loadScriptBtn = new QPushButton("📂 Load Script");
-    loadScriptBtn->setEnabled(false); // Re-enable faceToBtn
+    loadScriptBtn->setEnabled(false);
     connect(loadScriptBtn, &QPushButton::clicked, this, &MainWindow::onLoadScriptClicked);
 
-    // Run Script Button
     runScriptBtn = new QPushButton("▶️ Run Script");
     connect(runScriptBtn, &QPushButton::clicked, this, &MainWindow::onRunScriptClicked);
 
-    // Face to Button
-    faceToBtn = new QPushButton("Select point to aim");
-    connect(faceToBtn, &QPushButton::clicked, this, &MainWindow::onFaceToPointButtonClicked);
+    scriptLayout->addWidget(scriptControlLabel);
+    scriptLayout->addWidget(loadScriptBtn);
+    scriptLayout->addWidget(runScriptBtn);
+    scriptLayout->addStretch();
+    scriptRunTab->setLayout(scriptLayout);
 
-    // Layout setup
-    buttonLayout->addLayout(arrowLayout);
-    buttonLayout->addWidget(robotInfoLabel);
-    buttonLayout->addWidget(showTraceCheckbox);
-    buttonLayout->addWidget(targetPointBtn);
-    buttonLayout->addWidget(faceToBtn);
-    buttonLayout->addWidget(loadScriptBtn);
-    buttonLayout->addWidget(runScriptBtn);
-    buttonLayout->addStretch();
+    // **Add tabs to QTabWidget**
+    tabWidget->addTab(robotControlTab, "🤖 Robot");
+    tabWidget->addTab(scriptRunTab, "📜 Script");
+    connect(tabWidget, &QTabWidget::currentChanged, this, &MainWindow::onTabChanged);
 
-    // Connect arrow buttons
+    // **Final Layout**
+    mainLayout->addWidget(selectRobotPanel); // Add Select Robot Panel ABOVE tabs
+    mainLayout->addWidget(tabWidget);
+    leftPanel->setLayout(mainLayout);
+
+    // **Connect Robot Selection Buttons**
     connect(leftArrowBtn, &QPushButton::clicked, [=]() { selectNextRobot(-1); });
     connect(rightArrowBtn, &QPushButton::clicked, [=]() { selectNextRobot(1); });
-
-    leftPanel->setLayout(buttonLayout);
 }
+
+void MainWindow::onTabChanged(int index) {
+   if (index == 1) {
+            // ✅ Get scene coordinates
+        QVector2D scenePos = (selectedTeam == 0) 
+            ? blueRobots[selectedRobotId]->getPosition()
+            : yellowRobots[selectedRobotId]->getPosition();
+
+        // ✅ Convert to field coordinates
+        QVector2D fieldPos(
+            (scenePos.x() / 100) - 4.5,   // Convert X from scene to field
+            -((scenePos.y() / 100) - 3.0) // Convert Y from scene to field
+        );
+        drawTargetMarker(QVector2D(-20,-20)); // Hide target
+        emit setRobotControl(false);
+    }else{
+        emit setRobotControl(true);
+    }
+}
+
 
 void MainWindow::onLoadScriptClicked() {
     QString filePath = QFileDialog::getOpenFileName(this, "Select Lua Script", "", "Lua Files (*.lua)");

@@ -7,7 +7,6 @@ void Radio::appendCommand(MotionCommand command) {
 
 void Radio::sendCommands() {
     if (commandQueue.isEmpty()) {
-        qDebug() << "No commands to send.";
         return;
     }
     static Grsim grsim;

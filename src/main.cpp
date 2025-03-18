@@ -7,8 +7,6 @@
 #include "mainwindow.hpp"
 #include "radio.hpp"
 #include "motion.hpp"
-// Testing move skill
-#include "capture.hpp"
 #include "luainterface.hpp"
 
 class MainApp : public QObject{
@@ -96,7 +94,7 @@ private slots:
                 // Apply move_to command
                 cmd = motion.to_point(robotState, targetPoint);
             }
-            radio->appendCommand(cmd);
+            radio->addMotionCommand(cmd);
         }else{ // On Lua Interface Panel
             faceToActive = true;
             if (luaInterface->haveScript()){
@@ -104,7 +102,6 @@ private slots:
             }
         }
 
-        
         radio->sendCommands();
     }
 

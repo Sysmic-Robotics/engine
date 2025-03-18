@@ -16,8 +16,12 @@ public:
 
     static int lua_move_to(lua_State* L);
     static int lua_get_robot_state(lua_State* L);
+    static int lua_get_ball_state(lua_State* L);
     static int lua_face_to(lua_State* L);
     static int lua_print_override(lua_State* L);
+    static int lua_kickx(lua_State* L);
+    static int lua_kickz(lua_State* L);
+    static int lua_dribbler(lua_State* L);
 
     bool haveScript();
 

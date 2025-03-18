@@ -1,20 +1,23 @@
 #ifndef RADIO_HPP
 #define RADIO_HPP
 
-#include <QList>
+#include <QHash>
 #include <QDebug>
-#include "motioncommand.hpp"
+#include "robotcommand.hpp"
 #include "grsim.hpp"
 
 class Radio {
 public:
-
-    void appendCommand(MotionCommand command);
+    // Adds/updates a MotionCommand for a specific robot.
+    void addMotionCommand(const MotionCommand& motion);
+    // Adds/updates a KickerCommand for a specific robot.
+    void addKickerCommand(const KickerCommand& kicker);
+    // Sends all combined commands via Grsim.
     void sendCommands();
 
-    private:
-        QList<MotionCommand> commandQueue;
-
+private:
+    // QHash keyed by robot ID.
+    QHash<int, RobotCommand> commandMap;
 };
 
 #endif // RADIO_HPP

@@ -5,7 +5,6 @@ add_subdirectory(world)
 add_subdirectory(gui)
 add_subdirectory(motion)
 add_subdirectory(radio)
-add_subdirectory(stp)
 add_subdirectory(luainterface)
 
 # Specify sources in the src directory
@@ -24,6 +23,5 @@ target_link_libraries(SysmicSoftware
     PRIVATE gui
     PRIVATE motion
     PRIVATE radio
-    PRIVATE skills
     PRIVATE luainterface
 )

@@ -46,7 +46,6 @@ public:
         // Setup lua interface
         radio = new Radio();
         luaInterface = new LuaInterface(radio, m_world);
-        //luaInterface->runScript("/home/gerson/Sysmic/CondorSSL/src/luainterface/script.lua");
 
         connect(m_mainWindow, &MainWindow::scriptLoaded, this, &MainApp::onScriptLoaded);
         connect(m_mainWindow, &MainWindow::scriptRunRequested, this, &MainApp::onScriptRunRequested);
@@ -74,10 +73,9 @@ public:
 
 private slots:
     void update() {
+        
         // Call the World update function
         m_world->update();
-
-        if (selectedRobotId == -1) return;
 
         // Get the robot's state from the world
 

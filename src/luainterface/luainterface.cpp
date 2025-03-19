@@ -135,9 +135,6 @@ int LuaInterface::lua_move_to(lua_State* L) {
     // Send command to radio
     instance->m_radio->addMotionCommand(cmd);
 
-    std::cout << "[Lua] Moving Robot " << robotId << " (Team " << team << ") to ("
-              << x << ", " << y << ")" << std::endl;
-
     return 0;
 }
 
@@ -309,8 +306,6 @@ int LuaInterface::lua_kickx(lua_State* L) {
     command.setKickX(true);
 
     instance->m_radio->addKickerCommand(command);
-
-    std::cout << "[Lua] kickx() called for robot " << robotId << ", team " << team << std::endl;
     return 0;
 }
 
@@ -339,8 +334,6 @@ int LuaInterface::lua_kickz(lua_State* L) {
     command.setKickZ(true);
 
     instance->m_radio->addKickerCommand(command);
-
-    std::cout << "[Lua] kickz() called for robot " << robotId << ", team " << team << std::endl;
     return 0;
 }
 
@@ -374,8 +367,5 @@ int LuaInterface::lua_dribbler(lua_State* L) {
     command.setDribbler(speed);
 
     instance->m_radio->addKickerCommand(command);
-
-    std::cout << "[Lua] dribbler() called for robot " << robotId << ", team " << team 
-              << " with speed " << speed << std::endl;
     return 0;
 }

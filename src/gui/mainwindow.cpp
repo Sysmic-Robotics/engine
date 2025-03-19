@@ -128,9 +128,11 @@ void MainWindow::onTabChanged(int index) {
 
 void MainWindow::onLoadScriptClicked() {
     QString filePath = QFileDialog::getOpenFileName(this, "Select Lua Script", "", "Lua Files (*.lua)");
+    /*
     if (!filePath.isEmpty()) {
-        emit scriptLoaded(filePath);  // Send signal with selected script path
+        //emit scriptLoaded(filePath);  // Send signal with selected script path
     }
+        */
 }
 
 void MainWindow::onRunScriptClicked() {

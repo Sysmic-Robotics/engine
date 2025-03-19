@@ -10,6 +10,7 @@ add_subdirectory(luainterface)
 # Specify sources in the src directory
 qt_add_executable(SysmicSoftware
     main.cpp
+    process.cpp
 )
 
 # Link the Vision library and Qt6 libraries

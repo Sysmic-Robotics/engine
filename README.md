@@ -51,7 +51,7 @@ sudo make install
 cmake --version
 ```
 
-> 🔍 Note: You may replace `3.20.5` with any version equal to or higher than `3.16`.
+> You may replace `3.20.5` with any version equal to or higher than `3.16`.
 > The latest versions are available at: https://github.com/Kitware/CMake/releases
 
 These commands work for both **Pop!_OS** and **Ubuntu**.
@@ -112,12 +112,6 @@ find ~ -name "Qt6Config.cmake" 2>/dev/null
 5. Press `Configure` again.
 
 > This step is only required if the automatic detection fails. Most users will not need to do this.
-
-If QtCreator fails to launch due to a missing "xcb plugin" error, you can fix it by running:
-
-```bash
-sudo apt install libxcb-xinerama0 libxkbcommon-x11-0 libxcb-cursor0
-```
 
 ---
 

@@ -1,10 +1,6 @@
+
 # CondorSSL
-AI software for RobocupSSL
-
 ![logo2](https://github.com/Sysmic-Robotics/CondorSSL/blob/main/docs/logo.jpg)
-
-# Sysmic Robotics Engine Robocup SSL
-
 This project consists of two parts. The first part is the engine, which consists of the main program used to control the robots. On the other hand, the second part is a graphical interface intended to accelerate the development (debugging and testing) of the engine.
 
 ## 1 Requirements

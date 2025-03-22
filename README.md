@@ -36,9 +36,13 @@ This is necessary for embedding Lua scripting support within the engine.
 
 ### 1.5 CMake
 
-First, install **CMake in your system**. The project requires **CMake version 3.16 or higher**
+If you already have a version of CMake **greater than or equal to 3.16**, you can skip this step. You can check your current version by running:
 
-To ensure you have a compatible version, it's recommended to install it manually:
+```bash
+cmake --version
+```
+
+If not, install **CMake manually** using the following steps:
 
 ```bash
 sudo apt-get install build-essential libssl-dev
@@ -51,7 +55,7 @@ sudo make install
 cmake --version
 ```
 
-> You may replace `3.20.5` with any version equal to or higher than `3.16`.
+> You may replace `3.20.5` with any version equal to or higher than `3.16`.  
 > The latest versions are available at: https://github.com/Kitware/CMake/releases
 
 These commands work for both **Pop!_OS** and **Ubuntu**.
@@ -72,7 +76,9 @@ After that, the CMake icon should appear in the left sidebar.
 Download and install Qt6 using the official installer: https://www.qt.io/download
 Use the GUI installer, not the terminal. Simply install it; **you do not need to manually open Qt Creator after installation**.
 
-### 1.8 Running the project with CMake Tools
+## 2 Engine installation
+
+### Running the project with CMake Tools
 
 Once all dependencies are installed and the project is opened in VSCode, follow these steps to run the project:
 
@@ -112,6 +118,4 @@ find ~ -name "Qt6Config.cmake" 2>/dev/null
 5. Press `Configure` again.
 
 > This step is only required if the automatic detection fails. Most users will not need to do this.
-
----
 

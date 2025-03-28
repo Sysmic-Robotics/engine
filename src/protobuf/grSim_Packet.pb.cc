@@ -5,266 +5,321 @@
 
 #include <algorithm>
 
+#include <google/protobuf/stubs/common.h>
+#include <google/protobuf/stubs/port.h>
 #include <google/protobuf/io/coded_stream.h>
-#include <google/protobuf/extension_set.h>
-#include <google/protobuf/wire_format_lite.h>
+#include <google/protobuf/wire_format_lite_inl.h>
 #include <google/protobuf/descriptor.h>
 #include <google/protobuf/generated_message_reflection.h>
 #include <google/protobuf/reflection_ops.h>
 #include <google/protobuf/wire_format.h>
+// This is a temporary google only hack
+#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+#include "third_party/protobuf/version.h"
+#endif
 // @@protoc_insertion_point(includes)
-#include <google/protobuf/port_def.inc>
 
-PROTOBUF_PRAGMA_INIT_SEG
+namespace protobuf_grSim_5fCommands_2eproto {
+extern PROTOBUF_INTERNAL_EXPORT_protobuf_grSim_5fCommands_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_grSim_Commands;
+}  // namespace protobuf_grSim_5fCommands_2eproto
+namespace protobuf_grSim_5fReplacement_2eproto {
+extern PROTOBUF_INTERNAL_EXPORT_protobuf_grSim_5fReplacement_2eproto ::google::protobuf::internal::SCCInfo<2> scc_info_grSim_Replacement;
+}  // namespace protobuf_grSim_5fReplacement_2eproto
+class grSim_PacketDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<grSim_Packet>
+      _instance;
+} _grSim_Packet_default_instance_;
+namespace protobuf_grSim_5fPacket_2eproto {
+static void InitDefaultsgrSim_Packet() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-namespace _pb = ::PROTOBUF_NAMESPACE_ID;
-namespace _pbi = _pb::internal;
+  {
+    void* ptr = &::_grSim_Packet_default_instance_;
+    new (ptr) ::grSim_Packet();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::grSim_Packet::InitAsDefaultInstance();
+}
 
-PROTOBUF_CONSTEXPR grSim_Packet::grSim_Packet(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_._has_bits_)*/{}
-  , /*decltype(_impl_._cached_size_)*/{}
-  , /*decltype(_impl_.commands_)*/nullptr
-  , /*decltype(_impl_.replacement_)*/nullptr} {}
-struct grSim_PacketDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR grSim_PacketDefaultTypeInternal()
-      : _instance(::_pbi::ConstantInitialized{}) {}
-  ~grSim_PacketDefaultTypeInternal() {}
-  union {
-    grSim_Packet _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 grSim_PacketDefaultTypeInternal _grSim_Packet_default_instance_;
-static ::_pb::Metadata file_level_metadata_grSim_5fPacket_2eproto[1];
-static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_grSim_5fPacket_2eproto = nullptr;
-static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_grSim_5fPacket_2eproto = nullptr;
+::google::protobuf::internal::SCCInfo<2> scc_info_grSim_Packet =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 2, InitDefaultsgrSim_Packet}, {
+      &protobuf_grSim_5fCommands_2eproto::scc_info_grSim_Commands.base,
+      &protobuf_grSim_5fReplacement_2eproto::scc_info_grSim_Replacement.base,}};
 
-const uint32_t TableStruct_grSim_5fPacket_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  PROTOBUF_FIELD_OFFSET(::grSim_Packet, _impl_._has_bits_),
-  PROTOBUF_FIELD_OFFSET(::grSim_Packet, _internal_metadata_),
+void InitDefaults() {
+  ::google::protobuf::internal::InitSCC(&scc_info_grSim_Packet.base);
+}
+
+::google::protobuf::Metadata file_level_metadata[1];
+
+const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::grSim_Packet, _has_bits_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::grSim_Packet, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::grSim_Packet, _impl_.commands_),
-  PROTOBUF_FIELD_OFFSET(::grSim_Packet, _impl_.replacement_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::grSim_Packet, commands_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::grSim_Packet, replacement_),
   0,
   1,
 };
-static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, 8, -1, sizeof(::grSim_Packet)},
+static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
+  { 0, 7, sizeof(::grSim_Packet)},
 };
 
-static const ::_pb::Message* const file_default_instances[] = {
-  &::_grSim_Packet_default_instance_._instance,
+static ::google::protobuf::Message const * const file_default_instances[] = {
+  reinterpret_cast<const ::google::protobuf::Message*>(&::_grSim_Packet_default_instance_),
 };
 
-const char descriptor_table_protodef_grSim_5fPacket_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\022grSim_Packet.proto\032\024grSim_Commands.pro"
-  "to\032\027grSim_Replacement.proto\"\201\001\n\014grSim_Pa"
-  "cket\022&\n\010commands\030\001 \001(\0132\017.grSim_CommandsH"
-  "\000\210\001\001\022,\n\013replacement\030\002 \001(\0132\022.grSim_Replac"
-  "ementH\001\210\001\001B\013\n\t_commandsB\016\n\014_replacementb"
-  "\006proto3"
-  ;
-static const ::_pbi::DescriptorTable* const descriptor_table_grSim_5fPacket_2eproto_deps[2] = {
-  &::descriptor_table_grSim_5fCommands_2eproto,
-  &::descriptor_table_grSim_5fReplacement_2eproto,
-};
-static ::_pbi::once_flag descriptor_table_grSim_5fPacket_2eproto_once;
-const ::_pbi::DescriptorTable descriptor_table_grSim_5fPacket_2eproto = {
-    false, false, 207, descriptor_table_protodef_grSim_5fPacket_2eproto,
-    "grSim_Packet.proto",
-    &descriptor_table_grSim_5fPacket_2eproto_once, descriptor_table_grSim_5fPacket_2eproto_deps, 2, 1,
-    schemas, file_default_instances, TableStruct_grSim_5fPacket_2eproto::offsets,
-    file_level_metadata_grSim_5fPacket_2eproto, file_level_enum_descriptors_grSim_5fPacket_2eproto,
-    file_level_service_descriptors_grSim_5fPacket_2eproto,
-};
-PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_grSim_5fPacket_2eproto_getter() {
-  return &descriptor_table_grSim_5fPacket_2eproto;
+void protobuf_AssignDescriptors() {
+  AddDescriptors();
+  AssignDescriptors(
+      "grSim_Packet.proto", schemas, file_default_instances, TableStruct::offsets,
+      file_level_metadata, NULL, NULL);
 }
 
-// Force running AddDescriptors() at dynamic initialization time.
-PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_grSim_5fPacket_2eproto(&descriptor_table_grSim_5fPacket_2eproto);
+void protobuf_AssignDescriptorsOnce() {
+  static ::google::protobuf::internal::once_flag once;
+  ::google::protobuf::internal::call_once(once, protobuf_AssignDescriptors);
+}
+
+void protobuf_RegisterTypes(const ::std::string&) GOOGLE_PROTOBUF_ATTRIBUTE_COLD;
+void protobuf_RegisterTypes(const ::std::string&) {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 1);
+}
+
+void AddDescriptorsImpl() {
+  InitDefaults();
+  static const char descriptor[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
+      "\n\022grSim_Packet.proto\032\024grSim_Commands.pro"
+      "to\032\027grSim_Replacement.proto\"Z\n\014grSim_Pac"
+      "ket\022!\n\010commands\030\001 \001(\0132\017.grSim_Commands\022\'"
+      "\n\013replacement\030\002 \001(\0132\022.grSim_Replacement"
+  };
+  ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
+      descriptor, 159);
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
+    "grSim_Packet.proto", &protobuf_RegisterTypes);
+  ::protobuf_grSim_5fCommands_2eproto::AddDescriptors();
+  ::protobuf_grSim_5fReplacement_2eproto::AddDescriptors();
+}
+
+void AddDescriptors() {
+  static ::google::protobuf::internal::once_flag once;
+  ::google::protobuf::internal::call_once(once, AddDescriptorsImpl);
+}
+// Force AddDescriptors() to be called at dynamic initialization time.
+struct StaticDescriptorInitializer {
+  StaticDescriptorInitializer() {
+    AddDescriptors();
+  }
+} static_descriptor_initializer;
+}  // namespace protobuf_grSim_5fPacket_2eproto
 
 // ===================================================================
 
-class grSim_Packet::_Internal {
- public:
-  using HasBits = decltype(std::declval<grSim_Packet>()._impl_._has_bits_);
-  static const ::grSim_Commands& commands(const grSim_Packet* msg);
-  static void set_has_commands(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
-  static const ::grSim_Replacement& replacement(const grSim_Packet* msg);
-  static void set_has_replacement(HasBits* has_bits) {
-    (*has_bits)[0] |= 2u;
-  }
-};
-
-const ::grSim_Commands&
-grSim_Packet::_Internal::commands(const grSim_Packet* msg) {
-  return *msg->_impl_.commands_;
-}
-const ::grSim_Replacement&
-grSim_Packet::_Internal::replacement(const grSim_Packet* msg) {
-  return *msg->_impl_.replacement_;
+void grSim_Packet::InitAsDefaultInstance() {
+  ::_grSim_Packet_default_instance_._instance.get_mutable()->commands_ = const_cast< ::grSim_Commands*>(
+      ::grSim_Commands::internal_default_instance());
+  ::_grSim_Packet_default_instance_._instance.get_mutable()->replacement_ = const_cast< ::grSim_Replacement*>(
+      ::grSim_Replacement::internal_default_instance());
 }
 void grSim_Packet::clear_commands() {
-  if (_impl_.commands_ != nullptr) _impl_.commands_->Clear();
-  _impl_._has_bits_[0] &= ~0x00000001u;
+  if (commands_ != NULL) commands_->Clear();
+  clear_has_commands();
 }
 void grSim_Packet::clear_replacement() {
-  if (_impl_.replacement_ != nullptr) _impl_.replacement_->Clear();
-  _impl_._has_bits_[0] &= ~0x00000002u;
+  if (replacement_ != NULL) replacement_->Clear();
+  clear_has_replacement();
 }
-grSim_Packet::grSim_Packet(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor(arena, is_message_owned);
-  // @@protoc_insertion_point(arena_constructor:grSim_Packet)
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int grSim_Packet::kCommandsFieldNumber;
+const int grSim_Packet::kReplacementFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+grSim_Packet::grSim_Packet()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  ::google::protobuf::internal::InitSCC(
+      &protobuf_grSim_5fPacket_2eproto::scc_info_grSim_Packet.base);
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:grSim_Packet)
 }
 grSim_Packet::grSim_Packet(const grSim_Packet& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  grSim_Packet* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.commands_){nullptr}
-    , decltype(_impl_.replacement_){nullptr}};
-
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_commands()) {
-    _this->_impl_.commands_ = new ::grSim_Commands(*from._impl_.commands_);
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL),
+      _has_bits_(from._has_bits_) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  if (from.has_commands()) {
+    commands_ = new ::grSim_Commands(*from.commands_);
+  } else {
+    commands_ = NULL;
   }
-  if (from._internal_has_replacement()) {
-    _this->_impl_.replacement_ = new ::grSim_Replacement(*from._impl_.replacement_);
+  if (from.has_replacement()) {
+    replacement_ = new ::grSim_Replacement(*from.replacement_);
+  } else {
+    replacement_ = NULL;
   }
   // @@protoc_insertion_point(copy_constructor:grSim_Packet)
 }
 
-inline void grSim_Packet::SharedCtor(
-    ::_pb::Arena* arena, bool is_message_owned) {
-  (void)arena;
-  (void)is_message_owned;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.commands_){nullptr}
-    , decltype(_impl_.replacement_){nullptr}
-  };
+void grSim_Packet::SharedCtor() {
+  ::memset(&commands_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&replacement_) -
+      reinterpret_cast<char*>(&commands_)) + sizeof(replacement_));
 }
 
 grSim_Packet::~grSim_Packet() {
   // @@protoc_insertion_point(destructor:grSim_Packet)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
   SharedDtor();
 }
 
-inline void grSim_Packet::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete _impl_.commands_;
-  if (this != internal_default_instance()) delete _impl_.replacement_;
+void grSim_Packet::SharedDtor() {
+  if (this != internal_default_instance()) delete commands_;
+  if (this != internal_default_instance()) delete replacement_;
 }
 
 void grSim_Packet::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _cached_size_.Set(size);
 }
+const ::google::protobuf::Descriptor* grSim_Packet::descriptor() {
+  ::protobuf_grSim_5fPacket_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_grSim_5fPacket_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+}
+
+const grSim_Packet& grSim_Packet::default_instance() {
+  ::google::protobuf::internal::InitSCC(&protobuf_grSim_5fPacket_2eproto::scc_info_grSim_Packet.base);
+  return *internal_default_instance();
+}
+
 
 void grSim_Packet::Clear() {
 // @@protoc_insertion_point(message_clear_start:grSim_Packet)
-  uint32_t cached_has_bits = 0;
+  ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 3u) {
     if (cached_has_bits & 0x00000001u) {
-      GOOGLE_DCHECK(_impl_.commands_ != nullptr);
-      _impl_.commands_->Clear();
+      GOOGLE_DCHECK(commands_ != NULL);
+      commands_->Clear();
     }
     if (cached_has_bits & 0x00000002u) {
-      GOOGLE_DCHECK(_impl_.replacement_ != nullptr);
-      _impl_.replacement_->Clear();
+      GOOGLE_DCHECK(replacement_ != NULL);
+      replacement_->Clear();
     }
   }
-  _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _has_bits_.Clear();
+  _internal_metadata_.Clear();
 }
 
-const char* grSim_Packet::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
-  while (!ctx->Done(&ptr)) {
-    uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
+bool grSim_Packet::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:grSim_Packet)
+  for (;;) {
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
       // optional .grSim_Commands commands = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_commands(), ptr);
-          CHK_(ptr);
-        } else
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
+               input, mutable_commands()));
+        } else {
           goto handle_unusual;
-        continue;
+        }
+        break;
+      }
+
       // optional .grSim_Replacement replacement = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
-          ptr = ctx->ParseMessage(_internal_mutable_replacement(), ptr);
-          CHK_(ptr);
-        } else
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
+               input, mutable_replacement()));
+        } else {
           goto handle_unusual;
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
     }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  _impl_._has_bits_.Or(has_bits);
-  return ptr;
+  }
+success:
+  // @@protoc_insertion_point(parse_success:grSim_Packet)
+  return true;
 failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
+  // @@protoc_insertion_point(parse_failure:grSim_Packet)
+  return false;
+#undef DO_
 }
 
-uint8_t* grSim_Packet::_InternalSerialize(
-    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:grSim_Packet)
-  uint32_t cached_has_bits = 0;
+void grSim_Packet::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:grSim_Packet)
+  ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _has_bits_[0];
   // optional .grSim_Commands commands = 1;
-  if (_internal_has_commands()) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(1, _Internal::commands(this),
-        _Internal::commands(this).GetCachedSize(), target, stream);
+  if (cached_has_bits & 0x00000001u) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1, this->_internal_commands(), output);
   }
 
   // optional .grSim_Replacement replacement = 2;
-  if (_internal_has_replacement()) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(2, _Internal::replacement(this),
-        _Internal::replacement(this).GetCachedSize(), target, stream);
+  if (cached_has_bits & 0x00000002u) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      2, this->_internal_replacement(), output);
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        _internal_metadata_.unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:grSim_Packet)
+}
+
+::google::protobuf::uint8* grSim_Packet::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:grSim_Packet)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  // optional .grSim_Commands commands = 1;
+  if (cached_has_bits & 0x00000001u) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageToArray(
+        1, this->_internal_commands(), deterministic, target);
+  }
+
+  // optional .grSim_Replacement replacement = 2;
+  if (cached_has_bits & 0x00000002u) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageToArray(
+        2, this->_internal_replacement(), deterministic, target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:grSim_Packet)
   return target;
@@ -274,57 +329,70 @@ size_t grSim_Packet::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:grSim_Packet)
   size_t total_size = 0;
 
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        _internal_metadata_.unknown_fields());
+  }
+  if (_has_bits_[0 / 32] & 3u) {
     // optional .grSim_Commands commands = 1;
-    if (cached_has_bits & 0x00000001u) {
+    if (has_commands()) {
       total_size += 1 +
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-          *_impl_.commands_);
+        ::google::protobuf::internal::WireFormatLite::MessageSize(
+          *commands_);
     }
 
     // optional .grSim_Replacement replacement = 2;
-    if (cached_has_bits & 0x00000002u) {
+    if (has_replacement()) {
       total_size += 1 +
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-          *_impl_.replacement_);
+        ::google::protobuf::internal::WireFormatLite::MessageSize(
+          *replacement_);
     }
 
   }
-  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData grSim_Packet::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    grSim_Packet::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*grSim_Packet::GetClassData() const { return &_class_data_; }
+void grSim_Packet::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:grSim_Packet)
+  GOOGLE_DCHECK_NE(&from, this);
+  const grSim_Packet* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const grSim_Packet>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:grSim_Packet)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:grSim_Packet)
+    MergeFrom(*source);
+  }
+}
 
-
-void grSim_Packet::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
-  auto* const _this = static_cast<grSim_Packet*>(&to_msg);
-  auto& from = static_cast<const grSim_Packet&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:grSim_Packet)
-  GOOGLE_DCHECK_NE(&from, _this);
-  uint32_t cached_has_bits = 0;
+void grSim_Packet::MergeFrom(const grSim_Packet& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:grSim_Packet)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = from._impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
+  cached_has_bits = from._has_bits_[0];
+  if (cached_has_bits & 3u) {
     if (cached_has_bits & 0x00000001u) {
-      _this->_internal_mutable_commands()->::grSim_Commands::MergeFrom(
-          from._internal_commands());
+      mutable_commands()->::grSim_Commands::MergeFrom(from.commands());
     }
     if (cached_has_bits & 0x00000002u) {
-      _this->_internal_mutable_replacement()->::grSim_Replacement::MergeFrom(
-          from._internal_replacement());
+      mutable_replacement()->::grSim_Replacement::MergeFrom(from.replacement());
     }
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void grSim_Packet::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:grSim_Packet)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
 }
 
 void grSim_Packet::CopyFrom(const grSim_Packet& from) {
@@ -335,34 +403,40 @@ void grSim_Packet::CopyFrom(const grSim_Packet& from) {
 }
 
 bool grSim_Packet::IsInitialized() const {
+  if (has_commands()) {
+    if (!this->commands_->IsInitialized()) return false;
+  }
+  if (has_replacement()) {
+    if (!this->replacement_->IsInitialized()) return false;
+  }
   return true;
 }
 
+void grSim_Packet::Swap(grSim_Packet* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
 void grSim_Packet::InternalSwap(grSim_Packet* other) {
   using std::swap;
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(grSim_Packet, _impl_.replacement_)
-      + sizeof(grSim_Packet::_impl_.replacement_)
-      - PROTOBUF_FIELD_OFFSET(grSim_Packet, _impl_.commands_)>(
-          reinterpret_cast<char*>(&_impl_.commands_),
-          reinterpret_cast<char*>(&other->_impl_.commands_));
+  swap(commands_, other->commands_);
+  swap(replacement_, other->replacement_);
+  swap(_has_bits_[0], other->_has_bits_[0]);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata grSim_Packet::GetMetadata() const {
-  return ::_pbi::AssignDescriptors(
-      &descriptor_table_grSim_5fPacket_2eproto_getter, &descriptor_table_grSim_5fPacket_2eproto_once,
-      file_level_metadata_grSim_5fPacket_2eproto[0]);
+::google::protobuf::Metadata grSim_Packet::GetMetadata() const {
+  protobuf_grSim_5fPacket_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_grSim_5fPacket_2eproto::file_level_metadata[kIndexInFileMessages];
 }
+
 
 // @@protoc_insertion_point(namespace_scope)
-PROTOBUF_NAMESPACE_OPEN
-template<> PROTOBUF_NOINLINE ::grSim_Packet*
-Arena::CreateMaybeMessage< ::grSim_Packet >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::grSim_Packet >(arena);
+namespace google {
+namespace protobuf {
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::grSim_Packet* Arena::CreateMaybeMessage< ::grSim_Packet >(Arena* arena) {
+  return Arena::CreateInternal< ::grSim_Packet >(arena);
 }
-PROTOBUF_NAMESPACE_CLOSE
+}  // namespace protobuf
+}  // namespace google
 
 // @@protoc_insertion_point(global_scope)
-#include <google/protobuf/port_undef.inc>

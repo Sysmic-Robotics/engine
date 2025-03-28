@@ -4,8 +4,8 @@
 #include <QCoreApplication>
 #include <QUdpSocket>
 #include <QHostAddress>
-#include "../protobuf/messages_robocup_ssl_wrapper.pb.h"
-#include "../protobuf/messages_robocup_ssl_detection.pb.h"
+#include "../protobuf/ssl_vision_wrapper.pb.h"
+#include "../protobuf/ssl_vision_detection.pb.h"
 #include "robotstate.hpp"
 
 

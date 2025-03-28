@@ -3,7 +3,8 @@ add_library(luainterface STATIC
 )
 
 target_link_libraries(luainterface
-    PRIVATE ${LUA_LIBRARIES}
+    PRIVATE lua_static
+    PRIVATE sol2::sol2
     PRIVATE Qt6::Gui
     PRIVATE Qt6::Core
     PRIVATE radio

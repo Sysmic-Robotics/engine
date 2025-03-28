@@ -25,4 +25,6 @@ target_link_libraries(SysmicSoftware
     PRIVATE motion
     PRIVATE radio
     PRIVATE luainterface
+    PRIVATE lua_static
+    PRIVATE sol2::sol2
 )

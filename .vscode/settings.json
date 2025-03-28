@@ -1,4 +1,11 @@
 {
+    "cmake.configureSettings": {
+        "CMAKE_PREFIX_PATH": "C:/Qt/6.8.2/mingw_64/lib/cmake",
+            "Protobuf_INCLUDE_DIR": "C:/protoc/include",
+            "Protobuf_LIBRARIES": "C:/protoc/lib/libprotobuf.lib"
+
+    },
+
     "files.associations": {
         "qudpsocket": "cpp",
         "qhostaddress": "cpp",

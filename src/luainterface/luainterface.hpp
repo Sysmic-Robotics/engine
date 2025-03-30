@@ -1,8 +1,7 @@
-#ifndef LUA_INTERFACE_HPP
-#define LUA_INTERFACE_HPP
+#ifndef LUA_INTERFACE_SOL_HPP
+#define LUA_INTERFACE_SOL_HPP
 
-
-#include <lua.hpp>
+#include <sol/sol.hpp>
 #include <QVector2D>
 #include "radio.hpp"
 #include "world.hpp"
@@ -12,25 +11,21 @@ public:
     LuaInterface(Radio* radio_, World* world);
     ~LuaInterface();
 
+    // Loads a Lua script file (reinitializes the Lua state)
     void runScript(const std::string& scriptFile);
-    void callProcess();  // Added function to call Lua's process() every frame
-
-    static int lua_move_to(lua_State* L);
-    static int lua_get_robot_state(lua_State* L);
-    static int lua_get_ball_state(lua_State* L);
-    static int lua_face_to(lua_State* L);
-    static int lua_print_override(lua_State* L);
-    static int lua_kickx(lua_State* L);
-    static int lua_kickz(lua_State* L);
-    static int lua_dribbler(lua_State* L);
+    // Calls the global Lua function "process"
+    void callProcess();
 
     bool haveScript();
 
 private:
-    lua_State* L;
+    // Helper to register all your functions with Lua
+    void register_functions();
+
+    sol::state lua;
     Radio* m_radio;
     World* m_world;
     bool m_haveScript = false;
 };
 
-#endif // LUA_INTERFACE_HPP
+#endif // LUA_INTERFACE_SOL_HPP

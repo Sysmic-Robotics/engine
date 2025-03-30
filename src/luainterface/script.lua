@@ -1,43 +1,24 @@
--- print("Lua package path: " .. package.path)
+-- script.lua
 print("Script initialized")
+package.path = "C:/Robocup/CondorSSL/src/luainterface/?.lua;" .. package.path
 
-Robot = require("robot")  -- Import the Robot struct
+local move = require("move")
+local capture = require("capture_ball")
+local kick = require("kick_to_point")
 
--- Define the robot's physical size (diameter in meters)
-local ROBOT_DIAMETER = 0.18
--- Use the robot's diameter as the capture threshold
-local CAPTURE_DISTANCE = ROBOT_DIAMETER  
+robotId = 1
+team = 0
 
--- Robot identification variables.
-robotId = 1       
-team = 0    
-
--- process() is called every frame.
+--- Main process function.
+--- You can switch between skills or chain them as needed.
 function process()
-    -- Retrieve the current ball and robot state.
-    local ball = get_ball_state()
-    local robot = get_robot_state(robotId, team)
+    -- Example: Use the kick_to_point skill to capture the ball and kick it toward (100, 200)
+    --move.move_to(0,0,{x=0,y=0})
+    -- capture.process(robotId, team, 10)
+    kick.kick_to_point(robotId, team, {x= 0, y = 0})
+   -- kick.kick_to_point(robotId, team, { x = 100, y = 200 })
     
-    -- Calculate the distance between the robot and the ball.
-    local dx = ball.x - robot.x
-    local dy = ball.y - robot.y
-    local distance = math.sqrt(dx * dx + dy * dy)
-    
-    -- Command the robot to move toward the ball using a point with named keys.
-    
-    
-    -- Rotate the robot so that it faces the ball.
-    
-    
-    if distance < CAPTURE_DISTANCE then
-        -- Activate the dribbler at maximum speed to capture the ball.
-        dribbler(robotId, team, 10)
-        face_to(robotId,team, {x = ball.x, y = ball.y } )
-    else
-        -- If the ball is too far, turn off the dribbler.
-        dribbler(robotId, team, 0)
-        move_to(robotId, team, {x = ball.x, y = ball.y})
-        face_to(robotId,team, {x = ball.x, y = ball.y } )
-        
-    end
+    -- Alternatively, you could call the capture_ball or move skill individually:
+    -- capture.capture_ball(robotId, team)
+    -- move.move_to(robotId, team, { x = 50, y = 75 })
 end

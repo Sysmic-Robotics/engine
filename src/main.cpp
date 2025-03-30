@@ -74,7 +74,7 @@ private slots:
     }
 
     void onScriptRunRequested() {
-        luaInterface->runScript("/home/gerson/Sysmic/CondorSSL/src/luainterface/script.lua");
+        luaInterface->runScript("C:/Robocup/CondorSSL/src/luainterface/script.lua");
     }
 
 private:

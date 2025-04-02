@@ -62,36 +62,36 @@ This project consists of two parts. The first part is the engine, which consists
      ```
 ---
 
-### 6. Configurar Kit de Compilación  
+6. **Configurar Kit de Compilación**
 Desde la extensión de CMake Tools en VSCode:
 
-- Click en **Configure**
-- Luego **Scan for kits** (usa profundidad 5 si te lo pide)
-- Selecciona el kit relacionado a `C:/mingw64`
+   - Click en **Configure**
+   - Luego **Scan for kits** (usa profundidad 5 si te lo pide)
+   - Selecciona el kit relacionado a `C:/mingw64`
 
 ---
 
-### 7. Copiar DLLs necesarias para que corra la interfaz gráfica
+7. **Copiar DLLs necesarias para que corra la interfaz gráfica**
 
-1. Dirígete a:  
-   `C:\Qt\6.8.3\mingw_64\bin`
-
-2. Copia todos los archivos que comiencen con `Qt` y terminen en `.dll`  
-   Ejemplo: `Qt6Core.dll`, `Qt6Gui.dll`, `Qt6Widgets.dll`, etc.
-
-3. Pégalos en la carpeta donde está tu ejecutable:  
-   `C:\CondorSSL\build`
+   - Dirígete a:  
+      `C:\Qt\6.8.3\mingw_64\bin`
+   
+   - Copia todos los archivos que comiencen con `Qt` y terminen en `.dll`  
+      Ejemplo: `Qt6Core.dll`, `Qt6Gui.dll`, `Qt6Widgets.dll`, etc.
+   
+   - Pégalos en la carpeta donde está tu ejecutable:  
+      `C:\CondorSSL\build`
 
 ---
 
-### 8. Copiar plugins de plataforms
+8. **Copiar plugins de plataforms**
 
-1. Ve a:  
-   `C:\Qt\6.8.3\mingw_64\plugins\platforms`
-
-2. Copia todo el contenido de esa carpeta.
-
-3. En la carpeta `C:\CondorSSL\build`, crea una subcarpeta llamada `platforms` y **pega ahí los archivos copiados**.
+   - Ve a:  
+      `C:\Qt\6.8.3\mingw_64\plugins\platforms`
+   
+   - Copia todo el contenido de esa carpeta.
+   
+   - En la carpeta `C:\CondorSSL\build`, crea una subcarpeta llamada `platforms` y **pega ahí los archivos copiados**.
 
 ---
 

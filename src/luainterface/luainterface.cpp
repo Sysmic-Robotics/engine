@@ -158,7 +158,7 @@ void LuaInterface::runScript(const std::string& scriptFile) {
     });
 
     // Adjust package.path to include your script directory
-    std::string scriptDir = "C:/Robocup/CondorSSL/src/luainterface/script.lua";
+    std::string scriptDir = "C:/CondorSSL/src/luainterface/script.lua";
     std::string luaPathCmd = "package.path = '" + scriptDir + "?.lua;' .. package.path";
     lua.script(luaPathCmd);
 

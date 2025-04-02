@@ -4,27 +4,51 @@
 
 This project consists of two parts. The first part is the engine, which consists of the main program used to control the robots. On the other hand, the second part is a graphical interface intended to accelerate the development (debugging and testing) of the engine.
 
-## 1 Requirements
+# 🛠️ Windows
 
-For the development of this project the following requirements are needed:
+## 1. Descargar MinGW
 
-### 1.1 Linux SO
+- Visita [https://winlibs.com/](https://winlibs.com/) y descarga la versión adecuada de MinGW.
+- Extrae el contenido del archivo `.zip` directamente en el directorio `C:\`.  
+  Por ejemplo: `C:\mingw`
 
-This project uses Linux for development, preferably Pop!_OS or Ubuntu.
+## 2. Instalar Qt6
 
-Pop!_OS installation guide:
-https://www.youtube.com/watch?v=eol5O1qfWNs
+1. Descarga e instala Qt6 usando el [Qt Online Installer](https://doc.qt.io/qt-6/get-and-install-qt.html).
+2. Durante la instalación, selecciona la versión de Qt compatible con MinGW.
+3. Instálalo en el directorio `C:\`.
 
-### 1.2 Grsim
+## 3. Configurar VSCode
+
+- Abre el archivo `settings.json` ubicado dentro de la carpeta `.vscode` de tu proyecto.
+- Agrega la siguiente configuración:
+```
+{
+ "cmake.configureSettings": {
+     "CMAKE_PREFIX_PATH": "C:/Qt/6.8.2/mingw_64/lib/cmake"
+ }
+}
+```
+## 4. Configurar CMake en VSCode
+Abre la extensión de CMake en VSCode.
+
+Haz clic en "Configure" y luego en "Scan for Kits" (establece la profundidad en 5).
+
+Selecciona la carpeta donde instalaste MinGW.
+Por ejemplo: C:/mingw
+
+# Linux
+
+### 1.1 Grsim
 
 For this project we use grsim simulator, and it can be installed from the following link:
 https://github.com/RoboCup-SSL/grSim
 
-### 1.3 VSCode
+### 1.2 VSCode
 
 For the code development we strongly recommend using VSCode code editor. The settings to run the engine program and GUI program are located in the .vscode folder.
 
-### 1.4 Lua (for embedding)
+### 1.3 Lua (for embedding)
 
 The project also requires the Lua development libraries. Install them with the following command:
 
@@ -34,7 +58,7 @@ sudo apt install liblua5.3-dev
 
 This is necessary for embedding Lua scripting support within the engine.
 
-### 1.5 CMake
+### 1.4 CMake
 
 If you already have a version of CMake **greater than or equal to 3.16**, you can skip this step. You can check your current version by running:
 
@@ -60,7 +84,7 @@ cmake --version
 
 These commands work for both **Pop!_OS** and **Ubuntu**.
 
-### 1.6 CMake Tools extension for VSCode
+### 1.5 CMake Tools extension for VSCode
 
 After installing CMake system-wide, open **VSCode** and install the extension **"CMake Tools"** from the extensions panel.
 
@@ -71,7 +95,7 @@ After installing CMake system-wide, open **VSCode** and install the extension **
 
 After that, the CMake icon should appear in the left sidebar.
 
-### 1.7 Qt6
+### 1.6 Qt6
 
 Download and install Qt6 using the official installer: https://www.qt.io/download
 Use the GUI installer, not the terminal. Simply install it; **you do not need to manually open Qt Creator after installation**.
@@ -119,21 +143,7 @@ find ~ -name "Qt6Config.cmake" 2>/dev/null
 
 > This step is only required if the automatic detection fails. Most users will not need to do this.
 
-# Compilacion windows
 
-1 Descargar MinGW https://winlibs.com/ y extraer en el directorio C: (Aca es solo extraer el .zip en C:)
-2 Instalar Qt6 en el directorio C:
-
-3 Añadir esto a .vscode settings.json
-
-    "cmake.configureSettings": {
-        "CMAKE_PREFIX_PATH": "C:/Qt/6.8.2/mingw_64/lib/cmake",
-
-    },
-
-y colocar la ruta de tu cmake, en este caso mi version de qt es la 6.8.2 pero puede cambiar para ti
-
-4 En la extension del VScode click en configure y scan for kits (depth = 5). Selecciona la carpeta donde instalaste el mingw (deberia ser C:/mingw)
 
 
 

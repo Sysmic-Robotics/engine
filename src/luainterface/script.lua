@@ -1,6 +1,6 @@
 -- script.lua
 print("Script initialized")
-package.path = "C:/Robocup/CondorSSL/src/luainterface/?.lua;" .. package.path
+package.path = "C:/CondorSSL/src/luainterface/?.lua;" .. package.path
 
 local move = require("move")
 local capture = require("capture_ball")

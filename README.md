@@ -6,38 +6,106 @@ This project consists of two parts. The first part is the engine, which consists
 
 # 🛠️ Windows
 
-## 1. Descargar MinGW
+1. **Descargar MinGW** desde [https://winlibs.com/](https://winlibs.com/) y extraerlo en el directorio `C:\`  
+   (Solo descomprime el `.zip` directamente en `C:\`, no hace falta instalar nada).
 
-- Visita [https://winlibs.com/](https://winlibs.com/) y descarga la versión adecuada de MinGW.
-- Extrae el contenido del archivo `.zip` directamente en el directorio `C:\`.  
-  Por ejemplo: `C:\mingw`
+2. **Instalar Qt6** en el directorio `C:\`.  
+  Puedes descargarlo desde el instalador oficial de Qt: [https://www.qt.io/download-qt-installer](https://www.qt.io/download-qt-installer). 
 
-## 2. Instalar Qt6
+   Ejemplo: `C:\Qt\6.8.3\mingw_64`
 
-1. Descarga e instala Qt6 usando el [Qt Online Installer](https://doc.qt.io/qt-6/get-and-install-qt.html).
-2. Durante la instalación, selecciona la versión de Qt compatible con MinGW.
-3. Instálalo en el directorio `C:\`.
+3. **Modificar el archivo `.vscode/settings.json`** y agregar (modificalo si tienes otra versión del Qt):
 
-## 3. Configurar VSCode
+   ```json
+   "cmake.configureSettings": {
+       "CMAKE_PREFIX_PATH": "C:/Qt/6.8.3/mingw_64/lib/cmake",
+       "Protobuf_INCLUDE_DIR": "C:/protocol/include",
+       "Protobuf_LIBRARIES": "C:/protocol/lib/libprotobuf.lib"
+   }
+   ```
 
-- Abre el archivo `settings.json` ubicado dentro de la carpeta `.vscode` de tu proyecto.
-- Agrega la siguiente configuración:
-```
-{
- "cmake.configureSettings": {
-     "CMAKE_PREFIX_PATH": "C:/Qt/6.8.2/mingw_64/lib/cmake"
- }
-}
-```
-## 4. Configurar CMake en VSCode
-Abre la extensión de CMake en VSCode.
+4. **Actualizar `.vscode/c_cpp_properties.json`** para que el compilador y el intellisense funcionen con MinGW:
 
-Haz clic en "Configure" y luego en "Scan for Kits" (establece la profundidad en 5).
+   ```json
+   {
+     "configurations": [
+       {
+         "name": "MinGW",
+         "compilerPath": "C:/mingw64/bin/g++.exe",
+         "cStandard": "c11",
+         "cppStandard": "c++17",
+         "intelliSenseMode": "windows-gcc-x64",
+         "includePath": [
+           "${workspaceFolder}/**"
+         ]
+       }
+     ],
+     "version": 4
+   }
+   ```
 
-Selecciona la carpeta donde instalaste MinGW.
-Por ejemplo: C:/mingw
+5. **Modificar los paths en el código fuente:**
 
-# Linux
+   - `src/luainterface/luainterface.cpp`:
+     ```cpp
+     std::string scriptDir = "C:/CondorSSL/src/luainterface/scripts/";
+     ```
+
+   - `src/luainterface/scripts/script.lua`:
+     ```lua
+     package.path = "C:/CondorSSL/src/luainterface/?.lua;" .. package.path
+     ```
+
+   - `src/main.cpp`:
+     ```cpp
+     luaInterface->runScript("C:/CondorSSL/src/luainterface/scripts/script.lua");
+     ```
+---
+
+### 6. Configurar Kit de Compilación  
+Desde la extensión de CMake Tools en VSCode:
+
+- Click en **Configure**
+- Luego **Scan for kits** (usa profundidad 5 si te lo pide)
+- Selecciona el kit relacionado a `C:/mingw64`
+
+---
+
+### 7. Copiar DLLs necesarias para que corra la interfaz gráfica
+
+1. Dirígete a:  
+   `C:\Qt\6.8.3\mingw_64\bin`
+
+2. Copia todos los archivos que comiencen con `Qt` y terminen en `.dll`  
+   Ejemplo: `Qt6Core.dll`, `Qt6Gui.dll`, `Qt6Widgets.dll`, etc.
+
+3. Pégalos en la carpeta donde está tu ejecutable:  
+   `C:\CondorSSL\build`
+
+---
+
+### 8. Copiar plugins de plataforms
+
+1. Ve a:  
+   `C:\Qt\6.8.3\mingw_64\plugins\platforms`
+
+2. Copia todo el contenido de esa carpeta.
+
+3. En la carpeta `C:\CondorSSL\build`, crea una subcarpeta llamada `platforms` y **pega ahí los archivos copiados**.
+
+---
+
+## Ejecutar el proyecto
+
+Una vez que hayas terminado la configuración:
+
+1. Asegúrate de tener abierto **grSim**.
+2. En VS Code, abre la pestaña de extensiones y ubica **Makefile Tools**.
+3. Haz clic en el botón **Configure**.
+4. Luego presiona el botón **Build** para compilar el proyecto.
+5. Finalmente, haz clic en **Debug** para ejecutar `SysmicSoftware.exe`.
+
+# 🛠️ Linux
 
 ### 1.1 Grsim
 

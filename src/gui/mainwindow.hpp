@@ -61,8 +61,6 @@ private:
     
     QPushButton *leftArrowBtn;
     QPushButton *rightArrowBtn;
-    QPushButton *targetPointBtn;
-    QPushButton *faceToBtn;
     QCheckBox *showTraceCheckbox;
     QLabel *robotInfoLabel;
     QPushButton *loadScriptBtn;

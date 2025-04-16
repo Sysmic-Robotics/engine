@@ -7,12 +7,12 @@
 #include <QHBoxLayout>
 #include <QFileDialog>
 
-MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
+MainWindow::MainWindow(LuaInterface* luaInterface, QWidget *parent) : QMainWindow(parent) {
     // Setup main layout
     QWidget *centralWidget = new QWidget(this);
     QHBoxLayout *mainLayout = new QHBoxLayout(centralWidget);
 
-    setupLeftPanel();
+    setupLeftPanel(luaInterface);
     mainLayout->addWidget(leftPanel);
 
     // Initialize scene and view
@@ -23,13 +23,11 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
 
     setCentralWidget(centralWidget);
     ball = new BallItem();
-
     scene->addItem(ball);
-
 }
 
 
-void MainWindow::setupLeftPanel() {
+void MainWindow::setupLeftPanel(LuaInterface* luaInterface) {
     leftPanel = new QWidget(this);
     QVBoxLayout *mainLayout = new QVBoxLayout(leftPanel);
 
@@ -71,11 +69,7 @@ void MainWindow::setupLeftPanel() {
         &MainWindow::onFaceToPointButtonClicked);
     
     // **Tab 2: Script Run**
-    ScriptControlPanel *scriptControlPanel = new ScriptControlPanel();
-    connect(scriptControlPanel, &ScriptControlPanel::loadScriptRequested, 
-        this, &MainWindow::onLoadScriptClicked);
-    connect(scriptControlPanel, &ScriptControlPanel::runScriptRequested, 
-        this, &MainWindow::onRunScriptClicked);
+    ScriptControlPanel *scriptControlPanel = new ScriptControlPanel(luaInterface);
 
     // **Add tabs to QTabWidget**
     tabWidget->addTab(robotControlPanel, "🤖 Robot");
@@ -99,20 +93,6 @@ void MainWindow::onTabChanged(int index) {
     }else{
         emit setRobotControl(true);
     }
-}
-
-
-void MainWindow::onLoadScriptClicked() {
-    QString filePath = QFileDialog::getOpenFileName(this, "Select Lua Script", "", "Lua Files (*.lua)");
-    /*
-    if (!filePath.isEmpty()) {
-        //emit scriptLoaded(filePath);  // Send signal with selected script path
-    }
-        */
-}
-
-void MainWindow::onRunScriptClicked() {
-    emit scriptRunRequested();  // Send signal to execute script
 }
 
 void MainWindow::updateBall(const BallState &ballState) {

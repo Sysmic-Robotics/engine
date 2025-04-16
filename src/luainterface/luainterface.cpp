@@ -2,15 +2,18 @@
 #include "motion.hpp"
 #include <iostream>
 #include <sstream>
+#include <QDir>
+#include <QCoreApplication>
 
 LuaInterface::LuaInterface(Radio* radio, World* world)
     : m_radio(radio), m_world(world)
 {
-    // Open required Lua libraries
-    lua.open_libraries(sol::lib::base, sol::lib::package, sol::lib::math, sol::lib::os, sol::lib::string);
-
-    // Override Lua's print() function with a custom lambda
-    lua.set_function("print", [](sol::variadic_args args) {
+    m_lua = sol::state();
+    // Open required m_lua libraries
+    m_lua.open_libraries(sol::lib::base, sol::lib::package, sol::lib::math, sol::lib::os, sol::lib::string);
+    
+    // Override m_lua's print() function with a custom lambda
+    m_lua.set_function("print", [](sol::variadic_args args) {
         std::string output;
         for (auto v : args) {
             if (v.is<std::string>()) {
@@ -20,7 +23,7 @@ LuaInterface::LuaInterface(Radio* radio, World* world)
             }
             output += " ";
         }
-        std::cout << "[Lua] " << output << std::endl;
+        std::cout << "[m_lua] " << output << std::endl;
     });
 
     // Register your game-specific functions
@@ -33,7 +36,7 @@ LuaInterface::~LuaInterface() {
 
 void LuaInterface::register_functions() {
     // move_to(robotId, team, point)
-    lua.set_function("move_to", [this](int robotId, int team, sol::table point) {
+    m_lua.set_function("move_to", [this](int robotId, int team, sol::table point) {
         if (!m_world || !m_radio) {
             std::cerr << "Error: LuaInterface, World, or Radio instance is null!" << std::endl;
             return;
@@ -42,7 +45,7 @@ void LuaInterface::register_functions() {
         double y = point["y"];
         RobotState robotState = m_world->getRobotState(robotId, team);
         if (!robotState.isActive()) {
-            std::cerr << "[Lua] Error: Robot " << robotId << " is inactive or not found!" << std::endl;
+            std::cerr << "[m_lua] Error: Robot " << robotId << " is inactive or not found!" << std::endl;
             return;
         }
         static Motion motion;
@@ -51,7 +54,7 @@ void LuaInterface::register_functions() {
     });
 
     // face_to(robotId, team, point)
-    lua.set_function("face_to", [this](int robotId, int team, sol::table point) {
+    m_lua.set_function("face_to", [this](int robotId, int team, sol::table point) {
         if (!m_world || !m_radio) {
             std::cerr << "Error: LuaInterface, World, or Radio instance is null!" << std::endl;
             return;
@@ -60,7 +63,7 @@ void LuaInterface::register_functions() {
         double y = point["y"];
         RobotState robotState = m_world->getRobotState(robotId, team);
         if (!robotState.isActive()) {
-            std::cerr << "[Lua] Error: Robot " << robotId << " is inactive or not found!" << std::endl;
+            std::cerr << "[m_lua] Error: Robot " << robotId << " is inactive or not found!" << std::endl;
             return;
         }
         static Motion motion;
@@ -69,13 +72,13 @@ void LuaInterface::register_functions() {
     });
 
     // get_robot_state(robotId, team) returns a table with robot data
-    lua.set_function("get_robot_state", [this](int robotId, int team) -> sol::table {
+    m_lua.set_function("get_robot_state", [this](int robotId, int team) -> sol::table {
         if (!m_world) {
             std::cerr << "Error: LuaInterface or World instance is null!" << std::endl;
-            return lua.create_table();
+            return m_lua.create_table();
         }
         RobotState robotState = m_world->getRobotState(robotId, team);
-        sol::table tbl = lua.create_table();
+        sol::table tbl = m_lua.create_table();
         tbl["id"]          = robotState.getId();
         tbl["team"]        = robotState.getTeam();
         tbl["x"]           = robotState.getPosition().x();
@@ -88,22 +91,22 @@ void LuaInterface::register_functions() {
     });
 
     // get_ball_state() returns a table with ball data
-    lua.set_function("get_ball_state", [this]() -> sol::table {
+    m_lua.set_function("get_ball_state", [this]() -> sol::table {
         if (!m_world) {
             std::cerr << "Error: LuaInterface or World instance is null!" << std::endl;
-            return lua.create_table();
+            return m_lua.create_table();
         }
         BallState ballState = m_world->getBallState();
-        sol::table tbl = lua.create_table();
+        sol::table tbl = m_lua.create_table();
         tbl["x"] = ballState.getPosition().x();
         tbl["y"] = ballState.getPosition().y();
         return tbl;
     });
 
     // kickx(robotId, team)
-    lua.set_function("kickx", [this](int robotId, int team) {
+    m_lua.set_function("kickx", [this](int robotId, int team) {
         if (!m_radio) {
-            std::cerr << "[Lua] Error: Radio is null!" << std::endl;
+            std::cerr << "[m_lua] Error: Radio is null!" << std::endl;
             return;
         }
         KickerCommand command(robotId, team);
@@ -112,9 +115,9 @@ void LuaInterface::register_functions() {
     });
 
     // kickz(robotId, team)
-    lua.set_function("kickz", [this](int robotId, int team) {
+    m_lua.set_function("kickz", [this](int robotId, int team) {
         if (!m_radio) {
-            std::cerr << "[Lua] Error: Radio is null!" << std::endl;
+            std::cerr << "[m_lua] Error: Radio is null!" << std::endl;
             return;
         }
         KickerCommand command(robotId, team);
@@ -123,9 +126,9 @@ void LuaInterface::register_functions() {
     });
 
     // dribbler(robotId, team, speed)
-    lua.set_function("dribbler", [this](int robotId, int team, double speed) {
+    m_lua.set_function("dribbler", [this](int robotId, int team, double speed) {
         if (!m_radio) {
-            std::cerr << "[Lua] Error: Radio is null!" << std::endl;
+            std::cerr << "[m_lua] Error: Radio is null!" << std::endl;
             return;
         }
         if (speed < 0)
@@ -138,13 +141,13 @@ void LuaInterface::register_functions() {
     });
 }
 
-void LuaInterface::runScript(const std::string& scriptFile) {
-    // Reinitialize the Lua state to reset the environment
-    lua = sol::state();
-    lua.open_libraries(sol::lib::base, sol::lib::package, sol::lib::math, sol::lib::os, sol::lib::string);
+void LuaInterface::runScript() {
+    // Reinitialize the m_lua state to reset the environment
+    m_lua = sol::state();
+    m_lua.open_libraries(sol::lib::base, sol::lib::package, sol::lib::math, sol::lib::os, sol::lib::string);
 
     // Override print() again
-    lua.set_function("print", [](sol::variadic_args args) {
+    m_lua.set_function("print", [](sol::variadic_args args) {
         std::string output;
         for (auto v : args) {
             if (v.is<std::string>()) {
@@ -154,41 +157,49 @@ void LuaInterface::runScript(const std::string& scriptFile) {
             }
             output += " ";
         }
-        std::cout << "[Lua] " << output << std::endl;
+        std::cout << "[m_lua] " << output << std::endl;
     });
 
-    // Adjust package.path to include your script directory
-    std::string scriptDir = "C:/CondorSSL/src/luainterface/script.lua";
-    std::string luaPathCmd = "package.path = '" + scriptDir + "?.lua;' .. package.path";
-    lua.script(luaPathCmd);
+    // 💡 Build relative path
+    QString scriptPath = QCoreApplication::applicationDirPath() +
+                         "/../scripts/script.lua";  // adjust if needed
+
+    QString normalizedPath = QDir(scriptPath).absolutePath();
+    std::string fullScriptPath = normalizedPath.toStdString();
+
+    // Optional: make Lua's package.path include script folder
+    QString scriptDir = QFileInfo(scriptPath).absolutePath();
+    std::string luaPathCmd = "package.path = '" +
+                             scriptDir.replace("\\", "/").toStdString() + "/?.lua;' .. package.path";
+    m_lua.script(luaPathCmd);
 
     // Re-register functions
     register_functions();
 
-    std::cout << "[Lua] Loading script: " << scriptFile << std::endl;
+    std::cout << "[m_lua] Loading script: " << fullScriptPath  << std::endl;
 
     try {
-        lua.script_file(scriptFile);
-        std::cout << "[Lua] Script loaded successfully!" << std::endl;
+        m_lua.script_file(fullScriptPath );
+        std::cout << "[m_lua] Script loaded successfully!" << std::endl;
         m_haveScript = true;
     }
     catch (const sol::error &e) {
-        std::cerr << "[Lua] Error loading script: " << e.what() << std::endl;
+        std::cerr << "[m_lua] Error loading script: " << e.what() << std::endl;
         m_haveScript = false;
     }
 }
 
 void LuaInterface::callProcess() {
-    sol::function process = lua["process"];
+    sol::function process = m_lua["process"];
     if (!process.valid()) {
-        std::cerr << "[Lua] Error: process() is not defined in script!" << std::endl;
+        std::cerr << "[m_lua] Error: process() is not defined in script!" << std::endl;
         return;
     }
     try {
         process();
     }
     catch (const sol::error &e) {
-        std::cerr << "[Lua] Runtime error: " << e.what() << std::endl;
+        std::cerr << "[m_lua] Runtime error: " << e.what() << std::endl;
     }
 }
 

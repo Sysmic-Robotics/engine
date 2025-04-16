@@ -15,6 +15,7 @@ target_link_libraries(gui
     PRIVATE Qt6::Widgets  # ✅ Changed to PRIVATE
     PRIVATE world 
     PRIVATE utilities 
+    PRIVATE luainterface
 )
 
 # Include the current directory for header files

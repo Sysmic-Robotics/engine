@@ -1,21 +1,23 @@
 #include "scriptcontrolpanel.hpp"
 
-ScriptControlPanel::ScriptControlPanel(QWidget *parent) : QWidget(parent) {
+ScriptControlPanel::ScriptControlPanel(LuaInterface *luaInterface, QWidget *parent) : QWidget(parent) , m_luaInterface(luaInterface) {
     QVBoxLayout *layout = new QVBoxLayout(this);
 
     QLabel *label = new QLabel("📜 Script Control");
     label->setAlignment(Qt::AlignCenter);
     label->setStyleSheet("font-weight: bold;");
-
-    loadScriptBtn = new QPushButton("📂 Load Script");
-    loadScriptBtn->setEnabled(false);  // Placeholder logic
     runScriptBtn = new QPushButton("▶️ Run Script");
 
     layout->addWidget(label);
-    layout->addWidget(loadScriptBtn);
     layout->addWidget(runScriptBtn);
     layout->addStretch();
 
-    connect(loadScriptBtn, &QPushButton::clicked, this, &ScriptControlPanel::loadScriptRequested);
-    connect(runScriptBtn, &QPushButton::clicked, this, &ScriptControlPanel::runScriptRequested);
+    qDebug() << "[ScriptControlPanel] luaInterface @" << luaInterface;
+    connect(runScriptBtn, &QPushButton::clicked, this, &ScriptControlPanel::onRunScriptClicked);
 }
+
+
+void ScriptControlPanel::onRunScriptClicked() {
+    m_luaInterface->runScript();
+}
+

@@ -14,9 +14,9 @@ class MainApp : public QObject {
 public:
     MainApp() {
         initThreads();
+        initLuaInterface();
         initGui();
         initConnections();
-        initLuaInterface();
         initprocess();
         initProcess();
     }
@@ -73,10 +73,6 @@ private slots:
         process->setTargetPoint(point);
     }
 
-    void onScriptRunRequested() {
-        luaInterface->runScript("C:/CondorSSL/src/luainterface/script.lua");
-    }
-
 private:
     // Initialization helpers:
 
@@ -94,7 +90,7 @@ private:
 
     void initGui() {
         // Create and show the main GUI window (with MainApp as its parent).
-        m_mainWindow = new MainWindow();
+        m_mainWindow = new MainWindow(luaInterface);
         m_mainWindow->show();
     }
 
@@ -104,7 +100,6 @@ private:
         connect(m_mainWindow, &MainWindow::targetPointSelected, this, &MainApp::onTargetPointSelected);
         connect(m_mainWindow, &MainWindow::faceToDebug, this, &MainApp::onFaceToDebug);
         connect(m_mainWindow, &MainWindow::setRobotControl, this, &MainApp::onSetRobotControl);
-        connect(m_mainWindow, &MainWindow::scriptRunRequested, this, &MainApp::onScriptRunRequested);
 
         // Connect Vision signals to World slots.
         connect(m_visionThread, &QThread::started, m_vision, &Vision::startListen);
@@ -120,6 +115,7 @@ private:
         // Initialize Radio and LuaInterface.
         radio = new Radio();
         luaInterface = new LuaInterface(radio, m_world);
+        qDebug() << "[MainWindow] luaInterface     @" << luaInterface;
     }
 
     void initprocess() {
@@ -136,6 +132,7 @@ private:
         m_updateTimer = new QTimer(this);
         connect(m_updateTimer, &QTimer::timeout, this, &MainApp::update);
         m_updateTimer->start(16);
+        
     }
 
     // Member variables:

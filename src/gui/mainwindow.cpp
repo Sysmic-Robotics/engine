@@ -1,16 +1,18 @@
 #include "mainwindow.hpp"
+#include "robotcontrolpanel.hpp"
+#include "scriptcontrolpanel.hpp"
 #include "colors.hpp"  // ✅ Include the color definitions
 #include <QMouseEvent>
 #include <QTabWidget>
 #include <QHBoxLayout>
 #include <QFileDialog>
 
-MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
+MainWindow::MainWindow(LuaInterface* luaInterface, QWidget *parent) : QMainWindow(parent) {
     // Setup main layout
     QWidget *centralWidget = new QWidget(this);
     QHBoxLayout *mainLayout = new QHBoxLayout(centralWidget);
 
-    setupLeftPanel();
+    setupLeftPanel(luaInterface);
     mainLayout->addWidget(leftPanel);
 
     // Initialize scene and view
@@ -21,13 +23,11 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
 
     setCentralWidget(centralWidget);
     ball = new BallItem();
-
     scene->addItem(ball);
-
 }
 
 
-void MainWindow::setupLeftPanel() {
+void MainWindow::setupLeftPanel(LuaInterface* luaInterface) {
     leftPanel = new QWidget(this);
     QVBoxLayout *mainLayout = new QVBoxLayout(leftPanel);
 
@@ -61,49 +61,19 @@ void MainWindow::setupLeftPanel() {
     QTabWidget *tabWidget = new QTabWidget(leftPanel);
 
     // **Tab 1: Robot Control**
-    QWidget *robotControlTab = new QWidget();
-    QVBoxLayout *robotLayout = new QVBoxLayout(robotControlTab);
-
-    QLabel *robotControlLabel = new QLabel("🔹 Robot Control");
-    robotControlLabel->setAlignment(Qt::AlignCenter);
-    robotControlLabel->setStyleSheet("font-weight: bold;");
-
-    targetPointBtn = new QPushButton("🎯 Select Target");
-    connect(targetPointBtn, &QPushButton::clicked, this, &MainWindow::onTargetPointButtonClicked);
-
-    faceToBtn = new QPushButton("🎯 Point to Aim");
-    connect(faceToBtn, &QPushButton::clicked, this, &MainWindow::onFaceToPointButtonClicked);
-
-    robotLayout->addWidget(robotControlLabel);
-    robotLayout->addWidget(targetPointBtn);
-    robotLayout->addWidget(faceToBtn);
-    robotLayout->addStretch();
-    robotControlTab->setLayout(robotLayout);
-
+    // Robot Control Tab
+    RobotControlPanel *robotControlPanel = new RobotControlPanel();
+    connect(robotControlPanel, &RobotControlPanel::targetPointRequested, this, 
+        &MainWindow::onTargetPointButtonClicked);
+    connect(robotControlPanel, &RobotControlPanel::faceToPointRequested, this,
+        &MainWindow::onFaceToPointButtonClicked);
+    
     // **Tab 2: Script Run**
-    QWidget *scriptRunTab = new QWidget();
-    QVBoxLayout *scriptLayout = new QVBoxLayout(scriptRunTab);
-
-    QLabel *scriptControlLabel = new QLabel("📜 Script Control");
-    scriptControlLabel->setAlignment(Qt::AlignCenter);
-    scriptControlLabel->setStyleSheet("font-weight: bold;");
-
-    loadScriptBtn = new QPushButton("📂 Load Script");
-    loadScriptBtn->setEnabled(false);
-    connect(loadScriptBtn, &QPushButton::clicked, this, &MainWindow::onLoadScriptClicked);
-
-    runScriptBtn = new QPushButton("▶️ Run Script");
-    connect(runScriptBtn, &QPushButton::clicked, this, &MainWindow::onRunScriptClicked);
-
-    scriptLayout->addWidget(scriptControlLabel);
-    scriptLayout->addWidget(loadScriptBtn);
-    scriptLayout->addWidget(runScriptBtn);
-    scriptLayout->addStretch();
-    scriptRunTab->setLayout(scriptLayout);
+    ScriptControlPanel *scriptControlPanel = new ScriptControlPanel(luaInterface);
 
     // **Add tabs to QTabWidget**
-    tabWidget->addTab(robotControlTab, "🤖 Robot");
-    tabWidget->addTab(scriptRunTab, "📜 Script");
+    tabWidget->addTab(robotControlPanel, "🤖 Robot");
+    tabWidget->addTab(scriptControlPanel, "📜 Script");
     connect(tabWidget, &QTabWidget::currentChanged, this, &MainWindow::onTabChanged);
 
     // **Final Layout**
@@ -123,20 +93,6 @@ void MainWindow::onTabChanged(int index) {
     }else{
         emit setRobotControl(true);
     }
-}
-
-
-void MainWindow::onLoadScriptClicked() {
-    QString filePath = QFileDialog::getOpenFileName(this, "Select Lua Script", "", "Lua Files (*.lua)");
-    /*
-    if (!filePath.isEmpty()) {
-        //emit scriptLoaded(filePath);  // Send signal with selected script path
-    }
-        */
-}
-
-void MainWindow::onRunScriptClicked() {
-    emit scriptRunRequested();  // Send signal to execute script
 }
 
 void MainWindow::updateBall(const BallState &ballState) {
@@ -291,9 +247,8 @@ void MainWindow::mousePressEvent(QMouseEvent *event) {
         drawTargetMarker(targetPoint);
         emit targetPointSelected(targetPoint);
 
-        targetPointBtn->setText("Select Target Point");
+        //targetPointBtn->setText("Select Target Point");
         waitingForTargetPoint = false;
-        faceToBtn->setEnabled(true); // Re-enable faceToBtn
 
         return;
     }
@@ -305,10 +260,7 @@ void MainWindow::mousePressEvent(QMouseEvent *event) {
         QVector2D faceToTarget(x, y);
         drawTargetMarker(faceToTarget);
         emit faceToDebug(faceToTarget);
-
-        faceToBtn->setText("Select point to aim");
         waitingForFaceTo = false;
-        targetPointBtn->setEnabled(true); // Re-enable targetPointBtn
     }
 }
 
@@ -318,8 +270,7 @@ void MainWindow::onTargetPointButtonClicked() {
     waitingForTargetPoint = true;
     waitingForFaceTo = false;
     
-    targetPointBtn->setText("Click on Field...");
-    faceToBtn->setEnabled(false); // Disable faceToBtn while selecting target
+    //targetPointBtn->setText("Click on Field...");
 }
 
 void MainWindow::onFaceToPointButtonClicked() {
@@ -327,9 +278,7 @@ void MainWindow::onFaceToPointButtonClicked() {
 
     waitingForFaceTo = true;
     waitingForTargetPoint = false;
-
-    faceToBtn->setText("Click on Field...");
-    targetPointBtn->setEnabled(false); // Disable targetPointBtn while debugging face_to
+    //targetPointBtn->setEnabled(false); // Disable targetPointBtn while debugging face_to
 }
 
 void MainWindow::drawTargetMarker(QVector2D point) {

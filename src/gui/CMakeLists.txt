@@ -4,6 +4,8 @@ add_library(gui STATIC
     robotitem.cpp
     targetmarker.cpp  # ✅ Fixed filename
     ballitem.cpp
+    robotcontrolpanel.cpp
+    scriptcontrolpanel.cpp
 )
 
 # Link Qt6 libraries to the GUI library
@@ -13,6 +15,7 @@ target_link_libraries(gui
     PRIVATE Qt6::Widgets  # ✅ Changed to PRIVATE
     PRIVATE world 
     PRIVATE utilities 
+    PRIVATE luainterface
 )
 
 # Include the current directory for header files

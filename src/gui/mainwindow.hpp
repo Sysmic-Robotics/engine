@@ -16,12 +16,13 @@
 #include "robotstate.hpp"
 #include "ballstate.hpp"
 #include "ballitem.hpp"
+#include "luainterface.hpp"
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = nullptr);
+    explicit MainWindow(LuaInterface* luaInterface, QWidget *parent = nullptr);
     
 
 public slots:
@@ -32,12 +33,10 @@ signals:
     void robotSelected(int id, int team);
     void targetPointSelected(QVector2D point);
     void faceToDebug(QVector2D target);
-    void scriptLoaded(QString filePath);
-    void scriptRunRequested();
     void setRobotControl(bool flag);
 
 private:
-    void setupLeftPanel();
+    void setupLeftPanel(LuaInterface* luaInterface);
     void drawTargetMarker(QVector2D point);
     void selectNextRobot(int direction);
     void updateInfoPanel();
@@ -48,9 +47,6 @@ private:
     void onFaceToPointButtonClicked();
     void onTraceCheckboxToggled(bool checked);
     void onTabChanged(int index);
-    // Script
-    void onLoadScriptClicked();
-    void onRunScriptClicked();
 
 
     QGraphicsScene *scene;
@@ -61,12 +57,8 @@ private:
     
     QPushButton *leftArrowBtn;
     QPushButton *rightArrowBtn;
-    QPushButton *targetPointBtn;
-    QPushButton *faceToBtn;
     QCheckBox *showTraceCheckbox;
     QLabel *robotInfoLabel;
-    QPushButton *loadScriptBtn;
-    QPushButton *runScriptBtn;
 
     QMap<int, RobotItem *> blueRobots;
     QMap<int, RobotItem *> yellowRobots;

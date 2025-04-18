@@ -13,11 +13,7 @@ Process::Process(World* world, Radio* radio, LuaInterface* luaInterface, QObject
 }
 
 void Process::update() {
-    if (m_debugControl) {
-        updateDebugControl();
-    } else {
-        updateLuaInterface();
-    }
+    updateLuaInterface();
 }
 
 void Process::setRobotSelected(int id, int team) {
@@ -54,7 +50,6 @@ void Process::updateDebugControl() {
 }
 
 void Process::updateLuaInterface() {
-    m_faceToActive = true;
     if (m_luaInterface->haveScript()) {
         m_luaInterface->callProcess();
     }

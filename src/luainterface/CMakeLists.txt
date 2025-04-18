@@ -5,12 +5,12 @@ add_library(luainterface STATIC
 target_link_libraries(luainterface
     PUBLIC lua_static
     PUBLIC sol2::sol2
-    PRIVATE Qt6::Gui
-    PRIVATE Qt6::Core
+    PUBLIC Qt6::Gui
+    PUBLIC Qt6::Core
     PUBLIC radio
-    PRIVATE utilities
-    PRIVATE motion
-    PRIVATE world
+    PUBLIC utilities
+    PUBLIC motion
+    PUBLIC world
 )
 
 target_include_directories(luainterface 

@@ -6,6 +6,11 @@
 #include "radio.hpp"
 #include "luainterface.hpp"
 #include "process.hpp"
+#include "websocketserver.hpp"
+#include <QElapsedTimer>
+#include <QDebug>
+#include <QJsonObject>
+
 
 class MainApp : public QObject {
     Q_OBJECT
@@ -37,11 +42,27 @@ public:
     }
 
 private slots:
-    void update() {
-        m_world->update();
-        process->update();
-        radio->sendCommands();
-    }
+void update() {
+    QElapsedTimer timer;
+    timer.start();
+
+    m_world->update();
+    process->update();
+    radio->sendCommands();
+
+    QJsonObject worldState = m_world->toJson();
+
+    // Add performance metrics
+    qint64 elapsedMicroseconds = timer.nsecsElapsed() / 1000;
+    QJsonObject metrics;
+    metrics["updateTimeUs"] = static_cast<int>(elapsedMicroseconds);  // safe to cast, value is small
+
+    worldState["metrics"] = metrics;
+
+    m_webSocketServer->broadcast(worldState);
+}
+
+
 
 private:
     void initThreads() {
@@ -63,7 +84,8 @@ private:
     void initLuaInterface() {
         radio = new Radio();
         luaInterface = new LuaInterface(radio, m_world);
-        qDebug() << "[MainApp] luaInterface     @" << luaInterface;
+        
+        m_webSocketServer = new WebSocketServer(luaInterface ,this);
     }
 
     void initProcess() {
@@ -82,6 +104,8 @@ private:
     Vision *m_vision;
     QThread *m_worldThread;
     World *m_world;
+
+    WebSocketServer *m_webSocketServer;
 
     QTimer *m_updateTimer;
 

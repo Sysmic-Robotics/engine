@@ -1,5 +1,77 @@
 #include "world.hpp"
+#include <QJsonArray>
+#include <QJsonObject>
+#include <QJsonDocument>
 
+QJsonObject World::toJson() const {
+    QJsonObject root;
+
+    QJsonArray robotsArray;
+
+    // Serialize blue robots
+    for (const RobotState &robot : blueRobots) {
+        if (!robot.isActive()) continue;
+
+        QJsonObject robObj;
+        robObj["id"] = robot.getId();
+        robObj["team"] = "blue";
+
+        QJsonObject pos;
+        pos["x"] = robot.getPosition().x();
+        pos["y"] = robot.getPosition().y();
+        robObj["position"] = pos;
+
+        QJsonObject vel;
+        vel["x"] = robot.getVelocity().x();
+        vel["y"] = robot.getVelocity().y();
+        robObj["velocity"] = vel;
+
+        robObj["orientation"] = robot.getOrientation();
+
+        robotsArray.append(robObj);
+    }
+
+    // Serialize yellow robots
+    for (const RobotState &robot : yellowRobots) {
+        if (!robot.isActive()) continue;
+
+        QJsonObject robObj;
+        robObj["id"] = robot.getId();
+        robObj["team"] = "yellow";
+
+        QJsonObject pos;
+        pos["x"] = robot.getPosition().x();
+        pos["y"] = robot.getPosition().y();
+        robObj["position"] = pos;
+
+        QJsonObject vel;
+        vel["x"] = robot.getVelocity().x();
+        vel["y"] = robot.getVelocity().y();
+        robObj["velocity"] = vel;
+
+        robObj["orientation"] = robot.getOrientation();
+
+        robotsArray.append(robObj);
+    }
+
+    root["robots"] = robotsArray;
+
+    // Serialize ball
+    QJsonObject ballObj;
+    QJsonObject ballPos;
+    ballPos["x"] = ball.getPosition().x();
+    ballPos["y"] = ball.getPosition().y();
+    ballObj["position"] = ballPos;
+
+    QJsonObject ballVel;
+    ballVel["x"] = ball.getVelocity().x();
+    ballVel["y"] = ball.getVelocity().y();
+    ballObj["velocity"] = ballVel;
+
+    root["ball"] = ballObj;
+
+    return root;
+}
 
 World::World(int n_blue, int n_yellow, QObject *parent) : QObject(parent) {
     ball = BallState();

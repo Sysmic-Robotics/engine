@@ -2,7 +2,6 @@ add_subdirectory(receivers)
 add_subdirectory(protobuf)
 add_subdirectory(utilities)
 add_subdirectory(world)
-add_subdirectory(gui)
 add_subdirectory(motion)
 add_subdirectory(radio)
 add_subdirectory(luainterface)
@@ -11,7 +10,6 @@ add_subdirectory(websocketserver)
 # Specify sources in the src directory
 qt_add_executable(SysmicSoftware
     main.cpp
-    process.cpp
 )
 
 # Link the Vision library and Qt6 libraries
@@ -22,7 +20,6 @@ target_link_libraries(SysmicSoftware
     PRIVATE utilities
     PRIVATE world
     PRIVATE protobuf
-    PRIVATE gui
     PRIVATE motion
     PRIVATE radio
     PRIVATE luainterface

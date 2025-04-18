@@ -73,27 +73,11 @@ Desde la extensión de CMake Tools en VSCode:
 
 7. **Copiar DLLs necesarias para que corra la interfaz gráfica**
 
-   - Dirígete a:  
-      `C:\Qt\6.8.3\mingw_64\bin`
-   
-   - Copia todos los archivos que comiencen con `Qt` y terminen en `.dll`  
-      Ejemplo: `Qt6Core.dll`, `Qt6Gui.dll`, `Qt6Widgets.dll`, etc.
-   
-   - Pégalos en la carpeta donde está tu ejecutable:  
-      `C:\CondorSSL\build`
+   - Copia este comando
+   `C:/Qt/6.9.0/mingw_64/bin/windeployqt.exe SysmicSoftware.exe`
 
 ---
 
-8. **Copiar plugins de plataforms**
-
-   - Ve a:  
-      `C:\Qt\6.8.3\mingw_64\plugins\platforms`
-   
-   - Copia todo el contenido de esa carpeta.
-   
-   - En la carpeta `C:\CondorSSL\build`, crea una subcarpeta llamada `platforms` y **pega ahí los archivos copiados**.
-
----
 
 ## Ejecutar el proyecto
 

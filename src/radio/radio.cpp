@@ -77,6 +77,7 @@ void Radio::sendCommands() {
             kicker.getDribbler(),    // Dribbler speed
             false                    // Placeholder flag
         );
+
     }
     
     // Clear commands after sending.

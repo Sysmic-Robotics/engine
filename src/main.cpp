@@ -41,6 +41,7 @@ public:
         m_updateTimer = new QTimer(this);
         connect(m_updateTimer, &QTimer::timeout, this, &MainApp::update);
         m_updateTimer->start(16); // ~60 FPS
+        luaInterface->runScript();  // Trigger script!
     }
 
     ~MainApp() {

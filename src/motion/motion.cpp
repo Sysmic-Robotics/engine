@@ -20,7 +20,7 @@ MotionCommand Motion::to_point(const RobotState& robotState, QVector2D targetPoi
 
 MotionCommand Motion::face_to(const RobotState& robotState, QVector2D targetPoint) {
     // Define PID control with appropriate gains
-    static PID pidControl(1.0, 0.01, 0.1); // Kp, Ki, Kd values (adjust as needed)
+    static PID pidControl(1.0, 1, 0.1); // Kp, Ki, Kd values (adjust as needed)
 
     // Compute target angle
     double targetAngle = std::atan2(targetPoint.y() - robotState.getPosition().y(),

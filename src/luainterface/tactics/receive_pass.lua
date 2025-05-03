@@ -1,7 +1,7 @@
 -- receive_pass.lua
 local api = require("sysmickit.lua_api")
-local move = require("move")
-local capture = require("capture_ball")
+local move = require("core.move")
+local capture = require("skills.capture_ball")
 local utils = require("utils")
 local M = {}
 

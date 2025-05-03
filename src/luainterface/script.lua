@@ -1,12 +1,17 @@
 print("Ciclo simple de pases entre 3 robots (corregido y fluido) 👑⚽")
 
-package.path = "C:/CondorSSL/src/luainterface/?.lua;" .. package.path
-
-local api = require("sysmickit.lua_api")
-local utils = require("utils")
-local capture = require("capture_ball")
-local kick = require("kick_to_point")
-local receive = require("receive_pass")
+package.path = "C:/CondorSSL/src/luainterface/?.lua;" ..
+               "C:/CondorSSL/src/luainterface/core/?.lua;" ..
+               "C:/CondorSSL/src/luainterface/skills/?.lua;" ..
+               "C:/CondorSSL/src/luainterface/tactics/?.lua;" ..
+               "C:/CondorSSL/src/luainterface/sysmickit/?.lua;" ..
+               "C:/CondorSSL/src/luainterface/plays/?.lua;" .. package.path
+local api = require("lua_api") -- Ahora en sysmickit/
+local utils = require("utils") -- Si no se mueve, permanece igual
+local capture = require("capture_ball") -- Ahora en skills/
+local kick = require("kick_to_point") -- Ahora en skills/
+local receive = require("receive_pass") -- Ahora en tactics/
+local simple_play = require("simple_play") -- Nueva jugada en plays/
 
 local team = 0
 
@@ -76,5 +81,8 @@ function process()
             print("[Turn " .. turn .. "] Nuevo turno iniciado 👟")
         end
     end
+
+    -- Ejecutar una jugada desde el proceso principal
+    simple_play.execute(team, positions)
 end
 

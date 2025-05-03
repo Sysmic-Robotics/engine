@@ -4,7 +4,7 @@ local utils = require("utils")
 local M = {}
 
 local kick_distance = 0.12
-local angle_tolerance = 0.02  -- tolerancia de 3 grados (0.052 radianes)
+local angle_tolerance = 0.025  -- tolerancia de 3 grados (0.052 radianes)
 local done = false
 
 --- Ejecuta un disparo hacia un punto, si está en condiciones

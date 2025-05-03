@@ -2,11 +2,13 @@
 add_library(radio STATIC
     radio.cpp
     grsim.cpp
+    packetserializer.cpp
 )
 
 target_link_libraries(radio
     #PRIVATE Qt6::Gui
     PRIVATE Qt6::Core
+    PUBLIC Qt6::SerialPort
     PUBLIC Qt6::Network
     PRIVATE utilities
     PUBLIC protobuf

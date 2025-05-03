@@ -3,6 +3,7 @@
 // en las estrategias -_-
 
 #include "vision.hpp"
+#include <QDebug>
 
 Vision::Vision(const QString &multicastAddress, int port, QObject *parent)
     : QObject(parent), m_multicastAddress(multicastAddress), m_port(port), m_udpSocket(nullptr)

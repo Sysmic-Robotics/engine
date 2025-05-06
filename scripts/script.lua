@@ -13,5 +13,5 @@ team = 0
 --- Main process function.
 --- You can switch between skills or chain them as needed.
 function process()
-    api.face_to(robotId, team, {x=0, y= 0})
+    move.move_to(robotId, team, {x=0,y=0})
 end

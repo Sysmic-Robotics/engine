@@ -142,6 +142,7 @@ void LuaInterface::register_functions() {
 }
 
 void LuaInterface::runScript() {
+    m_runScript = true;
     // Reinitialize the m_lua state to reset the environment
     m_lua = sol::state();
     m_lua.open_libraries(sol::lib::base, sol::lib::package, sol::lib::math, sol::lib::os, sol::lib::string);
@@ -190,19 +191,25 @@ void LuaInterface::runScript() {
 }
 
 void LuaInterface::callProcess() {
-    sol::function process = m_lua["process"];
-    if (!process.valid()) {
-        std::cerr << "[m_lua] Error: process() is not defined in script!" << std::endl;
-        return;
-    }
-    try {
-        process();
-    }
-    catch (const sol::error &e) {
-        std::cerr << "[m_lua] Runtime error: " << e.what() << std::endl;
+    if (m_runScript){
+        sol::function process = m_lua["process"];
+        if (!process.valid()) {
+            std::cerr << "[m_lua] Error: process() is not defined in script!" << std::endl;
+            return;
+        }
+        try {
+            process();
+        }
+        catch (const sol::error &e) {
+            std::cerr << "[m_lua] Runtime error: " << e.what() << std::endl;
+        }
     }
 }
 
 bool LuaInterface::haveScript() {
     return m_haveScript;
+}
+
+void LuaInterface::stopScript() {
+    m_runScript = false;
 }

@@ -60,4 +60,11 @@ void WebSocketServer::onTextMessageReceived(const QString &message) {
     if (type == "runScript" && luaInterface) {
         luaInterface->runScript();  // Trigger script!
     }
+    else if (type == "pauseScript") {
+        luaInterface->stopScript(); // implement pause behavior in LuaInterface
+        qDebug() << "Script paused";
+    }
 }
+
+
+

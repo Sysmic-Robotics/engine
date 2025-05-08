@@ -1,4 +1,4 @@
-#include "WebSocketServer.hpp"
+#include "websocketserver.hpp"
 
 WebSocketServer::WebSocketServer(LuaInterface* _luaInterface, QObject *parent)
     : luaInterface(_luaInterface), QObject(parent),

@@ -7,7 +7,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Setup Qt6
-find_package(Qt6 REQUIRED COMPONENTS Core Network Gui Widgets SerialPort)
+find_package(Qt6 REQUIRED COMPONENTS Core Network Gui Widgets WebSockets SerialPort)
 qt_standard_project_setup()
 
 # Build protobuf

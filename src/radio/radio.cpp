@@ -2,12 +2,12 @@
 #include "radio.hpp"
 #include "packetserializer.hpp"
 
-Radio::Radio(const QString &portName,
-             bool useRadio)
+Radio::Radio(bool useRadio, const QString &portName)
     : m_useRadio(useRadio)
 {
-    qint32 baudRate = QSerialPort::Baud115200;
+    
     if (m_useRadio) {
+        qint32 baudRate = QSerialPort::Baud115200;
         serialPort.setPortName(portName);
         serialPort.setBaudRate(baudRate);
         serialPort.setDataBits(QSerialPort::Data8);
@@ -94,7 +94,6 @@ void Radio::sendCommands() {
                 false
             );
         }
-        qDebug() << "Radio: enviado comandos a grSim.";
     }
 
     commandMap.clear();

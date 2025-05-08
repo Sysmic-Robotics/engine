@@ -32,13 +32,6 @@ local function distance(p1, p2)
 end
 
 function process()
-  local robotPos = api.get_robot_state(robotId, team)
-  if not robotPos then return end
-
-  local target = points[currentIndex]
-  if distance(robotPos, target) < threshold then
-    currentIndex = (currentIndex % numPoints) + 1
-  end
-
-  move.move_to(robotId, team, target)
+  local ball = api.get_ball_state()
+  api.face_to(robotId, team, {x=ball.x,y=ball.y}, 1,1,0.05)
 end

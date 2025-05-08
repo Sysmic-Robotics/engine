@@ -53,23 +53,32 @@ void LuaInterface::register_functions() {
         m_radio->addMotionCommand(cmd);
     });
 
-    // face_to(robotId, team, point)
-    m_lua.set_function("face_to", [this](int robotId, int team, sol::table point) {
-        if (!m_world || !m_radio) {
-            std::cerr << "Error: LuaInterface, World, or Radio instance is null!" << std::endl;
-            return;
-        }
-        double x = point["x"];
-        double y = point["y"];
-        RobotState robotState = m_world->getRobotState(robotId, team);
-        if (!robotState.isActive()) {
-            std::cerr << "[m_lua] Error: Robot " << robotId << " is inactive or not found!" << std::endl;
-            return;
-        }
-        static Motion motion;
-        MotionCommand cmd = motion.face_to(robotState, QVector2D(x, y));
-        m_radio->addMotionCommand(cmd);
-    });
+// face_to(robotId, team, point, [kp, ki, kd])
+m_lua.set_function("face_to", [this](int robotId, int team, sol::table point, sol::optional<double> kp, sol::optional<double> ki, sol::optional<double> kd) {
+    if (!m_world || !m_radio) {
+        std::cerr << "Error: LuaInterface, World, or Radio instance is null!" << std::endl;
+        return;
+    }
+
+    double x = point["x"];
+    double y = point["y"];
+    RobotState robotState = m_world->getRobotState(robotId, team);
+
+    if (!robotState.isActive()) {
+        std::cerr << "[m_lua] Error: Robot " << robotId << " is inactive or not found!" << std::endl;
+        return;
+    }
+
+    // Set default PID parameters if not provided
+    double Kp = kp.value_or(1.0);
+    double Ki = ki.value_or(1.0);
+    double Kd = kd.value_or(0.1);
+
+    static Motion motion;
+    MotionCommand cmd = motion.face_to(robotState, QVector2D(x, y), Kp, Ki, Kd);
+    m_radio->addMotionCommand(cmd);
+});
+
 
     // get_robot_state(robotId, team) returns a table with robot data
     m_lua.set_function("get_robot_state", [this](int robotId, int team) -> sol::table {

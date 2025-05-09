@@ -10,7 +10,7 @@ local done = false
 
 -- Parámetros
 local safe_distance = 0.12
-local threshold = 0.1
+local threshold = 0.15
 local angle_tolerance = 0.02
 local approach_target = { x = 0, y = 0 }
 

@@ -1,4 +1,4 @@
-print("Prueba de receive_pass con hold 🧲")
+print("Prueba de la táctica: defend.lua")
 
 package.path = "C:/CondorSSL/src/luainterface/?.lua;" ..
                "C:/CondorSSL/src/luainterface/core/?.lua;" ..
@@ -7,26 +7,21 @@ package.path = "C:/CondorSSL/src/luainterface/?.lua;" ..
                "C:/CondorSSL/src/luainterface/sysmickit/?.lua;" ..
                "C:/CondorSSL/src/luainterface/plays/?.lua;" .. package.path
 
-local api = require("lua_api")
-local kick = require("kick_to_point")
-local receive = require("receive_pass")
-
+local defend = require("defend")
+local attack = require("attack")
+local robot_id = 1
 local team = 0
-local robot_kicker = 0
-local robot_receiver = 1
-
+local goal = { x = 4.5, y = 0 }
 local simple_cycle = require("simple_cycle")
-
-local sent = false
-local position_receiver = { x = 1.0, y = 0.0 }
-local position_target = { x = 1.0, y = 0.0 } -- Donde apuntará el pase
-
-receive.reset()
-kick.reset()
+defend.reset()
 
 function process()
+    --attack.run_once(robot_id, team, goal)
+    --defend.run_once(3, 1)
     simple_cycle.execute()
 end
+
+
 
 
 

@@ -86,7 +86,7 @@ void Radio::sendCommands() {
                 cmd.getId(),
                 cmd.getTeam(),
                 m.getAngular(),
-                k.getKickX() ? 5.0 : 0.0,
+                k.getKickX() ? 3.0 : 0.0,
                 k.getKickZ() ? 3.0 : 0.0,
                 m.getVx(),
                 m.getVy(),

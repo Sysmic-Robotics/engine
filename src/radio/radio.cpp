@@ -1,9 +1,15 @@
 #include "radio.hpp"
 
 // Add or update a MotionCommand for a robot.
-void Radio::addMotionCommand(const MotionCommand& motion) {
+void Radio::addMotionCommand(const radioON,const MotionCommand& motion) {
     int robotId = motion.getId();
     
+    if (radioON) {
+        qDebug() << "Radio is ON. Sending command for robot ID:" << robotId;
+    } else {
+        qDebug() << "Radio is OFF. Not sending command for robot ID:" << robotId;
+        return; // Early exit if radio is off.
+    }
     // Use QHash::find() to see if a command for this robot already exists.
     auto it = commandMap.find(robotId);
     if (it == commandMap.end()) {

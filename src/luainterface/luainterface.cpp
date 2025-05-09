@@ -186,20 +186,22 @@ void LuaInterface::runScript(const QString& scriptPath) {
 
 
 void LuaInterface::callProcess() {
-    if (m_runScript){
-        sol::function process = m_lua["process"];
+    if (m_runScript) {
+        sol::protected_function process = m_lua["process"];
         if (!process.valid()) {
             std::cerr << "[m_lua] Error: process() is not defined in script!" << std::endl;
             return;
         }
-        try {
-            process();
-        }
-        catch (const sol::error &e) {
-            std::cerr << "[m_lua] Runtime error: " << e.what() << std::endl;
+
+        sol::protected_function_result result = process();
+        if (!result.valid()) {
+            m_runScript = false;
+            sol::error err = result;
+            std::cerr << "[m_lua] Runtime error in process(): " << err.what() << std::endl;
         }
     }
 }
+
 
 bool LuaInterface::haveScript() {
     return m_haveScript;

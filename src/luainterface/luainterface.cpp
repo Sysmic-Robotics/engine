@@ -110,6 +110,8 @@ m_lua.set_function("face_to", [this](int robotId, int team, sol::table point, so
         sol::table tbl = m_lua.create_table();
         tbl["x"] = ballState.getPosition().x();
         tbl["y"] = ballState.getPosition().y();
+        tbl["vel_x"] = ballState.getVelocity().x();
+        tbl["vel_y"] = ballState.getVelocity().y();
         return tbl;
     });
 

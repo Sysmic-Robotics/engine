@@ -135,5 +135,7 @@ void World::updateRobot(int id, int team, QVector2D position, float orientation)
 }
 
 void World::updateBall(QVector2D position){
+    constexpr double timeStep = 0.016; // 1/60 in seconds
+    ball.setVelocity( ( position - ball.getPosition() )/timeStep );
     ball.setPosition(position);
 }

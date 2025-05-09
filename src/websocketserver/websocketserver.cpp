@@ -58,13 +58,19 @@ void WebSocketServer::onTextMessageReceived(const QString &message) {
     QString type = obj.value("type").toString();
 
     if (type == "runScript" && luaInterface) {
-        luaInterface->runScript();  // Trigger script!
+        QString scriptPath = obj.value("path").toString(); // Extract the script path
+        if (!scriptPath.isEmpty()) {
+            luaInterface->runScript(scriptPath);  // Run the specified script
+        } else {
+            qWarning() << "runScript requested but no path provided.";
+        }
     }
     else if (type == "pauseScript") {
         luaInterface->stopScript(); // implement pause behavior in LuaInterface
         qDebug() << "Script paused";
     }
 }
+
 
 
 

@@ -1,20 +1,22 @@
 #include <QCoreApplication>
 #include <QThread>
 #include <QTimer>
+#include <QElapsedTimer>
+#include <QDebug>
+#include <QJsonObject>
+
 #include "vision.hpp"
 #include "world.hpp"
 #include "radio.hpp"
 #include "luainterface.hpp"
 #include "websocketserver.hpp"
-#include <QElapsedTimer>
-#include <QDebug>
-#include <QJsonObject>
+#include "consolereader.hpp"
 
 class MainApp : public QObject {
     Q_OBJECT
 
 public:
-    MainApp() {
+    MainApp(QObject* parent = nullptr) : QObject(parent) {
         // Setup threads and vision
         m_visionThread = new QThread(this);
         m_vision = new Vision("224.5.23.2", 10020);
@@ -28,6 +30,10 @@ public:
         radio = new Radio();
         luaInterface = new LuaInterface(radio, m_world);
         m_webSocketServer = new WebSocketServer(luaInterface, this);
+
+        // Setup console reader
+        m_consoleReader = new ConsoleReader(luaInterface);
+        m_consoleReader->start();
 
         // Connect vision to world
         connect(m_visionThread, &QThread::started, m_vision, &Vision::startListen);
@@ -44,6 +50,7 @@ public:
     }
 
     ~MainApp() {
+        // Cleanly stop threads and components
         if (m_visionThread->isRunning()) {
             m_visionThread->quit();
             m_visionThread->wait();
@@ -55,6 +62,12 @@ public:
             m_worldThread->wait();
         }
         m_world->deleteLater();
+
+        if (m_consoleReader->isRunning()) {
+            m_consoleReader->requestInterruption();  // Signal for graceful stop
+            m_consoleReader->wait();
+        }
+        delete m_consoleReader;
 
         delete radio;
         delete luaInterface;
@@ -91,6 +104,7 @@ private:
     QTimer *m_updateTimer;
     Radio *radio;
     LuaInterface *luaInterface;
+    ConsoleReader *m_consoleReader;
 };
 
 int main(int argc, char *argv[]) {

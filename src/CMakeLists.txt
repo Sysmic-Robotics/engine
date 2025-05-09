@@ -6,7 +6,7 @@ add_subdirectory(motion)
 add_subdirectory(radio)
 add_subdirectory(luainterface)
 add_subdirectory(websocketserver)
-
+add_subdirectory(consolereader)
 # Specify sources in the src directory
 qt_add_executable(SysmicSoftware
     main.cpp
@@ -26,4 +26,5 @@ target_link_libraries(SysmicSoftware
     PRIVATE lua_static
     PRIVATE sol2::sol2
     PRIVATE websocketserver
+    PRIVATE consolereader
 )

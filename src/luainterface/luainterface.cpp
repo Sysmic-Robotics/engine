@@ -12,7 +12,18 @@ LuaInterface::LuaInterface(Radio* radio, World* world)
     // Open required m_lua libraries
     m_lua.open_libraries(sol::lib::base, sol::lib::package, sol::lib::math, sol::lib::os, sol::lib::string);
     
-    // Override m_lua's print() function with a custom lambda
+
+
+    // Register your game-specific functions
+    register_functions();
+}
+
+LuaInterface::~LuaInterface() {
+    // No manual state cleanup is needed; sol::state cleans up automatically.
+}
+
+void LuaInterface::register_functions() {
+        // Override m_lua's print() function with a custom lambda
     m_lua.set_function("print", [](sol::variadic_args args) {
         std::string output;
         for (auto v : args) {
@@ -25,16 +36,6 @@ LuaInterface::LuaInterface(Radio* radio, World* world)
         }
         std::cout << "[m_lua] " << output << std::endl;
     });
-
-    // Register your game-specific functions
-    register_functions();
-}
-
-LuaInterface::~LuaInterface() {
-    // No manual state cleanup is needed; sol::state cleans up automatically.
-}
-
-void LuaInterface::register_functions() {
     // move_to(robotId, team, point)
     m_lua.set_function("move_to", [this](int robotId, int team, sol::table point) {
         if (!m_world || !m_radio) {
@@ -150,32 +151,16 @@ m_lua.set_function("face_to", [this](int robotId, int team, sol::table point, so
     });
 }
 
-void LuaInterface::runScript() {
+void LuaInterface::runScript(const QString& scriptPath) {
     m_runScript = true;
+
     // Reinitialize the m_lua state to reset the environment
     m_lua = sol::state();
     m_lua.open_libraries(sol::lib::base, sol::lib::package, sol::lib::math, sol::lib::os, sol::lib::string);
 
-    // Override print() again
-    m_lua.set_function("print", [](sol::variadic_args args) {
-        std::string output;
-        for (auto v : args) {
-            if (v.is<std::string>()) {
-                output += v.as<std::string>();
-            } else {
-                output += "[non-string value]";
-            }
-            output += " ";
-        }
-        std::cout << "[m_lua] " << output << std::endl;
-    });
-
-    // 💡 Build relative path
-    QString scriptPath = QCoreApplication::applicationDirPath() +
-                         "/../scripts/script.lua";  // adjust if needed
-
+    // Normalize script path
     QString normalizedPath = QDir(scriptPath).absolutePath();
-    std::string fullScriptPath = normalizedPath.toStdString();
+    std::string fullScriptPath = scriptPath.toStdString();
 
     // Optional: make Lua's package.path include script folder
     QString scriptDir = QFileInfo(scriptPath).absolutePath();
@@ -186,10 +171,10 @@ void LuaInterface::runScript() {
     // Re-register functions
     register_functions();
 
-    std::cout << "[m_lua] Loading script: " << fullScriptPath  << std::endl;
+    std::cout << "[m_lua] Loading script: " << fullScriptPath << std::endl;
 
     try {
-        m_lua.script_file(fullScriptPath );
+        m_lua.script_file(fullScriptPath);
         std::cout << "[m_lua] Script loaded successfully!" << std::endl;
         m_haveScript = true;
     }
@@ -198,6 +183,7 @@ void LuaInterface::runScript() {
         m_haveScript = false;
     }
 }
+
 
 void LuaInterface::callProcess() {
     if (m_runScript){

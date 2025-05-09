@@ -83,6 +83,15 @@ windeployqt C:\CondorSSL\build\SysmicSoftware.exe
 
 > If Qt6 is not found, manually set the `Qt6_DIR` using `CMake: Edit Cache (UI)`.
 
+## 💬 Commands
+
+| Command         | Description                                      |
+|----------------|--------------------------------------------------|
+| `run <path>`   | Run a Lua script from the specified path         |
+| `pause`        | Pause the currently running script               |
+| `reload`       | Reload the last successfully run script          |
+| `exit`         | Exit the console reader thread (does not quit app) |
+
 
 
 

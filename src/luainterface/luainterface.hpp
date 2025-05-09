@@ -12,7 +12,7 @@ public:
     ~LuaInterface();
 
     // Loads a Lua script file (reinitializes the Lua state)
-    void runScript();
+    void runScript(const QString& scriptPath);
     // Calls the global Lua function "process"
     void stopScript();
 

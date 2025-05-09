@@ -12,8 +12,10 @@ public:
     ~LuaInterface();
 
     // Loads a Lua script file (reinitializes the Lua state)
-    void runScript(const std::string& scriptFile);
+    void runScript(const QString& scriptPath);
     // Calls the global Lua function "process"
+    void stopScript();
+
     void callProcess();
 
     bool haveScript();
@@ -22,10 +24,11 @@ private:
     // Helper to register all your functions with Lua
     void register_functions();
 
-    sol::state lua;
+    sol::state m_lua;
     Radio* m_radio;
     World* m_world;
     bool m_haveScript = false;
+    bool m_runScript = false;
 };
 
 #endif // LUA_INTERFACE_SOL_HPP

@@ -35,13 +35,22 @@ end
 ---
 --- Rotates the robot to face the specified target coordinates.
 ---
+--- Rotates the robot to face a target point using a PID controller.
+---
 --- @param robotId number The ID of the robot.
 --- @param team number The team identifier.
 --- @param point table A table containing the target coordinates with keys `x` and `y`.
+--- @param kp number? (optional) Proportional gain. Default is 1.0.
+--- @param ki number? (optional) Integral gain. Default is 1.0.
+--- @param kd number? (optional) Derivative gain. Default is 0.1.
 --- @return nil
-function LuaAPI.face_to(robotId, team, point)
-    face_to(robotId, team, point)
+function LuaAPI.face_to(robotId, team, point, kp, ki, kd)
+    kp = kp or 1.0
+    ki = ki or 1.0
+    kd = kd or 0.1
+    face_to(robotId, team, point, kp, ki, kd)
 end
+
 
 ---
 --- Returns a table representing the ball's state.

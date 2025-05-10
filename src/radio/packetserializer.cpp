@@ -18,9 +18,9 @@ QByteArray PacketSerializer::serialize(const QHash<int, RobotCommand>& commandMa
             const MotionCommand& m = cmd.getMotionCommand();
             const KickerCommand& k = cmd.getKickerCommand();
 
-            int vX      = static_cast<int>(m.getVx());
-            int vY      = static_cast<int>(m.getVy());
-            int vTH     = static_cast<int>(m.getAngular());
+            int vX      = static_cast<int>(m.getVx()*100);
+            int vY      = static_cast<int>(m.getVy()*-100);
+            int vTH     = static_cast<int>(m.getAngular()*100);
             int dribb   = static_cast<int>(k.getDribbler());
             int kick    = k.getKickX() ? 1 : 0;
             int callback= 0;  // si necesitas callback, ajusta aquí

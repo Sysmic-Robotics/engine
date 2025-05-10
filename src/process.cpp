@@ -44,11 +44,11 @@ void Process::updateDebugControl() {
     RobotState robotState = m_world->getRobotState(m_selectedRobotId, m_selectedTeam);
     static Motion motion;
     MotionCommand cmd(m_selectedRobotId, m_selectedTeam);
-    
+
     if (m_faceToActive) {
         cmd = motion.face_to(robotState, m_faceToTarget);
     } else {
-        cmd = motion.to_point(robotState, m_targetPoint);
+        cmd = motion.to_point(robotState, m_targetPoint, m_world); // ✅ pasa World*
     }
     m_radio->addMotionCommand(cmd);
 }

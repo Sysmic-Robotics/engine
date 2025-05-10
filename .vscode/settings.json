@@ -94,6 +94,9 @@
         "cinttypes": "cpp",
         "typeinfo": "cpp",
         "variant": "cpp",
-        "qstring": "cpp"
+        "qstring": "cpp",
+        "hash_map": "cpp",
+        "hash_set": "cpp",
+        "text_encoding": "cpp"
     }
 }

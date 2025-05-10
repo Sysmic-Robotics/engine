@@ -6,20 +6,25 @@ const float VELOCITY_THRES = 0.5f;
 
 KalmanFilter::KalmanFilter() : usageCount(0) {
     // Parámetros para bajo ruido
-    Aimp[0][0] = 0.95f; Aimp[0][1] = 0.0f;
-    Aimp[1][0] = 0.0f;  Aimp[1][1] = 0.95f;
+    //Aimp[0][0] = 0.95f   Aimp[1][1] = 0.95f  
+    Aimp[0][0] = 0.94f; Aimp[0][1] = 0.0f;
+    Aimp[1][0] = 0.0f;  Aimp[1][1] = 0.94f;
 
-    Bimp[0] = 0.05f;
-    Bimp[1] = 0.05f;
+   // Bimp[0] = 0.05f;
+   //Bimp[1] = 0.05f;
+
+    Bimp[0] = 0.06f;
+    Bimp[1] = 0.06f;
 
     Cimp[0][0] = 1.0f; Cimp[0][1] = 0.0f;
     Cimp[1][0] = 0.0f; Cimp[1][1] = 1.0f;
 
     Dimp[0] = 0.0f;
     Dimp[1] = 0.0f;
-
-    lossVec[0] = 0.9f;
-    lossVec[1] = 0.1f;
+        //lossVec[0] = 0.9f;  // posición
+        //lossVec[1] = 0.1f;  // velocidad
+    lossVec[0] = 0.92f;
+    lossVec[1] = 0.08;
 
     // Cimp es identidad → inversa es identidad
     CimpInv[0][0] = 1.0f; CimpInv[0][1] = 0.0f;

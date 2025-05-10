@@ -9,7 +9,6 @@ LuaInterface::LuaInterface(Radio* radio, World* world)
     : m_radio(radio), m_world(world)
 {
     m_lua = sol::state();
-    // Open required m_lua libraries
     m_lua.open_libraries(sol::lib::base, sol::lib::package, sol::lib::math, sol::lib::os, sol::lib::string);
     
 
@@ -36,6 +35,16 @@ void LuaInterface::register_functions() {
         }
         std::cout << "[m_lua] " << output << std::endl;
     });
+
+    // Register your game-specific functions
+    register_functions();
+}
+
+LuaInterface::~LuaInterface() {
+    // No manual state cleanup is needed; sol::state cleans up automatically.
+}
+
+void LuaInterface::register_functions() {
     // move_to(robotId, team, point)
     m_lua.set_function("move_to", [this](int robotId, int team, sol::table point) {
         if (!m_world || !m_radio) {
@@ -50,7 +59,7 @@ void LuaInterface::register_functions() {
             return;
         }
         static Motion motion;
-        MotionCommand cmd = motion.to_point(robotState, QVector2D(x, y));
+        MotionCommand cmd = motion.to_point(robotState, QVector2D(x, y), m_world); // ✅ modificado
         m_radio->addMotionCommand(cmd);
     });
 
@@ -81,7 +90,6 @@ m_lua.set_function("face_to", [this](int robotId, int team, sol::table point, so
 });
 
 
-    // get_robot_state(robotId, team) returns a table with robot data
     m_lua.set_function("get_robot_state", [this](int robotId, int team) -> sol::table {
         if (!m_world) {
             std::cerr << "Error: LuaInterface or World instance is null!" << std::endl;
@@ -100,7 +108,6 @@ m_lua.set_function("face_to", [this](int robotId, int team, sol::table point, so
         return tbl;
     });
 
-    // get_ball_state() returns a table with ball data
     m_lua.set_function("get_ball_state", [this]() -> sol::table {
         if (!m_world) {
             std::cerr << "Error: LuaInterface or World instance is null!" << std::endl;
@@ -115,7 +122,6 @@ m_lua.set_function("face_to", [this](int robotId, int team, sol::table point, so
         return tbl;
     });
 
-    // kickx(robotId, team)
     m_lua.set_function("kickx", [this](int robotId, int team) {
         if (!m_radio) {
             std::cerr << "[m_lua] Error: Radio is null!" << std::endl;
@@ -126,7 +132,6 @@ m_lua.set_function("face_to", [this](int robotId, int team, sol::table point, so
         m_radio->addKickerCommand(command);
     });
 
-    // kickz(robotId, team)
     m_lua.set_function("kickz", [this](int robotId, int team) {
         if (!m_radio) {
             std::cerr << "[m_lua] Error: Radio is null!" << std::endl;
@@ -137,16 +142,13 @@ m_lua.set_function("face_to", [this](int robotId, int team, sol::table point, so
         m_radio->addKickerCommand(command);
     });
 
-    // dribbler(robotId, team, speed)
     m_lua.set_function("dribbler", [this](int robotId, int team, double speed) {
         if (!m_radio) {
             std::cerr << "[m_lua] Error: Radio is null!" << std::endl;
             return;
         }
-        if (speed < 0)
-            speed = 0;
-        if (speed > 10)
-            speed = 10;
+        if (speed < 0) speed = 0;
+        if (speed > 10) speed = 10;
         KickerCommand command(robotId, team);
         command.setDribbler(speed);
         m_radio->addKickerCommand(command);
@@ -164,13 +166,10 @@ void LuaInterface::runScript(const QString& scriptPath) {
     QString normalizedPath = QDir(scriptPath).absolutePath();
     std::string fullScriptPath = scriptPath.toStdString();
 
-    // Optional: make Lua's package.path include script folder
     QString scriptDir = QFileInfo(scriptPath).absolutePath();
-    std::string luaPathCmd = "package.path = '" +
-                             scriptDir.replace("\\", "/").toStdString() + "/?.lua;' .. package.path";
+    std::string luaPathCmd = "package.path = '" + scriptDir.replace("\\", "/").toStdString() + "/?.lua;' .. package.path";
     m_lua.script(luaPathCmd);
 
-    // Re-register functions
     register_functions();
 
     std::cout << "[m_lua] Loading script: " << fullScriptPath << std::endl;

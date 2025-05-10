@@ -1,20 +1,39 @@
 #include "motion.hpp"
 #include "pid.hpp"
-#include <QDebug>
+#include "path_planner.hpp"
+#include "../world/world.hpp"
 
 // CHANGE THE NAME TO move_to_point
-MotionCommand Motion::to_point(const RobotState& robotState, QVector2D targetPoint) {
-    // Define BangBangControl with acceleration & velocity limits
-    static BangBangControl bangbangControl(2.5f, 5.0f); // Example values for A_MAX and V_MAX
+MotionCommand Motion::to_point(const RobotState& robotState, QVector2D targetPoint, const World* world) {
+    static BangBangControl bangbangControl(2.5f, 5.0f); // Acceleration & velocity limits
+    static FastPathPlanner planner;
 
-    // Example path (replace with actual path generation)
-    QList<QVector2D> path = { robotState.getPosition(), targetPoint};
+    QVector2D from = robotState.getPosition();
+    QVector2D to = targetPoint;
+    int selfId = robotState.getId();
+    int selfTeam = robotState.getTeam();
 
-    // Compute motion using BangBangControl
-    double delta = 1.0 / 60.0; // Example delta time
+    std::vector<QVector2D> otherRobots;
+    for (int id = 0; id < 12; ++id) {
+        if (id == selfId) continue;
+        RobotState rBlue = world->getRobotState(id, 0);
+        if (rBlue.isActive()) otherRobots.push_back(rBlue.getPosition());
+        RobotState rYellow = world->getRobotState(id, 1);
+        if (rYellow.isActive()) otherRobots.push_back(rYellow.getPosition());
+    }
+
+    std::vector<QVector2D> pathVec = planner.getPath(from, to, otherRobots);
+
+    QList<QVector2D> path;
+    if (!pathVec.empty()) {
+        for (const QVector2D& p : pathVec)
+            path.append(p);
+    } else {
+        path = { from, to }; // fallback if path is invalid
+    }
+
+    double delta = 1.0 / 60.0; // Frame delta time
     MotionCommand cmd = bangbangControl.computeMotion(robotState, path, delta);
-
-    // Set angular velocity (example value, adjust as needed)
     return cmd;
 }
 

@@ -1,6 +1,6 @@
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Sysmic-Robotics/CondorSSL/refs/heads/main/docs/engine_logo.png" alt="CondorSSL Logo" width="256"/>
+  <img src="https://i.imgur.com/vU1zy4V.png" alt="CondorSSL Logo" width="256"/>
 </p>
 
 <h1 align="center">CondorSSL: Engine</h1>

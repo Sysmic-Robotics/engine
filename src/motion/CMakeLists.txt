@@ -13,6 +13,7 @@ target_link_libraries(motion
     PRIVATE utilities  # ✅ Now correctly linking to utilities for MotionCommand
     PRIVATE bangbangcontrol  # ✅ Still linking to bangbangcontrol
     PRIVATE pid
+    PRIVATE world
 )
 
 target_include_directories(motion PUBLIC 

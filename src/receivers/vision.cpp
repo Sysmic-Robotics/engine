@@ -7,7 +7,7 @@
 
 // === FLAG DE FILTRADO ===
 // Cambiar manualmente a false si no quieres usar el filtro de Kalman
-constexpr bool USE_KALMAN_FILTER = true;
+constexpr bool USE_KALMAN_FILTER = false;
 
 // Filtro de Kalman para la pelota
 KalmanFilter ballFilter;
@@ -15,7 +15,6 @@ KalmanFilter ballFilter;
 // Filtros por robot_id y por equipo (solo si se usa filtro)
 QHash<int, KalmanFilter> yellowFilters;
 QHash<int, KalmanFilter> blueFilters;
-#include <QDebug>
 
 Vision::Vision(const QString &multicastAddress, int port, QObject *parent)
     : QObject(parent), m_multicastAddress(multicastAddress), m_port(port), m_udpSocket(nullptr)

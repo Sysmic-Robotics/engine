@@ -21,28 +21,6 @@ LuaInterface::~LuaInterface() {
     // No manual state cleanup is needed; sol::state cleans up automatically.
 }
 
-void LuaInterface::register_functions() {
-        // Override m_lua's print() function with a custom lambda
-    m_lua.set_function("print", [](sol::variadic_args args) {
-        std::string output;
-        for (auto v : args) {
-            if (v.is<std::string>()) {
-                output += v.as<std::string>();
-            } else {
-                output += "[non-string value]";
-            }
-            output += " ";
-        }
-        std::cout << "[m_lua] " << output << std::endl;
-    });
-
-    // Register your game-specific functions
-    register_functions();
-}
-
-LuaInterface::~LuaInterface() {
-    // No manual state cleanup is needed; sol::state cleans up automatically.
-}
 
 void LuaInterface::register_functions() {
     // move_to(robotId, team, point)

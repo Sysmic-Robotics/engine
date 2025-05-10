@@ -1,7 +1,6 @@
 #include "motion.hpp"
 #include "pid.hpp"
 #include "path_planner.hpp"
-#include "../world/world.hpp"
 
 // CHANGE THE NAME TO move_to_point
 MotionCommand Motion::to_point(const RobotState& robotState, QVector2D targetPoint, const World* world) {

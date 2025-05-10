@@ -8,6 +8,9 @@
 #include <QObject>
 #include <QList>
 #include <QDebug>
+#include <QJsonObject>
+
+
 
 
 class World : public QObject {
@@ -19,6 +22,7 @@ class World : public QObject {
         // Returns the RobotState of a robot given its team and ID
         RobotState getRobotState(int id, int team) const;
         BallState getBallState() const;
+        QJsonObject toJson() const;
 
     public slots:
         void updateRobot(int id, int team, QVector2D position, float orientation);

@@ -12,8 +12,10 @@ public:
     ~LuaInterface();
 
     // Loads a Lua script file (reinitializes the Lua state)
-    void runScript();
+    void runScript(const QString& scriptPath);
     // Calls the global Lua function "process"
+    void stopScript();
+
     void callProcess();
 
     bool haveScript();
@@ -26,6 +28,7 @@ private:
     Radio* m_radio;
     World* m_world;
     bool m_haveScript = false;
+    bool m_runScript = false;
 };
 
 #endif // LUA_INTERFACE_SOL_HPP

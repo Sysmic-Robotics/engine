@@ -1,84 +1,100 @@
+// radio.cpp
 #include "radio.hpp"
+#include "packetserializer.hpp"
 
-// Add or update a MotionCommand for a robot.
+Radio::Radio(bool useRadio, const QString &portName)
+    : m_useRadio(useRadio)
+{
+    
+    if (m_useRadio) {
+        qint32 baudRate = QSerialPort::Baud115200;
+        serialPort.setPortName(portName);
+        serialPort.setBaudRate(baudRate);
+        serialPort.setDataBits(QSerialPort::Data8);
+        serialPort.setParity(QSerialPort::NoParity);
+        serialPort.setStopBits(QSerialPort::OneStop);
+        serialPort.setFlowControl(QSerialPort::NoFlowControl);
+
+        if (!serialPort.open(QIODevice::WriteOnly)) {
+            qWarning() << "Radio: no se pudo abrir puerto serial"
+                       << portName << ":" << serialPort.errorString();
+        } else {
+            qDebug() << "Radio: puerto serial abierto en" << portName;
+        }
+    }
+}
+
+Radio::~Radio()
+{
+    if (serialPort.isOpen()) {
+        serialPort.close();
+        qDebug() << "Radio: puerto serial cerrado";
+    }
+}
+
 void Radio::addMotionCommand(const MotionCommand& motion) {
-    int robotId = motion.getId();
-    
-    // Use QHash::find() to see if a command for this robot already exists.
-    auto it = commandMap.find(robotId);
+    int id = motion.getId();
+    auto it = commandMap.find(id);
     if (it == commandMap.end()) {
-        // Insert a new RobotCommand if it doesn't exist.
-        commandMap.insert(robotId, RobotCommand(robotId, motion.getTeam()));
-        it = commandMap.find(robotId);
+        commandMap.insert(id, RobotCommand(id, motion.getTeam()));
+        it = commandMap.find(id);
     }
-    
-    // Update the MotionCommand by merging the new command with the existing one.
     RobotCommand &cmd = it.value();
-    MotionCommand currentMotion = cmd.getMotionCommand();
-
-    // Overwrite only non-default parameters.
-    double newVx = (motion.getVx() != 0.0) ? motion.getVx() : currentMotion.getVx();
-    double newVy = (motion.getVy() != 0.0) ? motion.getVy() : currentMotion.getVy();
-    double newAngular = (motion.getAngular() != 0.0) ? motion.getAngular() : currentMotion.getAngular();
-
-    currentMotion.setVx(newVx);
-    currentMotion.setVy(newVy);
-    currentMotion.setAngular(newAngular);
-    
-    cmd.setMotionCommand(currentMotion);
+    MotionCommand cm = cmd.getMotionCommand();
+    if (motion.getVx()      != 0.0) cm.setVx(motion.getVx());
+    if (motion.getVy()      != 0.0) cm.setVy(motion.getVy());
+    if (motion.getAngular() != 0.0) cm.setAngular(motion.getAngular());
+    cmd.setMotionCommand(cm);
 }
 
-// Add or update a KickerCommand for a robot.
 void Radio::addKickerCommand(const KickerCommand& kicker) {
-    int robotId = kicker.getId();
-    
-    auto it = commandMap.find(robotId);
+    int id = kicker.getId();
+    auto it = commandMap.find(id);
     if (it == commandMap.end()) {
-        commandMap.insert(robotId, RobotCommand(robotId, kicker.getTeam()));
-        it = commandMap.find(robotId);
+        commandMap.insert(id, RobotCommand(id, kicker.getTeam()));
+        it = commandMap.find(id);
     }
-    
     RobotCommand &cmd = it.value();
-    KickerCommand currentKicker = cmd.getKickerCommand();
-
-    // Overwrite non-default parameters.
-    bool newKickX = kicker.getKickX() ? true : currentKicker.getKickX();
-    bool newKickZ = kicker.getKickZ() ? true : currentKicker.getKickZ();
-    double newDribbler = (kicker.getDribbler() != 0.0) ? kicker.getDribbler() : currentKicker.getDribbler();
-
-    currentKicker.setKickX(newKickX);
-    currentKicker.setKickZ(newKickZ);
-    currentKicker.setDribbler(newDribbler);
-    
-    cmd.setKickerCommand(currentKicker);
+    KickerCommand kc = cmd.getKickerCommand();
+    if (kicker.getKickX())       kc.setKickX(true);
+    if (kicker.getKickZ())       kc.setKickZ(true);
+    if (kicker.getDribbler() != 0) kc.setDribbler(kicker.getDribbler());
+    cmd.setKickerCommand(kc);
 }
 
-// Send all commands using Grsim and then clear the command map.
 void Radio::sendCommands() {
-    if (commandMap.isEmpty()) {
-        return;
-    }
-    static Grsim grsim;
+    if (commandMap.isEmpty()) return;
 
-    // Iterate over all robot commands in the QHash.
-    for (auto it = commandMap.begin(); it != commandMap.end(); ++it) {
-        RobotCommand cmd = it.value();
-        MotionCommand motion = cmd.getMotionCommand();
-        KickerCommand kicker = cmd.getKickerCommand();
+    if (m_useRadio) {
+        // 1) Serializar todo el paquete en un único bloque
+        QByteArray buffer = PacketSerializer::serialize(commandMap, /*numRobots=*/6);
 
-        grsim.communicate_grsim(
-            cmd.getId(),             // Robot ID
-            cmd.getTeam(),           // Team
-            motion.getAngular(),     // Angular velocity
-            kicker.getKickX() ? 5.0 : 0,  // KickSpeedX (example: power 5.0 if enabled)
-            kicker.getKickZ() ? 3.0 : 0,  // KickSpeedZ (example: power 3.0 if enabled)
-            motion.getVx(),          // Velocity X
-            motion.getVy(),          // Velocity Y
-            kicker.getDribbler(),    // Dribbler speed
-            false                    // Placeholder flag
-        );
+        // 2) Enviar por serial
+        if (serialPort.isOpen()) {
+            serialPort.write(buffer);
+            serialPort.flush();
+        }
+    } else {
+        // Envío exclusivo a grSim
+        static Grsim grsim;
+        for (auto it = commandMap.begin(); it != commandMap.end(); ++it) {
+            const RobotCommand &cmd = it.value();
+            const MotionCommand &m = cmd.getMotionCommand();
+            const KickerCommand &k = cmd.getKickerCommand();
+
+            grsim.communicate_grsim(
+                cmd.getId(),
+                cmd.getTeam(),
+                m.getAngular(),
+                k.getKickX() ? 3.0 : 0.0,
+                k.getKickZ() ? 3.0 : 0.0,
+                m.getVx(),
+                m.getVy(),
+                k.getDribbler(),
+                false
+            );
+        }
     }
-    
-    // Clear commands after sending.
+
     commandMap.clear();
 }

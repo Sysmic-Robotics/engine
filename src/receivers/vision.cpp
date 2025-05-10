@@ -15,6 +15,7 @@ KalmanFilter ballFilter;
 // Filtros por robot_id y por equipo (solo si se usa filtro)
 QHash<int, KalmanFilter> yellowFilters;
 QHash<int, KalmanFilter> blueFilters;
+#include <QDebug>
 
 Vision::Vision(const QString &multicastAddress, int port, QObject *parent)
     : QObject(parent), m_multicastAddress(multicastAddress), m_port(port), m_udpSocket(nullptr)

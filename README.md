@@ -3,7 +3,7 @@
   <img src="https://i.imgur.com/vU1zy4V.png" alt="CondorSSL Logo" width="256"/>
 </p>
 
-<h1 align="center">CondorSSL: Engine</h1>
+<h1 align="center">Engine</h1>
 
 <p align="center">
   <a href="https://github.com/Sysmic-Robotics/CondorSSL/blob/main/LICENSE">

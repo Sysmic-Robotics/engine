@@ -7,12 +7,15 @@
 #include <QJsonDocument>
 #include <QList>
 #include "luainterface.hpp"
+#include "radio.hpp"
+#include "motioncommand.hpp"
+#include "kickercommand.hpp"
 
 class WebSocketServer : public QObject {
     Q_OBJECT
 
 public:
-    explicit WebSocketServer(LuaInterface* _luaInterface, QObject *parent = nullptr);
+    explicit WebSocketServer(Radio* _radio, LuaInterface* _luaInterface, QObject *parent = nullptr);
     ~WebSocketServer();
 
     void broadcast(const QJsonObject &message);
@@ -26,4 +29,5 @@ private:
     QWebSocketServer *server;
     QList<QWebSocket *> clients;
     LuaInterface *luaInterface;
+    Radio *m_radio;
 };

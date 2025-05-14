@@ -1,7 +1,7 @@
 {
-    "cmake.configureArgs": [
-        "-DCMAKE_PREFIX_PATH=/opt/Qt/6.9.0/gcc_64/lib/cmake",
-    ],
+    "cmake.configureSettings": {
+    "CMAKE_PREFIX_PATH": "C:/Qt/6.9.0/mingw_64/lib/cmake"
+    },
 
     "files.associations": {
         "qudpsocket": "cpp",

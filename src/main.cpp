@@ -29,7 +29,7 @@ public:
         // Setup Lua + WebSocket
         radio = new Radio();
         luaInterface = new LuaInterface(radio, m_world);
-        m_webSocketServer = new WebSocketServer(luaInterface, this);
+        m_webSocketServer = new WebSocketServer(radio, luaInterface, this);
 
         // Setup console reader
         m_consoleReader = new ConsoleReader(luaInterface);

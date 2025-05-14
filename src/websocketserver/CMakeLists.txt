@@ -8,6 +8,8 @@ target_link_libraries(websocketserver
     Qt6::Core
     Qt6::WebSockets
     luainterface
+    radio
+    utilities
 )
 
 # Include the current directory for header files

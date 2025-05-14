@@ -1,7 +1,7 @@
 #include "websocketserver.hpp"
 
-WebSocketServer::WebSocketServer(LuaInterface* _luaInterface, QObject *parent)
-    : luaInterface(_luaInterface), QObject(parent),
+WebSocketServer::WebSocketServer(Radio* _radio, LuaInterface* _luaInterface, QObject *parent)
+    : m_radio(_radio), luaInterface(_luaInterface), QObject(parent),
       server(new QWebSocketServer(QStringLiteral("SSL Server"),
                                   QWebSocketServer::NonSecureMode,
                                   this)) {
@@ -69,6 +69,34 @@ void WebSocketServer::onTextMessageReceived(const QString &message) {
         luaInterface->stopScript(); // implement pause behavior in LuaInterface
         qDebug() << "Script paused";
     }
+else if (type == "joystickCommand") {
+    int id = obj.value("id").toInt(-1);
+    int team = obj.value("team").toInt(-1);
+    double vx = obj.value("vx").toDouble(0.0);
+    double vy = obj.value("vy").toDouble(0.0);
+    double omega = obj.value("omega").toDouble(0.0);
+    bool kick = obj.value("kick").toBool(false);
+    double dribbler = obj.value("dribbler").toDouble(0.0); // ✅ New field
+
+    if (id < 0 || team < 0) {
+        qWarning() << "Invalid joystickCommand: missing id or team";
+        return;
+    }
+
+    // Create and send motion command
+    MotionCommand cmd(id, team, vx, vy);
+    cmd.setAngular(omega);
+
+    KickerCommand kicker(id, team);
+    kicker.setKickX(kick);
+    kicker.setDribbler(dribbler); // ✅ Apply dribbler
+
+    if (m_radio) {
+        m_radio->addMotionCommand(cmd);
+        m_radio->addKickerCommand(kicker);
+    }
+}
+
 }
 
 

@@ -63,7 +63,7 @@ Follow platform-specific instructions in the [setup guide](#installation) below.
 3. Use `windeployqt` to bundle dependencies:
 
 ```cmd
-windeployqt C:\CondorSSL\build\SysmicSoftware.exe
+windeployqt C:\CondorSSL\build\engine.exe
 ```
 
 ---

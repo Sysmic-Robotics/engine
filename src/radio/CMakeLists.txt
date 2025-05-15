@@ -12,6 +12,7 @@ target_link_libraries(radio
     PUBLIC Qt6::Network
     PRIVATE utilities
     PUBLIC protobuf
+    PRIVATE world
 )
 
 # Include the current directory for header files

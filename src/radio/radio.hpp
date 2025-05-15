@@ -1,26 +1,29 @@
 // radio.hpp
-#ifndef RADIO_HPP 
+#ifndef RADIO_HPP
 #define RADIO_HPP
 
+#include <QObject>
 #include <QHash>
 #include <QDebug>
 #include <QSerialPort>
-
+#include <QFile>
 #include "robotcommand.hpp"
 #include "grsim.hpp"
+#include "world.hpp"
 
-class Radio {
+class Radio : public QObject{
+    Q_OBJECT
 public:
     /// Constructor
     /// @param portName  Nombre del puerto (ej. "COM5")
     /// @param baudRate  Baud rate (ej. QSerialPort::Baud115200)
     /// @param useRadio  true = enviar por USB serial; false = enviar sólo a grSim
-    Radio(bool useRadio = false, const QString &portName = "COM5");
+    Radio(World *_world, bool useRadio = false, const QString &portName = "COM5");
 
     ~Radio();
 
-    void addMotionCommand(const MotionCommand& motion);
-    void addKickerCommand(const KickerCommand& kicker);
+    void addMotionCommand(const MotionCommand &motion);
+    void addKickerCommand(const KickerCommand &kicker);
 
     /// Envía todos los comandos acumulados
     void sendCommands();
@@ -30,8 +33,18 @@ public:
 
 private:
     QHash<int, RobotCommand> commandMap;
-    QSerialPort          serialPort;
-    bool                 m_useRadio;
+    QSerialPort serialPort;
+    bool m_useRadio;
+    World *m_world;
+
+private:
+    bool m_isRecording = false;
+    QFile m_logFile;
+    QTextStream m_logStream;
+
+public slots:
+    void startRecording();
+    void stopRecording();
 };
 
 #endif // RADIO_HPP

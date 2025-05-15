@@ -28,6 +28,7 @@ private:
     int team;
     QVector2D position;  // [x, y]
     QVector2D velocity;
+    float angular_velocity;
     float orientation = 0.0f;  // Explicitly initialize
     float height = 0.0f;       // Explicitly initialize
     bool active = false;

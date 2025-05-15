@@ -1,5 +1,6 @@
 #pragma once
 
+#include <QObject>
 #include <QThread>
 #include <QString>
 #include "luainterface.hpp"
@@ -17,4 +18,9 @@ protected:
 private:
     LuaInterface* m_luaInterface;
     QString lastScriptPath;  // Stores the last successfully run script for 'reload'
+
+signals:
+    void startRecording();
+    void stopRecording();
+
 };

@@ -2,8 +2,8 @@
 #include "radio.hpp"
 #include "packetserializer.hpp"
 
-Radio::Radio(bool useRadio, const QString &portName)
-    : m_useRadio(useRadio)
+Radio::Radio(World* world, bool useRadio, const QString &portName)
+    : m_world(world), m_useRadio(useRadio)
 {
     
     if (m_useRadio) {
@@ -95,6 +95,71 @@ void Radio::sendCommands() {
             );
         }
     }
+    for (auto it = commandMap.begin(); it != commandMap.end(); ++it) {
+        const RobotCommand &cmd = it.value();
+        const MotionCommand &m = cmd.getMotionCommand();
+        const KickerCommand &k = cmd.getKickerCommand();
+
+        if (m_isRecording && m_logFile.isOpen()) {
+            QString timestamp = QDateTime::currentDateTime().toString(Qt::ISODate);
+            RobotState robotState = m_world->getRobotState(cmd.getId(), cmd.getTeam());
+
+            m_logStream << timestamp << ","
+                        << cmd.getId() << ","
+                        << cmd.getTeam() << ","
+                        << cmd.getMotionCommand().getVx() << ","               // Commanded velocity X
+                        << cmd.getMotionCommand().getVy()  << ","
+                        << cmd.getMotionCommand().getAngular() << ","
+                        << robotState.getPosition().x() << ","
+                        << robotState.getPosition().y() << ","
+                        << robotState.getOrientation() << ","
+                        << robotState.getVelocity().x() << ","
+                        << robotState.getVelocity().y() << ","
+                        "\n";
+
+            m_logStream.flush();
+        }
+    }
+
+
 
     commandMap.clear();
+}
+
+
+void Radio::startRecording() {
+    if (!m_logFile.isOpen()) {
+        QString filename = QDateTime::currentDateTime().toString("'log_'yyyyMMdd_HHmmss'.csv'");
+        m_logFile.setFileName(filename);
+        if (m_logFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
+            m_logStream.setDevice(&m_logFile);
+
+            // Updated header to match the final data structure
+            m_logStream << "Timestamp,"
+                        << "RobotID,"
+                        << "Team,"
+                        << "Vx_Command,"
+                        << "Vy_Command,"
+                        << "Angular_Command,"
+                        << "Pos_X,"
+                        << "Pos_Y,"
+                        << "Orientation,"
+                        << "Vx_Actual,"
+                        << "Vy_Actual\n";
+
+            m_isRecording = true;
+            qDebug() << "Recording started: " << filename;
+        } else {
+            qWarning() << "Failed to open log file for writing.";
+        }
+    }
+}
+
+
+void Radio::stopRecording() {
+    if (m_logFile.isOpen()) {
+        m_logFile.close();
+        m_isRecording = false;
+        qDebug() << "Recording stopped.";
+    }
 }

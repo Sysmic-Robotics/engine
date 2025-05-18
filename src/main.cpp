@@ -23,17 +23,21 @@ public:
         m_vision->moveToThread(m_visionThread);
 
         m_worldThread = new QThread(this);
-        m_world = new World(4, 4);
+        m_world = new World(6, 6);
         m_world->moveToThread(m_worldThread);
 
         // Setup Lua + WebSocket
-        radio = new Radio();
+        radio = new Radio(m_world);
         luaInterface = new LuaInterface(radio, m_world);
         m_webSocketServer = new WebSocketServer(radio, luaInterface, this);
 
         // Setup console reader
         m_consoleReader = new ConsoleReader(luaInterface);
         m_consoleReader->start();
+
+        // Connect console commands to radio logging
+        connect(m_consoleReader, &ConsoleReader::startRecording, radio, &Radio::startRecording);
+        connect(m_consoleReader, &ConsoleReader::stopRecording, radio, &Radio::stopRecording);
 
         // Connect vision to world
         connect(m_visionThread, &QThread::started, m_vision, &Vision::startListen);

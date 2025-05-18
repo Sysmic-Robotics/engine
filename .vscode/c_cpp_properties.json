@@ -6,11 +6,20 @@
         "cStandard": "c11",
         "cppStandard": "c++17",
         "intelliSenseMode": "windows-gcc-x64",
+        
         "includePath": [
-          "${workspaceFolder}/**"
-        ]
+          "${workspaceFolder}/**",
+          "C:/Qt/6.9.0/mingw_64/include",
+          "C:/Qt/6.9.0/mingw_64/include/QtCore",
+          "C:/Qt/6.9.0/mingw_64/include/QtGui",
+          "C:/Qt/6.9.0/mingw_64/include/QtWidgets",
+          "C:/Qt/6.9.0/mingw_64/include/QtNetwork",
+          "C:/Qt/6.9.0/mingw_64/include/QtWebSockets",
+          "C:/Qt/6.9.0/mingw_64/include/QtSerialPort"
+    ]
       }
     ],
-    "version": 4
+    "version": 4,
+
   }
   

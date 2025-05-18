@@ -1,8 +1,8 @@
 # The CMakeRoot handles all the libraries necessary to run the code
 cmake_minimum_required(VERSION 3.16)
 
-project(SysmicSoftware VERSION 1.0.0 LANGUAGES CXX)
-set(TARGET SysmicSoftware)
+project(engine VERSION 1.0.0 LANGUAGES CXX)
+set(TARGET engine)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
@@ -50,3 +50,4 @@ FetchContent_MakeAvailable(sol2)
 
 
 add_subdirectory(src)
+

@@ -11,6 +11,7 @@
 #include "luainterface.hpp"
 #include "websocketserver.hpp"
 #include "consolereader.hpp"
+#include "logger.hpp"
 
 class MainApp : public QObject {
     Q_OBJECT
@@ -27,7 +28,7 @@ public:
         m_world->moveToThread(m_worldThread);
 
         // Setup Lua + WebSocket
-        radio = new Radio(m_world);
+        radio = new Radio();
         luaInterface = new LuaInterface(radio, m_world);
         m_webSocketServer = new WebSocketServer(radio, luaInterface, this);
 
@@ -35,9 +36,15 @@ public:
         m_consoleReader = new ConsoleReader(luaInterface);
         m_consoleReader->start();
 
-        // Connect console commands to radio logging
-        connect(m_consoleReader, &ConsoleReader::startRecording, radio, &Radio::startRecording);
-        connect(m_consoleReader, &ConsoleReader::stopRecording, radio, &Radio::stopRecording);
+        logger = new Logger(m_world, radio);
+        // Connect to console commands
+        connect(m_consoleReader, &ConsoleReader::startRecording, logger, [=]() {
+            logger->startLogging();  // Optional: provide custom filename
+        });
+
+        connect(m_consoleReader, &ConsoleReader::stopRecording, logger, [=]() {
+            logger->stopLogging();
+        });
 
         // Connect vision to world
         connect(m_visionThread, &QThread::started, m_vision, &Vision::startListen);
@@ -88,6 +95,7 @@ private slots:
             luaInterface->callProcess();
         }
 
+        logger->logFrame();
         radio->sendCommands();
 
         QJsonObject worldState = m_world->toJson();
@@ -109,6 +117,7 @@ private:
     Radio *radio;
     LuaInterface *luaInterface;
     ConsoleReader *m_consoleReader;
+    Logger *logger;
 };
 
 int main(int argc, char *argv[]) {

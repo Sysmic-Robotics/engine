@@ -7,6 +7,7 @@ add_subdirectory(radio)
 add_subdirectory(luainterface)
 add_subdirectory(websocketserver)
 add_subdirectory(consolereader)
+add_subdirectory(logger)
 # Specify sources in the src directory
 qt_add_executable(engine
     main.cpp
@@ -34,4 +35,5 @@ target_link_libraries(engine
     PRIVATE sol2::sol2
     PRIVATE websocketserver
     PRIVATE consolereader
+    PRIVATE logger
 )

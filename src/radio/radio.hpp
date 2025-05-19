@@ -9,7 +9,6 @@
 #include <QFile>
 #include "robotcommand.hpp"
 #include "grsim.hpp"
-#include "world.hpp"
 
 class Radio : public QObject{
     Q_OBJECT
@@ -18,7 +17,7 @@ public:
     /// @param portName  Nombre del puerto (ej. "COM5")
     /// @param baudRate  Baud rate (ej. QSerialPort::Baud115200)
     /// @param useRadio  true = enviar por USB serial; false = enviar sólo a grSim
-    Radio(World *_world, bool useRadio = false, const QString &portName = "COM5");
+    Radio(bool useRadio = false, const QString &portName = "COM5");
 
     ~Radio();
 
@@ -30,21 +29,12 @@ public:
 
     /// Permite cambiar el modo en tiempo de ejecución
     void setUseRadio(bool enable) { m_useRadio = enable; }
-
+    
+    const QHash<int, RobotCommand>& getCommandMap() const;
 private:
     QHash<int, RobotCommand> commandMap;
     QSerialPort serialPort;
     bool m_useRadio;
-    World *m_world;
-
-private:
-    bool m_isRecording = false;
-    QFile m_logFile;
-    QTextStream m_logStream;
-
-public slots:
-    void startRecording();
-    void stopRecording();
 };
 
 #endif // RADIO_HPP

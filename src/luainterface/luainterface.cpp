@@ -9,7 +9,7 @@ LuaInterface::LuaInterface(Radio* radio, World* world)
     : m_radio(radio), m_world(world)
 {
     m_lua = sol::state();
-    m_lua.open_libraries(sol::lib::base, sol::lib::package, sol::lib::math, sol::lib::os, sol::lib::string);
+    m_lua.open_libraries(sol::lib::base, sol::lib::package, sol::lib::math, sol::lib::os, sol::lib::string, sol::lib::table);
     
 
 
@@ -138,7 +138,7 @@ void LuaInterface::runScript(const QString& scriptPath) {
 
     // Reinitialize the m_lua state to reset the environment
     m_lua = sol::state();
-    m_lua.open_libraries(sol::lib::base, sol::lib::package, sol::lib::math, sol::lib::os, sol::lib::string);
+    m_lua.open_libraries(sol::lib::base, sol::lib::package, sol::lib::math, sol::lib::os, sol::lib::string, sol::lib::table);
 
     // Normalize script path
     QString normalizedPath = QDir(scriptPath).absolutePath();

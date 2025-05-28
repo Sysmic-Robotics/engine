@@ -31,6 +31,9 @@ public:
     void setUseRadio(bool enable) { m_useRadio = enable; }
     
     const QHash<int, RobotCommand>& getCommandMap() const;
+    
+    void teleportRobot(int id, int team, double x, double y, double dir);
+    void teleportBall(double x, double y);
 private:
     QHash<int, RobotCommand> commandMap;
     QSerialPort serialPort;

@@ -15,6 +15,8 @@ public:
 
     void communicate_pos_robot(int id = 0, int yellowteam = 0,
                                double x = 0, double y = 0, double dir = 0);
+    void communicate_pos_ball(double x, double y);
+
 
 private:
     QUdpSocket* sendSocket;

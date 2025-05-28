@@ -117,7 +117,7 @@ void LuaInterface::register_functions() {
         m_radio->addKickerCommand(command);
     });
 
-    // ✅ Tabla grsim con funciones de teletransporte
+    // Tabla grsim con funciones de teletransporte
     sol::table grsim = m_lua.create_table();
 
     grsim.set_function("teleport_robot", [this](int id, int team, double x, double y, double dir) {

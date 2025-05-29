@@ -25,13 +25,9 @@ LuaInterface::LuaInterface(Radio* radio, World* world)
     register_functions();
 }
 
-LuaInterface::~LuaInterface() {
-    // No manual state cleanup is needed; sol::state cleans up automatically.
-}
-
+LuaInterface::~LuaInterface() {}
 
 void LuaInterface::register_functions() {
-    // move_to(robotId, team, point)
     m_lua.set_function("move_to", [this](int robotId, int team, sol::table point) {
         if (!m_world || !m_radio) {
             std::cerr << "Error: LuaInterface, World, or Radio instance is null!" << std::endl;
@@ -45,11 +41,10 @@ void LuaInterface::register_functions() {
             return;
         }
         static Motion motion;
-        MotionCommand cmd = motion.to_point(robotState, QVector2D(x, y), m_world); // ✅ modificado
+        MotionCommand cmd = motion.to_point(robotState, QVector2D(x, y), m_world);
         m_radio->addMotionCommand(cmd);
     });
 
-    // face_to(robotId, team, point, [kp, ki, kd])
     m_lua.set_function("face_to", [this](int robotId, int team, sol::table point, sol::optional<double> kp, sol::optional<double> ki, sol::optional<double> kd) {
     if (!m_world || !m_radio) {
         std::cerr << "Error: LuaInterface, World, or Radio instance is null!" << std::endl;
@@ -83,14 +78,14 @@ void LuaInterface::register_functions() {
         }
         RobotState robotState = m_world->getRobotState(robotId, team);
         sol::table tbl = m_lua.create_table();
-        tbl["id"]          = robotState.getId();
-        tbl["team"]        = robotState.getTeam();
-        tbl["x"]           = robotState.getPosition().x();
-        tbl["y"]           = robotState.getPosition().y();
-        tbl["vel_x"]       = robotState.getVelocity().x();
-        tbl["vel_y"]       = robotState.getVelocity().y();
+        tbl["id"] = robotState.getId();
+        tbl["team"] = robotState.getTeam();
+        tbl["x"] = robotState.getPosition().x();
+        tbl["y"] = robotState.getPosition().y();
+        tbl["vel_x"] = robotState.getVelocity().x();
+        tbl["vel_y"] = robotState.getVelocity().y();
         tbl["orientation"] = robotState.getOrientation();
-        tbl["active"]      = robotState.isActive();
+        tbl["active"] = robotState.isActive();
         return tbl;
     });
 
@@ -139,12 +134,31 @@ void LuaInterface::register_functions() {
         command.setDribbler(speed);
         m_radio->addKickerCommand(command);
     });
+
+    // Tabla grsim con funciones de teletransporte
+    sol::table grsim = m_lua.create_table();
+
+    grsim.set_function("teleport_robot", [this](int id, int team, double x, double y, double dir) {
+        if (!m_radio) {
+            std::cerr << "[m_lua] Error: Radio is null!" << std::endl;
+            return;
+        }
+        m_radio->teleportRobot(id, team, x, y, dir);
+    });
+
+    grsim.set_function("teleport_ball", [this](double x, double y) {
+        if (!m_radio) {
+            std::cerr << "[m_lua] Error: Radio is null!" << std::endl;
+            return;
+        }
+        m_radio->teleportBall(x, y);
+    });
+
+    m_lua["grsim"] = grsim;
 }
 
 void LuaInterface::runScript(const QString& scriptPath) {
     m_runScript = true;
-
-    // Reinitialize the m_lua state to reset the environment
     m_lua = sol::state();
     m_lua.open_libraries(
     sol::lib::base,
@@ -179,7 +193,6 @@ void LuaInterface::runScript(const QString& scriptPath) {
     }
 }
 
-
 void LuaInterface::callProcess() {
     if (m_runScript) {
         sol::protected_function process = m_lua["process"];
@@ -196,7 +209,6 @@ void LuaInterface::callProcess() {
         }
     }
 }
-
 
 bool LuaInterface::haveScript() {
     return m_haveScript;

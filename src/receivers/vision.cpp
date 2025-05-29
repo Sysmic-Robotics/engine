@@ -4,7 +4,7 @@
 #include <QDebug>
 #include <QHash>
 
-constexpr bool USE_KALMAN_FILTER = true;
+constexpr bool USE_KALMAN_FILTER = false;
 
 Vision::Vision(const QString &multicastAddress, int port, QObject *parent)
     : QObject(parent), m_multicastAddress(multicastAddress), m_port(port), m_udpSocket(nullptr)

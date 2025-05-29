@@ -38,14 +38,10 @@ public:
 
         logger = new Logger(m_world, radio);
         // Connect to console commands
-        connect(m_consoleReader, &ConsoleReader::startRecording, logger, [=]() {
-            logger->startLogging();  // Optional: provide custom filename
-        });
-
-        connect(m_consoleReader, &ConsoleReader::stopRecording, logger, [=]() {
-            logger->stopLogging();
-        });
-
+        connect(m_consoleReader, &ConsoleReader::startRecording,
+                logger, &Logger::startLogging);
+        connect(m_consoleReader, &ConsoleReader::stopRecording,
+                logger, &Logger::stopLogging);
         // Connect vision to world
         connect(m_visionThread, &QThread::started, m_vision, &Vision::startListen);
         connect(m_vision, &Vision::robotReceived, m_world, &World::updateRobot);

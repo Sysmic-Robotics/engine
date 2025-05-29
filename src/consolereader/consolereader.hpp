@@ -20,7 +20,7 @@ private:
     QString lastScriptPath;  // Stores the last successfully run script for 'reload'
 
 signals:
-    void startRecording();
+    void startRecording(const QString& filename = QString());
     void stopRecording();
 
 };

@@ -1,7 +1,8 @@
 # Create a library target from vision.cpp and KalmanFilter.cpp
 add_library(receivers
     vision.cpp
-    Kalman/KalmanFilter.cpp
+    kalman/robotkalman.cpp
+    kalman/robotstatscollector.cpp
 )
 
 # Link Qt6 libraries to the Vision library

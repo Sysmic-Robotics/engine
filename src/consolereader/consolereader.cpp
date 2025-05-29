@@ -5,7 +5,7 @@
 void ConsoleReader::run()
 {
     QTextStream input(stdin);
-    qDebug() << "[ConsoleReader] Started. Type 'run <path>', 'pause', or 'reload'...";
+    qDebug() << "[ConsoleReader] Started. Type 'run <path>', 'pause', 'reload', or 'record [filename]'";
 
     QString lastScriptPath;
 
@@ -49,10 +49,12 @@ void ConsoleReader::run()
             qDebug() << "Exiting ConsoleReader thread.";
             break;
         }
-        else if (line == "record")
+        else if (line.startsWith("record"))
         {
-            emit startRecording();
-            qDebug() << "Started recording.";
+            QString filename = line.section(' ', 1).trimmed();
+            qDebug() << "Started recording with"
+                     << (filename.isEmpty() ? "default filename." : "filename: " + filename);
+            emit startRecording(filename);
         }
         else if (line == "stoprecord")
         {

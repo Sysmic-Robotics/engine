@@ -9,7 +9,19 @@ LuaInterface::LuaInterface(Radio* radio, World* world)
     : m_radio(radio), m_world(world)
 {
     m_lua = sol::state();
-    m_lua.open_libraries(sol::lib::base, sol::lib::package, sol::lib::math, sol::lib::os, sol::lib::string);
+    m_lua.open_libraries(
+    sol::lib::base,
+    sol::lib::debug,
+    sol::lib::package,
+    sol::lib::io,       // needed for file reading
+    sol::lib::string,
+    sol::lib::math,
+    sol::lib::table,
+    sol::lib::os
+    );
+
+
+    // Register your game-specific functions
     register_functions();
 }
 
@@ -25,7 +37,7 @@ void LuaInterface::register_functions() {
         double y = point["y"];
         RobotState robotState = m_world->getRobotState(robotId, team);
         if (!robotState.isActive()) {
-            std::cerr << "[m_lua] Error: Robot " << robotId << " is inactive or not found!" << std::endl;
+            std::cerr << "[Lua] Error: Robot " << robotId << " is inactive or not found!" << std::endl;
             return;
         }
         static Motion motion;
@@ -34,24 +46,30 @@ void LuaInterface::register_functions() {
     });
 
     m_lua.set_function("face_to", [this](int robotId, int team, sol::table point, sol::optional<double> kp, sol::optional<double> ki, sol::optional<double> kd) {
-        if (!m_world || !m_radio) {
-            std::cerr << "Error: LuaInterface, World, or Radio instance is null!" << std::endl;
-            return;
-        }
-        double x = point["x"];
-        double y = point["y"];
-        RobotState robotState = m_world->getRobotState(robotId, team);
-        if (!robotState.isActive()) {
-            std::cerr << "[m_lua] Error: Robot " << robotId << " is inactive or not found!" << std::endl;
-            return;
-        }
-        double Kp = kp.value_or(1.0);
-        double Ki = ki.value_or(1.0);
-        double Kd = kd.value_or(0.1);
-        static Motion motion;
-        MotionCommand cmd = motion.face_to(robotState, QVector2D(x, y), Kp, Ki, Kd);
-        m_radio->addMotionCommand(cmd);
-    });
+    if (!m_world || !m_radio) {
+        std::cerr << "Error: LuaInterface, World, or Radio instance is null!" << std::endl;
+        return;
+    }
+
+    double x = point["x"];
+    double y = point["y"];
+    RobotState robotState = m_world->getRobotState(robotId, team);
+
+    if (!robotState.isActive()) {
+        std::cerr << "[Lua] Error: Robot " << robotId << " is inactive or not found!" << std::endl;
+        return;
+    }
+
+    // Set default PID parameters if not provided
+    double Kp = kp.value_or(1.0);
+    double Ki = ki.value_or(1.0);
+    double Kd = kd.value_or(0.1);
+
+    static Motion motion;
+    MotionCommand cmd = motion.face_to(robotState, QVector2D(x, y), Kp, Ki, Kd);
+    m_radio->addMotionCommand(cmd);
+});
+
 
     m_lua.set_function("get_robot_state", [this](int robotId, int team) -> sol::table {
         if (!m_world) {
@@ -87,7 +105,7 @@ void LuaInterface::register_functions() {
 
     m_lua.set_function("kickx", [this](int robotId, int team) {
         if (!m_radio) {
-            std::cerr << "[m_lua] Error: Radio is null!" << std::endl;
+            std::cerr << "[Lua] Error: Radio is null!" << std::endl;
             return;
         }
         KickerCommand command(robotId, team);
@@ -97,7 +115,7 @@ void LuaInterface::register_functions() {
 
     m_lua.set_function("kickz", [this](int robotId, int team) {
         if (!m_radio) {
-            std::cerr << "[m_lua] Error: Radio is null!" << std::endl;
+            std::cerr << "[Lua] Error: Radio is null!" << std::endl;
             return;
         }
         KickerCommand command(robotId, team);
@@ -107,7 +125,7 @@ void LuaInterface::register_functions() {
 
     m_lua.set_function("dribbler", [this](int robotId, int team, double speed) {
         if (!m_radio) {
-            std::cerr << "[m_lua] Error: Radio is null!" << std::endl;
+            std::cerr << "[Lua] Error: Radio is null!" << std::endl;
             return;
         }
         if (speed < 0) speed = 0;
@@ -142,8 +160,17 @@ void LuaInterface::register_functions() {
 void LuaInterface::runScript(const QString& scriptPath) {
     m_runScript = true;
     m_lua = sol::state();
-    m_lua.open_libraries(sol::lib::base, sol::lib::package, sol::lib::math, sol::lib::os, sol::lib::string);
-
+    m_lua.open_libraries(
+    sol::lib::base,
+    sol::lib::debug,
+    sol::lib::package,
+    sol::lib::io,       // needed for file reading
+    sol::lib::string,
+    sol::lib::math,
+    sol::lib::table,
+    sol::lib::os
+    );
+    // Normalize script path
     QString normalizedPath = QDir(scriptPath).absolutePath();
     std::string fullScriptPath = scriptPath.toStdString();
 
@@ -153,15 +180,15 @@ void LuaInterface::runScript(const QString& scriptPath) {
 
     register_functions();
 
-    std::cout << "[m_lua] Loading script: " << fullScriptPath << std::endl;
+    std::cout << "[Lua] Loading script: " << fullScriptPath << std::endl;
 
     try {
         m_lua.script_file(fullScriptPath);
-        std::cout << "[m_lua] Script loaded successfully!" << std::endl;
+        std::cout << "[Lua] Script loaded successfully!" << std::endl;
         m_haveScript = true;
     }
     catch (const sol::error &e) {
-        std::cerr << "[m_lua] Error loading script: " << e.what() << std::endl;
+        std::cerr << "[Lua] Error loading script: " << e.what() << std::endl;
         m_haveScript = false;
     }
 }
@@ -170,7 +197,7 @@ void LuaInterface::callProcess() {
     if (m_runScript) {
         sol::protected_function process = m_lua["process"];
         if (!process.valid()) {
-            std::cerr << "[m_lua] Error: process() is not defined in script!" << std::endl;
+            std::cerr << "[Lua] Error: process() is not defined in script!" << std::endl;
             return;
         }
 
@@ -178,7 +205,7 @@ void LuaInterface::callProcess() {
         if (!result.valid()) {
             m_runScript = false;
             sol::error err = result;
-            std::cerr << "[m_lua] Runtime error in process(): " << err.what() << std::endl;
+            std::cerr << "[Lua] Runtime error in process(): " << err.what() << std::endl;
         }
     }
 }

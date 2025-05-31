@@ -75,8 +75,13 @@ windeployqt C:\CondorSSL\build\engine.exe
    * Qt6 (gcc\_64)
    * Lua (e.g. `sudo apt install liblua5.3-dev`)
    * grSim simulator ([grSim GitHub](https://github.com/RoboCup-SSL/grSim))
+   
+2. Pre-build:
 
-2. Build and Run in VSCode:
+   * Run compile_protobuf.sh
+   * Delete build directory
+
+3. Build and Run in VSCode:
 
    * Open Command Palette → CMake: Configure
    * Then: Build → Debug

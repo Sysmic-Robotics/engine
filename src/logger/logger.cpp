@@ -12,6 +12,7 @@ void Logger::startLogging(const QString& filename) {
     if (m_isLogging) return;
 
     QString filePath = filename;
+    qDebug() << "filename is " << filename;
     if (filePath.isEmpty()) {
         QString timestamp = QDateTime::currentDateTime().toString("yyyyMMdd_HHmmss");
         QDir().mkpath("logs");

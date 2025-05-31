@@ -2,6 +2,7 @@
 #include <QByteArray>
 #include <QHostAddress>
 #include <QtMath>
+#include <Qdebug>
 
 Grsim::Grsim() {
     sendSocket = new QUdpSocket();
@@ -56,4 +57,24 @@ void Grsim::communicate_pos_robot(int id, int yellowteam, double x, double y, do
     if (!data.isEmpty()) {
         sendSocket->writeDatagram(data, QHostAddress("127.0.0.1"), GRSIM_COMMAND_PORT);
     }
+    qDebug()<<"utilizando funcion puta";
+}
+
+void Grsim::communicate_pos_ball(double x, double y) {
+    grSim_Packet packet;
+    grSim_BallReplacement* ball = packet.mutable_replacement()->mutable_ball();
+
+    ball->set_x(x);
+    ball->set_y(y);
+    ball->set_vx(0);
+    ball->set_vy(0);
+
+    QByteArray data;
+    data.append(packet.SerializeAsString().c_str(), packet.ByteSizeLong());
+
+    if (!data.isEmpty()) {
+        sendSocket->writeDatagram(data, QHostAddress("127.0.0.1"), GRSIM_COMMAND_PORT);
+    }
+
+    qDebug() << "[grSim] Ball teleported to:" << x << y;
 }

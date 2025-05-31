@@ -25,7 +25,7 @@ bool FastPathPlanner::Environment::collides(const QVector2D& point) const {
         (point.x() >= 4 && point.x() <= 4.5 && point.y() >= -0.5 && point.y() <= 0.5))
         return true;
     for (const auto& robot : robots) {
-        if ((point - robot).length() <= 0.4)  // Aumentado de 0.18 a 0.35
+        if ((point - robot).length() <= 0.2)  // Aumentado de 0.18 a 0.35
             return true;
     }
     return false;

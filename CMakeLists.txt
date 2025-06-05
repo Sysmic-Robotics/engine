@@ -51,3 +51,10 @@ FetchContent_MakeAvailable(sol2)
 
 add_subdirectory(src)
 
+if(WIN32 AND DEFINED ENV{QT6_DIR})
+    add_custom_command(TARGET engine POST_BUILD
+        COMMAND "$ENV{QT6_DIR}/bin/windeployqt.exe" "$<TARGET_FILE:engine>"
+        COMMENT "Deploying Qt runtime"
+    )
+endif()
+

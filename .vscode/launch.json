@@ -2,21 +2,36 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Debug engine",
+            "name": "Debug engine (Windows)",
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/build/engine.exe",
-            "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [
                 {
                     "name": "PATH",
-                    "value": "C:\\Qt\\6.8.2\\mingw_64\\bin;${env:PATH}"
+                    "value": "${env:QT6_DIR}/bin;${env:PATH}"
                 }
             ],
             "MIMode": "gdb",
             "miDebuggerPath": "c:/mingw64/bin/gdb.exe",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+        {
+            "name": "Debug engine (Linux)",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/engine",
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "MIMode": "gdb",
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",

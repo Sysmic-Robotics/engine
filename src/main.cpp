@@ -4,6 +4,7 @@
 #include <QElapsedTimer>
 #include <QDebug>
 #include <QJsonObject>
+#include <QSettings>
 
 #include "vision.hpp"
 #include "world.hpp"
@@ -18,9 +19,15 @@ class MainApp : public QObject {
 
 public:
     MainApp(QObject* parent = nullptr) : QObject(parent) {
+        QSettings cfg("config.ini", QSettings::IniFormat);
+        QString visionHost = cfg.value("engine/vision_host", "224.5.23.2").toString();
+        int visionPort = cfg.value("engine/vision_port", 10020).toInt();
+        bool useRadio = cfg.value("engine/use_radio", false).toBool();
+        QString serialPort = cfg.value("engine/serial_port", "COM5").toString();
+
         // Setup threads and vision
         m_visionThread = new QThread(this);
-        m_vision = new Vision("224.5.23.2", 10020);
+        m_vision = new Vision(visionHost, visionPort);
         m_vision->moveToThread(m_visionThread);
 
         m_worldThread = new QThread(this);
@@ -28,7 +35,7 @@ public:
         m_world->moveToThread(m_worldThread);
 
         // Setup Lua + WebSocket
-        radio = new Radio();
+        radio = new Radio(useRadio, serialPort);
         luaInterface = new LuaInterface(radio, m_world);
         m_webSocketServer = new WebSocketServer(radio, luaInterface, this);
 

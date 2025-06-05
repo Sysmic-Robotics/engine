@@ -52,19 +52,9 @@ Follow platform-specific instructions in the [setup guide](#installation) below.
    * CMake ≥ 3.31
    * VSCode with **CMake Tools** extension
 
-2. Configure `.vscode/settings.json`:
+2. Copy `.env.example` to `.env` and adjust `QT6_DIR` to point to your Qt installation.
 
-```json
-"cmake.configureSettings": {
-  "CMAKE_PREFIX_PATH": "C:/Qt/6.8.3/mingw_64/lib/cmake"
-}
-```
-
-3. Use `windeployqt` to bundle dependencies:
-
-```cmd
-windeployqt C:\CondorSSL\build\engine.exe
-```
+3. The project automatically runs `windeployqt` after building when `QT6_DIR` is set.
 
 ---
 
@@ -80,6 +70,9 @@ windeployqt C:\CondorSSL\build\engine.exe
 
    * Open Command Palette → CMake: Configure
    * Then: Build → Debug
+
+The application reads runtime settings from `config.ini`. Adjust the vision
+port or enable the serial radio here without recompiling.
 
 > If Qt6 is not found, manually set the `Qt6_DIR` using `CMake: Edit Cache (UI)`.
 

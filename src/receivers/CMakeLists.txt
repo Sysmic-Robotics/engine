@@ -16,5 +16,5 @@ target_link_libraries(receivers
 # Include headers from current dir and Kalman subdirectory
 target_include_directories(receivers PUBLIC 
     ${CMAKE_CURRENT_SOURCE_DIR}
-    ${CMAKE_CURRENT_SOURCE_DIR}/Kalman
+    ${CMAKE_CURRENT_SOURCE_DIR}/kalman
 )

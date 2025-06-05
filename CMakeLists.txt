@@ -1,13 +1,13 @@
 # The CMakeRoot handles all the libraries necessary to run the code
 cmake_minimum_required(VERSION 3.16)
 
-project(engine VERSION 1.0.0 LANGUAGES CXX)
+project(engine VERSION 1.0.0 LANGUAGES CXX C)
 set(TARGET engine)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Setup Qt6
-find_package(Qt6 REQUIRED COMPONENTS Core Network Gui Widgets WebSockets SerialPort)
+find_package(Qt6 REQUIRED COMPONENTS Core Network Gui Widgets WebSockets SerialPort Test)
 qt_standard_project_setup()
 
 # Build protobuf
@@ -50,4 +50,7 @@ FetchContent_MakeAvailable(sol2)
 
 
 add_subdirectory(src)
+
+enable_testing()
+add_subdirectory(tests)
 

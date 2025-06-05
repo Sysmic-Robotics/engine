@@ -2,7 +2,7 @@
 #include <QByteArray>
 #include <QHostAddress>
 #include <QtMath>
-#include <Qdebug>
+#include <QDebug>
 
 Grsim::Grsim() {
     sendSocket = new QUdpSocket();

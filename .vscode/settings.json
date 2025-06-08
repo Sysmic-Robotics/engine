@@ -1,12 +1,4 @@
 {
-    "cmake.configureSettings": {
-        "CMAKE_PREFIX_PATH": "${QT_PREFIX_PATH}/lib/cmake"
-    },
-    
-    "cmake.environment": {
-        "Qt6_DIR": "${QT_PREFIX_PATH}/lib/cmake/Qt6"
-    },
-
     "files.associations": {
         "qudpsocket": "cpp",
         "qhostaddress": "cpp",

@@ -7,12 +7,11 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 if(WIN32)
-    set(QT_PREFIX_PATH "C:/Qt/6.9.0/mingw_64" ${QT_PREFIX_PATH})
+    set(CMAKE_PREFIX_PATH "C:/Qt/6.9.0/mingw_64/lib/cmake" ${CMAKE_PREFIX_PATH})
 else()
-    set(QT_PREFIX_PATH "/opt/Qt/6.9.0/gcc_64" ${QT_PREFIX_PATH})
+    set(CMAKE_PREFIX_PATH "/opt/Qt/6.9.0/gcc_64/lib/cmake" ${CMAKE_PREFIX_PATH})
 endif()
 
-set(CMAKE_PREFIX_PATH "${QT_PREFIX_PATH}/lib/cmake" ${CMAKE_PREFIX_PATH})
 # Setup Qt6
 find_package(Qt6 REQUIRED COMPONENTS Core Network Gui Widgets WebSockets SerialPort)
 qt_standard_project_setup()

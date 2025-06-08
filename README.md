@@ -47,20 +47,23 @@ Follow platform-specific instructions in the [setup guide](#installation) below.
 
 1. Install:
 
-   * MinGW
+   * MinGW (https://winlibs.com/)
    * Qt6 (with SerialPort and WebSockets)
-   * CMake ≥ 3.31
+   * CMake  3.31 (https://cmake.org/files/) 
    * VSCode with **CMake Tools** extension
+   * grSim simulator ([grSim GitHub](https://github.com/RoboCup-SSL/grSim))
 
-2. Configure `.vscode/settings.json`:
+2. Configure :
 
-```json
-"cmake.configureSettings": {
-  "CMAKE_PREFIX_PATH": "C:/Qt/6.8.3/mingw_64/lib/cmake"
-}
-```
 
-3. Use `windeployqt` to bundle dependencies:
+   * Add MinGW location to CMake Tools using Configure
+   * Add Cmake Path to VSCode Settings
+
+3. Run :
+   * Build using CMake Tools
+   * Run code by launching the debugger
+
+4. Opcional use `windeployqt` to bundle dependencies:
 
 ```cmd
 windeployqt C:\CondorSSL\build\engine.exe
@@ -72,16 +75,12 @@ windeployqt C:\CondorSSL\build\engine.exe
 
 1. Install:
 
-   * Qt6 (gcc\_64)
+   * Qt6 (gcc\_64 with SerialPort and WebSockets)
    * Lua (e.g. `sudo apt install liblua5.3-dev`)
    * grSim simulator ([grSim GitHub](https://github.com/RoboCup-SSL/grSim))
    
-2. Pre-build:
 
-   * Run compile_protobuf.sh
-   * Delete build directory
-
-3. Build and Run in VSCode:
+2. Build and Run in VSCode:
 
    * Open Command Palette → CMake: Configure
    * Then: Build → Debug

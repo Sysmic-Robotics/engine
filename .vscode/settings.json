@@ -1,6 +1,11 @@
 {
+    // Configuración de CMake directa usando la ruta de Qt guardada en QT_PREFIX_PATH
     "cmake.configureSettings": {
-    "CMAKE_PREFIX_PATH": "C:/Qt/6.9.0/mingw_64/lib/cmake"
+        "CMAKE_PREFIX_PATH": "${QT_PREFIX_PATH}/lib/cmake"
+    },
+    
+    "cmake.environment": {
+        "Qt6_DIR": "${QT_PREFIX_PATH}/lib/cmake/Qt6"
     },
 
     "files.associations": {

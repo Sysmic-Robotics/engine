@@ -8,7 +8,7 @@ $protoc = "C:/protoc/bin/protoc.exe"
 $dstDir = "./src/protobuf"
 
 # Archivos de RoboCup SSL
-$srcSSL = "./src/protobuf/squemes/robocup_ssl"
+$srcSSL = "./src/protobuf/protos"
 $sslProtos = @(
     "messages_robocup_ssl_detection.proto",
     "messages_robocup_ssl_wrapper.proto",
@@ -16,7 +16,7 @@ $sslProtos = @(
 )
 
 # Archivos de GrSim
-$srcGrSim = "./src/protobuf/squemes/grsim"
+$srcGrSim = "./src/protobuf/protos"
 $grsimProtos = @(
     "grSim_Commands.proto",
     "grSim_Packet.proto",

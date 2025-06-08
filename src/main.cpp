@@ -21,9 +21,9 @@ public:
     MainApp(QObject* parent = nullptr) : QObject(parent) {
         QSettings cfg("config.ini", QSettings::IniFormat);
         QString visionHost = cfg.value("engine/vision_host", "224.5.23.2").toString();
-        int visionPort = cfg.value("engine/vision_port", 10020).toInt();
+        int visionPort = cfg.value("engine/vision_port", 10006).toInt();
         bool useRadio = cfg.value("engine/use_radio", false).toBool();
-        QString serialPort = cfg.value("engine/serial_port", "COM5").toString();
+        QString serialPort = cfg.value("engine/serial_port", "/dev/ttyUSB0").toString();
 
         // Setup threads and vision
         m_visionThread = new QThread(this);

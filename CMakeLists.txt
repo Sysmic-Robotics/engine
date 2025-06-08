@@ -12,6 +12,7 @@ else()
     set(QT_PREFIX_PATH "/opt/Qt/6.9.0/gcc_64" ${QT_PREFIX_PATH})
 endif()
 
+set(CMAKE_PREFIX_PATH "${QT_PREFIX_PATH}/lib/cmake" ${CMAKE_PREFIX_PATH})
 # Setup Qt6
 find_package(Qt6 REQUIRED COMPONENTS Core Network Gui Widgets WebSockets SerialPort)
 qt_standard_project_setup()

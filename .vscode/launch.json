@@ -31,11 +31,11 @@
             "environment": [
                 {
                     "name": "PATH",
-                    "value": "C:\\Qt\\6.8.2\\mingw_64\\bin;${env:PATH}"
+                    "value": "C:\\Qt\\6.9.0\\mingw_64\\bin;${env:PATH}"
                 }
             ],
             "MIMode": "gdb",
-            "miDebuggerPath": "c:/mingw64/bin/gdb.exe",
+            "miDebuggerPath": "C:/mingw64/bin/gdb.exe",
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",

@@ -6,6 +6,12 @@ set(TARGET engine)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+if(WIN32)
+    set(CMAKE_PREFIX_PATH "C:/Qt/6.9.0/mingw_64/lib/cmake" ${CMAKE_PREFIX_PATH})
+else()
+    set(CMAKE_PREFIX_PATH "/opt/Qt/6.9.0/gcc_64/lib/cmake" ${CMAKE_PREFIX_PATH})
+endif()
+
 # Setup Qt6
 find_package(Qt6 REQUIRED COMPONENTS Core Network Gui Widgets WebSockets SerialPort Test)
 qt_standard_project_setup()
@@ -21,7 +27,11 @@ include(CompileProtobuf)
 set(PROTOBUF_ROOT "${CMAKE_BINARY_DIR}/project_protobuf-prefix")  # <- more correct than using 'build/project_protobuf-prefix'
 set(Protobuf_PROTOC_EXECUTABLE "${PROTOBUF_ROOT}/bin/protoc")
 set(Protobuf_INCLUDE_DIR "${PROTOBUF_ROOT}/include")
-set(Protobuf_LIBRARIES "${PROTOBUF_ROOT}/lib/libprotobuf.a")  # or .lib on Windows
+if(WIN32)
+    set(Protobuf_LIBRARIES "${PROTOBUF_ROOT}/lib/libprotobuf.lib")  # Use .lib on Windows
+else()
+    set(Protobuf_LIBRARIES "${PROTOBUF_ROOT}/lib/libprotobuf.a")  # Use .a on Linux
+endif()
 set(PROTO_SRC_DIR "${CMAKE_SOURCE_DIR}/src/protobuf/protos")
 set(PROTO_GEN_DIR "${CMAKE_SOURCE_DIR}/src/protobuf")
 define_proto_generation_target(generate_protos ${PROTO_SRC_DIR} ${PROTO_GEN_DIR})
@@ -40,11 +50,11 @@ add_subdirectory(lua)
 
 include(FetchContent)
 
-# Fetch sol2 using a valid tag (e.g., v3.3.0)
+# Fetch sol2 using a valid tag (e.g., v3.3.1)
 FetchContent_Declare(
     sol2
     GIT_REPOSITORY https://github.com/ThePhD/sol2.git
-    GIT_TAG        v3.3.0
+    GIT_TAG        v3.3.1
 )
 FetchContent_MakeAvailable(sol2)
 

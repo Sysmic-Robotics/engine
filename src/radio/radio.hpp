@@ -17,7 +17,7 @@ public:
     /// @param portName  Nombre del puerto (ej. "COM5")
     /// @param baudRate  Baud rate (ej. QSerialPort::Baud115200)
     /// @param useRadio  true = enviar por USB serial; false = enviar sólo a grSim
-    Radio(bool useRadio = false, const QString &portName = "COM5");
+    Radio(bool useRadio = true, const QString &portName = "COM5"); ///dev/ttyUSB0
 
     ~Radio();
 

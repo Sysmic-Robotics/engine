@@ -234,4 +234,8 @@ bool LuaInterface::haveScript() {
 
 void LuaInterface::stopScript() {
     m_runScript = false;
+    MotionCommand cmd(0, 0, 0,0);
+    cmd.setAngular(0);
+    m_radio->addMotionCommand(cmd);
+    qDebug() << "[Lua] Script stopped.";
 }

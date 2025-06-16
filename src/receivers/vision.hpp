@@ -13,7 +13,6 @@
 #include "kalman/robotstatscollector.hpp"
 
 
-
 class Vision : public QObject{
     Q_OBJECT  // Add this macro to enable Qt's signal/slot mechanism
 public:

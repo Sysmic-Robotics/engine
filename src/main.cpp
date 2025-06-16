@@ -81,27 +81,41 @@ public:
     }
 
 private slots:
-    void update() {
-        QElapsedTimer timer;
-        timer.start();
+void update() {
+    QElapsedTimer timer;
+    timer.start();
 
-        m_world->update();
+    m_world->update();
 
-        if (luaInterface->haveScript()) {
-            luaInterface->callProcess();
-        }
+    qint64 processTimeUs = 0;
+    if (luaInterface->haveScript()) {
+        QElapsedTimer processTimer;
+        processTimer.start();
 
-        logger->logFrame();
-        radio->sendCommands();
+        luaInterface->callProcess();
 
-        QJsonObject worldState = m_world->toJson();
-
-        QJsonObject metrics;
-        metrics["updateTimeUs"] = static_cast<int>(timer.nsecsElapsed() / 1000);
-        worldState["metrics"] = metrics;
-
-        m_webSocketServer->broadcast(worldState);
+        processTimeUs = processTimer.nsecsElapsed() / 1000;
     }
+
+    logger->logFrame();
+    radio->sendCommands();
+
+    QJsonObject worldState = m_world->toJson();
+
+    QJsonObject metrics;
+    qint64 updateTimeUs = timer.nsecsElapsed() / 1000;
+    metrics["updateTimeUs"] = static_cast<int>(updateTimeUs);
+    metrics["processTimeUs"] = static_cast<int>(processTimeUs);
+    worldState["metrics"] = metrics;
+
+    m_webSocketServer->broadcast(worldState);
+
+    // Warn if the frame took too long
+    if (updateTimeUs > 16000) {
+        qWarning() << "Update() took too long:" << updateTimeUs << "us";
+    }
+}
+
 
 private:
     QThread *m_visionThread;

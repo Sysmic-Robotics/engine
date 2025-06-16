@@ -89,6 +89,24 @@ void LuaInterface::register_functions() {
         return tbl;
     });
 
+    m_lua.set_function("send_velocity", [this](int robotId, int team, double vx, double vy, double omega) {
+    if (!m_world || !m_radio) {
+        std::cerr << "Error: LuaInterface, World, or Radio instance is null!" << std::endl;
+        return;
+    }
+
+    RobotState robotState = m_world->getRobotState(robotId, team);
+    if (!robotState.isActive()) {
+        std::cerr << "[m_lua] Error: Robot " << robotId << " is inactive or not found!" << std::endl;
+        return;
+    }
+
+    MotionCommand cmd(robotId, team, vx,vy);
+    cmd.setAngular(omega);
+
+    m_radio->addMotionCommand(cmd);
+    });
+
     m_lua.set_function("get_ball_state", [this]() -> sol::table {
         if (!m_world) {
             std::cerr << "Error: LuaInterface or World instance is null!" << std::endl;

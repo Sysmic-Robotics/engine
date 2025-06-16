@@ -21,9 +21,11 @@ FastPathPlanner::Environment::Environment(const std::vector<QVector2D>& robots) 
 bool FastPathPlanner::Environment::collides(const QVector2D& point) const {
     if (point.x() < -4.5 || point.x() > 4.5 || point.y() < -3.0 || point.y() > 3.0)
         return true;
+    /*
     if ((point.x() >= -4.5 && point.x() <= -4 && point.y() >= -0.5 && point.y() <= 0.5) ||
         (point.x() >= 4 && point.x() <= 4.5 && point.y() >= -0.5 && point.y() <= 0.5))
         return true;
+    */  
     for (const auto& robot : robots) {
         if ((point - robot).length() <= 0.2)  // Aumentado de 0.18 a 0.35
             return true;

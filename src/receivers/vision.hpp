@@ -8,7 +8,7 @@
 #include <utility> // for std::pair
 #include "../protobuf/ssl_vision_wrapper.pb.h"
 #include "../protobuf/ssl_vision_detection.pb.h"
-#include "robotstate.hpp"
+#include "../utilities/robotstate.hpp"
 #include "kalman/robotkalman.hpp"
 #include "kalman/robotstatscollector.hpp"
 

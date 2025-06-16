@@ -47,6 +47,8 @@ public:
         bool use_radio = settings.value("Radio/use_radio", true).toBool();
         QString radio_port = settings.value("Radio/port_name", "/dev/ttyUSB0").toString();
         qint32 radio_baud = settings.value("Radio/baud_rate", QSerialPort::Baud115200).toInt();
+
+        // Create Radio and LuaInterface
         radio = new Radio(use_radio, radio_port, radio_baud);
         luaInterface = new LuaInterface(radio, m_world);
         m_webSocketServer = new WebSocketServer(radio, luaInterface, this);

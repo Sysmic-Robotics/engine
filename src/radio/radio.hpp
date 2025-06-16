@@ -14,10 +14,10 @@ class Radio : public QObject{
     Q_OBJECT
 public:
     /// Constructor
-    /// @param portName  Nombre del puerto (ej. "COM5")
-    /// @param baudRate  Baud rate (ej. QSerialPort::Baud115200)
     /// @param useRadio  true = enviar por USB serial; false = enviar sólo a grSim
-    Radio(bool useRadio = true, const QString &portName = "COM5"); ///dev/ttyUSB0
+    /// @param portName  Nombre del puerto (ej. "COM5" o "/dev/ttyUSB0")
+    /// @param baudRate  Baud rate (ej. QSerialPort::Baud115200)
+    Radio(bool useRadio = true, const QString &portName = "COM5", qint32 baudRate = QSerialPort::Baud115200);
 
     ~Radio();
 
@@ -38,6 +38,8 @@ private:
     QHash<int, RobotCommand> commandMap;
     QSerialPort serialPort;
     bool m_useRadio;
+    qint32 m_baudRate;
+    QString m_portName;
 };
 
 #endif // RADIO_HPP

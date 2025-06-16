@@ -4,6 +4,8 @@
 #include <QElapsedTimer>
 #include <QDebug>
 #include <QJsonObject>
+#include <QSettings>
+#include <QFileInfo>
 
 #include "vision.hpp"
 #include "world.hpp"
@@ -18,17 +20,34 @@ class MainApp : public QObject {
 
 public:
     MainApp(QObject* parent = nullptr) : QObject(parent) {
+        // Leer configuración desde config.ini
+        QString configPath = QFileInfo(QCoreApplication::applicationDirPath() + "/../config.ini").absoluteFilePath();
+        QSettings settings(configPath, QSettings::IniFormat);
+
+        // Vision
+        QString vision_ip = settings.value("Vision/ip_address", "224.5.23.2").toString();
+        int vision_port = settings.value("Vision/port", 10020).toInt();
+        // World
+        int blue_team_size = settings.value("World/blue_team_size", 6).toInt();
+        int yellow_team_size = settings.value("World/yellow_team_size", 6).toInt();
+        // Performance
+        int update_fps = settings.value("Performance/update_fps", 60).toInt();
+
         // Setup threads and vision
         m_visionThread = new QThread(this);
-        m_vision = new Vision("224.5.23.2", 10020);
+        m_vision = new Vision(vision_ip, vision_port);
         m_vision->moveToThread(m_visionThread);
 
         m_worldThread = new QThread(this);
-        m_world = new World(6, 6);
+        m_world = new World(blue_team_size, yellow_team_size);
         m_world->moveToThread(m_worldThread);
 
         // Setup Lua + WebSocket
-        radio = new Radio();
+        // Radio
+        bool use_radio = settings.value("Radio/use_radio", true).toBool();
+        QString radio_port = settings.value("Radio/port_name", "/dev/ttyUSB0").toString();
+        qint32 radio_baud = settings.value("Radio/baud_rate", QSerialPort::Baud115200).toInt();
+        radio = new Radio(use_radio, radio_port, radio_baud);
         luaInterface = new LuaInterface(radio, m_world);
         m_webSocketServer = new WebSocketServer(radio, luaInterface, this);
 

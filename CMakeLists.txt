@@ -61,6 +61,9 @@ FetchContent_MakeAvailable(sol2)
 
 add_subdirectory(src)
 
+# Copiar config.ini al root de build (siempre sobreescribe)
+configure_file(${CMAKE_SOURCE_DIR}/config.ini ${CMAKE_BINARY_DIR}/config.ini COPYONLY)
+
 enable_testing()
 add_subdirectory(tests)
 

@@ -3,13 +3,12 @@
 #include "packetserializer.hpp"
 #include <QDebug>
 
-Radio::Radio(bool useRadio, const QString &portName)
-    :  m_useRadio(useRadio)
+Radio::Radio(bool useRadio, const QString &portName, qint32 baudRate)
+    : m_useRadio(useRadio), m_baudRate(baudRate), m_portName(portName)
 {
     if (m_useRadio) {
-        qint32 baudRate = QSerialPort::Baud115200;
-        serialPort.setPortName(portName);
-        serialPort.setBaudRate(baudRate);
+        serialPort.setPortName(m_portName);
+        serialPort.setBaudRate(m_baudRate);
         serialPort.setDataBits(QSerialPort::Data8);
         serialPort.setParity(QSerialPort::NoParity);
         serialPort.setStopBits(QSerialPort::OneStop);
@@ -17,9 +16,9 @@ Radio::Radio(bool useRadio, const QString &portName)
 
         if (!serialPort.open(QIODevice::WriteOnly)) {
             qWarning() << "Radio: no se pudo abrir puerto serial"
-                       << portName << ":" << serialPort.errorString();
+                       << m_portName << ":" << serialPort.errorString();
         } else {
-            qDebug() << "Radio: puerto serial abierto en" << portName;
+            qDebug() << "Radio: puerto serial abierto en" << m_portName << "baudrate:" << m_baudRate;
         }
     }
 }

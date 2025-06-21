@@ -93,6 +93,8 @@
         "hash_map": "cpp",
         "hash_set": "cpp",
         "text_encoding": "cpp",
-        "qtmath": "cpp"
+        "qtmath": "cpp",
+        "complex": "cpp",
+        "typeindex": "cpp"
     }
 }

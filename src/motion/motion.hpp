@@ -16,6 +16,7 @@ public:
     // Computes a motion command to move the robot towards a target point
     MotionCommand face_to(const RobotState& robotState, QVector2D targetPoint, double Kp, double Ki, double Kd);
     MotionCommand to_point(const RobotState& robotState, QVector2D targetPoint, const World* world);
+    MotionCommand motion(const RobotState& robotState, QVector2D targetPoint, const World* world, double Kp_vel, double Ki_vel);
 
 };
 

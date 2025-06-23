@@ -45,7 +45,7 @@ void LuaInterface::register_functions() {
         m_radio->addMotionCommand(cmd);
     });
 
-    m_lua.set_function("motion", [this](int robotId, int team, sol::table point, sol::optional<double> kp_vel, sol::optional<double> ki_vel,) {
+    m_lua.set_function("motion", [this](int robotId, int team, sol::table point, sol::optional<double> kp_vel, sol::optional<double> ki_vel) {
         if (!m_world || !m_radio) {
             std::cerr << "Error: LuaInterface, World, or Radio instance is null!" << std::endl;
             return;

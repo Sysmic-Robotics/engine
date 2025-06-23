@@ -1,6 +1,7 @@
 #include "motion.hpp"
 #include "pid.hpp"
 #include "path_planner.hpp"
+#include "pi_vel/pi_vel.hpp"
 
 // CHANGE THE NAME TO move_to_point
 MotionCommand Motion::to_point(const RobotState& robotState, QVector2D targetPoint, const World* world) {
@@ -71,22 +72,21 @@ MotionCommand Motion::motion(const RobotState& robotState, QVector2D targetPoint
     // Calcular velocidades de referencia
     MotionCommand cmd = bangbangControl.computeMotion(robotState, path, delta);
 
-    knownDrift = QVector2D(0.0, 0.0); // This should be set based on your robot's known drift
+    QVector2D knownDrift(0.0, 0.0); // This should be set based on your robot's known drift
 
-    //error de velocidades
-    QVector2D errorVelocity = cmd.getVelocity() - robotState.getVelocity() - knownDrift.getVelocity();
+    // error de velocidades
+    QVector2D errorVelocity(
+        cmd.getVx() - robotState.getVelocity().x() - knownDrift.x(),
+        cmd.getVy() - robotState.getVelocity().y() - knownDrift.y()
+    );
 
-    // apply pi_vel control
     static PI_VEL piVelControl(Kp_vel, Ki_vel); // Example gains, adjust as needed
-    
-    QVector2D pi_velVector = QVector2D(
+    QVector2D pi_velVector(
         piVelControl.compute(errorVelocity.x(), delta),
         piVelControl.compute(errorVelocity.y(), delta)
     );
 
     // Agregar vector de correccion a priori ya conocido
-
-    
     cmd.setVx(cmd.getVx() + pi_velVector.x() + knownDrift.x());
     cmd.setVy(cmd.getVy() + pi_velVector.y() + knownDrift.y());
 

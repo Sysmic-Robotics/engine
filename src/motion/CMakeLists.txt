@@ -4,6 +4,7 @@ add_subdirectory(pid)  # ✅ Ensure bangbangcontrol is added
 add_library(motion STATIC
     motion.cpp
     path_planner.cpp  # ✅ Agregado el nuevo archivo de planificación de trayectoria
+    environment.cpp
 )
 
 target_link_libraries(motion

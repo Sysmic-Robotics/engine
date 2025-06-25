@@ -88,14 +88,7 @@ void update() {
     m_world->update();
 
     qint64 processTimeUs = 0;
-    if (luaInterface->haveScript()) {
-        QElapsedTimer processTimer;
-        processTimer.start();
-
-        luaInterface->callProcess();
-
-        processTimeUs = processTimer.nsecsElapsed() / 1000;
-    }
+    luaInterface->callProcess();
 
     logger->logFrame();
     radio->sendCommands();

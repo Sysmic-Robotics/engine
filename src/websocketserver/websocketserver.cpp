@@ -66,7 +66,7 @@ void WebSocketServer::onTextMessageReceived(const QString &message) {
         }
     }
     else if (type == "pauseScript") {
-        luaInterface->stopScript(); // implement pause behavior in LuaInterface
+        luaInterface->pauseScript(); // implement pause behavior in LuaInterface
         qDebug() << "Script paused";
     }
 else if (type == "joystickCommand") {

@@ -41,7 +41,24 @@ void LuaInterface::register_functions() {
             return;
         }
         static Motion motion;
-        MotionCommand cmd = motion.to_point(robotState, QVector2D(x, y), m_world);
+        MotionCommand cmd = motion.move_to(robotState, QVector2D(x, y), m_world);
+        m_radio->addMotionCommand(cmd);
+    });
+
+    m_lua.set_function("move_direct", [this](int robotId, int team, sol::table point) {
+        if (!m_world || !m_radio) {
+            std::cerr << "Error: LuaInterface, World, or Radio instance is null!" << std::endl;
+            return;
+        }
+        double x = point["x"];
+        double y = point["y"];
+        RobotState robotState = m_world->getRobotState(robotId, team);
+        if (!robotState.isActive()) {
+            std::cerr << "[Lua] Error: Robot " << robotId << " is inactive or not found!" << std::endl;
+            return;
+        }
+        static Motion motion;
+        MotionCommand cmd = motion.move_direct(robotState, QVector2D(x, y));
         m_radio->addMotionCommand(cmd);
     });
 
@@ -176,17 +193,17 @@ void LuaInterface::register_functions() {
 }
 
 void LuaInterface::runScript(const QString& scriptPath) {
-    m_runScript = true;
+    m_isPaused = false;
     m_lua = sol::state();
     m_lua.open_libraries(
-    sol::lib::base,
-    sol::lib::debug,
-    sol::lib::package,
-    sol::lib::io,       // needed for file reading
-    sol::lib::string,
-    sol::lib::math,
-    sol::lib::table,
-    sol::lib::os
+        sol::lib::base,
+        sol::lib::debug,
+        sol::lib::package,
+        sol::lib::io,       // needed for file reading
+        sol::lib::string,
+        sol::lib::math,
+        sol::lib::table,
+        sol::lib::os
     );
     // Normalize script path
     QString normalizedPath = QDir(scriptPath).absolutePath();
@@ -212,26 +229,28 @@ void LuaInterface::runScript(const QString& scriptPath) {
 }
 
 void LuaInterface::callProcess() {
-    if (m_runScript) {
-        sol::protected_function process = m_lua["process"];
-        if (!process.valid()) {
-            std::cerr << "[Lua] Error: process() is not defined in script!" << std::endl;
-            return;
-        }
+    if(m_haveScript){
+        if (!m_isPaused) {
+            sol::protected_function process = m_lua["process"];
+            if (!process.valid()) {
+                std::cerr << "[Lua] Error: process() is not defined in script!" << std::endl;
+                return;
+            }
 
-        sol::protected_function_result result = process();
-        if (!result.valid()) {
-            m_runScript = false;
-            sol::error err = result;
-            std::cerr << "[Lua] Runtime error in process(): " << err.what() << std::endl;
+            sol::protected_function_result result = process();
+            if (!result.valid()) {
+                m_isPaused = false;
+                sol::error err = result;
+                std::cerr << "[Lua] Runtime error in process(): " << err.what() << std::endl;
+            }
         }
     }
 }
 
-bool LuaInterface::haveScript() {
-    return m_haveScript;
+void LuaInterface::pauseScript() {
+    m_isPaused = true;
 }
 
-void LuaInterface::stopScript() {
-    m_runScript = false;
+void LuaInterface::resumeScript() {
+    m_isPaused = false;
 }

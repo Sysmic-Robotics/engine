@@ -1,27 +1,21 @@
-// path_planner.hpp
 #pragma once
 
 #include <QVector2D>
 #include <vector>
+#include <QString>
+#include "environment.hpp"  // Now using the standalone Environment class
 
 class FastPathPlanner {
 public:
     FastPathPlanner(int max_depth = 10);
-    std::vector<QVector2D> getPath(const QVector2D& from, const QVector2D& to, const std::vector<QVector2D>& robot_positions);
+
+    std::vector<QVector2D> getPath(const QVector2D& from, const QVector2D& to, const Environment& env);
 
 private:
     struct Trajectory {
         QVector2D start;
         QVector2D goal;
         Trajectory(const QVector2D& s, const QVector2D& g) : start(s), goal(g) {}
-    };
-
-    class Environment {
-    public:
-        Environment(const std::vector<QVector2D>& robots);
-        bool collides(const QVector2D& point) const;
-    private:
-        std::vector<QVector2D> robots;
     };
 
     bool trajectoryCollides(const Trajectory& traj, const Environment& env) const;

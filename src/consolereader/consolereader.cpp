@@ -29,8 +29,13 @@ void ConsoleReader::run()
         }
         else if (line == "pause")
         {
-            m_luaInterface->stopScript();
+            m_luaInterface->pauseScript();
             qDebug() << "Script paused";
+        }
+        else if (line == "resume")
+        {
+            m_luaInterface->resumeScript();  // <-- Make sure this function exists
+            qDebug() << "Script resumed";
         }
         else if (line == "reload")
         {
@@ -43,11 +48,6 @@ void ConsoleReader::run()
             {
                 qWarning() << "No script has been run yet to reload.";
             }
-        }
-        else if (line == "exit")
-        {
-            qDebug() << "Exiting ConsoleReader thread.";
-            break;
         }
         else if (line.startsWith("record"))
         {

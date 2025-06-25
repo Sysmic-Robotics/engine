@@ -2,27 +2,50 @@
 #include "pid.hpp"
 #include "path_planner.hpp"
 
-// CHANGE THE NAME TO move_to_point
-MotionCommand Motion::to_point(const RobotState& robotState, QVector2D targetPoint, const World* world) {
+
+MotionCommand Motion::move_direct(const RobotState& robotState, QVector2D targetPoint) {
+    static BangBangControl bangbangControl(2.5f, 5.0f); // Acceleration & velocity limits
+
+    // Create a direct path from current position to the target
+    QVector2D from = robotState.getPosition();
+    QList<QVector2D> path = { from, targetPoint };
+    
+    double delta = 1.0 / 60.0; // Frame delta time
+    MotionCommand cmd = bangbangControl.computeMotion(robotState, path, delta);
+    return cmd;
+}
+
+
+MotionCommand Motion::move_to(const RobotState& robotState, QVector2D targetPoint, const World* world) {
     static BangBangControl bangbangControl(2.5f, 5.0f); // Acceleration & velocity limits
     static FastPathPlanner planner;
 
     QVector2D from = robotState.getPosition();
     QVector2D to = targetPoint;
     int selfId = robotState.getId();
-    int selfTeam = robotState.getTeam();
 
     std::vector<QVector2D> otherRobots;
+
     for (int id = 0; id < 12; ++id) {
         if (id == selfId) continue;
+
         RobotState rBlue = world->getRobotState(id, 0);
         if (rBlue.isActive()) otherRobots.push_back(rBlue.getPosition());
+
         RobotState rYellow = world->getRobotState(id, 1);
         if (rYellow.isActive()) otherRobots.push_back(rYellow.getPosition());
     }
 
-    std::vector<QVector2D> pathVec = planner.getPath(from, to, otherRobots);
+    // === Get ball position from the world ===
+    QVector2D ballPos = world->getBallState().getPosition();
 
+    // === Create environment ===
+    Environment env(otherRobots, ballPos);
+
+    // === Compute path ===
+    std::vector<QVector2D> pathVec = planner.getPath(from, to, env);
+
+    // === Convert to QList for the motion controller ===
     QList<QVector2D> path;
     if (!pathVec.empty()) {
         for (const QVector2D& p : pathVec)
@@ -35,6 +58,7 @@ MotionCommand Motion::to_point(const RobotState& robotState, QVector2D targetPoi
     MotionCommand cmd = bangbangControl.computeMotion(robotState, path, delta);
     return cmd;
 }
+
 
 MotionCommand Motion::face_to(const RobotState& robotState, QVector2D targetPoint,
     double Kp, double Ki, double Kd) {

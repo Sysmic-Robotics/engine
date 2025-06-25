@@ -1,7 +1,6 @@
-// path_planner.cpp
 #include "path_planner.hpp"
 #include <cmath>
-
+#include <limits>
 
 namespace {
     QVector2D rotateVector(const QVector2D& v, float angle) {
@@ -16,25 +15,8 @@ namespace {
 
 FastPathPlanner::FastPathPlanner(int max_depth) : max_depth(max_depth) {}
 
-FastPathPlanner::Environment::Environment(const std::vector<QVector2D>& robots) : robots(robots) {}
-
-bool FastPathPlanner::Environment::collides(const QVector2D& point) const {
-    if (point.x() < -4.5 || point.x() > 4.5 || point.y() < -3.0 || point.y() > 3.0)
-        return true;
-    /*
-    if ((point.x() >= -4.5 && point.x() <= -4 && point.y() >= -0.5 && point.y() <= 0.5) ||
-        (point.x() >= 4 && point.x() <= 4.5 && point.y() >= -0.5 && point.y() <= 0.5))
-        return true;
-    */  
-    for (const auto& robot : robots) {
-        if ((point - robot).length() <= 0.2)  // Aumentado de 0.18 a 0.35
-            return true;
-    }
-    return false;
-}
-
 bool FastPathPlanner::trajectoryCollides(const Trajectory& traj, const Environment& env) const {
-    for (int i = 0; i < 200; ++i) {  // Aumentado de 100 a 200
+    for (int i = 0; i < 200; ++i) {
         float t = i / 200.0f;
         QVector2D point = traj.start + t * (traj.goal - traj.start);
         if (env.collides(point)) return true;
@@ -42,17 +24,21 @@ bool FastPathPlanner::trajectoryCollides(const Trajectory& traj, const Environme
     return false;
 }
 
-QVector2D FastPathPlanner::searchSubgoal(const Trajectory& traj, const QString& obstacle, const Environment& env, float robot_diameter, int direction) {
+QVector2D FastPathPlanner::searchSubgoal(const Trajectory& traj, const QString&, const Environment& env, float robot_diameter, int direction) {
     QVector2D obs_point = traj.goal;
     QVector2D dir_vec = (obs_point - traj.start).normalized();
 
     for (int i = 0; i < 10; ++i) {
         QVector2D offset = QVector2D(-dir_vec.y(), dir_vec.x()) * (direction * robot_diameter);
         QVector2D subgoal = obs_point + offset;
-        if (!env.collides(subgoal) && subgoal.x() >= -4.5 && subgoal.x() <= 4.5 && subgoal.y() >= -3 && subgoal.y() <= 3)
+        if (!env.collides(subgoal) &&
+            subgoal.x() >= -4.5 && subgoal.x() <= 4.5 &&
+            subgoal.y() >= -3.0 && subgoal.y() <= 3.0) {
             return subgoal;
+        }
         dir_vec = rotateVector(dir_vec, M_PI / 4);
     }
+
     return QVector2D(std::numeric_limits<float>::quiet_NaN(), std::numeric_limits<float>::quiet_NaN());
 }
 
@@ -64,6 +50,7 @@ std::vector<FastPathPlanner::Trajectory> FastPathPlanner::createPath(const QVect
     std::vector<Trajectory> resultA, resultB;
     std::vector<std::pair<Trajectory, int>> stack = {{Trajectory(start, goal), 0}};
 
+    // Path A (right-hand rule)
     while (!stack.empty()) {
         auto [traj, depth] = stack.back(); stack.pop_back();
         if (trajectoryCollides(traj, env) && depth < max_depth) {
@@ -77,6 +64,8 @@ std::vector<FastPathPlanner::Trajectory> FastPathPlanner::createPath(const QVect
     }
 
     stack = {{Trajectory(start, goal), 0}};
+
+    // Path B (left-hand rule)
     while (!stack.empty()) {
         auto [traj, depth] = stack.back(); stack.pop_back();
         if (trajectoryCollides(traj, env) && depth < max_depth) {
@@ -108,11 +97,11 @@ std::vector<QVector2D> FastPathPlanner::simplifyPath(const std::vector<QVector2D
         result.push_back(path[j]);
         i = j;
     }
+
     return result;
 }
 
-std::vector<QVector2D> FastPathPlanner::getPath(const QVector2D& from, const QVector2D& to, const std::vector<QVector2D>& robot_positions) {
-    Environment env(robot_positions);
+std::vector<QVector2D> FastPathPlanner::getPath(const QVector2D& from, const QVector2D& to, const Environment& env) {
     auto raw_path = createPath(from, to, env);
     if (raw_path.empty()) return {};
 

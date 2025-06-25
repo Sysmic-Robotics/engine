@@ -14,11 +14,11 @@ public:
     // Loads a Lua script file (reinitializes the Lua state)
     void runScript(const QString& scriptPath);
     // Calls the global Lua function "process"
-    void stopScript();
+    void pauseScript();
+
+    void resumeScript();
 
     void callProcess();
-
-    bool haveScript();
 
 private:
     // Helper to register all your functions with Lua
@@ -28,7 +28,7 @@ private:
     Radio* m_radio;
     World* m_world;
     bool m_haveScript = false;
-    bool m_runScript = false;
+    bool m_isPaused = false;
 };
 
 #endif // LUA_INTERFACE_SOL_HPP

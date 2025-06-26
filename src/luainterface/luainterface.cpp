@@ -62,6 +62,40 @@ void LuaInterface::register_functions() {
         m_radio->addMotionCommand(cmd);
     });
 
+    m_lua.set_function("motion", [this](int robotId, int team, sol::table point, sol::optional<double> kp_vel, sol::optional<double> ki_vel) {
+        if (!m_world || !m_radio) {
+            std::cerr << "Error: LuaInterface, World, or Radio instance is null!" << std::endl;
+            return;
+        }
+        double x = point["x"];
+        double y = point["y"];
+        RobotState robotState = m_world->getRobotState(robotId, team);
+        if (!robotState.isActive()) {
+            std::cerr << "[Lua] Error: Robot " << robotId << " is inactive or not found!" << std::endl;
+            return;
+        }
+        static Motion motion;
+        MotionCommand cmd = motion.motion(robotState, QVector2D(x, y), m_world, kp_vel.value_or(0.5), ki_vel.value_or(0.1));
+        m_radio->addMotionCommand(cmd);
+    });
+
+    m_lua.set_function("motion", [this](int robotId, int team, sol::table point, sol::optional<double> kp_vel, sol::optional<double> ki_vel) {
+        if (!m_world || !m_radio) {
+            std::cerr << "Error: LuaInterface, World, or Radio instance is null!" << std::endl;
+            return;
+        }
+        double x = point["x"];
+        double y = point["y"];
+        RobotState robotState = m_world->getRobotState(robotId, team);
+        if (!robotState.isActive()) {
+            std::cerr << "[Lua] Error: Robot " << robotId << " is inactive or not found!" << std::endl;
+            return;
+        }
+        static Motion motion;
+        MotionCommand cmd = motion.motion(robotState, QVector2D(x, y), m_world, kp_vel.value_or(0.5), ki_vel.value_or(0.1));
+        m_radio->addMotionCommand(cmd);
+    });
+
     m_lua.set_function("face_to", [this](int robotId, int team, sol::table point, sol::optional<double> kp, sol::optional<double> ki, sol::optional<double> kd) {
     if (!m_world || !m_radio) {
         std::cerr << "Error: LuaInterface, World, or Radio instance is null!" << std::endl;
@@ -251,6 +285,12 @@ void LuaInterface::pauseScript() {
     m_isPaused = true;
 }
 
+void LuaInterface::stopScript() {
+    m_runScript = false;
+    MotionCommand cmd(0, 0, 0,0);
+    cmd.setAngular(0);
+    m_radio->addMotionCommand(cmd);
+    qDebug() << "[Lua] Script stopped.";
 void LuaInterface::resumeScript() {
     m_isPaused = false;
 }

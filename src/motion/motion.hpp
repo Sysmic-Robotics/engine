@@ -17,6 +17,8 @@ public:
     MotionCommand face_to(const RobotState& robotState, QVector2D targetPoint, double Kp, double Ki, double Kd);
     MotionCommand move_to(const RobotState& robotState, QVector2D targetPoint, const World* world);
     MotionCommand move_direct(const RobotState& robotState, QVector2D targetPoint);
+    MotionCommand motion(const RobotState& robotState, QVector2D targetPoint, const World* world, double Kp_vel, double Ki_vel);
+
 };
 
 #endif // MOTION_HPP

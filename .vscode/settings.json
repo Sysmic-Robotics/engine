@@ -1,8 +1,4 @@
 {
-    "cmake.configureSettings": {
-    "CMAKE_PREFIX_PATH": "C:/Qt/6.9.0/mingw_64/lib/cmake"
-    },
-
     "files.associations": {
         "qudpsocket": "cpp",
         "qhostaddress": "cpp",
@@ -98,6 +94,7 @@
         "hash_set": "cpp",
         "text_encoding": "cpp",
         "qtmath": "cpp",
-        "stdfloat": "cpp"
+        "complex": "cpp",
+        "typeindex": "cpp"
     }
 }

@@ -283,14 +283,13 @@ void LuaInterface::callProcess() {
 
 void LuaInterface::pauseScript() {
     m_isPaused = true;
-}
-
-void LuaInterface::stopScript() {
-    m_runScript = false;
     MotionCommand cmd(0, 0, 0,0);
     cmd.setAngular(0);
     m_radio->addMotionCommand(cmd);
     qDebug() << "[Lua] Script stopped.";
+}
+
+
 void LuaInterface::resumeScript() {
     m_isPaused = false;
 }

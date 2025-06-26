@@ -3,7 +3,7 @@
 #include "path_planner.hpp"
 #include "pi_vel/pi_vel.hpp"
 
-
+// Move without obstacles: Use when you have to make small movements (PivotKick, Goalie movement)
 MotionCommand Motion::move_direct(const RobotState& robotState, QVector2D targetPoint) {
     static BangBangControl bangbangControl(2.5f, 5.0f); // Acceleration & velocity limits
 
@@ -16,7 +16,7 @@ MotionCommand Motion::move_direct(const RobotState& robotState, QVector2D target
     return cmd;
 }
 
-
+// Move avoiding obstacles
 MotionCommand Motion::move_to(const RobotState& robotState, QVector2D targetPoint, const World* world) {
     static BangBangControl bangbangControl(2.5f, 5.0f); // Acceleration & velocity limits
     static FastPathPlanner planner;
@@ -73,15 +73,24 @@ MotionCommand Motion::motion(const RobotState& robotState, QVector2D targetPoint
     int selfTeam = robotState.getTeam();
 
     std::vector<QVector2D> otherRobots;
+
     for (int id = 0; id < 12; ++id) {
         if (id == selfId) continue;
+
         RobotState rBlue = world->getRobotState(id, 0);
         if (rBlue.isActive()) otherRobots.push_back(rBlue.getPosition());
+
         RobotState rYellow = world->getRobotState(id, 1);
         if (rYellow.isActive()) otherRobots.push_back(rYellow.getPosition());
     }
 
-    std::vector<QVector2D> pathVec = planner.getPath(from, to, otherRobots);
+    // === Get ball position from the world ===
+    QVector2D ballPos = world->getBallState().getPosition();
+
+    // === Create environment ===
+    Environment env(otherRobots, ballPos);
+
+    std::vector<QVector2D> pathVec = planner.getPath(from, to, env);
 
     QList<QVector2D> path;
     if (!pathVec.empty()) {

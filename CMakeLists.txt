@@ -13,7 +13,8 @@ else()
 endif()
 
 # Add Eigen's directory to the build
-add_subdirectory(eigen-3.4.0)
+set(CMAKE_PREFIX_PATH "${CMAKE_SOURCE_DIR}/eigen-3.4.0" ${CMAKE_PREFIX_PATH})
+find_package(Eigen3 3.4 REQUIRED NO_MODULE)
 
 
 # Setup Qt6

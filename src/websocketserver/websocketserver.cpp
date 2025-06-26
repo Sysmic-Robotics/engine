@@ -1,4 +1,6 @@
 #include "websocketserver.hpp"
+#include <QDebug>
+#include <iostream>
 
 WebSocketServer::WebSocketServer(Radio* _radio, LuaInterface* _luaInterface, QObject *parent)
     : m_radio(_radio), luaInterface(_luaInterface), QObject(parent),
@@ -56,8 +58,9 @@ void WebSocketServer::onTextMessageReceived(const QString &message) {
 
     QJsonObject obj = doc.object();
     QString type = obj.value("type").toString();
-
+    
     if (type == "runScript" && luaInterface) {
+        
         QString scriptPath = obj.value("path").toString(); // Extract the script path
         if (!scriptPath.isEmpty()) {
             luaInterface->runScript(scriptPath);  // Run the specified script
@@ -77,9 +80,9 @@ else if (type == "joystickCommand") {
     double omega = obj.value("omega").toDouble(0.0);
     bool kick = obj.value("kick").toBool(false);
     double dribbler = obj.value("dribbler").toDouble(0.0); // ✅ New field
-
+    
     if (id < 0 || team < 0) {
-        qWarning() << "Invalid joystickCommand: missing id or team";
+        std::cout << "Invalid joystickCommand: missing id or team \n";
         return;
     }
 

@@ -36,4 +36,5 @@ target_link_libraries(engine
     PRIVATE websocketserver
     PRIVATE consolereader
     PRIVATE logger
+    Eigen3::Eigen
 )

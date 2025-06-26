@@ -12,6 +12,10 @@ else()
     set(CMAKE_PREFIX_PATH "/opt/Qt/6.9.0/gcc_64/lib/cmake" ${CMAKE_PREFIX_PATH})
 endif()
 
+# Add Eigen's directory to the build
+add_subdirectory(eigen-3.4.0)
+
+
 # Setup Qt6
 find_package(Qt6 REQUIRED COMPONENTS Core Network Gui Widgets WebSockets SerialPort Test)
 qt_standard_project_setup()

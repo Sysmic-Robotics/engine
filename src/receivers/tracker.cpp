@@ -8,9 +8,9 @@ ExtendedKalmanFilter Tracker::createInitialFilter() const {
     EKF::Vector7d initial_state;
     initial_state << 0.0, 0.0, std::sin(0.0), std::cos(0.0), 0.0, 0.0, 0.0;
 
-    EKF::Matrix7d P = EKF::Matrix7d::Identity() * 0.1;
-    EKF::Matrix7d Q = EKF::Matrix7d::Identity() * 0.01;
-    EKF::Matrix3d R = EKF::Matrix3d::Identity() * 0.05;
+    EKF::Matrix7d P = EKF::Matrix7d::Identity() * 1e-9;
+    EKF::Matrix7d Q = EKF::Matrix7d::Identity() * 1e-9;
+    EKF::Matrix3d R = EKF::Matrix3d::Identity() * 1e-9;
 
     return EKF(initial_state, P, Q, R);
 }

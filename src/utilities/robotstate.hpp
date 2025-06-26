@@ -14,6 +14,7 @@ public:
     QVector2D getPosition() const;
     QVector2D getVelocity() const;
     float getOrientation() const;
+    float getAngularVelocity() const;
     bool isActive() const;
 
     void setId(int id);
@@ -22,6 +23,7 @@ public:
     void setVelocity(const QVector2D &velocity);
     void setOrientation(float orientation);
     void setActive(bool flag);
+    void setAngularVelocity(float omega);
 
 private:
     int robotId;

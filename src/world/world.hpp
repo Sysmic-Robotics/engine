@@ -25,7 +25,7 @@ class World : public QObject {
         QJsonObject toJson() const;
 
     public slots:
-        void updateRobot(int id, int team, QVector2D position, float orientation);
+        void updateRobot(int id, int team, QVector2D position, float orientation, QVector2D velocity, float omega);
         void updateBall(QVector2D position);
 
     signals:

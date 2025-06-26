@@ -26,6 +26,14 @@ QVector2D RobotState::getVelocity() const {
     return velocity;
 }
 
+float RobotState::getAngularVelocity() const {
+    return angular_velocity;
+}
+
+void RobotState::setAngularVelocity(float omega) {
+    angular_velocity = omega;
+}
+
 float RobotState::getOrientation() const {
     return orientation;
 }

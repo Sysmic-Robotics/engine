@@ -4,11 +4,15 @@
 #include <QDebug>
 #include <QHash>
 
-constexpr bool USE_KALMAN_FILTER = true;
+
 
 Vision::Vision(const QString &multicastAddress, int port, QObject *parent)
     : QObject(parent), m_multicastAddress(multicastAddress), m_port(port), m_udpSocket(nullptr)
-{}
+{
+
+    tracker_camera_0 = new Tracker();
+
+}
 
 void Vision::startListen(){
     m_udpSocket = new QUdpSocket(this);
@@ -70,11 +74,11 @@ void Vision::deserializePacket(const QByteArray &datagram){
                 }
             
             for (const SSL_DetectionRobot &robot : detectionFrame.robots_yellow()){
-                processData(robot, 1, USE_KALMAN_FILTER, robotKalmanFilters);
+                processData(robot, 1);
                 
             }
             for (const SSL_DetectionRobot &robot : detectionFrame.robots_blue()){
-                processData(robot, 0, USE_KALMAN_FILTER, robotKalmanFilters);
+                processData(robot, 0);
             }
         }
     }
@@ -84,58 +88,12 @@ void Vision::deserializePacket(const QByteArray &datagram){
     }
 }
 
-void Vision::processData(const SSL_DetectionRobot& robot,
-                         int team,
-                         bool useKalman,
-                         QMap<std::pair<int, int>, RobotKalman*>& filters)
-{
+void Vision::processData(const SSL_DetectionRobot& robot, int team){
     int id = robot.robot_id();
     float x = robot.x() / 1000.0f;
     float y = robot.y() / 1000.0f;
     float theta = robot.orientation();
-
-    std::pair<int, int> key = {team, id};
-
-    QVector2D position(x, y);
-
-    // 👉 Stats collection for selected robot only
-    if (!statsCollected && team == 0 && id == 0) {
-        float dt = 0.016f; // Approx. 60Hz
-
-        if (m_statsCollector == nullptr) {
-            m_statsCollector = new RobotStatsCollector(id, team, 10.0);
-        }
-
-        m_statsCollector->update(x, y, theta, dt);
-
-        if (m_statsCollector->isReady()) {
-            QVector3D std = m_statsCollector->getStandardDeviations();
-            qInfo() << "[STATS] Robot" << id << "Team" << team
-                    << "o_x:" << std.x() << "o_y:" << std.y() << "o_θ:" << std.z();
-            statsCollected = true;
-
-            // Optional: cleanup
-            delete m_statsCollector;
-            m_statsCollector = nullptr;
-        }
-    }
-
-
-    if (useKalman) {
-        if (!filters.contains(key)) {
-            filters[key] = new RobotKalman(0.016, 0.00184849*4, 0.0018652*4, 0.0018652*4, 1e-4);
-            filters[key]->initialize(x, y, theta);
-        }
-
-        RobotKalman* kf = filters[key];
-        kf->predict();
-        kf->update(x, y, theta);
-
-        QVector<double> state = kf->getState();
-        position = QVector2D(state[0], state[2]);
-        theta = static_cast<float>(state[4]);
-    }
-    
-    emit robotReceived(id, team, position, theta);
+    auto [xf, yf, thetaf, vx, vy, omega] = tracker_camera_0->track(team, id, x, y, theta, 0.016);
+    emit robotReceived(id, team, QVector2D(xf, yf), thetaf, QVector2D(vx,vy), omega);
 }
 

@@ -115,18 +115,20 @@ void World::update() {
 }
 
 
-void World::updateRobot(int id, int team, QVector2D position, float orientation) {
-    constexpr double timeStep = 0.016; // 1/60 in seconds
+void World::updateRobot(int id, int team, QVector2D position, float orientation, QVector2D velocity, float omega) {
+
     if (team == 0){
         if (blueRobots.contains(id)) {
-            blueRobots[id].setVelocity( ( position - blueRobots[id].getPosition() )/timeStep );
+            blueRobots[id].setVelocity( velocity );
+            blueRobots[id].setAngularVelocity(omega);
             blueRobots[id].setPosition(position);
             blueRobots[id].setOrientation(orientation);
             blueRobots[id].setActive(true);
         }
     }else{
         if (yellowRobots.contains(id)) {
-            yellowRobots[id].setVelocity( ( position - yellowRobots[id].getPosition() )/timeStep );
+            yellowRobots[id].setVelocity(  velocity );
+            yellowRobots[id].setAngularVelocity(omega);
             yellowRobots[id].setPosition(position);
             yellowRobots[id].setOrientation(orientation);
             yellowRobots[id].setActive(true);

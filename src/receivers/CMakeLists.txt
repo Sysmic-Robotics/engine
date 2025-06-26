@@ -1,8 +1,8 @@
 # Create a library target from vision.cpp and KalmanFilter.cpp
 add_library(receivers
     vision.cpp
-    kalman/robotkalman.cpp
-    kalman/robotstatscollector.cpp
+    kalman/ekf.cpp
+    tracker.cpp
 )
 
 # Link Qt6 libraries to the Vision library
@@ -11,6 +11,7 @@ target_link_libraries(receivers
     Qt6::Network
     protobuf
     utilities
+    Eigen3::Eigen
 )
 
 # Include headers from current dir and Kalman subdirectory

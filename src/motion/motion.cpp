@@ -1,7 +1,6 @@
 #include "motion.hpp"
 #include "pid.hpp"
 #include "path_planner.hpp"
-#include "pi_vel/pi_vel.hpp"
 
 // Move without obstacles: Use when you have to make small movements (PivotKick, Goalie movement)
 MotionCommand Motion::move_direct(const RobotState& robotState, QVector2D targetPoint) {
@@ -112,7 +111,7 @@ MotionCommand Motion::motion(const RobotState& robotState, QVector2D targetPoint
         cmd.getVy() - robotState.getVelocity().y() - knownDrift.y()
     );
 
-    static PI_VEL piVelControl(Kp_vel, Ki_vel); // Example gains, adjust as needed
+    static PID piVelControl(Kp_vel, Ki_vel,0); // Example gains, adjust as needed
     QVector2D pi_velVector(
         piVelControl.compute(errorVelocity.x(), delta),
         piVelControl.compute(errorVelocity.y(), delta)

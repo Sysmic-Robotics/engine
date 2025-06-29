@@ -5,263 +5,226 @@
 
 #include <algorithm>
 
-#include <google/protobuf/stubs/common.h>
-#include <google/protobuf/stubs/port.h>
 #include <google/protobuf/io/coded_stream.h>
-#include <google/protobuf/wire_format_lite_inl.h>
+#include <google/protobuf/extension_set.h>
+#include <google/protobuf/wire_format_lite.h>
 #include <google/protobuf/descriptor.h>
 #include <google/protobuf/generated_message_reflection.h>
 #include <google/protobuf/reflection_ops.h>
 #include <google/protobuf/wire_format.h>
-// This is a temporary google only hack
-#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
-#include "third_party/protobuf/version.h"
-#endif
 // @@protoc_insertion_point(includes)
-
-namespace protobuf_ssl_5fvision_5fgeometry_2eproto {
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_ssl_5fvision_5fgeometry_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_SSL_BallModelChipFixedLoss;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_ssl_5fvision_5fgeometry_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_SSL_BallModelStraightTwoPhase;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_ssl_5fvision_5fgeometry_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_SSL_GeometryCameraCalibration;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_ssl_5fvision_5fgeometry_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_Vector2f;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_ssl_5fvision_5fgeometry_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_SSL_FieldCircularArc;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_ssl_5fvision_5fgeometry_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_SSL_FieldLineSegment;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_ssl_5fvision_5fgeometry_2eproto ::google::protobuf::internal::SCCInfo<2> scc_info_SSL_GeometryFieldSize;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_ssl_5fvision_5fgeometry_2eproto ::google::protobuf::internal::SCCInfo<2> scc_info_SSL_GeometryModels;
-}  // namespace protobuf_ssl_5fvision_5fgeometry_2eproto
+#include <google/protobuf/port_def.inc>
+extern PROTOBUF_INTERNAL_EXPORT_ssl_5fvision_5fgeometry_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_SSL_BallModelChipFixedLoss_ssl_5fvision_5fgeometry_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_ssl_5fvision_5fgeometry_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_SSL_BallModelStraightTwoPhase_ssl_5fvision_5fgeometry_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_ssl_5fvision_5fgeometry_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_SSL_FieldCircularArc_ssl_5fvision_5fgeometry_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_ssl_5fvision_5fgeometry_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_SSL_FieldLineSegment_ssl_5fvision_5fgeometry_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_ssl_5fvision_5fgeometry_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_SSL_GeometryCameraCalibration_ssl_5fvision_5fgeometry_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_ssl_5fvision_5fgeometry_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_SSL_GeometryFieldSize_ssl_5fvision_5fgeometry_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_ssl_5fvision_5fgeometry_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_SSL_GeometryModels_ssl_5fvision_5fgeometry_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_ssl_5fvision_5fgeometry_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Vector2f_ssl_5fvision_5fgeometry_2eproto;
 class Vector2fDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<Vector2f>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<Vector2f> _instance;
 } _Vector2f_default_instance_;
 class SSL_FieldLineSegmentDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<SSL_FieldLineSegment>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<SSL_FieldLineSegment> _instance;
 } _SSL_FieldLineSegment_default_instance_;
 class SSL_FieldCircularArcDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<SSL_FieldCircularArc>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<SSL_FieldCircularArc> _instance;
 } _SSL_FieldCircularArc_default_instance_;
 class SSL_GeometryFieldSizeDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<SSL_GeometryFieldSize>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<SSL_GeometryFieldSize> _instance;
 } _SSL_GeometryFieldSize_default_instance_;
 class SSL_GeometryCameraCalibrationDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<SSL_GeometryCameraCalibration>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<SSL_GeometryCameraCalibration> _instance;
 } _SSL_GeometryCameraCalibration_default_instance_;
 class SSL_BallModelStraightTwoPhaseDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<SSL_BallModelStraightTwoPhase>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<SSL_BallModelStraightTwoPhase> _instance;
 } _SSL_BallModelStraightTwoPhase_default_instance_;
 class SSL_BallModelChipFixedLossDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<SSL_BallModelChipFixedLoss>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<SSL_BallModelChipFixedLoss> _instance;
 } _SSL_BallModelChipFixedLoss_default_instance_;
 class SSL_GeometryModelsDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<SSL_GeometryModels>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<SSL_GeometryModels> _instance;
 } _SSL_GeometryModels_default_instance_;
 class SSL_GeometryDataDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<SSL_GeometryData>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<SSL_GeometryData> _instance;
 } _SSL_GeometryData_default_instance_;
-namespace protobuf_ssl_5fvision_5fgeometry_2eproto {
-static void InitDefaultsVector2f() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::_Vector2f_default_instance_;
-    new (ptr) ::Vector2f();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::Vector2f::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<0> scc_info_Vector2f =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsVector2f}, {}};
-
-static void InitDefaultsSSL_FieldLineSegment() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::_SSL_FieldLineSegment_default_instance_;
-    new (ptr) ::SSL_FieldLineSegment();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::SSL_FieldLineSegment::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<1> scc_info_SSL_FieldLineSegment =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsSSL_FieldLineSegment}, {
-      &protobuf_ssl_5fvision_5fgeometry_2eproto::scc_info_Vector2f.base,}};
-
-static void InitDefaultsSSL_FieldCircularArc() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::_SSL_FieldCircularArc_default_instance_;
-    new (ptr) ::SSL_FieldCircularArc();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::SSL_FieldCircularArc::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<1> scc_info_SSL_FieldCircularArc =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsSSL_FieldCircularArc}, {
-      &protobuf_ssl_5fvision_5fgeometry_2eproto::scc_info_Vector2f.base,}};
-
-static void InitDefaultsSSL_GeometryFieldSize() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::_SSL_GeometryFieldSize_default_instance_;
-    new (ptr) ::SSL_GeometryFieldSize();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::SSL_GeometryFieldSize::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<2> scc_info_SSL_GeometryFieldSize =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 2, InitDefaultsSSL_GeometryFieldSize}, {
-      &protobuf_ssl_5fvision_5fgeometry_2eproto::scc_info_SSL_FieldLineSegment.base,
-      &protobuf_ssl_5fvision_5fgeometry_2eproto::scc_info_SSL_FieldCircularArc.base,}};
-
-static void InitDefaultsSSL_GeometryCameraCalibration() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::_SSL_GeometryCameraCalibration_default_instance_;
-    new (ptr) ::SSL_GeometryCameraCalibration();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::SSL_GeometryCameraCalibration::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<0> scc_info_SSL_GeometryCameraCalibration =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsSSL_GeometryCameraCalibration}, {}};
-
-static void InitDefaultsSSL_BallModelStraightTwoPhase() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::_SSL_BallModelStraightTwoPhase_default_instance_;
-    new (ptr) ::SSL_BallModelStraightTwoPhase();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::SSL_BallModelStraightTwoPhase::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<0> scc_info_SSL_BallModelStraightTwoPhase =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsSSL_BallModelStraightTwoPhase}, {}};
-
-static void InitDefaultsSSL_BallModelChipFixedLoss() {
+static void InitDefaultsscc_info_SSL_BallModelChipFixedLoss_ssl_5fvision_5fgeometry_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
     void* ptr = &::_SSL_BallModelChipFixedLoss_default_instance_;
     new (ptr) ::SSL_BallModelChipFixedLoss();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::SSL_BallModelChipFixedLoss::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_SSL_BallModelChipFixedLoss =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsSSL_BallModelChipFixedLoss}, {}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_SSL_BallModelChipFixedLoss_ssl_5fvision_5fgeometry_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_SSL_BallModelChipFixedLoss_ssl_5fvision_5fgeometry_2eproto}, {}};
 
-static void InitDefaultsSSL_GeometryModels() {
+static void InitDefaultsscc_info_SSL_BallModelStraightTwoPhase_ssl_5fvision_5fgeometry_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::_SSL_GeometryModels_default_instance_;
-    new (ptr) ::SSL_GeometryModels();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+    void* ptr = &::_SSL_BallModelStraightTwoPhase_default_instance_;
+    new (ptr) ::SSL_BallModelStraightTwoPhase();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::SSL_GeometryModels::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<2> scc_info_SSL_GeometryModels =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 2, InitDefaultsSSL_GeometryModels}, {
-      &protobuf_ssl_5fvision_5fgeometry_2eproto::scc_info_SSL_BallModelStraightTwoPhase.base,
-      &protobuf_ssl_5fvision_5fgeometry_2eproto::scc_info_SSL_BallModelChipFixedLoss.base,}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_SSL_BallModelStraightTwoPhase_ssl_5fvision_5fgeometry_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_SSL_BallModelStraightTwoPhase_ssl_5fvision_5fgeometry_2eproto}, {}};
 
-static void InitDefaultsSSL_GeometryData() {
+static void InitDefaultsscc_info_SSL_FieldCircularArc_ssl_5fvision_5fgeometry_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::_SSL_FieldCircularArc_default_instance_;
+    new (ptr) ::SSL_FieldCircularArc();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_SSL_FieldCircularArc_ssl_5fvision_5fgeometry_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_SSL_FieldCircularArc_ssl_5fvision_5fgeometry_2eproto}, {
+      &scc_info_Vector2f_ssl_5fvision_5fgeometry_2eproto.base,}};
+
+static void InitDefaultsscc_info_SSL_FieldLineSegment_ssl_5fvision_5fgeometry_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::_SSL_FieldLineSegment_default_instance_;
+    new (ptr) ::SSL_FieldLineSegment();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_SSL_FieldLineSegment_ssl_5fvision_5fgeometry_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_SSL_FieldLineSegment_ssl_5fvision_5fgeometry_2eproto}, {
+      &scc_info_Vector2f_ssl_5fvision_5fgeometry_2eproto.base,}};
+
+static void InitDefaultsscc_info_SSL_GeometryCameraCalibration_ssl_5fvision_5fgeometry_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::_SSL_GeometryCameraCalibration_default_instance_;
+    new (ptr) ::SSL_GeometryCameraCalibration();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_SSL_GeometryCameraCalibration_ssl_5fvision_5fgeometry_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_SSL_GeometryCameraCalibration_ssl_5fvision_5fgeometry_2eproto}, {}};
+
+static void InitDefaultsscc_info_SSL_GeometryData_ssl_5fvision_5fgeometry_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
     void* ptr = &::_SSL_GeometryData_default_instance_;
     new (ptr) ::SSL_GeometryData();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::SSL_GeometryData::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<3> scc_info_SSL_GeometryData =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 3, InitDefaultsSSL_GeometryData}, {
-      &protobuf_ssl_5fvision_5fgeometry_2eproto::scc_info_SSL_GeometryFieldSize.base,
-      &protobuf_ssl_5fvision_5fgeometry_2eproto::scc_info_SSL_GeometryCameraCalibration.base,
-      &protobuf_ssl_5fvision_5fgeometry_2eproto::scc_info_SSL_GeometryModels.base,}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<3> scc_info_SSL_GeometryData_ssl_5fvision_5fgeometry_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 3, 0, InitDefaultsscc_info_SSL_GeometryData_ssl_5fvision_5fgeometry_2eproto}, {
+      &scc_info_SSL_GeometryFieldSize_ssl_5fvision_5fgeometry_2eproto.base,
+      &scc_info_SSL_GeometryCameraCalibration_ssl_5fvision_5fgeometry_2eproto.base,
+      &scc_info_SSL_GeometryModels_ssl_5fvision_5fgeometry_2eproto.base,}};
 
-void InitDefaults() {
-  ::google::protobuf::internal::InitSCC(&scc_info_Vector2f.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_SSL_FieldLineSegment.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_SSL_FieldCircularArc.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_SSL_GeometryFieldSize.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_SSL_GeometryCameraCalibration.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_SSL_BallModelStraightTwoPhase.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_SSL_BallModelChipFixedLoss.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_SSL_GeometryModels.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_SSL_GeometryData.base);
+static void InitDefaultsscc_info_SSL_GeometryFieldSize_ssl_5fvision_5fgeometry_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::_SSL_GeometryFieldSize_default_instance_;
+    new (ptr) ::SSL_GeometryFieldSize();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
 }
 
-::google::protobuf::Metadata file_level_metadata[9];
-const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[1];
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_SSL_GeometryFieldSize_ssl_5fvision_5fgeometry_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 2, 0, InitDefaultsscc_info_SSL_GeometryFieldSize_ssl_5fvision_5fgeometry_2eproto}, {
+      &scc_info_SSL_FieldLineSegment_ssl_5fvision_5fgeometry_2eproto.base,
+      &scc_info_SSL_FieldCircularArc_ssl_5fvision_5fgeometry_2eproto.base,}};
 
-const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Vector2f, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Vector2f, _internal_metadata_),
+static void InitDefaultsscc_info_SSL_GeometryModels_ssl_5fvision_5fgeometry_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::_SSL_GeometryModels_default_instance_;
+    new (ptr) ::SSL_GeometryModels();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_SSL_GeometryModels_ssl_5fvision_5fgeometry_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 2, 0, InitDefaultsscc_info_SSL_GeometryModels_ssl_5fvision_5fgeometry_2eproto}, {
+      &scc_info_SSL_BallModelStraightTwoPhase_ssl_5fvision_5fgeometry_2eproto.base,
+      &scc_info_SSL_BallModelChipFixedLoss_ssl_5fvision_5fgeometry_2eproto.base,}};
+
+static void InitDefaultsscc_info_Vector2f_ssl_5fvision_5fgeometry_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::_Vector2f_default_instance_;
+    new (ptr) ::Vector2f();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Vector2f_ssl_5fvision_5fgeometry_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_Vector2f_ssl_5fvision_5fgeometry_2eproto}, {}};
+
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_ssl_5fvision_5fgeometry_2eproto[9];
+static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_ssl_5fvision_5fgeometry_2eproto[1];
+static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_ssl_5fvision_5fgeometry_2eproto = nullptr;
+
+const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_ssl_5fvision_5fgeometry_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+  PROTOBUF_FIELD_OFFSET(::Vector2f, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::Vector2f, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Vector2f, x_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Vector2f, y_),
+  PROTOBUF_FIELD_OFFSET(::Vector2f, x_),
+  PROTOBUF_FIELD_OFFSET(::Vector2f, y_),
   0,
   1,
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_FieldLineSegment, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_FieldLineSegment, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::SSL_FieldLineSegment, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::SSL_FieldLineSegment, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_FieldLineSegment, name_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_FieldLineSegment, p1_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_FieldLineSegment, p2_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_FieldLineSegment, thickness_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_FieldLineSegment, type_),
+  PROTOBUF_FIELD_OFFSET(::SSL_FieldLineSegment, name_),
+  PROTOBUF_FIELD_OFFSET(::SSL_FieldLineSegment, p1_),
+  PROTOBUF_FIELD_OFFSET(::SSL_FieldLineSegment, p2_),
+  PROTOBUF_FIELD_OFFSET(::SSL_FieldLineSegment, thickness_),
+  PROTOBUF_FIELD_OFFSET(::SSL_FieldLineSegment, type_),
   0,
   1,
   2,
   3,
   4,
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_FieldCircularArc, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_FieldCircularArc, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::SSL_FieldCircularArc, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::SSL_FieldCircularArc, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_FieldCircularArc, name_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_FieldCircularArc, center_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_FieldCircularArc, radius_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_FieldCircularArc, a1_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_FieldCircularArc, a2_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_FieldCircularArc, thickness_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_FieldCircularArc, type_),
+  PROTOBUF_FIELD_OFFSET(::SSL_FieldCircularArc, name_),
+  PROTOBUF_FIELD_OFFSET(::SSL_FieldCircularArc, center_),
+  PROTOBUF_FIELD_OFFSET(::SSL_FieldCircularArc, radius_),
+  PROTOBUF_FIELD_OFFSET(::SSL_FieldCircularArc, a1_),
+  PROTOBUF_FIELD_OFFSET(::SSL_FieldCircularArc, a2_),
+  PROTOBUF_FIELD_OFFSET(::SSL_FieldCircularArc, thickness_),
+  PROTOBUF_FIELD_OFFSET(::SSL_FieldCircularArc, type_),
   0,
   1,
   2,
@@ -269,20 +232,20 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   4,
   5,
   6,
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_GeometryFieldSize, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_GeometryFieldSize, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::SSL_GeometryFieldSize, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::SSL_GeometryFieldSize, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_GeometryFieldSize, field_length_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_GeometryFieldSize, field_width_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_GeometryFieldSize, goal_width_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_GeometryFieldSize, goal_depth_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_GeometryFieldSize, boundary_width_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_GeometryFieldSize, field_lines_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_GeometryFieldSize, field_arcs_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_GeometryFieldSize, penalty_area_depth_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_GeometryFieldSize, penalty_area_width_),
+  PROTOBUF_FIELD_OFFSET(::SSL_GeometryFieldSize, field_length_),
+  PROTOBUF_FIELD_OFFSET(::SSL_GeometryFieldSize, field_width_),
+  PROTOBUF_FIELD_OFFSET(::SSL_GeometryFieldSize, goal_width_),
+  PROTOBUF_FIELD_OFFSET(::SSL_GeometryFieldSize, goal_depth_),
+  PROTOBUF_FIELD_OFFSET(::SSL_GeometryFieldSize, boundary_width_),
+  PROTOBUF_FIELD_OFFSET(::SSL_GeometryFieldSize, field_lines_),
+  PROTOBUF_FIELD_OFFSET(::SSL_GeometryFieldSize, field_arcs_),
+  PROTOBUF_FIELD_OFFSET(::SSL_GeometryFieldSize, penalty_area_depth_),
+  PROTOBUF_FIELD_OFFSET(::SSL_GeometryFieldSize, penalty_area_width_),
   0,
   1,
   2,
@@ -292,28 +255,28 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,
   5,
   6,
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_GeometryCameraCalibration, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_GeometryCameraCalibration, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::SSL_GeometryCameraCalibration, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::SSL_GeometryCameraCalibration, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_GeometryCameraCalibration, camera_id_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_GeometryCameraCalibration, focal_length_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_GeometryCameraCalibration, principal_point_x_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_GeometryCameraCalibration, principal_point_y_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_GeometryCameraCalibration, distortion_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_GeometryCameraCalibration, q0_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_GeometryCameraCalibration, q1_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_GeometryCameraCalibration, q2_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_GeometryCameraCalibration, q3_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_GeometryCameraCalibration, tx_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_GeometryCameraCalibration, ty_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_GeometryCameraCalibration, tz_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_GeometryCameraCalibration, derived_camera_world_tx_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_GeometryCameraCalibration, derived_camera_world_ty_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_GeometryCameraCalibration, derived_camera_world_tz_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_GeometryCameraCalibration, pixel_image_width_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_GeometryCameraCalibration, pixel_image_height_),
+  PROTOBUF_FIELD_OFFSET(::SSL_GeometryCameraCalibration, camera_id_),
+  PROTOBUF_FIELD_OFFSET(::SSL_GeometryCameraCalibration, focal_length_),
+  PROTOBUF_FIELD_OFFSET(::SSL_GeometryCameraCalibration, principal_point_x_),
+  PROTOBUF_FIELD_OFFSET(::SSL_GeometryCameraCalibration, principal_point_y_),
+  PROTOBUF_FIELD_OFFSET(::SSL_GeometryCameraCalibration, distortion_),
+  PROTOBUF_FIELD_OFFSET(::SSL_GeometryCameraCalibration, q0_),
+  PROTOBUF_FIELD_OFFSET(::SSL_GeometryCameraCalibration, q1_),
+  PROTOBUF_FIELD_OFFSET(::SSL_GeometryCameraCalibration, q2_),
+  PROTOBUF_FIELD_OFFSET(::SSL_GeometryCameraCalibration, q3_),
+  PROTOBUF_FIELD_OFFSET(::SSL_GeometryCameraCalibration, tx_),
+  PROTOBUF_FIELD_OFFSET(::SSL_GeometryCameraCalibration, ty_),
+  PROTOBUF_FIELD_OFFSET(::SSL_GeometryCameraCalibration, tz_),
+  PROTOBUF_FIELD_OFFSET(::SSL_GeometryCameraCalibration, derived_camera_world_tx_),
+  PROTOBUF_FIELD_OFFSET(::SSL_GeometryCameraCalibration, derived_camera_world_ty_),
+  PROTOBUF_FIELD_OFFSET(::SSL_GeometryCameraCalibration, derived_camera_world_tz_),
+  PROTOBUF_FIELD_OFFSET(::SSL_GeometryCameraCalibration, pixel_image_width_),
+  PROTOBUF_FIELD_OFFSET(::SSL_GeometryCameraCalibration, pixel_image_height_),
   0,
   1,
   2,
@@ -331,50 +294,50 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   14,
   15,
   16,
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_BallModelStraightTwoPhase, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_BallModelStraightTwoPhase, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::SSL_BallModelStraightTwoPhase, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::SSL_BallModelStraightTwoPhase, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_BallModelStraightTwoPhase, acc_slide_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_BallModelStraightTwoPhase, acc_roll_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_BallModelStraightTwoPhase, k_switch_),
+  PROTOBUF_FIELD_OFFSET(::SSL_BallModelStraightTwoPhase, acc_slide_),
+  PROTOBUF_FIELD_OFFSET(::SSL_BallModelStraightTwoPhase, acc_roll_),
+  PROTOBUF_FIELD_OFFSET(::SSL_BallModelStraightTwoPhase, k_switch_),
   0,
   1,
   2,
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_BallModelChipFixedLoss, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_BallModelChipFixedLoss, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::SSL_BallModelChipFixedLoss, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::SSL_BallModelChipFixedLoss, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_BallModelChipFixedLoss, damping_xy_first_hop_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_BallModelChipFixedLoss, damping_xy_other_hops_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_BallModelChipFixedLoss, damping_z_),
+  PROTOBUF_FIELD_OFFSET(::SSL_BallModelChipFixedLoss, damping_xy_first_hop_),
+  PROTOBUF_FIELD_OFFSET(::SSL_BallModelChipFixedLoss, damping_xy_other_hops_),
+  PROTOBUF_FIELD_OFFSET(::SSL_BallModelChipFixedLoss, damping_z_),
   0,
   1,
   2,
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_GeometryModels, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_GeometryModels, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::SSL_GeometryModels, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::SSL_GeometryModels, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_GeometryModels, straight_two_phase_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_GeometryModels, chip_fixed_loss_),
+  PROTOBUF_FIELD_OFFSET(::SSL_GeometryModels, straight_two_phase_),
+  PROTOBUF_FIELD_OFFSET(::SSL_GeometryModels, chip_fixed_loss_),
   0,
   1,
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_GeometryData, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_GeometryData, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::SSL_GeometryData, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::SSL_GeometryData, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_GeometryData, field_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_GeometryData, calib_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SSL_GeometryData, models_),
+  PROTOBUF_FIELD_OFFSET(::SSL_GeometryData, field_),
+  PROTOBUF_FIELD_OFFSET(::SSL_GeometryData, calib_),
+  PROTOBUF_FIELD_OFFSET(::SSL_GeometryData, models_),
   0,
   ~0u,
   1,
 };
-static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
+static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, 7, sizeof(::Vector2f)},
   { 9, 19, sizeof(::SSL_FieldLineSegment)},
   { 24, 36, sizeof(::SSL_FieldCircularArc)},
@@ -386,108 +349,94 @@ static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROT
   { 136, 144, sizeof(::SSL_GeometryData)},
 };
 
-static ::google::protobuf::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::google::protobuf::Message*>(&::_Vector2f_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::_SSL_FieldLineSegment_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::_SSL_FieldCircularArc_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::_SSL_GeometryFieldSize_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::_SSL_GeometryCameraCalibration_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::_SSL_BallModelStraightTwoPhase_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::_SSL_BallModelChipFixedLoss_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::_SSL_GeometryModels_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::_SSL_GeometryData_default_instance_),
+static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::_Vector2f_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::_SSL_FieldLineSegment_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::_SSL_FieldCircularArc_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::_SSL_GeometryFieldSize_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::_SSL_GeometryCameraCalibration_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::_SSL_BallModelStraightTwoPhase_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::_SSL_BallModelChipFixedLoss_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::_SSL_GeometryModels_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::_SSL_GeometryData_default_instance_),
 };
 
-void protobuf_AssignDescriptors() {
-  AddDescriptors();
-  AssignDescriptors(
-      "ssl_vision_geometry.proto", schemas, file_default_instances, TableStruct::offsets,
-      file_level_metadata, file_level_enum_descriptors, NULL);
-}
+const char descriptor_table_protodef_ssl_5fvision_5fgeometry_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
+  "\n\031ssl_vision_geometry.proto\" \n\010Vector2f\022"
+  "\t\n\001x\030\001 \002(\002\022\t\n\001y\030\002 \002(\002\"\210\001\n\024SSL_FieldLineS"
+  "egment\022\014\n\004name\030\001 \002(\t\022\025\n\002p1\030\002 \002(\0132\t.Vecto"
+  "r2f\022\025\n\002p2\030\003 \002(\0132\t.Vector2f\022\021\n\tthickness\030"
+  "\004 \002(\002\022!\n\004type\030\005 \001(\0162\023.SSL_FieldShapeType"
+  "\"\235\001\n\024SSL_FieldCircularArc\022\014\n\004name\030\001 \002(\t\022"
+  "\031\n\006center\030\002 \002(\0132\t.Vector2f\022\016\n\006radius\030\003 \002"
+  "(\002\022\n\n\002a1\030\004 \002(\002\022\n\n\002a2\030\005 \002(\002\022\021\n\tthickness\030"
+  "\006 \002(\002\022!\n\004type\030\007 \001(\0162\023.SSL_FieldShapeType"
+  "\"\221\002\n\025SSL_GeometryFieldSize\022\024\n\014field_leng"
+  "th\030\001 \002(\005\022\023\n\013field_width\030\002 \002(\005\022\022\n\ngoal_wi"
+  "dth\030\003 \002(\005\022\022\n\ngoal_depth\030\004 \002(\005\022\026\n\016boundar"
+  "y_width\030\005 \002(\005\022*\n\013field_lines\030\006 \003(\0132\025.SSL"
+  "_FieldLineSegment\022)\n\nfield_arcs\030\007 \003(\0132\025."
+  "SSL_FieldCircularArc\022\032\n\022penalty_area_dep"
+  "th\030\010 \001(\005\022\032\n\022penalty_area_width\030\t \001(\005\"\200\003\n"
+  "\035SSL_GeometryCameraCalibration\022\021\n\tcamera"
+  "_id\030\001 \002(\r\022\024\n\014focal_length\030\002 \002(\002\022\031\n\021princ"
+  "ipal_point_x\030\003 \002(\002\022\031\n\021principal_point_y\030"
+  "\004 \002(\002\022\022\n\ndistortion\030\005 \002(\002\022\n\n\002q0\030\006 \002(\002\022\n\n"
+  "\002q1\030\007 \002(\002\022\n\n\002q2\030\010 \002(\002\022\n\n\002q3\030\t \002(\002\022\n\n\002tx\030"
+  "\n \002(\002\022\n\n\002ty\030\013 \002(\002\022\n\n\002tz\030\014 \002(\002\022\037\n\027derived"
+  "_camera_world_tx\030\r \001(\002\022\037\n\027derived_camera"
+  "_world_ty\030\016 \001(\002\022\037\n\027derived_camera_world_"
+  "tz\030\017 \001(\002\022\031\n\021pixel_image_width\030\020 \001(\r\022\032\n\022p"
+  "ixel_image_height\030\021 \001(\r\"V\n\035SSL_BallModel"
+  "StraightTwoPhase\022\021\n\tacc_slide\030\001 \002(\001\022\020\n\010a"
+  "cc_roll\030\002 \002(\001\022\020\n\010k_switch\030\003 \002(\001\"l\n\032SSL_B"
+  "allModelChipFixedLoss\022\034\n\024damping_xy_firs"
+  "t_hop\030\001 \002(\001\022\035\n\025damping_xy_other_hops\030\002 \002"
+  "(\001\022\021\n\tdamping_z\030\003 \002(\001\"\206\001\n\022SSL_GeometryMo"
+  "dels\022:\n\022straight_two_phase\030\001 \001(\0132\036.SSL_B"
+  "allModelStraightTwoPhase\0224\n\017chip_fixed_l"
+  "oss\030\002 \001(\0132\033.SSL_BallModelChipFixedLoss\"\215"
+  "\001\n\020SSL_GeometryData\022%\n\005field\030\001 \002(\0132\026.SSL"
+  "_GeometryFieldSize\022-\n\005calib\030\002 \003(\0132\036.SSL_"
+  "GeometryCameraCalibration\022#\n\006models\030\003 \001("
+  "\0132\023.SSL_GeometryModels*\333\002\n\022SSL_FieldShap"
+  "eType\022\r\n\tUndefined\020\000\022\020\n\014CenterCircle\020\001\022\020"
+  "\n\014TopTouchLine\020\002\022\023\n\017BottomTouchLine\020\003\022\020\n"
+  "\014LeftGoalLine\020\004\022\021\n\rRightGoalLine\020\005\022\017\n\013Ha"
+  "lfwayLine\020\006\022\016\n\nCenterLine\020\007\022\026\n\022LeftPenal"
+  "tyStretch\020\010\022\027\n\023RightPenaltyStretch\020\t\022\037\n\033"
+  "LeftFieldLeftPenaltyStretch\020\n\022 \n\034LeftFie"
+  "ldRightPenaltyStretch\020\013\022 \n\034RightFieldLef"
+  "tPenaltyStretch\020\014\022!\n\035RightFieldRightPena"
+  "ltyStretch\020\rB8Z6github.com/RoboCup-SSL/s"
+  "sl-simulation-protocol/pkg/sim"
+  ;
+static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_ssl_5fvision_5fgeometry_2eproto_deps[1] = {
+};
+static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_ssl_5fvision_5fgeometry_2eproto_sccs[9] = {
+  &scc_info_SSL_BallModelChipFixedLoss_ssl_5fvision_5fgeometry_2eproto.base,
+  &scc_info_SSL_BallModelStraightTwoPhase_ssl_5fvision_5fgeometry_2eproto.base,
+  &scc_info_SSL_FieldCircularArc_ssl_5fvision_5fgeometry_2eproto.base,
+  &scc_info_SSL_FieldLineSegment_ssl_5fvision_5fgeometry_2eproto.base,
+  &scc_info_SSL_GeometryCameraCalibration_ssl_5fvision_5fgeometry_2eproto.base,
+  &scc_info_SSL_GeometryData_ssl_5fvision_5fgeometry_2eproto.base,
+  &scc_info_SSL_GeometryFieldSize_ssl_5fvision_5fgeometry_2eproto.base,
+  &scc_info_SSL_GeometryModels_ssl_5fvision_5fgeometry_2eproto.base,
+  &scc_info_Vector2f_ssl_5fvision_5fgeometry_2eproto.base,
+};
+static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_ssl_5fvision_5fgeometry_2eproto_once;
+const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_ssl_5fvision_5fgeometry_2eproto = {
+  false, false, descriptor_table_protodef_ssl_5fvision_5fgeometry_2eproto, "ssl_vision_geometry.proto", 1910,
+  &descriptor_table_ssl_5fvision_5fgeometry_2eproto_once, descriptor_table_ssl_5fvision_5fgeometry_2eproto_sccs, descriptor_table_ssl_5fvision_5fgeometry_2eproto_deps, 9, 0,
+  schemas, file_default_instances, TableStruct_ssl_5fvision_5fgeometry_2eproto::offsets,
+  file_level_metadata_ssl_5fvision_5fgeometry_2eproto, 9, file_level_enum_descriptors_ssl_5fvision_5fgeometry_2eproto, file_level_service_descriptors_ssl_5fvision_5fgeometry_2eproto,
+};
 
-void protobuf_AssignDescriptorsOnce() {
-  static ::google::protobuf::internal::once_flag once;
-  ::google::protobuf::internal::call_once(once, protobuf_AssignDescriptors);
-}
-
-void protobuf_RegisterTypes(const ::std::string&) GOOGLE_PROTOBUF_ATTRIBUTE_COLD;
-void protobuf_RegisterTypes(const ::std::string&) {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 9);
-}
-
-void AddDescriptorsImpl() {
-  InitDefaults();
-  static const char descriptor[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-      "\n\031ssl_vision_geometry.proto\" \n\010Vector2f\022"
-      "\t\n\001x\030\001 \002(\002\022\t\n\001y\030\002 \002(\002\"\210\001\n\024SSL_FieldLineS"
-      "egment\022\014\n\004name\030\001 \002(\t\022\025\n\002p1\030\002 \002(\0132\t.Vecto"
-      "r2f\022\025\n\002p2\030\003 \002(\0132\t.Vector2f\022\021\n\tthickness\030"
-      "\004 \002(\002\022!\n\004type\030\005 \001(\0162\023.SSL_FieldShapeType"
-      "\"\235\001\n\024SSL_FieldCircularArc\022\014\n\004name\030\001 \002(\t\022"
-      "\031\n\006center\030\002 \002(\0132\t.Vector2f\022\016\n\006radius\030\003 \002"
-      "(\002\022\n\n\002a1\030\004 \002(\002\022\n\n\002a2\030\005 \002(\002\022\021\n\tthickness\030"
-      "\006 \002(\002\022!\n\004type\030\007 \001(\0162\023.SSL_FieldShapeType"
-      "\"\221\002\n\025SSL_GeometryFieldSize\022\024\n\014field_leng"
-      "th\030\001 \002(\005\022\023\n\013field_width\030\002 \002(\005\022\022\n\ngoal_wi"
-      "dth\030\003 \002(\005\022\022\n\ngoal_depth\030\004 \002(\005\022\026\n\016boundar"
-      "y_width\030\005 \002(\005\022*\n\013field_lines\030\006 \003(\0132\025.SSL"
-      "_FieldLineSegment\022)\n\nfield_arcs\030\007 \003(\0132\025."
-      "SSL_FieldCircularArc\022\032\n\022penalty_area_dep"
-      "th\030\010 \001(\005\022\032\n\022penalty_area_width\030\t \001(\005\"\200\003\n"
-      "\035SSL_GeometryCameraCalibration\022\021\n\tcamera"
-      "_id\030\001 \002(\r\022\024\n\014focal_length\030\002 \002(\002\022\031\n\021princ"
-      "ipal_point_x\030\003 \002(\002\022\031\n\021principal_point_y\030"
-      "\004 \002(\002\022\022\n\ndistortion\030\005 \002(\002\022\n\n\002q0\030\006 \002(\002\022\n\n"
-      "\002q1\030\007 \002(\002\022\n\n\002q2\030\010 \002(\002\022\n\n\002q3\030\t \002(\002\022\n\n\002tx\030"
-      "\n \002(\002\022\n\n\002ty\030\013 \002(\002\022\n\n\002tz\030\014 \002(\002\022\037\n\027derived"
-      "_camera_world_tx\030\r \001(\002\022\037\n\027derived_camera"
-      "_world_ty\030\016 \001(\002\022\037\n\027derived_camera_world_"
-      "tz\030\017 \001(\002\022\031\n\021pixel_image_width\030\020 \001(\r\022\032\n\022p"
-      "ixel_image_height\030\021 \001(\r\"V\n\035SSL_BallModel"
-      "StraightTwoPhase\022\021\n\tacc_slide\030\001 \002(\001\022\020\n\010a"
-      "cc_roll\030\002 \002(\001\022\020\n\010k_switch\030\003 \002(\001\"l\n\032SSL_B"
-      "allModelChipFixedLoss\022\034\n\024damping_xy_firs"
-      "t_hop\030\001 \002(\001\022\035\n\025damping_xy_other_hops\030\002 \002"
-      "(\001\022\021\n\tdamping_z\030\003 \002(\001\"\206\001\n\022SSL_GeometryMo"
-      "dels\022:\n\022straight_two_phase\030\001 \001(\0132\036.SSL_B"
-      "allModelStraightTwoPhase\0224\n\017chip_fixed_l"
-      "oss\030\002 \001(\0132\033.SSL_BallModelChipFixedLoss\"\215"
-      "\001\n\020SSL_GeometryData\022%\n\005field\030\001 \002(\0132\026.SSL"
-      "_GeometryFieldSize\022-\n\005calib\030\002 \003(\0132\036.SSL_"
-      "GeometryCameraCalibration\022#\n\006models\030\003 \001("
-      "\0132\023.SSL_GeometryModels*\333\002\n\022SSL_FieldShap"
-      "eType\022\r\n\tUndefined\020\000\022\020\n\014CenterCircle\020\001\022\020"
-      "\n\014TopTouchLine\020\002\022\023\n\017BottomTouchLine\020\003\022\020\n"
-      "\014LeftGoalLine\020\004\022\021\n\rRightGoalLine\020\005\022\017\n\013Ha"
-      "lfwayLine\020\006\022\016\n\nCenterLine\020\007\022\026\n\022LeftPenal"
-      "tyStretch\020\010\022\027\n\023RightPenaltyStretch\020\t\022\037\n\033"
-      "LeftFieldLeftPenaltyStretch\020\n\022 \n\034LeftFie"
-      "ldRightPenaltyStretch\020\013\022 \n\034RightFieldLef"
-      "tPenaltyStretch\020\014\022!\n\035RightFieldRightPena"
-      "ltyStretch\020\rB8Z6github.com/RoboCup-SSL/s"
-      "sl-simulation-protocol/pkg/sim"
-  };
-  ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 1910);
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
-    "ssl_vision_geometry.proto", &protobuf_RegisterTypes);
-}
-
-void AddDescriptors() {
-  static ::google::protobuf::internal::once_flag once;
-  ::google::protobuf::internal::call_once(once, AddDescriptorsImpl);
-}
-// Force AddDescriptors() to be called at dynamic initialization time.
-struct StaticDescriptorInitializer {
-  StaticDescriptorInitializer() {
-    AddDescriptors();
-  }
-} static_descriptor_initializer;
-}  // namespace protobuf_ssl_5fvision_5fgeometry_2eproto
-const ::google::protobuf::EnumDescriptor* SSL_FieldShapeType_descriptor() {
-  protobuf_ssl_5fvision_5fgeometry_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_ssl_5fvision_5fgeometry_2eproto::file_level_enum_descriptors[0];
+// Force running AddDescriptors() at dynamic initialization time.
+static bool dynamic_init_dummy_ssl_5fvision_5fgeometry_2eproto = (static_cast<void>(::PROTOBUF_NAMESPACE_ID::internal::AddDescriptors(&descriptor_table_ssl_5fvision_5fgeometry_2eproto)), true);
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* SSL_FieldShapeType_descriptor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_ssl_5fvision_5fgeometry_2eproto);
+  return file_level_enum_descriptors_ssl_5fvision_5fgeometry_2eproto[0];
 }
 bool SSL_FieldShapeType_IsValid(int value) {
   switch (value) {
@@ -514,25 +463,30 @@ bool SSL_FieldShapeType_IsValid(int value) {
 
 // ===================================================================
 
-void Vector2f::InitAsDefaultInstance() {
-}
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int Vector2f::kXFieldNumber;
-const int Vector2f::kYFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+class Vector2f::_Internal {
+ public:
+  using HasBits = decltype(std::declval<Vector2f>()._has_bits_);
+  static void set_has_x(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+  static void set_has_y(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
+  static bool MissingRequiredFields(const HasBits& has_bits) {
+    return ((has_bits[0] & 0x00000003) ^ 0x00000003) != 0;
+  }
+};
 
-Vector2f::Vector2f()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ssl_5fvision_5fgeometry_2eproto::scc_info_Vector2f.base);
+Vector2f::Vector2f(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:Vector2f)
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:Vector2f)
 }
 Vector2f::Vector2f(const Vector2f& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
       _has_bits_(from._has_bits_) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::memcpy(&x_, &from.x_,
     static_cast<size_t>(reinterpret_cast<char*>(&y_) -
     reinterpret_cast<char*>(&x_)) + sizeof(y_));
@@ -540,152 +494,122 @@ Vector2f::Vector2f(const Vector2f& from)
 }
 
 void Vector2f::SharedCtor() {
-  ::memset(&x_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&y_) -
+  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+      reinterpret_cast<char*>(&x_) - reinterpret_cast<char*>(this)),
+      0, static_cast<size_t>(reinterpret_cast<char*>(&y_) -
       reinterpret_cast<char*>(&x_)) + sizeof(y_));
 }
 
 Vector2f::~Vector2f() {
   // @@protoc_insertion_point(destructor:Vector2f)
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 void Vector2f::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
 }
 
+void Vector2f::ArenaDtor(void* object) {
+  Vector2f* _this = reinterpret_cast< Vector2f* >(object);
+  (void)_this;
+}
+void Vector2f::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void Vector2f::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* Vector2f::descriptor() {
-  ::protobuf_ssl_5fvision_5fgeometry_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ssl_5fvision_5fgeometry_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const Vector2f& Vector2f::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ssl_5fvision_5fgeometry_2eproto::scc_info_Vector2f.base);
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_Vector2f_ssl_5fvision_5fgeometry_2eproto.base);
   return *internal_default_instance();
 }
 
 
 void Vector2f::Clear() {
 // @@protoc_insertion_point(message_clear_start:Vector2f)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 3u) {
+  if (cached_has_bits & 0x00000003u) {
     ::memset(&x_, 0, static_cast<size_t>(
         reinterpret_cast<char*>(&y_) -
         reinterpret_cast<char*>(&x_)) + sizeof(y_));
   }
   _has_bits_.Clear();
-  _internal_metadata_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-bool Vector2f::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:Vector2f)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+const char* Vector2f::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
       // required float x = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(13u /* 13 & 0xFF */)) {
-          set_has_x();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &x_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 13)) {
+          _Internal::set_has_x(&has_bits);
+          x_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
       // required float y = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(21u /* 21 & 0xFF */)) {
-          set_has_y();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &y_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 21)) {
+          _Internal::set_has_y(&has_bits);
+          y_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
-        if (tag == 0) {
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
           goto success;
         }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
-    }
-  }
+    }  // switch
+  }  // while
 success:
-  // @@protoc_insertion_point(parse_success:Vector2f)
-  return true;
+  _has_bits_.Or(has_bits);
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:Vector2f)
-  return false;
-#undef DO_
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-void Vector2f::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:Vector2f)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  cached_has_bits = _has_bits_[0];
-  // required float x = 1;
-  if (cached_has_bits & 0x00000001u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(1, this->x(), output);
-  }
-
-  // required float y = 2;
-  if (cached_has_bits & 0x00000002u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(2, this->y(), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:Vector2f)
-}
-
-::google::protobuf::uint8* Vector2f::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::PROTOBUF_NAMESPACE_ID::uint8* Vector2f::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:Vector2f)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
   // required float x = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(1, this->x(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(1, this->_internal_x(), target);
   }
 
   // required float y = 2;
   if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(2, this->y(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(2, this->_internal_y(), target);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:Vector2f)
   return target;
@@ -695,12 +619,12 @@ size_t Vector2f::RequiredFieldsByteSizeFallback() const {
 // @@protoc_insertion_point(required_fields_byte_size_fallback_start:Vector2f)
   size_t total_size = 0;
 
-  if (has_x()) {
+  if (_internal_has_x()) {
     // required float x = 1;
     total_size += 1 + 4;
   }
 
-  if (has_y()) {
+  if (_internal_has_y()) {
     // required float y = 2;
     total_size += 1 + 4;
   }
@@ -711,11 +635,6 @@ size_t Vector2f::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:Vector2f)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
   if (((_has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
     // required float x = 1;
     total_size += 1 + 4;
@@ -726,20 +645,28 @@ size_t Vector2f::ByteSizeLong() const {
   } else {
     total_size += RequiredFieldsByteSizeFallback();
   }
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void Vector2f::MergeFrom(const ::google::protobuf::Message& from) {
+void Vector2f::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:Vector2f)
   GOOGLE_DCHECK_NE(&from, this);
   const Vector2f* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const Vector2f>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<Vector2f>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:Vector2f)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:Vector2f)
     MergeFrom(*source);
@@ -749,12 +676,12 @@ void Vector2f::MergeFrom(const ::google::protobuf::Message& from) {
 void Vector2f::MergeFrom(const Vector2f& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:Vector2f)
   GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 3u) {
+  if (cached_has_bits & 0x00000003u) {
     if (cached_has_bits & 0x00000001u) {
       x_ = from.x_;
     }
@@ -765,7 +692,7 @@ void Vector2f::MergeFrom(const Vector2f& from) {
   }
 }
 
-void Vector2f::CopyFrom(const ::google::protobuf::Message& from) {
+void Vector2f::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:Vector2f)
   if (&from == this) return;
   Clear();
@@ -780,69 +707,86 @@ void Vector2f::CopyFrom(const Vector2f& from) {
 }
 
 bool Vector2f::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
+  if (_Internal::MissingRequiredFields(_has_bits_)) return false;
   return true;
 }
 
-void Vector2f::Swap(Vector2f* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void Vector2f::InternalSwap(Vector2f* other) {
   using std::swap;
-  swap(x_, other->x_);
-  swap(y_, other->y_);
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(Vector2f, y_)
+      + sizeof(Vector2f::y_)
+      - PROTOBUF_FIELD_OFFSET(Vector2f, x_)>(
+          reinterpret_cast<char*>(&x_),
+          reinterpret_cast<char*>(&other->x_));
 }
 
-::google::protobuf::Metadata Vector2f::GetMetadata() const {
-  protobuf_ssl_5fvision_5fgeometry_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ssl_5fvision_5fgeometry_2eproto::file_level_metadata[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata Vector2f::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
 // ===================================================================
 
-void SSL_FieldLineSegment::InitAsDefaultInstance() {
-  ::_SSL_FieldLineSegment_default_instance_._instance.get_mutable()->p1_ = const_cast< ::Vector2f*>(
-      ::Vector2f::internal_default_instance());
-  ::_SSL_FieldLineSegment_default_instance_._instance.get_mutable()->p2_ = const_cast< ::Vector2f*>(
-      ::Vector2f::internal_default_instance());
-}
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int SSL_FieldLineSegment::kNameFieldNumber;
-const int SSL_FieldLineSegment::kP1FieldNumber;
-const int SSL_FieldLineSegment::kP2FieldNumber;
-const int SSL_FieldLineSegment::kThicknessFieldNumber;
-const int SSL_FieldLineSegment::kTypeFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+class SSL_FieldLineSegment::_Internal {
+ public:
+  using HasBits = decltype(std::declval<SSL_FieldLineSegment>()._has_bits_);
+  static void set_has_name(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+  static const ::Vector2f& p1(const SSL_FieldLineSegment* msg);
+  static void set_has_p1(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
+  static const ::Vector2f& p2(const SSL_FieldLineSegment* msg);
+  static void set_has_p2(HasBits* has_bits) {
+    (*has_bits)[0] |= 4u;
+  }
+  static void set_has_thickness(HasBits* has_bits) {
+    (*has_bits)[0] |= 8u;
+  }
+  static void set_has_type(HasBits* has_bits) {
+    (*has_bits)[0] |= 16u;
+  }
+  static bool MissingRequiredFields(const HasBits& has_bits) {
+    return ((has_bits[0] & 0x0000000f) ^ 0x0000000f) != 0;
+  }
+};
 
-SSL_FieldLineSegment::SSL_FieldLineSegment()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ssl_5fvision_5fgeometry_2eproto::scc_info_SSL_FieldLineSegment.base);
+const ::Vector2f&
+SSL_FieldLineSegment::_Internal::p1(const SSL_FieldLineSegment* msg) {
+  return *msg->p1_;
+}
+const ::Vector2f&
+SSL_FieldLineSegment::_Internal::p2(const SSL_FieldLineSegment* msg) {
+  return *msg->p2_;
+}
+SSL_FieldLineSegment::SSL_FieldLineSegment(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:SSL_FieldLineSegment)
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:SSL_FieldLineSegment)
 }
 SSL_FieldLineSegment::SSL_FieldLineSegment(const SSL_FieldLineSegment& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
       _has_bits_(from._has_bits_) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.has_name()) {
-    name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (from._internal_has_name()) {
+    name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_name(), 
+      GetArena());
   }
-  if (from.has_p1()) {
+  if (from._internal_has_p1()) {
     p1_ = new ::Vector2f(*from.p1_);
   } else {
-    p1_ = NULL;
+    p1_ = nullptr;
   }
-  if (from.has_p2()) {
+  if (from._internal_has_p2()) {
     p2_ = new ::Vector2f(*from.p2_);
   } else {
-    p2_ = NULL;
+    p2_ = nullptr;
   }
   ::memcpy(&thickness_, &from.thickness_,
     static_cast<size_t>(reinterpret_cast<char*>(&type_) -
@@ -851,264 +795,196 @@ SSL_FieldLineSegment::SSL_FieldLineSegment(const SSL_FieldLineSegment& from)
 }
 
 void SSL_FieldLineSegment::SharedCtor() {
-  name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  ::memset(&p1_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&type_) -
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_SSL_FieldLineSegment_ssl_5fvision_5fgeometry_2eproto.base);
+  name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+      reinterpret_cast<char*>(&p1_) - reinterpret_cast<char*>(this)),
+      0, static_cast<size_t>(reinterpret_cast<char*>(&type_) -
       reinterpret_cast<char*>(&p1_)) + sizeof(type_));
 }
 
 SSL_FieldLineSegment::~SSL_FieldLineSegment() {
   // @@protoc_insertion_point(destructor:SSL_FieldLineSegment)
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 void SSL_FieldLineSegment::SharedDtor() {
-  name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  GOOGLE_DCHECK(GetArena() == nullptr);
+  name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (this != internal_default_instance()) delete p1_;
   if (this != internal_default_instance()) delete p2_;
 }
 
+void SSL_FieldLineSegment::ArenaDtor(void* object) {
+  SSL_FieldLineSegment* _this = reinterpret_cast< SSL_FieldLineSegment* >(object);
+  (void)_this;
+}
+void SSL_FieldLineSegment::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void SSL_FieldLineSegment::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* SSL_FieldLineSegment::descriptor() {
-  ::protobuf_ssl_5fvision_5fgeometry_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ssl_5fvision_5fgeometry_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const SSL_FieldLineSegment& SSL_FieldLineSegment::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ssl_5fvision_5fgeometry_2eproto::scc_info_SSL_FieldLineSegment.base);
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_SSL_FieldLineSegment_ssl_5fvision_5fgeometry_2eproto.base);
   return *internal_default_instance();
 }
 
 
 void SSL_FieldLineSegment::Clear() {
 // @@protoc_insertion_point(message_clear_start:SSL_FieldLineSegment)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 7u) {
+  if (cached_has_bits & 0x00000007u) {
     if (cached_has_bits & 0x00000001u) {
-      name_.ClearNonDefaultToEmptyNoArena();
+      name_.ClearNonDefaultToEmpty();
     }
     if (cached_has_bits & 0x00000002u) {
-      GOOGLE_DCHECK(p1_ != NULL);
+      GOOGLE_DCHECK(p1_ != nullptr);
       p1_->Clear();
     }
     if (cached_has_bits & 0x00000004u) {
-      GOOGLE_DCHECK(p2_ != NULL);
+      GOOGLE_DCHECK(p2_ != nullptr);
       p2_->Clear();
     }
   }
-  if (cached_has_bits & 24u) {
+  if (cached_has_bits & 0x00000018u) {
     ::memset(&thickness_, 0, static_cast<size_t>(
         reinterpret_cast<char*>(&type_) -
         reinterpret_cast<char*>(&thickness_)) + sizeof(type_));
   }
   _has_bits_.Clear();
-  _internal_metadata_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-bool SSL_FieldLineSegment::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:SSL_FieldLineSegment)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+const char* SSL_FieldLineSegment::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
       // required string name = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_name()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-            this->name().data(), static_cast<int>(this->name().length()),
-            ::google::protobuf::internal::WireFormat::PARSE,
-            "SSL_FieldLineSegment.name");
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          auto str = _internal_mutable_name();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          #ifndef NDEBUG
+          ::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "SSL_FieldLineSegment.name");
+          #endif  // !NDEBUG
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       // required .Vector2f p1 = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-               input, mutable_p1()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          ptr = ctx->ParseMessage(_internal_mutable_p1(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       // required .Vector2f p2 = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-               input, mutable_p2()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
+          ptr = ctx->ParseMessage(_internal_mutable_p2(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       // required float thickness = 4;
-      case 4: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(37u /* 37 & 0xFF */)) {
-          set_has_thickness();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &thickness_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 37)) {
+          _Internal::set_has_thickness(&has_bits);
+          thickness_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
       // optional .SSL_FieldShapeType type = 5;
-      case 5: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(40u /* 40 & 0xFF */)) {
-          int value;
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
-                 input, &value)));
-          if (::SSL_FieldShapeType_IsValid(value)) {
-            set_type(static_cast< ::SSL_FieldShapeType >(value));
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 40)) {
+          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+          if (PROTOBUF_PREDICT_TRUE(::SSL_FieldShapeType_IsValid(val))) {
+            _internal_set_type(static_cast<::SSL_FieldShapeType>(val));
           } else {
-            mutable_unknown_fields()->AddVarint(
-                5, static_cast< ::google::protobuf::uint64>(value));
+            ::PROTOBUF_NAMESPACE_ID::internal::WriteVarint(5, val, mutable_unknown_fields());
           }
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
-        if (tag == 0) {
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
           goto success;
         }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
-    }
-  }
+    }  // switch
+  }  // while
 success:
-  // @@protoc_insertion_point(parse_success:SSL_FieldLineSegment)
-  return true;
+  _has_bits_.Or(has_bits);
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:SSL_FieldLineSegment)
-  return false;
-#undef DO_
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-void SSL_FieldLineSegment::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:SSL_FieldLineSegment)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  cached_has_bits = _has_bits_[0];
-  // required string name = 1;
-  if (cached_has_bits & 0x00000001u) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->name().data(), static_cast<int>(this->name().length()),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "SSL_FieldLineSegment.name");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->name(), output);
-  }
-
-  // required .Vector2f p1 = 2;
-  if (cached_has_bits & 0x00000002u) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, this->_internal_p1(), output);
-  }
-
-  // required .Vector2f p2 = 3;
-  if (cached_has_bits & 0x00000004u) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      3, this->_internal_p2(), output);
-  }
-
-  // required float thickness = 4;
-  if (cached_has_bits & 0x00000008u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(4, this->thickness(), output);
-  }
-
-  // optional .SSL_FieldShapeType type = 5;
-  if (cached_has_bits & 0x00000010u) {
-    ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      5, this->type(), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:SSL_FieldLineSegment)
-}
-
-::google::protobuf::uint8* SSL_FieldLineSegment::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::PROTOBUF_NAMESPACE_ID::uint8* SSL_FieldLineSegment::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:SSL_FieldLineSegment)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
   // required string name = 1;
   if (cached_has_bits & 0x00000001u) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->name().data(), static_cast<int>(this->name().length()),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
       "SSL_FieldLineSegment.name");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->name(), target);
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_name(), target);
   }
 
   // required .Vector2f p1 = 2;
   if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        2, this->_internal_p1(), deterministic, target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        2, _Internal::p1(this), target, stream);
   }
 
   // required .Vector2f p2 = 3;
   if (cached_has_bits & 0x00000004u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        3, this->_internal_p2(), deterministic, target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        3, _Internal::p2(this), target, stream);
   }
 
   // required float thickness = 4;
   if (cached_has_bits & 0x00000008u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(4, this->thickness(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(4, this->_internal_thickness(), target);
   }
 
   // optional .SSL_FieldShapeType type = 5;
   if (cached_has_bits & 0x00000010u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      5, this->type(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+      5, this->_internal_type(), target);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:SSL_FieldLineSegment)
   return target;
@@ -1118,28 +994,28 @@ size_t SSL_FieldLineSegment::RequiredFieldsByteSizeFallback() const {
 // @@protoc_insertion_point(required_fields_byte_size_fallback_start:SSL_FieldLineSegment)
   size_t total_size = 0;
 
-  if (has_name()) {
+  if (_internal_has_name()) {
     // required string name = 1;
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->name());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_name());
   }
 
-  if (has_p1()) {
+  if (_internal_has_p1()) {
     // required .Vector2f p1 = 2;
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *p1_);
   }
 
-  if (has_p2()) {
+  if (_internal_has_p2()) {
     // required .Vector2f p2 = 3;
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *p2_);
   }
 
-  if (has_thickness()) {
+  if (_internal_has_thickness()) {
     // required float thickness = 4;
     total_size += 1 + 4;
   }
@@ -1150,25 +1026,20 @@ size_t SSL_FieldLineSegment::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:SSL_FieldLineSegment)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
   if (((_has_bits_[0] & 0x0000000f) ^ 0x0000000f) == 0) {  // All required fields are present.
     // required string name = 1;
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->name());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_name());
 
     // required .Vector2f p1 = 2;
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *p1_);
 
     // required .Vector2f p2 = 3;
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *p2_);
 
     // required float thickness = 4;
@@ -1177,26 +1048,35 @@ size_t SSL_FieldLineSegment::ByteSizeLong() const {
   } else {
     total_size += RequiredFieldsByteSizeFallback();
   }
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // optional .SSL_FieldShapeType type = 5;
-  if (has_type()) {
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000010u) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_type());
   }
 
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void SSL_FieldLineSegment::MergeFrom(const ::google::protobuf::Message& from) {
+void SSL_FieldLineSegment::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:SSL_FieldLineSegment)
   GOOGLE_DCHECK_NE(&from, this);
   const SSL_FieldLineSegment* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const SSL_FieldLineSegment>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<SSL_FieldLineSegment>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:SSL_FieldLineSegment)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:SSL_FieldLineSegment)
     MergeFrom(*source);
@@ -1206,21 +1086,20 @@ void SSL_FieldLineSegment::MergeFrom(const ::google::protobuf::Message& from) {
 void SSL_FieldLineSegment::MergeFrom(const SSL_FieldLineSegment& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:SSL_FieldLineSegment)
   GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 31u) {
+  if (cached_has_bits & 0x0000001fu) {
     if (cached_has_bits & 0x00000001u) {
-      set_has_name();
-      name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
+      _internal_set_name(from._internal_name());
     }
     if (cached_has_bits & 0x00000002u) {
-      mutable_p1()->::Vector2f::MergeFrom(from.p1());
+      _internal_mutable_p1()->::Vector2f::MergeFrom(from._internal_p1());
     }
     if (cached_has_bits & 0x00000004u) {
-      mutable_p2()->::Vector2f::MergeFrom(from.p2());
+      _internal_mutable_p2()->::Vector2f::MergeFrom(from._internal_p2());
     }
     if (cached_has_bits & 0x00000008u) {
       thickness_ = from.thickness_;
@@ -1232,7 +1111,7 @@ void SSL_FieldLineSegment::MergeFrom(const SSL_FieldLineSegment& from) {
   }
 }
 
-void SSL_FieldLineSegment::CopyFrom(const ::google::protobuf::Message& from) {
+void SSL_FieldLineSegment::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:SSL_FieldLineSegment)
   if (&from == this) return;
   Clear();
@@ -1247,74 +1126,89 @@ void SSL_FieldLineSegment::CopyFrom(const SSL_FieldLineSegment& from) {
 }
 
 bool SSL_FieldLineSegment::IsInitialized() const {
-  if ((_has_bits_[0] & 0x0000000f) != 0x0000000f) return false;
-  if (has_p1()) {
-    if (!this->p1_->IsInitialized()) return false;
+  if (_Internal::MissingRequiredFields(_has_bits_)) return false;
+  if (_internal_has_p1()) {
+    if (!p1_->IsInitialized()) return false;
   }
-  if (has_p2()) {
-    if (!this->p2_->IsInitialized()) return false;
+  if (_internal_has_p2()) {
+    if (!p2_->IsInitialized()) return false;
   }
   return true;
 }
 
-void SSL_FieldLineSegment::Swap(SSL_FieldLineSegment* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void SSL_FieldLineSegment::InternalSwap(SSL_FieldLineSegment* other) {
   using std::swap;
-  name_.Swap(&other->name_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  swap(p1_, other->p1_);
-  swap(p2_, other->p2_);
-  swap(thickness_, other->thickness_);
-  swap(type_, other->type_);
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
+  name_.Swap(&other->name_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(SSL_FieldLineSegment, type_)
+      + sizeof(SSL_FieldLineSegment::type_)
+      - PROTOBUF_FIELD_OFFSET(SSL_FieldLineSegment, p1_)>(
+          reinterpret_cast<char*>(&p1_),
+          reinterpret_cast<char*>(&other->p1_));
 }
 
-::google::protobuf::Metadata SSL_FieldLineSegment::GetMetadata() const {
-  protobuf_ssl_5fvision_5fgeometry_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ssl_5fvision_5fgeometry_2eproto::file_level_metadata[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata SSL_FieldLineSegment::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
 // ===================================================================
 
-void SSL_FieldCircularArc::InitAsDefaultInstance() {
-  ::_SSL_FieldCircularArc_default_instance_._instance.get_mutable()->center_ = const_cast< ::Vector2f*>(
-      ::Vector2f::internal_default_instance());
-}
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int SSL_FieldCircularArc::kNameFieldNumber;
-const int SSL_FieldCircularArc::kCenterFieldNumber;
-const int SSL_FieldCircularArc::kRadiusFieldNumber;
-const int SSL_FieldCircularArc::kA1FieldNumber;
-const int SSL_FieldCircularArc::kA2FieldNumber;
-const int SSL_FieldCircularArc::kThicknessFieldNumber;
-const int SSL_FieldCircularArc::kTypeFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+class SSL_FieldCircularArc::_Internal {
+ public:
+  using HasBits = decltype(std::declval<SSL_FieldCircularArc>()._has_bits_);
+  static void set_has_name(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+  static const ::Vector2f& center(const SSL_FieldCircularArc* msg);
+  static void set_has_center(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
+  static void set_has_radius(HasBits* has_bits) {
+    (*has_bits)[0] |= 4u;
+  }
+  static void set_has_a1(HasBits* has_bits) {
+    (*has_bits)[0] |= 8u;
+  }
+  static void set_has_a2(HasBits* has_bits) {
+    (*has_bits)[0] |= 16u;
+  }
+  static void set_has_thickness(HasBits* has_bits) {
+    (*has_bits)[0] |= 32u;
+  }
+  static void set_has_type(HasBits* has_bits) {
+    (*has_bits)[0] |= 64u;
+  }
+  static bool MissingRequiredFields(const HasBits& has_bits) {
+    return ((has_bits[0] & 0x0000003f) ^ 0x0000003f) != 0;
+  }
+};
 
-SSL_FieldCircularArc::SSL_FieldCircularArc()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ssl_5fvision_5fgeometry_2eproto::scc_info_SSL_FieldCircularArc.base);
+const ::Vector2f&
+SSL_FieldCircularArc::_Internal::center(const SSL_FieldCircularArc* msg) {
+  return *msg->center_;
+}
+SSL_FieldCircularArc::SSL_FieldCircularArc(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:SSL_FieldCircularArc)
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:SSL_FieldCircularArc)
 }
 SSL_FieldCircularArc::SSL_FieldCircularArc(const SSL_FieldCircularArc& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
       _has_bits_(from._has_bits_) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.has_name()) {
-    name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (from._internal_has_name()) {
+    name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_name(), 
+      GetArena());
   }
-  if (from.has_center()) {
+  if (from._internal_has_center()) {
     center_ = new ::Vector2f(*from.center_);
   } else {
-    center_ = NULL;
+    center_ = nullptr;
   }
   ::memcpy(&radius_, &from.radius_,
     static_cast<size_t>(reinterpret_cast<char*>(&type_) -
@@ -1323,306 +1217,218 @@ SSL_FieldCircularArc::SSL_FieldCircularArc(const SSL_FieldCircularArc& from)
 }
 
 void SSL_FieldCircularArc::SharedCtor() {
-  name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  ::memset(&center_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&type_) -
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_SSL_FieldCircularArc_ssl_5fvision_5fgeometry_2eproto.base);
+  name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+      reinterpret_cast<char*>(&center_) - reinterpret_cast<char*>(this)),
+      0, static_cast<size_t>(reinterpret_cast<char*>(&type_) -
       reinterpret_cast<char*>(&center_)) + sizeof(type_));
 }
 
 SSL_FieldCircularArc::~SSL_FieldCircularArc() {
   // @@protoc_insertion_point(destructor:SSL_FieldCircularArc)
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 void SSL_FieldCircularArc::SharedDtor() {
-  name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  GOOGLE_DCHECK(GetArena() == nullptr);
+  name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (this != internal_default_instance()) delete center_;
 }
 
+void SSL_FieldCircularArc::ArenaDtor(void* object) {
+  SSL_FieldCircularArc* _this = reinterpret_cast< SSL_FieldCircularArc* >(object);
+  (void)_this;
+}
+void SSL_FieldCircularArc::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void SSL_FieldCircularArc::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* SSL_FieldCircularArc::descriptor() {
-  ::protobuf_ssl_5fvision_5fgeometry_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ssl_5fvision_5fgeometry_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const SSL_FieldCircularArc& SSL_FieldCircularArc::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ssl_5fvision_5fgeometry_2eproto::scc_info_SSL_FieldCircularArc.base);
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_SSL_FieldCircularArc_ssl_5fvision_5fgeometry_2eproto.base);
   return *internal_default_instance();
 }
 
 
 void SSL_FieldCircularArc::Clear() {
 // @@protoc_insertion_point(message_clear_start:SSL_FieldCircularArc)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 3u) {
+  if (cached_has_bits & 0x00000003u) {
     if (cached_has_bits & 0x00000001u) {
-      name_.ClearNonDefaultToEmptyNoArena();
+      name_.ClearNonDefaultToEmpty();
     }
     if (cached_has_bits & 0x00000002u) {
-      GOOGLE_DCHECK(center_ != NULL);
+      GOOGLE_DCHECK(center_ != nullptr);
       center_->Clear();
     }
   }
-  if (cached_has_bits & 124u) {
+  if (cached_has_bits & 0x0000007cu) {
     ::memset(&radius_, 0, static_cast<size_t>(
         reinterpret_cast<char*>(&type_) -
         reinterpret_cast<char*>(&radius_)) + sizeof(type_));
   }
   _has_bits_.Clear();
-  _internal_metadata_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-bool SSL_FieldCircularArc::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:SSL_FieldCircularArc)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+const char* SSL_FieldCircularArc::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
       // required string name = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_name()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-            this->name().data(), static_cast<int>(this->name().length()),
-            ::google::protobuf::internal::WireFormat::PARSE,
-            "SSL_FieldCircularArc.name");
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          auto str = _internal_mutable_name();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          #ifndef NDEBUG
+          ::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "SSL_FieldCircularArc.name");
+          #endif  // !NDEBUG
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       // required .Vector2f center = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-               input, mutable_center()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          ptr = ctx->ParseMessage(_internal_mutable_center(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       // required float radius = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(29u /* 29 & 0xFF */)) {
-          set_has_radius();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &radius_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 29)) {
+          _Internal::set_has_radius(&has_bits);
+          radius_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
       // required float a1 = 4;
-      case 4: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(37u /* 37 & 0xFF */)) {
-          set_has_a1();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &a1_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 37)) {
+          _Internal::set_has_a1(&has_bits);
+          a1_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
       // required float a2 = 5;
-      case 5: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(45u /* 45 & 0xFF */)) {
-          set_has_a2();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &a2_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 45)) {
+          _Internal::set_has_a2(&has_bits);
+          a2_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
       // required float thickness = 6;
-      case 6: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(53u /* 53 & 0xFF */)) {
-          set_has_thickness();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &thickness_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 53)) {
+          _Internal::set_has_thickness(&has_bits);
+          thickness_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
       // optional .SSL_FieldShapeType type = 7;
-      case 7: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(56u /* 56 & 0xFF */)) {
-          int value;
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
-                 input, &value)));
-          if (::SSL_FieldShapeType_IsValid(value)) {
-            set_type(static_cast< ::SSL_FieldShapeType >(value));
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 56)) {
+          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+          if (PROTOBUF_PREDICT_TRUE(::SSL_FieldShapeType_IsValid(val))) {
+            _internal_set_type(static_cast<::SSL_FieldShapeType>(val));
           } else {
-            mutable_unknown_fields()->AddVarint(
-                7, static_cast< ::google::protobuf::uint64>(value));
+            ::PROTOBUF_NAMESPACE_ID::internal::WriteVarint(7, val, mutable_unknown_fields());
           }
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
-        if (tag == 0) {
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
           goto success;
         }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
-    }
-  }
+    }  // switch
+  }  // while
 success:
-  // @@protoc_insertion_point(parse_success:SSL_FieldCircularArc)
-  return true;
+  _has_bits_.Or(has_bits);
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:SSL_FieldCircularArc)
-  return false;
-#undef DO_
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-void SSL_FieldCircularArc::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:SSL_FieldCircularArc)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  cached_has_bits = _has_bits_[0];
-  // required string name = 1;
-  if (cached_has_bits & 0x00000001u) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->name().data(), static_cast<int>(this->name().length()),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "SSL_FieldCircularArc.name");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->name(), output);
-  }
-
-  // required .Vector2f center = 2;
-  if (cached_has_bits & 0x00000002u) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, this->_internal_center(), output);
-  }
-
-  // required float radius = 3;
-  if (cached_has_bits & 0x00000004u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(3, this->radius(), output);
-  }
-
-  // required float a1 = 4;
-  if (cached_has_bits & 0x00000008u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(4, this->a1(), output);
-  }
-
-  // required float a2 = 5;
-  if (cached_has_bits & 0x00000010u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(5, this->a2(), output);
-  }
-
-  // required float thickness = 6;
-  if (cached_has_bits & 0x00000020u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(6, this->thickness(), output);
-  }
-
-  // optional .SSL_FieldShapeType type = 7;
-  if (cached_has_bits & 0x00000040u) {
-    ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      7, this->type(), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:SSL_FieldCircularArc)
-}
-
-::google::protobuf::uint8* SSL_FieldCircularArc::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::PROTOBUF_NAMESPACE_ID::uint8* SSL_FieldCircularArc::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:SSL_FieldCircularArc)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
   // required string name = 1;
   if (cached_has_bits & 0x00000001u) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->name().data(), static_cast<int>(this->name().length()),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
       "SSL_FieldCircularArc.name");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->name(), target);
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_name(), target);
   }
 
   // required .Vector2f center = 2;
   if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        2, this->_internal_center(), deterministic, target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        2, _Internal::center(this), target, stream);
   }
 
   // required float radius = 3;
   if (cached_has_bits & 0x00000004u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(3, this->radius(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(3, this->_internal_radius(), target);
   }
 
   // required float a1 = 4;
   if (cached_has_bits & 0x00000008u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(4, this->a1(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(4, this->_internal_a1(), target);
   }
 
   // required float a2 = 5;
   if (cached_has_bits & 0x00000010u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(5, this->a2(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(5, this->_internal_a2(), target);
   }
 
   // required float thickness = 6;
   if (cached_has_bits & 0x00000020u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(6, this->thickness(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(6, this->_internal_thickness(), target);
   }
 
   // optional .SSL_FieldShapeType type = 7;
   if (cached_has_bits & 0x00000040u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      7, this->type(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+      7, this->_internal_type(), target);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:SSL_FieldCircularArc)
   return target;
@@ -1632,36 +1438,36 @@ size_t SSL_FieldCircularArc::RequiredFieldsByteSizeFallback() const {
 // @@protoc_insertion_point(required_fields_byte_size_fallback_start:SSL_FieldCircularArc)
   size_t total_size = 0;
 
-  if (has_name()) {
+  if (_internal_has_name()) {
     // required string name = 1;
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->name());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_name());
   }
 
-  if (has_center()) {
+  if (_internal_has_center()) {
     // required .Vector2f center = 2;
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *center_);
   }
 
-  if (has_radius()) {
+  if (_internal_has_radius()) {
     // required float radius = 3;
     total_size += 1 + 4;
   }
 
-  if (has_a1()) {
+  if (_internal_has_a1()) {
     // required float a1 = 4;
     total_size += 1 + 4;
   }
 
-  if (has_a2()) {
+  if (_internal_has_a2()) {
     // required float a2 = 5;
     total_size += 1 + 4;
   }
 
-  if (has_thickness()) {
+  if (_internal_has_thickness()) {
     // required float thickness = 6;
     total_size += 1 + 4;
   }
@@ -1672,20 +1478,15 @@ size_t SSL_FieldCircularArc::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:SSL_FieldCircularArc)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
   if (((_has_bits_[0] & 0x0000003f) ^ 0x0000003f) == 0) {  // All required fields are present.
     // required string name = 1;
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->name());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_name());
 
     // required .Vector2f center = 2;
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *center_);
 
     // required float radius = 3;
@@ -1703,26 +1504,35 @@ size_t SSL_FieldCircularArc::ByteSizeLong() const {
   } else {
     total_size += RequiredFieldsByteSizeFallback();
   }
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // optional .SSL_FieldShapeType type = 7;
-  if (has_type()) {
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000040u) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_type());
   }
 
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void SSL_FieldCircularArc::MergeFrom(const ::google::protobuf::Message& from) {
+void SSL_FieldCircularArc::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:SSL_FieldCircularArc)
   GOOGLE_DCHECK_NE(&from, this);
   const SSL_FieldCircularArc* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const SSL_FieldCircularArc>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<SSL_FieldCircularArc>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:SSL_FieldCircularArc)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:SSL_FieldCircularArc)
     MergeFrom(*source);
@@ -1732,18 +1542,17 @@ void SSL_FieldCircularArc::MergeFrom(const ::google::protobuf::Message& from) {
 void SSL_FieldCircularArc::MergeFrom(const SSL_FieldCircularArc& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:SSL_FieldCircularArc)
   GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 127u) {
+  if (cached_has_bits & 0x0000007fu) {
     if (cached_has_bits & 0x00000001u) {
-      set_has_name();
-      name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
+      _internal_set_name(from._internal_name());
     }
     if (cached_has_bits & 0x00000002u) {
-      mutable_center()->::Vector2f::MergeFrom(from.center());
+      _internal_mutable_center()->::Vector2f::MergeFrom(from._internal_center());
     }
     if (cached_has_bits & 0x00000004u) {
       radius_ = from.radius_;
@@ -1764,7 +1573,7 @@ void SSL_FieldCircularArc::MergeFrom(const SSL_FieldCircularArc& from) {
   }
 }
 
-void SSL_FieldCircularArc::CopyFrom(const ::google::protobuf::Message& from) {
+void SSL_FieldCircularArc::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:SSL_FieldCircularArc)
   if (&from == this) return;
   Clear();
@@ -1779,67 +1588,76 @@ void SSL_FieldCircularArc::CopyFrom(const SSL_FieldCircularArc& from) {
 }
 
 bool SSL_FieldCircularArc::IsInitialized() const {
-  if ((_has_bits_[0] & 0x0000003f) != 0x0000003f) return false;
-  if (has_center()) {
-    if (!this->center_->IsInitialized()) return false;
+  if (_Internal::MissingRequiredFields(_has_bits_)) return false;
+  if (_internal_has_center()) {
+    if (!center_->IsInitialized()) return false;
   }
   return true;
 }
 
-void SSL_FieldCircularArc::Swap(SSL_FieldCircularArc* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void SSL_FieldCircularArc::InternalSwap(SSL_FieldCircularArc* other) {
   using std::swap;
-  name_.Swap(&other->name_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  swap(center_, other->center_);
-  swap(radius_, other->radius_);
-  swap(a1_, other->a1_);
-  swap(a2_, other->a2_);
-  swap(thickness_, other->thickness_);
-  swap(type_, other->type_);
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
+  name_.Swap(&other->name_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(SSL_FieldCircularArc, type_)
+      + sizeof(SSL_FieldCircularArc::type_)
+      - PROTOBUF_FIELD_OFFSET(SSL_FieldCircularArc, center_)>(
+          reinterpret_cast<char*>(&center_),
+          reinterpret_cast<char*>(&other->center_));
 }
 
-::google::protobuf::Metadata SSL_FieldCircularArc::GetMetadata() const {
-  protobuf_ssl_5fvision_5fgeometry_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ssl_5fvision_5fgeometry_2eproto::file_level_metadata[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata SSL_FieldCircularArc::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
 // ===================================================================
 
-void SSL_GeometryFieldSize::InitAsDefaultInstance() {
-}
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int SSL_GeometryFieldSize::kFieldLengthFieldNumber;
-const int SSL_GeometryFieldSize::kFieldWidthFieldNumber;
-const int SSL_GeometryFieldSize::kGoalWidthFieldNumber;
-const int SSL_GeometryFieldSize::kGoalDepthFieldNumber;
-const int SSL_GeometryFieldSize::kBoundaryWidthFieldNumber;
-const int SSL_GeometryFieldSize::kFieldLinesFieldNumber;
-const int SSL_GeometryFieldSize::kFieldArcsFieldNumber;
-const int SSL_GeometryFieldSize::kPenaltyAreaDepthFieldNumber;
-const int SSL_GeometryFieldSize::kPenaltyAreaWidthFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+class SSL_GeometryFieldSize::_Internal {
+ public:
+  using HasBits = decltype(std::declval<SSL_GeometryFieldSize>()._has_bits_);
+  static void set_has_field_length(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+  static void set_has_field_width(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
+  static void set_has_goal_width(HasBits* has_bits) {
+    (*has_bits)[0] |= 4u;
+  }
+  static void set_has_goal_depth(HasBits* has_bits) {
+    (*has_bits)[0] |= 8u;
+  }
+  static void set_has_boundary_width(HasBits* has_bits) {
+    (*has_bits)[0] |= 16u;
+  }
+  static void set_has_penalty_area_depth(HasBits* has_bits) {
+    (*has_bits)[0] |= 32u;
+  }
+  static void set_has_penalty_area_width(HasBits* has_bits) {
+    (*has_bits)[0] |= 64u;
+  }
+  static bool MissingRequiredFields(const HasBits& has_bits) {
+    return ((has_bits[0] & 0x0000001f) ^ 0x0000001f) != 0;
+  }
+};
 
-SSL_GeometryFieldSize::SSL_GeometryFieldSize()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ssl_5fvision_5fgeometry_2eproto::scc_info_SSL_GeometryFieldSize.base);
+SSL_GeometryFieldSize::SSL_GeometryFieldSize(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena),
+  field_lines_(arena),
+  field_arcs_(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:SSL_GeometryFieldSize)
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:SSL_GeometryFieldSize)
 }
 SSL_GeometryFieldSize::SSL_GeometryFieldSize(const SSL_GeometryFieldSize& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
       _has_bits_(from._has_bits_),
       field_lines_(from.field_lines_),
       field_arcs_(from.field_arcs_) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::memcpy(&field_length_, &from.field_length_,
     static_cast<size_t>(reinterpret_cast<char*>(&penalty_area_width_) -
     reinterpret_cast<char*>(&field_length_)) + sizeof(penalty_area_width_));
@@ -1847,332 +1665,235 @@ SSL_GeometryFieldSize::SSL_GeometryFieldSize(const SSL_GeometryFieldSize& from)
 }
 
 void SSL_GeometryFieldSize::SharedCtor() {
-  ::memset(&field_length_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&penalty_area_width_) -
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_SSL_GeometryFieldSize_ssl_5fvision_5fgeometry_2eproto.base);
+  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+      reinterpret_cast<char*>(&field_length_) - reinterpret_cast<char*>(this)),
+      0, static_cast<size_t>(reinterpret_cast<char*>(&penalty_area_width_) -
       reinterpret_cast<char*>(&field_length_)) + sizeof(penalty_area_width_));
 }
 
 SSL_GeometryFieldSize::~SSL_GeometryFieldSize() {
   // @@protoc_insertion_point(destructor:SSL_GeometryFieldSize)
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 void SSL_GeometryFieldSize::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
 }
 
+void SSL_GeometryFieldSize::ArenaDtor(void* object) {
+  SSL_GeometryFieldSize* _this = reinterpret_cast< SSL_GeometryFieldSize* >(object);
+  (void)_this;
+}
+void SSL_GeometryFieldSize::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void SSL_GeometryFieldSize::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* SSL_GeometryFieldSize::descriptor() {
-  ::protobuf_ssl_5fvision_5fgeometry_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ssl_5fvision_5fgeometry_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const SSL_GeometryFieldSize& SSL_GeometryFieldSize::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ssl_5fvision_5fgeometry_2eproto::scc_info_SSL_GeometryFieldSize.base);
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_SSL_GeometryFieldSize_ssl_5fvision_5fgeometry_2eproto.base);
   return *internal_default_instance();
 }
 
 
 void SSL_GeometryFieldSize::Clear() {
 // @@protoc_insertion_point(message_clear_start:SSL_GeometryFieldSize)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   field_lines_.Clear();
   field_arcs_.Clear();
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 127u) {
+  if (cached_has_bits & 0x0000007fu) {
     ::memset(&field_length_, 0, static_cast<size_t>(
         reinterpret_cast<char*>(&penalty_area_width_) -
         reinterpret_cast<char*>(&field_length_)) + sizeof(penalty_area_width_));
   }
   _has_bits_.Clear();
-  _internal_metadata_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-bool SSL_GeometryFieldSize::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:SSL_GeometryFieldSize)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+const char* SSL_GeometryFieldSize::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
       // required int32 field_length = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
-          set_has_field_length();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &field_length_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+          _Internal::set_has_field_length(&has_bits);
+          field_length_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       // required int32 field_width = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
-          set_has_field_width();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &field_width_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
+          _Internal::set_has_field_width(&has_bits);
+          field_width_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       // required int32 goal_width = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(24u /* 24 & 0xFF */)) {
-          set_has_goal_width();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &goal_width_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
+          _Internal::set_has_goal_width(&has_bits);
+          goal_width_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       // required int32 goal_depth = 4;
-      case 4: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(32u /* 32 & 0xFF */)) {
-          set_has_goal_depth();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &goal_depth_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 32)) {
+          _Internal::set_has_goal_depth(&has_bits);
+          goal_depth_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       // required int32 boundary_width = 5;
-      case 5: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(40u /* 40 & 0xFF */)) {
-          set_has_boundary_width();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &boundary_width_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 40)) {
+          _Internal::set_has_boundary_width(&has_bits);
+          boundary_width_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       // repeated .SSL_FieldLineSegment field_lines = 6;
-      case 6: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(50u /* 50 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-                input, add_field_lines()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 50)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_field_lines(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<50>(ptr));
+        } else goto handle_unusual;
+        continue;
       // repeated .SSL_FieldCircularArc field_arcs = 7;
-      case 7: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(58u /* 58 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-                input, add_field_arcs()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 58)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_field_arcs(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<58>(ptr));
+        } else goto handle_unusual;
+        continue;
       // optional int32 penalty_area_depth = 8;
-      case 8: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(64u /* 64 & 0xFF */)) {
-          set_has_penalty_area_depth();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &penalty_area_depth_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 8:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 64)) {
+          _Internal::set_has_penalty_area_depth(&has_bits);
+          penalty_area_depth_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       // optional int32 penalty_area_width = 9;
-      case 9: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(72u /* 72 & 0xFF */)) {
-          set_has_penalty_area_width();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &penalty_area_width_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 9:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 72)) {
+          _Internal::set_has_penalty_area_width(&has_bits);
+          penalty_area_width_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
-        if (tag == 0) {
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
           goto success;
         }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
-    }
-  }
+    }  // switch
+  }  // while
 success:
-  // @@protoc_insertion_point(parse_success:SSL_GeometryFieldSize)
-  return true;
+  _has_bits_.Or(has_bits);
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:SSL_GeometryFieldSize)
-  return false;
-#undef DO_
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-void SSL_GeometryFieldSize::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:SSL_GeometryFieldSize)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  cached_has_bits = _has_bits_[0];
-  // required int32 field_length = 1;
-  if (cached_has_bits & 0x00000001u) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->field_length(), output);
-  }
-
-  // required int32 field_width = 2;
-  if (cached_has_bits & 0x00000002u) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->field_width(), output);
-  }
-
-  // required int32 goal_width = 3;
-  if (cached_has_bits & 0x00000004u) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->goal_width(), output);
-  }
-
-  // required int32 goal_depth = 4;
-  if (cached_has_bits & 0x00000008u) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(4, this->goal_depth(), output);
-  }
-
-  // required int32 boundary_width = 5;
-  if (cached_has_bits & 0x00000010u) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(5, this->boundary_width(), output);
-  }
-
-  // repeated .SSL_FieldLineSegment field_lines = 6;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->field_lines_size()); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      6,
-      this->field_lines(static_cast<int>(i)),
-      output);
-  }
-
-  // repeated .SSL_FieldCircularArc field_arcs = 7;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->field_arcs_size()); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      7,
-      this->field_arcs(static_cast<int>(i)),
-      output);
-  }
-
-  // optional int32 penalty_area_depth = 8;
-  if (cached_has_bits & 0x00000020u) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(8, this->penalty_area_depth(), output);
-  }
-
-  // optional int32 penalty_area_width = 9;
-  if (cached_has_bits & 0x00000040u) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(9, this->penalty_area_width(), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:SSL_GeometryFieldSize)
-}
-
-::google::protobuf::uint8* SSL_GeometryFieldSize::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::PROTOBUF_NAMESPACE_ID::uint8* SSL_GeometryFieldSize::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:SSL_GeometryFieldSize)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
   // required int32 field_length = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->field_length(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_field_length(), target);
   }
 
   // required int32 field_width = 2;
   if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->field_width(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_field_width(), target);
   }
 
   // required int32 goal_width = 3;
   if (cached_has_bits & 0x00000004u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->goal_width(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_goal_width(), target);
   }
 
   // required int32 goal_depth = 4;
   if (cached_has_bits & 0x00000008u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(4, this->goal_depth(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(4, this->_internal_goal_depth(), target);
   }
 
   // required int32 boundary_width = 5;
   if (cached_has_bits & 0x00000010u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(5, this->boundary_width(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(5, this->_internal_boundary_width(), target);
   }
 
   // repeated .SSL_FieldLineSegment field_lines = 6;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->field_lines_size()); i < n; i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        6, this->field_lines(static_cast<int>(i)), deterministic, target);
+      n = static_cast<unsigned int>(this->_internal_field_lines_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(6, this->_internal_field_lines(i), target, stream);
   }
 
   // repeated .SSL_FieldCircularArc field_arcs = 7;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->field_arcs_size()); i < n; i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        7, this->field_arcs(static_cast<int>(i)), deterministic, target);
+      n = static_cast<unsigned int>(this->_internal_field_arcs_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(7, this->_internal_field_arcs(i), target, stream);
   }
 
   // optional int32 penalty_area_depth = 8;
   if (cached_has_bits & 0x00000020u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(8, this->penalty_area_depth(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(8, this->_internal_penalty_area_depth(), target);
   }
 
   // optional int32 penalty_area_width = 9;
   if (cached_has_bits & 0x00000040u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(9, this->penalty_area_width(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(9, this->_internal_penalty_area_width(), target);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:SSL_GeometryFieldSize)
   return target;
@@ -2182,39 +1903,39 @@ size_t SSL_GeometryFieldSize::RequiredFieldsByteSizeFallback() const {
 // @@protoc_insertion_point(required_fields_byte_size_fallback_start:SSL_GeometryFieldSize)
   size_t total_size = 0;
 
-  if (has_field_length()) {
+  if (_internal_has_field_length()) {
     // required int32 field_length = 1;
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->field_length());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_field_length());
   }
 
-  if (has_field_width()) {
+  if (_internal_has_field_width()) {
     // required int32 field_width = 2;
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->field_width());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_field_width());
   }
 
-  if (has_goal_width()) {
+  if (_internal_has_goal_width()) {
     // required int32 goal_width = 3;
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->goal_width());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_goal_width());
   }
 
-  if (has_goal_depth()) {
+  if (_internal_has_goal_depth()) {
     // required int32 goal_depth = 4;
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->goal_depth());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_goal_depth());
   }
 
-  if (has_boundary_width()) {
+  if (_internal_has_boundary_width()) {
     // required int32 boundary_width = 5;
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->boundary_width());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_boundary_width());
   }
 
   return total_size;
@@ -2223,92 +1944,88 @@ size_t SSL_GeometryFieldSize::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:SSL_GeometryFieldSize)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
   if (((_has_bits_[0] & 0x0000001f) ^ 0x0000001f) == 0) {  // All required fields are present.
     // required int32 field_length = 1;
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->field_length());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_field_length());
 
     // required int32 field_width = 2;
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->field_width());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_field_width());
 
     // required int32 goal_width = 3;
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->goal_width());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_goal_width());
 
     // required int32 goal_depth = 4;
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->goal_depth());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_goal_depth());
 
     // required int32 boundary_width = 5;
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->boundary_width());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_boundary_width());
 
   } else {
     total_size += RequiredFieldsByteSizeFallback();
   }
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // repeated .SSL_FieldLineSegment field_lines = 6;
-  {
-    unsigned int count = static_cast<unsigned int>(this->field_lines_size());
-    total_size += 1UL * count;
-    for (unsigned int i = 0; i < count; i++) {
-      total_size +=
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          this->field_lines(static_cast<int>(i)));
-    }
+  total_size += 1UL * this->_internal_field_lines_size();
+  for (const auto& msg : this->field_lines_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
   // repeated .SSL_FieldCircularArc field_arcs = 7;
-  {
-    unsigned int count = static_cast<unsigned int>(this->field_arcs_size());
-    total_size += 1UL * count;
-    for (unsigned int i = 0; i < count; i++) {
-      total_size +=
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          this->field_arcs(static_cast<int>(i)));
-    }
+  total_size += 1UL * this->_internal_field_arcs_size();
+  for (const auto& msg : this->field_arcs_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
-  if (_has_bits_[0 / 32] & 96u) {
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000060u) {
     // optional int32 penalty_area_depth = 8;
-    if (has_penalty_area_depth()) {
+    if (cached_has_bits & 0x00000020u) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-          this->penalty_area_depth());
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+          this->_internal_penalty_area_depth());
     }
 
     // optional int32 penalty_area_width = 9;
-    if (has_penalty_area_width()) {
+    if (cached_has_bits & 0x00000040u) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-          this->penalty_area_width());
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+          this->_internal_penalty_area_width());
     }
 
   }
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void SSL_GeometryFieldSize::MergeFrom(const ::google::protobuf::Message& from) {
+void SSL_GeometryFieldSize::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:SSL_GeometryFieldSize)
   GOOGLE_DCHECK_NE(&from, this);
   const SSL_GeometryFieldSize* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const SSL_GeometryFieldSize>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<SSL_GeometryFieldSize>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:SSL_GeometryFieldSize)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:SSL_GeometryFieldSize)
     MergeFrom(*source);
@@ -2318,14 +2035,14 @@ void SSL_GeometryFieldSize::MergeFrom(const ::google::protobuf::Message& from) {
 void SSL_GeometryFieldSize::MergeFrom(const SSL_GeometryFieldSize& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:SSL_GeometryFieldSize)
   GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   field_lines_.MergeFrom(from.field_lines_);
   field_arcs_.MergeFrom(from.field_arcs_);
   cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 127u) {
+  if (cached_has_bits & 0x0000007fu) {
     if (cached_has_bits & 0x00000001u) {
       field_length_ = from.field_length_;
     }
@@ -2351,7 +2068,7 @@ void SSL_GeometryFieldSize::MergeFrom(const SSL_GeometryFieldSize& from) {
   }
 }
 
-void SSL_GeometryFieldSize::CopyFrom(const ::google::protobuf::Message& from) {
+void SSL_GeometryFieldSize::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:SSL_GeometryFieldSize)
   if (&from == this) return;
   Clear();
@@ -2366,73 +2083,102 @@ void SSL_GeometryFieldSize::CopyFrom(const SSL_GeometryFieldSize& from) {
 }
 
 bool SSL_GeometryFieldSize::IsInitialized() const {
-  if ((_has_bits_[0] & 0x0000001f) != 0x0000001f) return false;
-  if (!::google::protobuf::internal::AllAreInitialized(this->field_lines())) return false;
-  if (!::google::protobuf::internal::AllAreInitialized(this->field_arcs())) return false;
+  if (_Internal::MissingRequiredFields(_has_bits_)) return false;
+  if (!::PROTOBUF_NAMESPACE_ID::internal::AllAreInitialized(field_lines_)) return false;
+  if (!::PROTOBUF_NAMESPACE_ID::internal::AllAreInitialized(field_arcs_)) return false;
   return true;
 }
 
-void SSL_GeometryFieldSize::Swap(SSL_GeometryFieldSize* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void SSL_GeometryFieldSize::InternalSwap(SSL_GeometryFieldSize* other) {
   using std::swap;
-  CastToBase(&field_lines_)->InternalSwap(CastToBase(&other->field_lines_));
-  CastToBase(&field_arcs_)->InternalSwap(CastToBase(&other->field_arcs_));
-  swap(field_length_, other->field_length_);
-  swap(field_width_, other->field_width_);
-  swap(goal_width_, other->goal_width_);
-  swap(goal_depth_, other->goal_depth_);
-  swap(boundary_width_, other->boundary_width_);
-  swap(penalty_area_depth_, other->penalty_area_depth_);
-  swap(penalty_area_width_, other->penalty_area_width_);
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
+  field_lines_.InternalSwap(&other->field_lines_);
+  field_arcs_.InternalSwap(&other->field_arcs_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(SSL_GeometryFieldSize, penalty_area_width_)
+      + sizeof(SSL_GeometryFieldSize::penalty_area_width_)
+      - PROTOBUF_FIELD_OFFSET(SSL_GeometryFieldSize, field_length_)>(
+          reinterpret_cast<char*>(&field_length_),
+          reinterpret_cast<char*>(&other->field_length_));
 }
 
-::google::protobuf::Metadata SSL_GeometryFieldSize::GetMetadata() const {
-  protobuf_ssl_5fvision_5fgeometry_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ssl_5fvision_5fgeometry_2eproto::file_level_metadata[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata SSL_GeometryFieldSize::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
 // ===================================================================
 
-void SSL_GeometryCameraCalibration::InitAsDefaultInstance() {
-}
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int SSL_GeometryCameraCalibration::kCameraIdFieldNumber;
-const int SSL_GeometryCameraCalibration::kFocalLengthFieldNumber;
-const int SSL_GeometryCameraCalibration::kPrincipalPointXFieldNumber;
-const int SSL_GeometryCameraCalibration::kPrincipalPointYFieldNumber;
-const int SSL_GeometryCameraCalibration::kDistortionFieldNumber;
-const int SSL_GeometryCameraCalibration::kQ0FieldNumber;
-const int SSL_GeometryCameraCalibration::kQ1FieldNumber;
-const int SSL_GeometryCameraCalibration::kQ2FieldNumber;
-const int SSL_GeometryCameraCalibration::kQ3FieldNumber;
-const int SSL_GeometryCameraCalibration::kTxFieldNumber;
-const int SSL_GeometryCameraCalibration::kTyFieldNumber;
-const int SSL_GeometryCameraCalibration::kTzFieldNumber;
-const int SSL_GeometryCameraCalibration::kDerivedCameraWorldTxFieldNumber;
-const int SSL_GeometryCameraCalibration::kDerivedCameraWorldTyFieldNumber;
-const int SSL_GeometryCameraCalibration::kDerivedCameraWorldTzFieldNumber;
-const int SSL_GeometryCameraCalibration::kPixelImageWidthFieldNumber;
-const int SSL_GeometryCameraCalibration::kPixelImageHeightFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+class SSL_GeometryCameraCalibration::_Internal {
+ public:
+  using HasBits = decltype(std::declval<SSL_GeometryCameraCalibration>()._has_bits_);
+  static void set_has_camera_id(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+  static void set_has_focal_length(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
+  static void set_has_principal_point_x(HasBits* has_bits) {
+    (*has_bits)[0] |= 4u;
+  }
+  static void set_has_principal_point_y(HasBits* has_bits) {
+    (*has_bits)[0] |= 8u;
+  }
+  static void set_has_distortion(HasBits* has_bits) {
+    (*has_bits)[0] |= 16u;
+  }
+  static void set_has_q0(HasBits* has_bits) {
+    (*has_bits)[0] |= 32u;
+  }
+  static void set_has_q1(HasBits* has_bits) {
+    (*has_bits)[0] |= 64u;
+  }
+  static void set_has_q2(HasBits* has_bits) {
+    (*has_bits)[0] |= 128u;
+  }
+  static void set_has_q3(HasBits* has_bits) {
+    (*has_bits)[0] |= 256u;
+  }
+  static void set_has_tx(HasBits* has_bits) {
+    (*has_bits)[0] |= 512u;
+  }
+  static void set_has_ty(HasBits* has_bits) {
+    (*has_bits)[0] |= 1024u;
+  }
+  static void set_has_tz(HasBits* has_bits) {
+    (*has_bits)[0] |= 2048u;
+  }
+  static void set_has_derived_camera_world_tx(HasBits* has_bits) {
+    (*has_bits)[0] |= 4096u;
+  }
+  static void set_has_derived_camera_world_ty(HasBits* has_bits) {
+    (*has_bits)[0] |= 8192u;
+  }
+  static void set_has_derived_camera_world_tz(HasBits* has_bits) {
+    (*has_bits)[0] |= 16384u;
+  }
+  static void set_has_pixel_image_width(HasBits* has_bits) {
+    (*has_bits)[0] |= 32768u;
+  }
+  static void set_has_pixel_image_height(HasBits* has_bits) {
+    (*has_bits)[0] |= 65536u;
+  }
+  static bool MissingRequiredFields(const HasBits& has_bits) {
+    return ((has_bits[0] & 0x00000fff) ^ 0x00000fff) != 0;
+  }
+};
 
-SSL_GeometryCameraCalibration::SSL_GeometryCameraCalibration()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ssl_5fvision_5fgeometry_2eproto::scc_info_SSL_GeometryCameraCalibration.base);
+SSL_GeometryCameraCalibration::SSL_GeometryCameraCalibration(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:SSL_GeometryCameraCalibration)
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:SSL_GeometryCameraCalibration)
 }
 SSL_GeometryCameraCalibration::SSL_GeometryCameraCalibration(const SSL_GeometryCameraCalibration& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
       _has_bits_(from._has_bits_) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::memcpy(&camera_id_, &from.camera_id_,
     static_cast<size_t>(reinterpret_cast<char*>(&pixel_image_height_) -
     reinterpret_cast<char*>(&camera_id_)) + sizeof(pixel_image_height_));
@@ -2440,518 +2186,338 @@ SSL_GeometryCameraCalibration::SSL_GeometryCameraCalibration(const SSL_GeometryC
 }
 
 void SSL_GeometryCameraCalibration::SharedCtor() {
-  ::memset(&camera_id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&pixel_image_height_) -
+  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+      reinterpret_cast<char*>(&camera_id_) - reinterpret_cast<char*>(this)),
+      0, static_cast<size_t>(reinterpret_cast<char*>(&pixel_image_height_) -
       reinterpret_cast<char*>(&camera_id_)) + sizeof(pixel_image_height_));
 }
 
 SSL_GeometryCameraCalibration::~SSL_GeometryCameraCalibration() {
   // @@protoc_insertion_point(destructor:SSL_GeometryCameraCalibration)
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 void SSL_GeometryCameraCalibration::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
 }
 
+void SSL_GeometryCameraCalibration::ArenaDtor(void* object) {
+  SSL_GeometryCameraCalibration* _this = reinterpret_cast< SSL_GeometryCameraCalibration* >(object);
+  (void)_this;
+}
+void SSL_GeometryCameraCalibration::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void SSL_GeometryCameraCalibration::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* SSL_GeometryCameraCalibration::descriptor() {
-  ::protobuf_ssl_5fvision_5fgeometry_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ssl_5fvision_5fgeometry_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const SSL_GeometryCameraCalibration& SSL_GeometryCameraCalibration::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ssl_5fvision_5fgeometry_2eproto::scc_info_SSL_GeometryCameraCalibration.base);
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_SSL_GeometryCameraCalibration_ssl_5fvision_5fgeometry_2eproto.base);
   return *internal_default_instance();
 }
 
 
 void SSL_GeometryCameraCalibration::Clear() {
 // @@protoc_insertion_point(message_clear_start:SSL_GeometryCameraCalibration)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 255u) {
+  if (cached_has_bits & 0x000000ffu) {
     ::memset(&camera_id_, 0, static_cast<size_t>(
         reinterpret_cast<char*>(&q2_) -
         reinterpret_cast<char*>(&camera_id_)) + sizeof(q2_));
   }
-  if (cached_has_bits & 65280u) {
+  if (cached_has_bits & 0x0000ff00u) {
     ::memset(&q3_, 0, static_cast<size_t>(
         reinterpret_cast<char*>(&pixel_image_width_) -
         reinterpret_cast<char*>(&q3_)) + sizeof(pixel_image_width_));
   }
   pixel_image_height_ = 0u;
   _has_bits_.Clear();
-  _internal_metadata_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-bool SSL_GeometryCameraCalibration::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:SSL_GeometryCameraCalibration)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(16383u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+const char* SSL_GeometryCameraCalibration::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
       // required uint32 camera_id = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
-          set_has_camera_id();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &camera_id_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+          _Internal::set_has_camera_id(&has_bits);
+          camera_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       // required float focal_length = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(21u /* 21 & 0xFF */)) {
-          set_has_focal_length();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &focal_length_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 21)) {
+          _Internal::set_has_focal_length(&has_bits);
+          focal_length_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
       // required float principal_point_x = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(29u /* 29 & 0xFF */)) {
-          set_has_principal_point_x();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &principal_point_x_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 29)) {
+          _Internal::set_has_principal_point_x(&has_bits);
+          principal_point_x_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
       // required float principal_point_y = 4;
-      case 4: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(37u /* 37 & 0xFF */)) {
-          set_has_principal_point_y();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &principal_point_y_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 37)) {
+          _Internal::set_has_principal_point_y(&has_bits);
+          principal_point_y_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
       // required float distortion = 5;
-      case 5: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(45u /* 45 & 0xFF */)) {
-          set_has_distortion();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &distortion_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 45)) {
+          _Internal::set_has_distortion(&has_bits);
+          distortion_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
       // required float q0 = 6;
-      case 6: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(53u /* 53 & 0xFF */)) {
-          set_has_q0();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &q0_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 53)) {
+          _Internal::set_has_q0(&has_bits);
+          q0_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
       // required float q1 = 7;
-      case 7: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(61u /* 61 & 0xFF */)) {
-          set_has_q1();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &q1_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 61)) {
+          _Internal::set_has_q1(&has_bits);
+          q1_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
       // required float q2 = 8;
-      case 8: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(69u /* 69 & 0xFF */)) {
-          set_has_q2();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &q2_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 8:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 69)) {
+          _Internal::set_has_q2(&has_bits);
+          q2_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
       // required float q3 = 9;
-      case 9: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(77u /* 77 & 0xFF */)) {
-          set_has_q3();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &q3_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 9:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 77)) {
+          _Internal::set_has_q3(&has_bits);
+          q3_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
       // required float tx = 10;
-      case 10: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(85u /* 85 & 0xFF */)) {
-          set_has_tx();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &tx_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 10:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 85)) {
+          _Internal::set_has_tx(&has_bits);
+          tx_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
       // required float ty = 11;
-      case 11: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(93u /* 93 & 0xFF */)) {
-          set_has_ty();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &ty_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 11:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 93)) {
+          _Internal::set_has_ty(&has_bits);
+          ty_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
       // required float tz = 12;
-      case 12: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(101u /* 101 & 0xFF */)) {
-          set_has_tz();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &tz_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 12:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 101)) {
+          _Internal::set_has_tz(&has_bits);
+          tz_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
       // optional float derived_camera_world_tx = 13;
-      case 13: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(109u /* 109 & 0xFF */)) {
-          set_has_derived_camera_world_tx();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &derived_camera_world_tx_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 13:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 109)) {
+          _Internal::set_has_derived_camera_world_tx(&has_bits);
+          derived_camera_world_tx_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
       // optional float derived_camera_world_ty = 14;
-      case 14: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(117u /* 117 & 0xFF */)) {
-          set_has_derived_camera_world_ty();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &derived_camera_world_ty_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 14:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 117)) {
+          _Internal::set_has_derived_camera_world_ty(&has_bits);
+          derived_camera_world_ty_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
       // optional float derived_camera_world_tz = 15;
-      case 15: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(125u /* 125 & 0xFF */)) {
-          set_has_derived_camera_world_tz();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &derived_camera_world_tz_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 15:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 125)) {
+          _Internal::set_has_derived_camera_world_tz(&has_bits);
+          derived_camera_world_tz_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
       // optional uint32 pixel_image_width = 16;
-      case 16: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(128u /* 128 & 0xFF */)) {
-          set_has_pixel_image_width();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &pixel_image_width_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 16:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 128)) {
+          _Internal::set_has_pixel_image_width(&has_bits);
+          pixel_image_width_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       // optional uint32 pixel_image_height = 17;
-      case 17: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(136u /* 136 & 0xFF */)) {
-          set_has_pixel_image_height();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &pixel_image_height_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 17:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 136)) {
+          _Internal::set_has_pixel_image_height(&has_bits);
+          pixel_image_height_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
-        if (tag == 0) {
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
           goto success;
         }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
-    }
-  }
+    }  // switch
+  }  // while
 success:
-  // @@protoc_insertion_point(parse_success:SSL_GeometryCameraCalibration)
-  return true;
+  _has_bits_.Or(has_bits);
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:SSL_GeometryCameraCalibration)
-  return false;
-#undef DO_
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-void SSL_GeometryCameraCalibration::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:SSL_GeometryCameraCalibration)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  cached_has_bits = _has_bits_[0];
-  // required uint32 camera_id = 1;
-  if (cached_has_bits & 0x00000001u) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->camera_id(), output);
-  }
-
-  // required float focal_length = 2;
-  if (cached_has_bits & 0x00000002u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(2, this->focal_length(), output);
-  }
-
-  // required float principal_point_x = 3;
-  if (cached_has_bits & 0x00000004u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(3, this->principal_point_x(), output);
-  }
-
-  // required float principal_point_y = 4;
-  if (cached_has_bits & 0x00000008u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(4, this->principal_point_y(), output);
-  }
-
-  // required float distortion = 5;
-  if (cached_has_bits & 0x00000010u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(5, this->distortion(), output);
-  }
-
-  // required float q0 = 6;
-  if (cached_has_bits & 0x00000020u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(6, this->q0(), output);
-  }
-
-  // required float q1 = 7;
-  if (cached_has_bits & 0x00000040u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(7, this->q1(), output);
-  }
-
-  // required float q2 = 8;
-  if (cached_has_bits & 0x00000080u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(8, this->q2(), output);
-  }
-
-  // required float q3 = 9;
-  if (cached_has_bits & 0x00000100u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(9, this->q3(), output);
-  }
-
-  // required float tx = 10;
-  if (cached_has_bits & 0x00000200u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(10, this->tx(), output);
-  }
-
-  // required float ty = 11;
-  if (cached_has_bits & 0x00000400u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(11, this->ty(), output);
-  }
-
-  // required float tz = 12;
-  if (cached_has_bits & 0x00000800u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(12, this->tz(), output);
-  }
-
-  // optional float derived_camera_world_tx = 13;
-  if (cached_has_bits & 0x00001000u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(13, this->derived_camera_world_tx(), output);
-  }
-
-  // optional float derived_camera_world_ty = 14;
-  if (cached_has_bits & 0x00002000u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(14, this->derived_camera_world_ty(), output);
-  }
-
-  // optional float derived_camera_world_tz = 15;
-  if (cached_has_bits & 0x00004000u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(15, this->derived_camera_world_tz(), output);
-  }
-
-  // optional uint32 pixel_image_width = 16;
-  if (cached_has_bits & 0x00008000u) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(16, this->pixel_image_width(), output);
-  }
-
-  // optional uint32 pixel_image_height = 17;
-  if (cached_has_bits & 0x00010000u) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(17, this->pixel_image_height(), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:SSL_GeometryCameraCalibration)
-}
-
-::google::protobuf::uint8* SSL_GeometryCameraCalibration::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::PROTOBUF_NAMESPACE_ID::uint8* SSL_GeometryCameraCalibration::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:SSL_GeometryCameraCalibration)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
   // required uint32 camera_id = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->camera_id(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(1, this->_internal_camera_id(), target);
   }
 
   // required float focal_length = 2;
   if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(2, this->focal_length(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(2, this->_internal_focal_length(), target);
   }
 
   // required float principal_point_x = 3;
   if (cached_has_bits & 0x00000004u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(3, this->principal_point_x(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(3, this->_internal_principal_point_x(), target);
   }
 
   // required float principal_point_y = 4;
   if (cached_has_bits & 0x00000008u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(4, this->principal_point_y(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(4, this->_internal_principal_point_y(), target);
   }
 
   // required float distortion = 5;
   if (cached_has_bits & 0x00000010u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(5, this->distortion(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(5, this->_internal_distortion(), target);
   }
 
   // required float q0 = 6;
   if (cached_has_bits & 0x00000020u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(6, this->q0(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(6, this->_internal_q0(), target);
   }
 
   // required float q1 = 7;
   if (cached_has_bits & 0x00000040u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(7, this->q1(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(7, this->_internal_q1(), target);
   }
 
   // required float q2 = 8;
   if (cached_has_bits & 0x00000080u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(8, this->q2(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(8, this->_internal_q2(), target);
   }
 
   // required float q3 = 9;
   if (cached_has_bits & 0x00000100u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(9, this->q3(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(9, this->_internal_q3(), target);
   }
 
   // required float tx = 10;
   if (cached_has_bits & 0x00000200u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(10, this->tx(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(10, this->_internal_tx(), target);
   }
 
   // required float ty = 11;
   if (cached_has_bits & 0x00000400u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(11, this->ty(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(11, this->_internal_ty(), target);
   }
 
   // required float tz = 12;
   if (cached_has_bits & 0x00000800u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(12, this->tz(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(12, this->_internal_tz(), target);
   }
 
   // optional float derived_camera_world_tx = 13;
   if (cached_has_bits & 0x00001000u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(13, this->derived_camera_world_tx(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(13, this->_internal_derived_camera_world_tx(), target);
   }
 
   // optional float derived_camera_world_ty = 14;
   if (cached_has_bits & 0x00002000u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(14, this->derived_camera_world_ty(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(14, this->_internal_derived_camera_world_ty(), target);
   }
 
   // optional float derived_camera_world_tz = 15;
   if (cached_has_bits & 0x00004000u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(15, this->derived_camera_world_tz(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(15, this->_internal_derived_camera_world_tz(), target);
   }
 
   // optional uint32 pixel_image_width = 16;
   if (cached_has_bits & 0x00008000u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(16, this->pixel_image_width(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(16, this->_internal_pixel_image_width(), target);
   }
 
   // optional uint32 pixel_image_height = 17;
   if (cached_has_bits & 0x00010000u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(17, this->pixel_image_height(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(17, this->_internal_pixel_image_height(), target);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:SSL_GeometryCameraCalibration)
   return target;
@@ -2961,64 +2527,64 @@ size_t SSL_GeometryCameraCalibration::RequiredFieldsByteSizeFallback() const {
 // @@protoc_insertion_point(required_fields_byte_size_fallback_start:SSL_GeometryCameraCalibration)
   size_t total_size = 0;
 
-  if (has_camera_id()) {
+  if (_internal_has_camera_id()) {
     // required uint32 camera_id = 1;
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
-        this->camera_id());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
+        this->_internal_camera_id());
   }
 
-  if (has_focal_length()) {
+  if (_internal_has_focal_length()) {
     // required float focal_length = 2;
     total_size += 1 + 4;
   }
 
-  if (has_principal_point_x()) {
+  if (_internal_has_principal_point_x()) {
     // required float principal_point_x = 3;
     total_size += 1 + 4;
   }
 
-  if (has_principal_point_y()) {
+  if (_internal_has_principal_point_y()) {
     // required float principal_point_y = 4;
     total_size += 1 + 4;
   }
 
-  if (has_distortion()) {
+  if (_internal_has_distortion()) {
     // required float distortion = 5;
     total_size += 1 + 4;
   }
 
-  if (has_q0()) {
+  if (_internal_has_q0()) {
     // required float q0 = 6;
     total_size += 1 + 4;
   }
 
-  if (has_q1()) {
+  if (_internal_has_q1()) {
     // required float q1 = 7;
     total_size += 1 + 4;
   }
 
-  if (has_q2()) {
+  if (_internal_has_q2()) {
     // required float q2 = 8;
     total_size += 1 + 4;
   }
 
-  if (has_q3()) {
+  if (_internal_has_q3()) {
     // required float q3 = 9;
     total_size += 1 + 4;
   }
 
-  if (has_tx()) {
+  if (_internal_has_tx()) {
     // required float tx = 10;
     total_size += 1 + 4;
   }
 
-  if (has_ty()) {
+  if (_internal_has_ty()) {
     // required float ty = 11;
     total_size += 1 + 4;
   }
 
-  if (has_tz()) {
+  if (_internal_has_tz()) {
     // required float tz = 12;
     total_size += 1 + 4;
   }
@@ -3029,16 +2595,11 @@ size_t SSL_GeometryCameraCalibration::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:SSL_GeometryCameraCalibration)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
   if (((_has_bits_[0] & 0x00000fff) ^ 0x00000fff) == 0) {  // All required fields are present.
     // required uint32 camera_id = 1;
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
-        this->camera_id());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
+        this->_internal_camera_id());
 
     // required float focal_length = 2;
     total_size += 1 + 4;
@@ -3076,51 +2637,60 @@ size_t SSL_GeometryCameraCalibration::ByteSizeLong() const {
   } else {
     total_size += RequiredFieldsByteSizeFallback();
   }
-  if (_has_bits_[8 / 32] & 61440u) {
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x0000f000u) {
     // optional float derived_camera_world_tx = 13;
-    if (has_derived_camera_world_tx()) {
+    if (cached_has_bits & 0x00001000u) {
       total_size += 1 + 4;
     }
 
     // optional float derived_camera_world_ty = 14;
-    if (has_derived_camera_world_ty()) {
+    if (cached_has_bits & 0x00002000u) {
       total_size += 1 + 4;
     }
 
     // optional float derived_camera_world_tz = 15;
-    if (has_derived_camera_world_tz()) {
+    if (cached_has_bits & 0x00004000u) {
       total_size += 1 + 4;
     }
 
     // optional uint32 pixel_image_width = 16;
-    if (has_pixel_image_width()) {
+    if (cached_has_bits & 0x00008000u) {
       total_size += 2 +
-        ::google::protobuf::internal::WireFormatLite::UInt32Size(
-          this->pixel_image_width());
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
+          this->_internal_pixel_image_width());
     }
 
   }
   // optional uint32 pixel_image_height = 17;
-  if (has_pixel_image_height()) {
+  if (cached_has_bits & 0x00010000u) {
     total_size += 2 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
-        this->pixel_image_height());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
+        this->_internal_pixel_image_height());
   }
 
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void SSL_GeometryCameraCalibration::MergeFrom(const ::google::protobuf::Message& from) {
+void SSL_GeometryCameraCalibration::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:SSL_GeometryCameraCalibration)
   GOOGLE_DCHECK_NE(&from, this);
   const SSL_GeometryCameraCalibration* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const SSL_GeometryCameraCalibration>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<SSL_GeometryCameraCalibration>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:SSL_GeometryCameraCalibration)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:SSL_GeometryCameraCalibration)
     MergeFrom(*source);
@@ -3130,12 +2700,12 @@ void SSL_GeometryCameraCalibration::MergeFrom(const ::google::protobuf::Message&
 void SSL_GeometryCameraCalibration::MergeFrom(const SSL_GeometryCameraCalibration& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:SSL_GeometryCameraCalibration)
   GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 255u) {
+  if (cached_has_bits & 0x000000ffu) {
     if (cached_has_bits & 0x00000001u) {
       camera_id_ = from.camera_id_;
     }
@@ -3162,7 +2732,7 @@ void SSL_GeometryCameraCalibration::MergeFrom(const SSL_GeometryCameraCalibratio
     }
     _has_bits_[0] |= cached_has_bits;
   }
-  if (cached_has_bits & 65280u) {
+  if (cached_has_bits & 0x0000ff00u) {
     if (cached_has_bits & 0x00000100u) {
       q3_ = from.q3_;
     }
@@ -3190,11 +2760,11 @@ void SSL_GeometryCameraCalibration::MergeFrom(const SSL_GeometryCameraCalibratio
     _has_bits_[0] |= cached_has_bits;
   }
   if (cached_has_bits & 0x00010000u) {
-    set_pixel_image_height(from.pixel_image_height());
+    _internal_set_pixel_image_height(from._internal_pixel_image_height());
   }
 }
 
-void SSL_GeometryCameraCalibration::CopyFrom(const ::google::protobuf::Message& from) {
+void SSL_GeometryCameraCalibration::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:SSL_GeometryCameraCalibration)
   if (&from == this) return;
   Clear();
@@ -3209,65 +2779,56 @@ void SSL_GeometryCameraCalibration::CopyFrom(const SSL_GeometryCameraCalibration
 }
 
 bool SSL_GeometryCameraCalibration::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000fff) != 0x00000fff) return false;
+  if (_Internal::MissingRequiredFields(_has_bits_)) return false;
   return true;
 }
 
-void SSL_GeometryCameraCalibration::Swap(SSL_GeometryCameraCalibration* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void SSL_GeometryCameraCalibration::InternalSwap(SSL_GeometryCameraCalibration* other) {
   using std::swap;
-  swap(camera_id_, other->camera_id_);
-  swap(focal_length_, other->focal_length_);
-  swap(principal_point_x_, other->principal_point_x_);
-  swap(principal_point_y_, other->principal_point_y_);
-  swap(distortion_, other->distortion_);
-  swap(q0_, other->q0_);
-  swap(q1_, other->q1_);
-  swap(q2_, other->q2_);
-  swap(q3_, other->q3_);
-  swap(tx_, other->tx_);
-  swap(ty_, other->ty_);
-  swap(tz_, other->tz_);
-  swap(derived_camera_world_tx_, other->derived_camera_world_tx_);
-  swap(derived_camera_world_ty_, other->derived_camera_world_ty_);
-  swap(derived_camera_world_tz_, other->derived_camera_world_tz_);
-  swap(pixel_image_width_, other->pixel_image_width_);
-  swap(pixel_image_height_, other->pixel_image_height_);
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(SSL_GeometryCameraCalibration, pixel_image_height_)
+      + sizeof(SSL_GeometryCameraCalibration::pixel_image_height_)
+      - PROTOBUF_FIELD_OFFSET(SSL_GeometryCameraCalibration, camera_id_)>(
+          reinterpret_cast<char*>(&camera_id_),
+          reinterpret_cast<char*>(&other->camera_id_));
 }
 
-::google::protobuf::Metadata SSL_GeometryCameraCalibration::GetMetadata() const {
-  protobuf_ssl_5fvision_5fgeometry_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ssl_5fvision_5fgeometry_2eproto::file_level_metadata[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata SSL_GeometryCameraCalibration::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
 // ===================================================================
 
-void SSL_BallModelStraightTwoPhase::InitAsDefaultInstance() {
-}
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int SSL_BallModelStraightTwoPhase::kAccSlideFieldNumber;
-const int SSL_BallModelStraightTwoPhase::kAccRollFieldNumber;
-const int SSL_BallModelStraightTwoPhase::kKSwitchFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+class SSL_BallModelStraightTwoPhase::_Internal {
+ public:
+  using HasBits = decltype(std::declval<SSL_BallModelStraightTwoPhase>()._has_bits_);
+  static void set_has_acc_slide(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+  static void set_has_acc_roll(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
+  static void set_has_k_switch(HasBits* has_bits) {
+    (*has_bits)[0] |= 4u;
+  }
+  static bool MissingRequiredFields(const HasBits& has_bits) {
+    return ((has_bits[0] & 0x00000007) ^ 0x00000007) != 0;
+  }
+};
 
-SSL_BallModelStraightTwoPhase::SSL_BallModelStraightTwoPhase()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ssl_5fvision_5fgeometry_2eproto::scc_info_SSL_BallModelStraightTwoPhase.base);
+SSL_BallModelStraightTwoPhase::SSL_BallModelStraightTwoPhase(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:SSL_BallModelStraightTwoPhase)
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:SSL_BallModelStraightTwoPhase)
 }
 SSL_BallModelStraightTwoPhase::SSL_BallModelStraightTwoPhase(const SSL_BallModelStraightTwoPhase& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
       _has_bits_(from._has_bits_) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::memcpy(&acc_slide_, &from.acc_slide_,
     static_cast<size_t>(reinterpret_cast<char*>(&k_switch_) -
     reinterpret_cast<char*>(&acc_slide_)) + sizeof(k_switch_));
@@ -3275,176 +2836,136 @@ SSL_BallModelStraightTwoPhase::SSL_BallModelStraightTwoPhase(const SSL_BallModel
 }
 
 void SSL_BallModelStraightTwoPhase::SharedCtor() {
-  ::memset(&acc_slide_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&k_switch_) -
+  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+      reinterpret_cast<char*>(&acc_slide_) - reinterpret_cast<char*>(this)),
+      0, static_cast<size_t>(reinterpret_cast<char*>(&k_switch_) -
       reinterpret_cast<char*>(&acc_slide_)) + sizeof(k_switch_));
 }
 
 SSL_BallModelStraightTwoPhase::~SSL_BallModelStraightTwoPhase() {
   // @@protoc_insertion_point(destructor:SSL_BallModelStraightTwoPhase)
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 void SSL_BallModelStraightTwoPhase::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
 }
 
+void SSL_BallModelStraightTwoPhase::ArenaDtor(void* object) {
+  SSL_BallModelStraightTwoPhase* _this = reinterpret_cast< SSL_BallModelStraightTwoPhase* >(object);
+  (void)_this;
+}
+void SSL_BallModelStraightTwoPhase::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void SSL_BallModelStraightTwoPhase::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* SSL_BallModelStraightTwoPhase::descriptor() {
-  ::protobuf_ssl_5fvision_5fgeometry_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ssl_5fvision_5fgeometry_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const SSL_BallModelStraightTwoPhase& SSL_BallModelStraightTwoPhase::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ssl_5fvision_5fgeometry_2eproto::scc_info_SSL_BallModelStraightTwoPhase.base);
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_SSL_BallModelStraightTwoPhase_ssl_5fvision_5fgeometry_2eproto.base);
   return *internal_default_instance();
 }
 
 
 void SSL_BallModelStraightTwoPhase::Clear() {
 // @@protoc_insertion_point(message_clear_start:SSL_BallModelStraightTwoPhase)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 7u) {
+  if (cached_has_bits & 0x00000007u) {
     ::memset(&acc_slide_, 0, static_cast<size_t>(
         reinterpret_cast<char*>(&k_switch_) -
         reinterpret_cast<char*>(&acc_slide_)) + sizeof(k_switch_));
   }
   _has_bits_.Clear();
-  _internal_metadata_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-bool SSL_BallModelStraightTwoPhase::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:SSL_BallModelStraightTwoPhase)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+const char* SSL_BallModelStraightTwoPhase::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
       // required double acc_slide = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(9u /* 9 & 0xFF */)) {
-          set_has_acc_slide();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 input, &acc_slide_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 9)) {
+          _Internal::set_has_acc_slide(&has_bits);
+          acc_slide_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
+          ptr += sizeof(double);
+        } else goto handle_unusual;
+        continue;
       // required double acc_roll = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(17u /* 17 & 0xFF */)) {
-          set_has_acc_roll();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 input, &acc_roll_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 17)) {
+          _Internal::set_has_acc_roll(&has_bits);
+          acc_roll_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
+          ptr += sizeof(double);
+        } else goto handle_unusual;
+        continue;
       // required double k_switch = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(25u /* 25 & 0xFF */)) {
-          set_has_k_switch();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 input, &k_switch_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 25)) {
+          _Internal::set_has_k_switch(&has_bits);
+          k_switch_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
+          ptr += sizeof(double);
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
-        if (tag == 0) {
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
           goto success;
         }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
-    }
-  }
+    }  // switch
+  }  // while
 success:
-  // @@protoc_insertion_point(parse_success:SSL_BallModelStraightTwoPhase)
-  return true;
+  _has_bits_.Or(has_bits);
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:SSL_BallModelStraightTwoPhase)
-  return false;
-#undef DO_
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-void SSL_BallModelStraightTwoPhase::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:SSL_BallModelStraightTwoPhase)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  cached_has_bits = _has_bits_[0];
-  // required double acc_slide = 1;
-  if (cached_has_bits & 0x00000001u) {
-    ::google::protobuf::internal::WireFormatLite::WriteDouble(1, this->acc_slide(), output);
-  }
-
-  // required double acc_roll = 2;
-  if (cached_has_bits & 0x00000002u) {
-    ::google::protobuf::internal::WireFormatLite::WriteDouble(2, this->acc_roll(), output);
-  }
-
-  // required double k_switch = 3;
-  if (cached_has_bits & 0x00000004u) {
-    ::google::protobuf::internal::WireFormatLite::WriteDouble(3, this->k_switch(), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:SSL_BallModelStraightTwoPhase)
-}
-
-::google::protobuf::uint8* SSL_BallModelStraightTwoPhase::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::PROTOBUF_NAMESPACE_ID::uint8* SSL_BallModelStraightTwoPhase::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:SSL_BallModelStraightTwoPhase)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
   // required double acc_slide = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(1, this->acc_slide(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(1, this->_internal_acc_slide(), target);
   }
 
   // required double acc_roll = 2;
   if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(2, this->acc_roll(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(2, this->_internal_acc_roll(), target);
   }
 
   // required double k_switch = 3;
   if (cached_has_bits & 0x00000004u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(3, this->k_switch(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(3, this->_internal_k_switch(), target);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:SSL_BallModelStraightTwoPhase)
   return target;
@@ -3454,17 +2975,17 @@ size_t SSL_BallModelStraightTwoPhase::RequiredFieldsByteSizeFallback() const {
 // @@protoc_insertion_point(required_fields_byte_size_fallback_start:SSL_BallModelStraightTwoPhase)
   size_t total_size = 0;
 
-  if (has_acc_slide()) {
+  if (_internal_has_acc_slide()) {
     // required double acc_slide = 1;
     total_size += 1 + 8;
   }
 
-  if (has_acc_roll()) {
+  if (_internal_has_acc_roll()) {
     // required double acc_roll = 2;
     total_size += 1 + 8;
   }
 
-  if (has_k_switch()) {
+  if (_internal_has_k_switch()) {
     // required double k_switch = 3;
     total_size += 1 + 8;
   }
@@ -3475,11 +2996,6 @@ size_t SSL_BallModelStraightTwoPhase::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:SSL_BallModelStraightTwoPhase)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
   if (((_has_bits_[0] & 0x00000007) ^ 0x00000007) == 0) {  // All required fields are present.
     // required double acc_slide = 1;
     total_size += 1 + 8;
@@ -3493,20 +3009,28 @@ size_t SSL_BallModelStraightTwoPhase::ByteSizeLong() const {
   } else {
     total_size += RequiredFieldsByteSizeFallback();
   }
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void SSL_BallModelStraightTwoPhase::MergeFrom(const ::google::protobuf::Message& from) {
+void SSL_BallModelStraightTwoPhase::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:SSL_BallModelStraightTwoPhase)
   GOOGLE_DCHECK_NE(&from, this);
   const SSL_BallModelStraightTwoPhase* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const SSL_BallModelStraightTwoPhase>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<SSL_BallModelStraightTwoPhase>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:SSL_BallModelStraightTwoPhase)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:SSL_BallModelStraightTwoPhase)
     MergeFrom(*source);
@@ -3516,12 +3040,12 @@ void SSL_BallModelStraightTwoPhase::MergeFrom(const ::google::protobuf::Message&
 void SSL_BallModelStraightTwoPhase::MergeFrom(const SSL_BallModelStraightTwoPhase& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:SSL_BallModelStraightTwoPhase)
   GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 7u) {
+  if (cached_has_bits & 0x00000007u) {
     if (cached_has_bits & 0x00000001u) {
       acc_slide_ = from.acc_slide_;
     }
@@ -3535,7 +3059,7 @@ void SSL_BallModelStraightTwoPhase::MergeFrom(const SSL_BallModelStraightTwoPhas
   }
 }
 
-void SSL_BallModelStraightTwoPhase::CopyFrom(const ::google::protobuf::Message& from) {
+void SSL_BallModelStraightTwoPhase::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:SSL_BallModelStraightTwoPhase)
   if (&from == this) return;
   Clear();
@@ -3550,51 +3074,56 @@ void SSL_BallModelStraightTwoPhase::CopyFrom(const SSL_BallModelStraightTwoPhase
 }
 
 bool SSL_BallModelStraightTwoPhase::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000007) != 0x00000007) return false;
+  if (_Internal::MissingRequiredFields(_has_bits_)) return false;
   return true;
 }
 
-void SSL_BallModelStraightTwoPhase::Swap(SSL_BallModelStraightTwoPhase* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void SSL_BallModelStraightTwoPhase::InternalSwap(SSL_BallModelStraightTwoPhase* other) {
   using std::swap;
-  swap(acc_slide_, other->acc_slide_);
-  swap(acc_roll_, other->acc_roll_);
-  swap(k_switch_, other->k_switch_);
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(SSL_BallModelStraightTwoPhase, k_switch_)
+      + sizeof(SSL_BallModelStraightTwoPhase::k_switch_)
+      - PROTOBUF_FIELD_OFFSET(SSL_BallModelStraightTwoPhase, acc_slide_)>(
+          reinterpret_cast<char*>(&acc_slide_),
+          reinterpret_cast<char*>(&other->acc_slide_));
 }
 
-::google::protobuf::Metadata SSL_BallModelStraightTwoPhase::GetMetadata() const {
-  protobuf_ssl_5fvision_5fgeometry_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ssl_5fvision_5fgeometry_2eproto::file_level_metadata[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata SSL_BallModelStraightTwoPhase::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
 // ===================================================================
 
-void SSL_BallModelChipFixedLoss::InitAsDefaultInstance() {
-}
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int SSL_BallModelChipFixedLoss::kDampingXyFirstHopFieldNumber;
-const int SSL_BallModelChipFixedLoss::kDampingXyOtherHopsFieldNumber;
-const int SSL_BallModelChipFixedLoss::kDampingZFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+class SSL_BallModelChipFixedLoss::_Internal {
+ public:
+  using HasBits = decltype(std::declval<SSL_BallModelChipFixedLoss>()._has_bits_);
+  static void set_has_damping_xy_first_hop(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+  static void set_has_damping_xy_other_hops(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
+  static void set_has_damping_z(HasBits* has_bits) {
+    (*has_bits)[0] |= 4u;
+  }
+  static bool MissingRequiredFields(const HasBits& has_bits) {
+    return ((has_bits[0] & 0x00000007) ^ 0x00000007) != 0;
+  }
+};
 
-SSL_BallModelChipFixedLoss::SSL_BallModelChipFixedLoss()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ssl_5fvision_5fgeometry_2eproto::scc_info_SSL_BallModelChipFixedLoss.base);
+SSL_BallModelChipFixedLoss::SSL_BallModelChipFixedLoss(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:SSL_BallModelChipFixedLoss)
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:SSL_BallModelChipFixedLoss)
 }
 SSL_BallModelChipFixedLoss::SSL_BallModelChipFixedLoss(const SSL_BallModelChipFixedLoss& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
       _has_bits_(from._has_bits_) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::memcpy(&damping_xy_first_hop_, &from.damping_xy_first_hop_,
     static_cast<size_t>(reinterpret_cast<char*>(&damping_z_) -
     reinterpret_cast<char*>(&damping_xy_first_hop_)) + sizeof(damping_z_));
@@ -3602,176 +3131,136 @@ SSL_BallModelChipFixedLoss::SSL_BallModelChipFixedLoss(const SSL_BallModelChipFi
 }
 
 void SSL_BallModelChipFixedLoss::SharedCtor() {
-  ::memset(&damping_xy_first_hop_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&damping_z_) -
+  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+      reinterpret_cast<char*>(&damping_xy_first_hop_) - reinterpret_cast<char*>(this)),
+      0, static_cast<size_t>(reinterpret_cast<char*>(&damping_z_) -
       reinterpret_cast<char*>(&damping_xy_first_hop_)) + sizeof(damping_z_));
 }
 
 SSL_BallModelChipFixedLoss::~SSL_BallModelChipFixedLoss() {
   // @@protoc_insertion_point(destructor:SSL_BallModelChipFixedLoss)
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 void SSL_BallModelChipFixedLoss::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
 }
 
+void SSL_BallModelChipFixedLoss::ArenaDtor(void* object) {
+  SSL_BallModelChipFixedLoss* _this = reinterpret_cast< SSL_BallModelChipFixedLoss* >(object);
+  (void)_this;
+}
+void SSL_BallModelChipFixedLoss::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void SSL_BallModelChipFixedLoss::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* SSL_BallModelChipFixedLoss::descriptor() {
-  ::protobuf_ssl_5fvision_5fgeometry_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ssl_5fvision_5fgeometry_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const SSL_BallModelChipFixedLoss& SSL_BallModelChipFixedLoss::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ssl_5fvision_5fgeometry_2eproto::scc_info_SSL_BallModelChipFixedLoss.base);
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_SSL_BallModelChipFixedLoss_ssl_5fvision_5fgeometry_2eproto.base);
   return *internal_default_instance();
 }
 
 
 void SSL_BallModelChipFixedLoss::Clear() {
 // @@protoc_insertion_point(message_clear_start:SSL_BallModelChipFixedLoss)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 7u) {
+  if (cached_has_bits & 0x00000007u) {
     ::memset(&damping_xy_first_hop_, 0, static_cast<size_t>(
         reinterpret_cast<char*>(&damping_z_) -
         reinterpret_cast<char*>(&damping_xy_first_hop_)) + sizeof(damping_z_));
   }
   _has_bits_.Clear();
-  _internal_metadata_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-bool SSL_BallModelChipFixedLoss::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:SSL_BallModelChipFixedLoss)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+const char* SSL_BallModelChipFixedLoss::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
       // required double damping_xy_first_hop = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(9u /* 9 & 0xFF */)) {
-          set_has_damping_xy_first_hop();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 input, &damping_xy_first_hop_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 9)) {
+          _Internal::set_has_damping_xy_first_hop(&has_bits);
+          damping_xy_first_hop_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
+          ptr += sizeof(double);
+        } else goto handle_unusual;
+        continue;
       // required double damping_xy_other_hops = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(17u /* 17 & 0xFF */)) {
-          set_has_damping_xy_other_hops();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 input, &damping_xy_other_hops_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 17)) {
+          _Internal::set_has_damping_xy_other_hops(&has_bits);
+          damping_xy_other_hops_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
+          ptr += sizeof(double);
+        } else goto handle_unusual;
+        continue;
       // required double damping_z = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(25u /* 25 & 0xFF */)) {
-          set_has_damping_z();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 input, &damping_z_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 25)) {
+          _Internal::set_has_damping_z(&has_bits);
+          damping_z_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
+          ptr += sizeof(double);
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
-        if (tag == 0) {
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
           goto success;
         }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
-    }
-  }
+    }  // switch
+  }  // while
 success:
-  // @@protoc_insertion_point(parse_success:SSL_BallModelChipFixedLoss)
-  return true;
+  _has_bits_.Or(has_bits);
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:SSL_BallModelChipFixedLoss)
-  return false;
-#undef DO_
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-void SSL_BallModelChipFixedLoss::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:SSL_BallModelChipFixedLoss)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  cached_has_bits = _has_bits_[0];
-  // required double damping_xy_first_hop = 1;
-  if (cached_has_bits & 0x00000001u) {
-    ::google::protobuf::internal::WireFormatLite::WriteDouble(1, this->damping_xy_first_hop(), output);
-  }
-
-  // required double damping_xy_other_hops = 2;
-  if (cached_has_bits & 0x00000002u) {
-    ::google::protobuf::internal::WireFormatLite::WriteDouble(2, this->damping_xy_other_hops(), output);
-  }
-
-  // required double damping_z = 3;
-  if (cached_has_bits & 0x00000004u) {
-    ::google::protobuf::internal::WireFormatLite::WriteDouble(3, this->damping_z(), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:SSL_BallModelChipFixedLoss)
-}
-
-::google::protobuf::uint8* SSL_BallModelChipFixedLoss::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::PROTOBUF_NAMESPACE_ID::uint8* SSL_BallModelChipFixedLoss::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:SSL_BallModelChipFixedLoss)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
   // required double damping_xy_first_hop = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(1, this->damping_xy_first_hop(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(1, this->_internal_damping_xy_first_hop(), target);
   }
 
   // required double damping_xy_other_hops = 2;
   if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(2, this->damping_xy_other_hops(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(2, this->_internal_damping_xy_other_hops(), target);
   }
 
   // required double damping_z = 3;
   if (cached_has_bits & 0x00000004u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(3, this->damping_z(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(3, this->_internal_damping_z(), target);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:SSL_BallModelChipFixedLoss)
   return target;
@@ -3781,17 +3270,17 @@ size_t SSL_BallModelChipFixedLoss::RequiredFieldsByteSizeFallback() const {
 // @@protoc_insertion_point(required_fields_byte_size_fallback_start:SSL_BallModelChipFixedLoss)
   size_t total_size = 0;
 
-  if (has_damping_xy_first_hop()) {
+  if (_internal_has_damping_xy_first_hop()) {
     // required double damping_xy_first_hop = 1;
     total_size += 1 + 8;
   }
 
-  if (has_damping_xy_other_hops()) {
+  if (_internal_has_damping_xy_other_hops()) {
     // required double damping_xy_other_hops = 2;
     total_size += 1 + 8;
   }
 
-  if (has_damping_z()) {
+  if (_internal_has_damping_z()) {
     // required double damping_z = 3;
     total_size += 1 + 8;
   }
@@ -3802,11 +3291,6 @@ size_t SSL_BallModelChipFixedLoss::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:SSL_BallModelChipFixedLoss)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
   if (((_has_bits_[0] & 0x00000007) ^ 0x00000007) == 0) {  // All required fields are present.
     // required double damping_xy_first_hop = 1;
     total_size += 1 + 8;
@@ -3820,20 +3304,28 @@ size_t SSL_BallModelChipFixedLoss::ByteSizeLong() const {
   } else {
     total_size += RequiredFieldsByteSizeFallback();
   }
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void SSL_BallModelChipFixedLoss::MergeFrom(const ::google::protobuf::Message& from) {
+void SSL_BallModelChipFixedLoss::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:SSL_BallModelChipFixedLoss)
   GOOGLE_DCHECK_NE(&from, this);
   const SSL_BallModelChipFixedLoss* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const SSL_BallModelChipFixedLoss>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<SSL_BallModelChipFixedLoss>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:SSL_BallModelChipFixedLoss)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:SSL_BallModelChipFixedLoss)
     MergeFrom(*source);
@@ -3843,12 +3335,12 @@ void SSL_BallModelChipFixedLoss::MergeFrom(const ::google::protobuf::Message& fr
 void SSL_BallModelChipFixedLoss::MergeFrom(const SSL_BallModelChipFixedLoss& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:SSL_BallModelChipFixedLoss)
   GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 7u) {
+  if (cached_has_bits & 0x00000007u) {
     if (cached_has_bits & 0x00000001u) {
       damping_xy_first_hop_ = from.damping_xy_first_hop_;
     }
@@ -3862,7 +3354,7 @@ void SSL_BallModelChipFixedLoss::MergeFrom(const SSL_BallModelChipFixedLoss& fro
   }
 }
 
-void SSL_BallModelChipFixedLoss::CopyFrom(const ::google::protobuf::Message& from) {
+void SSL_BallModelChipFixedLoss::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:SSL_BallModelChipFixedLoss)
   if (&from == this) return;
   Clear();
@@ -3877,223 +3369,200 @@ void SSL_BallModelChipFixedLoss::CopyFrom(const SSL_BallModelChipFixedLoss& from
 }
 
 bool SSL_BallModelChipFixedLoss::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000007) != 0x00000007) return false;
+  if (_Internal::MissingRequiredFields(_has_bits_)) return false;
   return true;
 }
 
-void SSL_BallModelChipFixedLoss::Swap(SSL_BallModelChipFixedLoss* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void SSL_BallModelChipFixedLoss::InternalSwap(SSL_BallModelChipFixedLoss* other) {
   using std::swap;
-  swap(damping_xy_first_hop_, other->damping_xy_first_hop_);
-  swap(damping_xy_other_hops_, other->damping_xy_other_hops_);
-  swap(damping_z_, other->damping_z_);
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(SSL_BallModelChipFixedLoss, damping_z_)
+      + sizeof(SSL_BallModelChipFixedLoss::damping_z_)
+      - PROTOBUF_FIELD_OFFSET(SSL_BallModelChipFixedLoss, damping_xy_first_hop_)>(
+          reinterpret_cast<char*>(&damping_xy_first_hop_),
+          reinterpret_cast<char*>(&other->damping_xy_first_hop_));
 }
 
-::google::protobuf::Metadata SSL_BallModelChipFixedLoss::GetMetadata() const {
-  protobuf_ssl_5fvision_5fgeometry_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ssl_5fvision_5fgeometry_2eproto::file_level_metadata[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata SSL_BallModelChipFixedLoss::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
 // ===================================================================
 
-void SSL_GeometryModels::InitAsDefaultInstance() {
-  ::_SSL_GeometryModels_default_instance_._instance.get_mutable()->straight_two_phase_ = const_cast< ::SSL_BallModelStraightTwoPhase*>(
-      ::SSL_BallModelStraightTwoPhase::internal_default_instance());
-  ::_SSL_GeometryModels_default_instance_._instance.get_mutable()->chip_fixed_loss_ = const_cast< ::SSL_BallModelChipFixedLoss*>(
-      ::SSL_BallModelChipFixedLoss::internal_default_instance());
-}
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int SSL_GeometryModels::kStraightTwoPhaseFieldNumber;
-const int SSL_GeometryModels::kChipFixedLossFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+class SSL_GeometryModels::_Internal {
+ public:
+  using HasBits = decltype(std::declval<SSL_GeometryModels>()._has_bits_);
+  static const ::SSL_BallModelStraightTwoPhase& straight_two_phase(const SSL_GeometryModels* msg);
+  static void set_has_straight_two_phase(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+  static const ::SSL_BallModelChipFixedLoss& chip_fixed_loss(const SSL_GeometryModels* msg);
+  static void set_has_chip_fixed_loss(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
+};
 
-SSL_GeometryModels::SSL_GeometryModels()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ssl_5fvision_5fgeometry_2eproto::scc_info_SSL_GeometryModels.base);
+const ::SSL_BallModelStraightTwoPhase&
+SSL_GeometryModels::_Internal::straight_two_phase(const SSL_GeometryModels* msg) {
+  return *msg->straight_two_phase_;
+}
+const ::SSL_BallModelChipFixedLoss&
+SSL_GeometryModels::_Internal::chip_fixed_loss(const SSL_GeometryModels* msg) {
+  return *msg->chip_fixed_loss_;
+}
+SSL_GeometryModels::SSL_GeometryModels(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:SSL_GeometryModels)
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:SSL_GeometryModels)
 }
 SSL_GeometryModels::SSL_GeometryModels(const SSL_GeometryModels& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
       _has_bits_(from._has_bits_) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  if (from.has_straight_two_phase()) {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_straight_two_phase()) {
     straight_two_phase_ = new ::SSL_BallModelStraightTwoPhase(*from.straight_two_phase_);
   } else {
-    straight_two_phase_ = NULL;
+    straight_two_phase_ = nullptr;
   }
-  if (from.has_chip_fixed_loss()) {
+  if (from._internal_has_chip_fixed_loss()) {
     chip_fixed_loss_ = new ::SSL_BallModelChipFixedLoss(*from.chip_fixed_loss_);
   } else {
-    chip_fixed_loss_ = NULL;
+    chip_fixed_loss_ = nullptr;
   }
   // @@protoc_insertion_point(copy_constructor:SSL_GeometryModels)
 }
 
 void SSL_GeometryModels::SharedCtor() {
-  ::memset(&straight_two_phase_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&chip_fixed_loss_) -
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_SSL_GeometryModels_ssl_5fvision_5fgeometry_2eproto.base);
+  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+      reinterpret_cast<char*>(&straight_two_phase_) - reinterpret_cast<char*>(this)),
+      0, static_cast<size_t>(reinterpret_cast<char*>(&chip_fixed_loss_) -
       reinterpret_cast<char*>(&straight_two_phase_)) + sizeof(chip_fixed_loss_));
 }
 
 SSL_GeometryModels::~SSL_GeometryModels() {
   // @@protoc_insertion_point(destructor:SSL_GeometryModels)
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 void SSL_GeometryModels::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
   if (this != internal_default_instance()) delete straight_two_phase_;
   if (this != internal_default_instance()) delete chip_fixed_loss_;
 }
 
+void SSL_GeometryModels::ArenaDtor(void* object) {
+  SSL_GeometryModels* _this = reinterpret_cast< SSL_GeometryModels* >(object);
+  (void)_this;
+}
+void SSL_GeometryModels::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void SSL_GeometryModels::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* SSL_GeometryModels::descriptor() {
-  ::protobuf_ssl_5fvision_5fgeometry_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ssl_5fvision_5fgeometry_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const SSL_GeometryModels& SSL_GeometryModels::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ssl_5fvision_5fgeometry_2eproto::scc_info_SSL_GeometryModels.base);
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_SSL_GeometryModels_ssl_5fvision_5fgeometry_2eproto.base);
   return *internal_default_instance();
 }
 
 
 void SSL_GeometryModels::Clear() {
 // @@protoc_insertion_point(message_clear_start:SSL_GeometryModels)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 3u) {
+  if (cached_has_bits & 0x00000003u) {
     if (cached_has_bits & 0x00000001u) {
-      GOOGLE_DCHECK(straight_two_phase_ != NULL);
+      GOOGLE_DCHECK(straight_two_phase_ != nullptr);
       straight_two_phase_->Clear();
     }
     if (cached_has_bits & 0x00000002u) {
-      GOOGLE_DCHECK(chip_fixed_loss_ != NULL);
+      GOOGLE_DCHECK(chip_fixed_loss_ != nullptr);
       chip_fixed_loss_->Clear();
     }
   }
   _has_bits_.Clear();
-  _internal_metadata_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-bool SSL_GeometryModels::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:SSL_GeometryModels)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+const char* SSL_GeometryModels::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
       // optional .SSL_BallModelStraightTwoPhase straight_two_phase = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-               input, mutable_straight_two_phase()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_straight_two_phase(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       // optional .SSL_BallModelChipFixedLoss chip_fixed_loss = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-               input, mutable_chip_fixed_loss()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          ptr = ctx->ParseMessage(_internal_mutable_chip_fixed_loss(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
-        if (tag == 0) {
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
           goto success;
         }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
-    }
-  }
+    }  // switch
+  }  // while
 success:
-  // @@protoc_insertion_point(parse_success:SSL_GeometryModels)
-  return true;
+  _has_bits_.Or(has_bits);
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:SSL_GeometryModels)
-  return false;
-#undef DO_
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-void SSL_GeometryModels::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:SSL_GeometryModels)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  cached_has_bits = _has_bits_[0];
-  // optional .SSL_BallModelStraightTwoPhase straight_two_phase = 1;
-  if (cached_has_bits & 0x00000001u) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->_internal_straight_two_phase(), output);
-  }
-
-  // optional .SSL_BallModelChipFixedLoss chip_fixed_loss = 2;
-  if (cached_has_bits & 0x00000002u) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, this->_internal_chip_fixed_loss(), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:SSL_GeometryModels)
-}
-
-::google::protobuf::uint8* SSL_GeometryModels::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::PROTOBUF_NAMESPACE_ID::uint8* SSL_GeometryModels::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:SSL_GeometryModels)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
   // optional .SSL_BallModelStraightTwoPhase straight_two_phase = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        1, this->_internal_straight_two_phase(), deterministic, target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        1, _Internal::straight_two_phase(this), target, stream);
   }
 
   // optional .SSL_BallModelChipFixedLoss chip_fixed_loss = 2;
   if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        2, this->_internal_chip_fixed_loss(), deterministic, target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        2, _Internal::chip_fixed_loss(this), target, stream);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:SSL_GeometryModels)
   return target;
@@ -4103,41 +3572,45 @@ size_t SSL_GeometryModels::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:SSL_GeometryModels)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
-  if (_has_bits_[0 / 32] & 3u) {
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
     // optional .SSL_BallModelStraightTwoPhase straight_two_phase = 1;
-    if (has_straight_two_phase()) {
+    if (cached_has_bits & 0x00000001u) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
           *straight_two_phase_);
     }
 
     // optional .SSL_BallModelChipFixedLoss chip_fixed_loss = 2;
-    if (has_chip_fixed_loss()) {
+    if (cached_has_bits & 0x00000002u) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
           *chip_fixed_loss_);
     }
 
   }
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void SSL_GeometryModels::MergeFrom(const ::google::protobuf::Message& from) {
+void SSL_GeometryModels::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:SSL_GeometryModels)
   GOOGLE_DCHECK_NE(&from, this);
   const SSL_GeometryModels* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const SSL_GeometryModels>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<SSL_GeometryModels>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:SSL_GeometryModels)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:SSL_GeometryModels)
     MergeFrom(*source);
@@ -4147,22 +3620,22 @@ void SSL_GeometryModels::MergeFrom(const ::google::protobuf::Message& from) {
 void SSL_GeometryModels::MergeFrom(const SSL_GeometryModels& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:SSL_GeometryModels)
   GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 3u) {
+  if (cached_has_bits & 0x00000003u) {
     if (cached_has_bits & 0x00000001u) {
-      mutable_straight_two_phase()->::SSL_BallModelStraightTwoPhase::MergeFrom(from.straight_two_phase());
+      _internal_mutable_straight_two_phase()->::SSL_BallModelStraightTwoPhase::MergeFrom(from._internal_straight_two_phase());
     }
     if (cached_has_bits & 0x00000002u) {
-      mutable_chip_fixed_loss()->::SSL_BallModelChipFixedLoss::MergeFrom(from.chip_fixed_loss());
+      _internal_mutable_chip_fixed_loss()->::SSL_BallModelChipFixedLoss::MergeFrom(from._internal_chip_fixed_loss());
     }
   }
 }
 
-void SSL_GeometryModels::CopyFrom(const ::google::protobuf::Message& from) {
+void SSL_GeometryModels::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:SSL_GeometryModels)
   if (&from == this) return;
   Clear();
@@ -4177,259 +3650,231 @@ void SSL_GeometryModels::CopyFrom(const SSL_GeometryModels& from) {
 }
 
 bool SSL_GeometryModels::IsInitialized() const {
-  if (has_straight_two_phase()) {
-    if (!this->straight_two_phase_->IsInitialized()) return false;
+  if (_internal_has_straight_two_phase()) {
+    if (!straight_two_phase_->IsInitialized()) return false;
   }
-  if (has_chip_fixed_loss()) {
-    if (!this->chip_fixed_loss_->IsInitialized()) return false;
+  if (_internal_has_chip_fixed_loss()) {
+    if (!chip_fixed_loss_->IsInitialized()) return false;
   }
   return true;
 }
 
-void SSL_GeometryModels::Swap(SSL_GeometryModels* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void SSL_GeometryModels::InternalSwap(SSL_GeometryModels* other) {
   using std::swap;
-  swap(straight_two_phase_, other->straight_two_phase_);
-  swap(chip_fixed_loss_, other->chip_fixed_loss_);
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(SSL_GeometryModels, chip_fixed_loss_)
+      + sizeof(SSL_GeometryModels::chip_fixed_loss_)
+      - PROTOBUF_FIELD_OFFSET(SSL_GeometryModels, straight_two_phase_)>(
+          reinterpret_cast<char*>(&straight_two_phase_),
+          reinterpret_cast<char*>(&other->straight_two_phase_));
 }
 
-::google::protobuf::Metadata SSL_GeometryModels::GetMetadata() const {
-  protobuf_ssl_5fvision_5fgeometry_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ssl_5fvision_5fgeometry_2eproto::file_level_metadata[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata SSL_GeometryModels::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
 // ===================================================================
 
-void SSL_GeometryData::InitAsDefaultInstance() {
-  ::_SSL_GeometryData_default_instance_._instance.get_mutable()->field_ = const_cast< ::SSL_GeometryFieldSize*>(
-      ::SSL_GeometryFieldSize::internal_default_instance());
-  ::_SSL_GeometryData_default_instance_._instance.get_mutable()->models_ = const_cast< ::SSL_GeometryModels*>(
-      ::SSL_GeometryModels::internal_default_instance());
-}
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int SSL_GeometryData::kFieldFieldNumber;
-const int SSL_GeometryData::kCalibFieldNumber;
-const int SSL_GeometryData::kModelsFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+class SSL_GeometryData::_Internal {
+ public:
+  using HasBits = decltype(std::declval<SSL_GeometryData>()._has_bits_);
+  static const ::SSL_GeometryFieldSize& field(const SSL_GeometryData* msg);
+  static void set_has_field(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+  static const ::SSL_GeometryModels& models(const SSL_GeometryData* msg);
+  static void set_has_models(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
+  static bool MissingRequiredFields(const HasBits& has_bits) {
+    return ((has_bits[0] & 0x00000001) ^ 0x00000001) != 0;
+  }
+};
 
-SSL_GeometryData::SSL_GeometryData()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ssl_5fvision_5fgeometry_2eproto::scc_info_SSL_GeometryData.base);
+const ::SSL_GeometryFieldSize&
+SSL_GeometryData::_Internal::field(const SSL_GeometryData* msg) {
+  return *msg->field_;
+}
+const ::SSL_GeometryModels&
+SSL_GeometryData::_Internal::models(const SSL_GeometryData* msg) {
+  return *msg->models_;
+}
+SSL_GeometryData::SSL_GeometryData(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena),
+  calib_(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:SSL_GeometryData)
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:SSL_GeometryData)
 }
 SSL_GeometryData::SSL_GeometryData(const SSL_GeometryData& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
       _has_bits_(from._has_bits_),
       calib_(from.calib_) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  if (from.has_field()) {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_field()) {
     field_ = new ::SSL_GeometryFieldSize(*from.field_);
   } else {
-    field_ = NULL;
+    field_ = nullptr;
   }
-  if (from.has_models()) {
+  if (from._internal_has_models()) {
     models_ = new ::SSL_GeometryModels(*from.models_);
   } else {
-    models_ = NULL;
+    models_ = nullptr;
   }
   // @@protoc_insertion_point(copy_constructor:SSL_GeometryData)
 }
 
 void SSL_GeometryData::SharedCtor() {
-  ::memset(&field_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&models_) -
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_SSL_GeometryData_ssl_5fvision_5fgeometry_2eproto.base);
+  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+      reinterpret_cast<char*>(&field_) - reinterpret_cast<char*>(this)),
+      0, static_cast<size_t>(reinterpret_cast<char*>(&models_) -
       reinterpret_cast<char*>(&field_)) + sizeof(models_));
 }
 
 SSL_GeometryData::~SSL_GeometryData() {
   // @@protoc_insertion_point(destructor:SSL_GeometryData)
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 void SSL_GeometryData::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
   if (this != internal_default_instance()) delete field_;
   if (this != internal_default_instance()) delete models_;
 }
 
+void SSL_GeometryData::ArenaDtor(void* object) {
+  SSL_GeometryData* _this = reinterpret_cast< SSL_GeometryData* >(object);
+  (void)_this;
+}
+void SSL_GeometryData::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void SSL_GeometryData::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* SSL_GeometryData::descriptor() {
-  ::protobuf_ssl_5fvision_5fgeometry_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ssl_5fvision_5fgeometry_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const SSL_GeometryData& SSL_GeometryData::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ssl_5fvision_5fgeometry_2eproto::scc_info_SSL_GeometryData.base);
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_SSL_GeometryData_ssl_5fvision_5fgeometry_2eproto.base);
   return *internal_default_instance();
 }
 
 
 void SSL_GeometryData::Clear() {
 // @@protoc_insertion_point(message_clear_start:SSL_GeometryData)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   calib_.Clear();
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 3u) {
+  if (cached_has_bits & 0x00000003u) {
     if (cached_has_bits & 0x00000001u) {
-      GOOGLE_DCHECK(field_ != NULL);
+      GOOGLE_DCHECK(field_ != nullptr);
       field_->Clear();
     }
     if (cached_has_bits & 0x00000002u) {
-      GOOGLE_DCHECK(models_ != NULL);
+      GOOGLE_DCHECK(models_ != nullptr);
       models_->Clear();
     }
   }
   _has_bits_.Clear();
-  _internal_metadata_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-bool SSL_GeometryData::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:SSL_GeometryData)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+const char* SSL_GeometryData::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
       // required .SSL_GeometryFieldSize field = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-               input, mutable_field()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_field(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       // repeated .SSL_GeometryCameraCalibration calib = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-                input, add_calib()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_calib(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
+        } else goto handle_unusual;
+        continue;
       // optional .SSL_GeometryModels models = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-               input, mutable_models()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
+          ptr = ctx->ParseMessage(_internal_mutable_models(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
-        if (tag == 0) {
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
           goto success;
         }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
-    }
-  }
+    }  // switch
+  }  // while
 success:
-  // @@protoc_insertion_point(parse_success:SSL_GeometryData)
-  return true;
+  _has_bits_.Or(has_bits);
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:SSL_GeometryData)
-  return false;
-#undef DO_
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-void SSL_GeometryData::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:SSL_GeometryData)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  cached_has_bits = _has_bits_[0];
-  // required .SSL_GeometryFieldSize field = 1;
-  if (cached_has_bits & 0x00000001u) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->_internal_field(), output);
-  }
-
-  // repeated .SSL_GeometryCameraCalibration calib = 2;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->calib_size()); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2,
-      this->calib(static_cast<int>(i)),
-      output);
-  }
-
-  // optional .SSL_GeometryModels models = 3;
-  if (cached_has_bits & 0x00000002u) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      3, this->_internal_models(), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:SSL_GeometryData)
-}
-
-::google::protobuf::uint8* SSL_GeometryData::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::PROTOBUF_NAMESPACE_ID::uint8* SSL_GeometryData::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:SSL_GeometryData)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
   // required .SSL_GeometryFieldSize field = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        1, this->_internal_field(), deterministic, target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        1, _Internal::field(this), target, stream);
   }
 
   // repeated .SSL_GeometryCameraCalibration calib = 2;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->calib_size()); i < n; i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        2, this->calib(static_cast<int>(i)), deterministic, target);
+      n = static_cast<unsigned int>(this->_internal_calib_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(2, this->_internal_calib(i), target, stream);
   }
 
   // optional .SSL_GeometryModels models = 3;
   if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        3, this->_internal_models(), deterministic, target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        3, _Internal::models(this), target, stream);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:SSL_GeometryData)
   return target;
@@ -4439,49 +3884,49 @@ size_t SSL_GeometryData::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:SSL_GeometryData)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
   // required .SSL_GeometryFieldSize field = 1;
-  if (has_field()) {
+  if (_internal_has_field()) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *field_);
   }
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // repeated .SSL_GeometryCameraCalibration calib = 2;
-  {
-    unsigned int count = static_cast<unsigned int>(this->calib_size());
-    total_size += 1UL * count;
-    for (unsigned int i = 0; i < count; i++) {
-      total_size +=
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          this->calib(static_cast<int>(i)));
-    }
+  total_size += 1UL * this->_internal_calib_size();
+  for (const auto& msg : this->calib_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
   // optional .SSL_GeometryModels models = 3;
-  if (has_models()) {
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000002u) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *models_);
   }
 
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void SSL_GeometryData::MergeFrom(const ::google::protobuf::Message& from) {
+void SSL_GeometryData::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:SSL_GeometryData)
   GOOGLE_DCHECK_NE(&from, this);
   const SSL_GeometryData* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const SSL_GeometryData>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<SSL_GeometryData>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:SSL_GeometryData)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:SSL_GeometryData)
     MergeFrom(*source);
@@ -4491,23 +3936,23 @@ void SSL_GeometryData::MergeFrom(const ::google::protobuf::Message& from) {
 void SSL_GeometryData::MergeFrom(const SSL_GeometryData& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:SSL_GeometryData)
   GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   calib_.MergeFrom(from.calib_);
   cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 3u) {
+  if (cached_has_bits & 0x00000003u) {
     if (cached_has_bits & 0x00000001u) {
-      mutable_field()->::SSL_GeometryFieldSize::MergeFrom(from.field());
+      _internal_mutable_field()->::SSL_GeometryFieldSize::MergeFrom(from._internal_field());
     }
     if (cached_has_bits & 0x00000002u) {
-      mutable_models()->::SSL_GeometryModels::MergeFrom(from.models());
+      _internal_mutable_models()->::SSL_GeometryModels::MergeFrom(from._internal_models());
     }
   }
 }
 
-void SSL_GeometryData::CopyFrom(const ::google::protobuf::Message& from) {
+void SSL_GeometryData::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:SSL_GeometryData)
   if (&from == this) return;
   Clear();
@@ -4522,67 +3967,65 @@ void SSL_GeometryData::CopyFrom(const SSL_GeometryData& from) {
 }
 
 bool SSL_GeometryData::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
-  if (!::google::protobuf::internal::AllAreInitialized(this->calib())) return false;
-  if (has_field()) {
-    if (!this->field_->IsInitialized()) return false;
+  if (_Internal::MissingRequiredFields(_has_bits_)) return false;
+  if (!::PROTOBUF_NAMESPACE_ID::internal::AllAreInitialized(calib_)) return false;
+  if (_internal_has_field()) {
+    if (!field_->IsInitialized()) return false;
   }
-  if (has_models()) {
-    if (!this->models_->IsInitialized()) return false;
+  if (_internal_has_models()) {
+    if (!models_->IsInitialized()) return false;
   }
   return true;
 }
 
-void SSL_GeometryData::Swap(SSL_GeometryData* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void SSL_GeometryData::InternalSwap(SSL_GeometryData* other) {
   using std::swap;
-  CastToBase(&calib_)->InternalSwap(CastToBase(&other->calib_));
-  swap(field_, other->field_);
-  swap(models_, other->models_);
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
+  calib_.InternalSwap(&other->calib_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(SSL_GeometryData, models_)
+      + sizeof(SSL_GeometryData::models_)
+      - PROTOBUF_FIELD_OFFSET(SSL_GeometryData, field_)>(
+          reinterpret_cast<char*>(&field_),
+          reinterpret_cast<char*>(&other->field_));
 }
 
-::google::protobuf::Metadata SSL_GeometryData::GetMetadata() const {
-  protobuf_ssl_5fvision_5fgeometry_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ssl_5fvision_5fgeometry_2eproto::file_level_metadata[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata SSL_GeometryData::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
 // @@protoc_insertion_point(namespace_scope)
-namespace google {
-namespace protobuf {
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::Vector2f* Arena::CreateMaybeMessage< ::Vector2f >(Arena* arena) {
-  return Arena::CreateInternal< ::Vector2f >(arena);
+PROTOBUF_NAMESPACE_OPEN
+template<> PROTOBUF_NOINLINE ::Vector2f* Arena::CreateMaybeMessage< ::Vector2f >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::Vector2f >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::SSL_FieldLineSegment* Arena::CreateMaybeMessage< ::SSL_FieldLineSegment >(Arena* arena) {
-  return Arena::CreateInternal< ::SSL_FieldLineSegment >(arena);
+template<> PROTOBUF_NOINLINE ::SSL_FieldLineSegment* Arena::CreateMaybeMessage< ::SSL_FieldLineSegment >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::SSL_FieldLineSegment >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::SSL_FieldCircularArc* Arena::CreateMaybeMessage< ::SSL_FieldCircularArc >(Arena* arena) {
-  return Arena::CreateInternal< ::SSL_FieldCircularArc >(arena);
+template<> PROTOBUF_NOINLINE ::SSL_FieldCircularArc* Arena::CreateMaybeMessage< ::SSL_FieldCircularArc >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::SSL_FieldCircularArc >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::SSL_GeometryFieldSize* Arena::CreateMaybeMessage< ::SSL_GeometryFieldSize >(Arena* arena) {
-  return Arena::CreateInternal< ::SSL_GeometryFieldSize >(arena);
+template<> PROTOBUF_NOINLINE ::SSL_GeometryFieldSize* Arena::CreateMaybeMessage< ::SSL_GeometryFieldSize >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::SSL_GeometryFieldSize >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::SSL_GeometryCameraCalibration* Arena::CreateMaybeMessage< ::SSL_GeometryCameraCalibration >(Arena* arena) {
-  return Arena::CreateInternal< ::SSL_GeometryCameraCalibration >(arena);
+template<> PROTOBUF_NOINLINE ::SSL_GeometryCameraCalibration* Arena::CreateMaybeMessage< ::SSL_GeometryCameraCalibration >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::SSL_GeometryCameraCalibration >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::SSL_BallModelStraightTwoPhase* Arena::CreateMaybeMessage< ::SSL_BallModelStraightTwoPhase >(Arena* arena) {
-  return Arena::CreateInternal< ::SSL_BallModelStraightTwoPhase >(arena);
+template<> PROTOBUF_NOINLINE ::SSL_BallModelStraightTwoPhase* Arena::CreateMaybeMessage< ::SSL_BallModelStraightTwoPhase >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::SSL_BallModelStraightTwoPhase >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::SSL_BallModelChipFixedLoss* Arena::CreateMaybeMessage< ::SSL_BallModelChipFixedLoss >(Arena* arena) {
-  return Arena::CreateInternal< ::SSL_BallModelChipFixedLoss >(arena);
+template<> PROTOBUF_NOINLINE ::SSL_BallModelChipFixedLoss* Arena::CreateMaybeMessage< ::SSL_BallModelChipFixedLoss >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::SSL_BallModelChipFixedLoss >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::SSL_GeometryModels* Arena::CreateMaybeMessage< ::SSL_GeometryModels >(Arena* arena) {
-  return Arena::CreateInternal< ::SSL_GeometryModels >(arena);
+template<> PROTOBUF_NOINLINE ::SSL_GeometryModels* Arena::CreateMaybeMessage< ::SSL_GeometryModels >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::SSL_GeometryModels >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::SSL_GeometryData* Arena::CreateMaybeMessage< ::SSL_GeometryData >(Arena* arena) {
-  return Arena::CreateInternal< ::SSL_GeometryData >(arena);
+template<> PROTOBUF_NOINLINE ::SSL_GeometryData* Arena::CreateMaybeMessage< ::SSL_GeometryData >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::SSL_GeometryData >(arena);
 }
-}  // namespace protobuf
-}  // namespace google
+PROTOBUF_NAMESPACE_CLOSE
 
 // @@protoc_insertion_point(global_scope)
+#include <google/protobuf/port_undef.inc>

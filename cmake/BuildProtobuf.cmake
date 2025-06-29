@@ -12,6 +12,7 @@ if(NOT EXISTS "${PROTOBUF_BUILT_FILE}")
     ExternalProject_Add(project_protobuf
         URL https://github.com/protocolbuffers/protobuf/archive/refs/tags/v3.6.1.tar.gz
         URL_HASH SHA256=3d4e589d81b2006ca603c1ab712c9715a76227293032d05b26fca603f90b3f5b
+       # TLS_VERIFY OFF
         SOURCE_SUBDIR "cmake"
         DOWNLOAD_NO_PROGRESS true
         # PATCH_COMMAND cp ${CMAKE_CURRENT_LIST_DIR}/protobuf.CMakeLists.txt CMakeLists.txt

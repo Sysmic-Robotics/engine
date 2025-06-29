@@ -5,195 +5,165 @@
 
 #include <algorithm>
 
-#include <google/protobuf/stubs/common.h>
-#include <google/protobuf/stubs/port.h>
 #include <google/protobuf/io/coded_stream.h>
-#include <google/protobuf/wire_format_lite_inl.h>
+#include <google/protobuf/extension_set.h>
+#include <google/protobuf/wire_format_lite.h>
 #include <google/protobuf/descriptor.h>
 #include <google/protobuf/generated_message_reflection.h>
 #include <google/protobuf/reflection_ops.h>
 #include <google/protobuf/wire_format.h>
-// This is a temporary google only hack
-#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
-#include "third_party/protobuf/version.h"
-#endif
 // @@protoc_insertion_point(includes)
-
-namespace protobuf_google_2fprotobuf_2fany_2eproto {
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_google_2fprotobuf_2fany_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_Any;
-}  // namespace protobuf_google_2fprotobuf_2fany_2eproto
-namespace protobuf_ssl_5fgc_5fcommon_2eproto {
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_ssl_5fgc_5fcommon_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_RobotId;
-}  // namespace protobuf_ssl_5fgc_5fcommon_2eproto
-namespace protobuf_ssl_5fsimulation_5fconfig_2eproto {
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_ssl_5fsimulation_5fconfig_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_RobotLimits;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_ssl_5fsimulation_5fconfig_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_RobotWheelAngles;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_ssl_5fsimulation_5fconfig_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_RealismConfig;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_ssl_5fsimulation_5fconfig_2eproto ::google::protobuf::internal::SCCInfo<4> scc_info_RobotSpecs;
-}  // namespace protobuf_ssl_5fsimulation_5fconfig_2eproto
-namespace protobuf_ssl_5fvision_5fgeometry_2eproto {
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_ssl_5fvision_5fgeometry_2eproto ::google::protobuf::internal::SCCInfo<3> scc_info_SSL_GeometryData;
-}  // namespace protobuf_ssl_5fvision_5fgeometry_2eproto
+#include <google/protobuf/port_def.inc>
+extern PROTOBUF_INTERNAL_EXPORT_ssl_5fsimulation_5fconfig_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_RealismConfig_ssl_5fsimulation_5fconfig_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_ssl_5fgc_5fcommon_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_RobotId_ssl_5fgc_5fcommon_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_ssl_5fsimulation_5fconfig_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_RobotLimits_ssl_5fsimulation_5fconfig_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_ssl_5fsimulation_5fconfig_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<4> scc_info_RobotSpecs_ssl_5fsimulation_5fconfig_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_ssl_5fsimulation_5fconfig_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_RobotWheelAngles_ssl_5fsimulation_5fconfig_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_ssl_5fvision_5fgeometry_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<3> scc_info_SSL_GeometryData_ssl_5fvision_5fgeometry_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_google_2fprotobuf_2fany_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Any_google_2fprotobuf_2fany_2eproto;
 class RobotLimitsDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<RobotLimits>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<RobotLimits> _instance;
 } _RobotLimits_default_instance_;
 class RobotWheelAnglesDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<RobotWheelAngles>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<RobotWheelAngles> _instance;
 } _RobotWheelAngles_default_instance_;
 class RobotSpecsDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<RobotSpecs>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<RobotSpecs> _instance;
 } _RobotSpecs_default_instance_;
 class RealismConfigDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<RealismConfig>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<RealismConfig> _instance;
 } _RealismConfig_default_instance_;
 class SimulatorConfigDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<SimulatorConfig>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<SimulatorConfig> _instance;
 } _SimulatorConfig_default_instance_;
-namespace protobuf_ssl_5fsimulation_5fconfig_2eproto {
-static void InitDefaultsRobotLimits() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::_RobotLimits_default_instance_;
-    new (ptr) ::RobotLimits();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::RobotLimits::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<0> scc_info_RobotLimits =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsRobotLimits}, {}};
-
-static void InitDefaultsRobotWheelAngles() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::_RobotWheelAngles_default_instance_;
-    new (ptr) ::RobotWheelAngles();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::RobotWheelAngles::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<0> scc_info_RobotWheelAngles =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsRobotWheelAngles}, {}};
-
-static void InitDefaultsRobotSpecs() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::_RobotSpecs_default_instance_;
-    new (ptr) ::RobotSpecs();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::RobotSpecs::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<4> scc_info_RobotSpecs =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 4, InitDefaultsRobotSpecs}, {
-      &protobuf_ssl_5fgc_5fcommon_2eproto::scc_info_RobotId.base,
-      &protobuf_ssl_5fsimulation_5fconfig_2eproto::scc_info_RobotLimits.base,
-      &protobuf_ssl_5fsimulation_5fconfig_2eproto::scc_info_RobotWheelAngles.base,
-      &protobuf_google_2fprotobuf_2fany_2eproto::scc_info_Any.base,}};
-
-static void InitDefaultsRealismConfig() {
+static void InitDefaultsscc_info_RealismConfig_ssl_5fsimulation_5fconfig_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
     void* ptr = &::_RealismConfig_default_instance_;
     new (ptr) ::RealismConfig();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::RealismConfig::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<1> scc_info_RealismConfig =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsRealismConfig}, {
-      &protobuf_google_2fprotobuf_2fany_2eproto::scc_info_Any.base,}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_RealismConfig_ssl_5fsimulation_5fconfig_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_RealismConfig_ssl_5fsimulation_5fconfig_2eproto}, {
+      &scc_info_Any_google_2fprotobuf_2fany_2eproto.base,}};
 
-static void InitDefaultsSimulatorConfig() {
+static void InitDefaultsscc_info_RobotLimits_ssl_5fsimulation_5fconfig_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::_RobotLimits_default_instance_;
+    new (ptr) ::RobotLimits();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_RobotLimits_ssl_5fsimulation_5fconfig_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_RobotLimits_ssl_5fsimulation_5fconfig_2eproto}, {}};
+
+static void InitDefaultsscc_info_RobotSpecs_ssl_5fsimulation_5fconfig_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::_RobotSpecs_default_instance_;
+    new (ptr) ::RobotSpecs();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<4> scc_info_RobotSpecs_ssl_5fsimulation_5fconfig_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 4, 0, InitDefaultsscc_info_RobotSpecs_ssl_5fsimulation_5fconfig_2eproto}, {
+      &scc_info_RobotId_ssl_5fgc_5fcommon_2eproto.base,
+      &scc_info_RobotLimits_ssl_5fsimulation_5fconfig_2eproto.base,
+      &scc_info_RobotWheelAngles_ssl_5fsimulation_5fconfig_2eproto.base,
+      &scc_info_Any_google_2fprotobuf_2fany_2eproto.base,}};
+
+static void InitDefaultsscc_info_RobotWheelAngles_ssl_5fsimulation_5fconfig_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::_RobotWheelAngles_default_instance_;
+    new (ptr) ::RobotWheelAngles();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_RobotWheelAngles_ssl_5fsimulation_5fconfig_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_RobotWheelAngles_ssl_5fsimulation_5fconfig_2eproto}, {}};
+
+static void InitDefaultsscc_info_SimulatorConfig_ssl_5fsimulation_5fconfig_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
     void* ptr = &::_SimulatorConfig_default_instance_;
     new (ptr) ::SimulatorConfig();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::SimulatorConfig::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<3> scc_info_SimulatorConfig =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 3, InitDefaultsSimulatorConfig}, {
-      &protobuf_ssl_5fvision_5fgeometry_2eproto::scc_info_SSL_GeometryData.base,
-      &protobuf_ssl_5fsimulation_5fconfig_2eproto::scc_info_RobotSpecs.base,
-      &protobuf_ssl_5fsimulation_5fconfig_2eproto::scc_info_RealismConfig.base,}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<3> scc_info_SimulatorConfig_ssl_5fsimulation_5fconfig_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 3, 0, InitDefaultsscc_info_SimulatorConfig_ssl_5fsimulation_5fconfig_2eproto}, {
+      &scc_info_SSL_GeometryData_ssl_5fvision_5fgeometry_2eproto.base,
+      &scc_info_RobotSpecs_ssl_5fsimulation_5fconfig_2eproto.base,
+      &scc_info_RealismConfig_ssl_5fsimulation_5fconfig_2eproto.base,}};
 
-void InitDefaults() {
-  ::google::protobuf::internal::InitSCC(&scc_info_RobotLimits.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_RobotWheelAngles.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_RobotSpecs.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_RealismConfig.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_SimulatorConfig.base);
-}
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_ssl_5fsimulation_5fconfig_2eproto[5];
+static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_ssl_5fsimulation_5fconfig_2eproto = nullptr;
+static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_ssl_5fsimulation_5fconfig_2eproto = nullptr;
 
-::google::protobuf::Metadata file_level_metadata[5];
-
-const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::RobotLimits, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::RobotLimits, _internal_metadata_),
+const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_ssl_5fsimulation_5fconfig_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+  PROTOBUF_FIELD_OFFSET(::RobotLimits, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::RobotLimits, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::RobotLimits, acc_speedup_absolute_max_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::RobotLimits, acc_speedup_angular_max_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::RobotLimits, acc_brake_absolute_max_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::RobotLimits, acc_brake_angular_max_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::RobotLimits, vel_absolute_max_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::RobotLimits, vel_angular_max_),
+  PROTOBUF_FIELD_OFFSET(::RobotLimits, acc_speedup_absolute_max_),
+  PROTOBUF_FIELD_OFFSET(::RobotLimits, acc_speedup_angular_max_),
+  PROTOBUF_FIELD_OFFSET(::RobotLimits, acc_brake_absolute_max_),
+  PROTOBUF_FIELD_OFFSET(::RobotLimits, acc_brake_angular_max_),
+  PROTOBUF_FIELD_OFFSET(::RobotLimits, vel_absolute_max_),
+  PROTOBUF_FIELD_OFFSET(::RobotLimits, vel_angular_max_),
   0,
   1,
   2,
   3,
   4,
   5,
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::RobotWheelAngles, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::RobotWheelAngles, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::RobotWheelAngles, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::RobotWheelAngles, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::RobotWheelAngles, front_right_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::RobotWheelAngles, back_right_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::RobotWheelAngles, back_left_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::RobotWheelAngles, front_left_),
+  PROTOBUF_FIELD_OFFSET(::RobotWheelAngles, front_right_),
+  PROTOBUF_FIELD_OFFSET(::RobotWheelAngles, back_right_),
+  PROTOBUF_FIELD_OFFSET(::RobotWheelAngles, back_left_),
+  PROTOBUF_FIELD_OFFSET(::RobotWheelAngles, front_left_),
   0,
   1,
   2,
   3,
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::RobotSpecs, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::RobotSpecs, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::RobotSpecs, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::RobotSpecs, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::RobotSpecs, id_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::RobotSpecs, radius_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::RobotSpecs, height_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::RobotSpecs, mass_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::RobotSpecs, max_linear_kick_speed_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::RobotSpecs, max_chip_kick_speed_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::RobotSpecs, center_to_dribbler_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::RobotSpecs, limits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::RobotSpecs, wheel_angles_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::RobotSpecs, custom_),
+  PROTOBUF_FIELD_OFFSET(::RobotSpecs, id_),
+  PROTOBUF_FIELD_OFFSET(::RobotSpecs, radius_),
+  PROTOBUF_FIELD_OFFSET(::RobotSpecs, height_),
+  PROTOBUF_FIELD_OFFSET(::RobotSpecs, mass_),
+  PROTOBUF_FIELD_OFFSET(::RobotSpecs, max_linear_kick_speed_),
+  PROTOBUF_FIELD_OFFSET(::RobotSpecs, max_chip_kick_speed_),
+  PROTOBUF_FIELD_OFFSET(::RobotSpecs, center_to_dribbler_),
+  PROTOBUF_FIELD_OFFSET(::RobotSpecs, limits_),
+  PROTOBUF_FIELD_OFFSET(::RobotSpecs, wheel_angles_),
+  PROTOBUF_FIELD_OFFSET(::RobotSpecs, custom_),
   0,
   8,
   9,
@@ -204,28 +174,28 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   1,
   2,
   3,
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::RealismConfig, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::RealismConfig, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::RealismConfig, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::RealismConfig, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::RealismConfig, custom_),
+  PROTOBUF_FIELD_OFFSET(::RealismConfig, custom_),
   0,
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SimulatorConfig, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SimulatorConfig, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::SimulatorConfig, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::SimulatorConfig, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SimulatorConfig, geometry_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SimulatorConfig, robot_specs_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SimulatorConfig, realism_config_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SimulatorConfig, vision_port_),
+  PROTOBUF_FIELD_OFFSET(::SimulatorConfig, geometry_),
+  PROTOBUF_FIELD_OFFSET(::SimulatorConfig, robot_specs_),
+  PROTOBUF_FIELD_OFFSET(::SimulatorConfig, realism_config_),
+  PROTOBUF_FIELD_OFFSET(::SimulatorConfig, vision_port_),
   0,
   ~0u,
   1,
   2,
 };
-static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
+static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, 11, sizeof(::RobotLimits)},
   { 17, 26, sizeof(::RobotWheelAngles)},
   { 30, 45, sizeof(::RobotSpecs)},
@@ -233,106 +203,98 @@ static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROT
   { 62, 71, sizeof(::SimulatorConfig)},
 };
 
-static ::google::protobuf::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::google::protobuf::Message*>(&::_RobotLimits_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::_RobotWheelAngles_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::_RobotSpecs_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::_RealismConfig_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::_SimulatorConfig_default_instance_),
+static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::_RobotLimits_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::_RobotWheelAngles_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::_RobotSpecs_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::_RealismConfig_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::_SimulatorConfig_default_instance_),
 };
 
-void protobuf_AssignDescriptors() {
-  AddDescriptors();
-  AssignDescriptors(
-      "ssl_simulation_config.proto", schemas, file_default_instances, TableStruct::offsets,
-      file_level_metadata, NULL, NULL);
-}
+const char descriptor_table_protodef_ssl_5fsimulation_5fconfig_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
+  "\n\033ssl_simulation_config.proto\032\023ssl_gc_co"
+  "mmon.proto\032\031ssl_vision_geometry.proto\032\031g"
+  "oogle/protobuf/any.proto\"\302\001\n\013RobotLimits"
+  "\022 \n\030acc_speedup_absolute_max\030\001 \001(\002\022\037\n\027ac"
+  "c_speedup_angular_max\030\002 \001(\002\022\036\n\026acc_brake"
+  "_absolute_max\030\003 \001(\002\022\035\n\025acc_brake_angular"
+  "_max\030\004 \001(\002\022\030\n\020vel_absolute_max\030\005 \001(\002\022\027\n\017"
+  "vel_angular_max\030\006 \001(\002\"b\n\020RobotWheelAngle"
+  "s\022\023\n\013front_right\030\001 \002(\002\022\022\n\nback_right\030\002 \002"
+  "(\002\022\021\n\tback_left\030\003 \002(\002\022\022\n\nfront_left\030\004 \002("
+  "\002\"\241\002\n\nRobotSpecs\022\024\n\002id\030\001 \002(\0132\010.RobotId\022\024"
+  "\n\006radius\030\002 \001(\002:\0040.09\022\024\n\006height\030\003 \001(\002:\0040."
+  "15\022\014\n\004mass\030\004 \001(\002\022\035\n\025max_linear_kick_spee"
+  "d\030\007 \001(\002\022\033\n\023max_chip_kick_speed\030\010 \001(\002\022\032\n\022"
+  "center_to_dribbler\030\t \001(\002\022\034\n\006limits\030\n \001(\013"
+  "2\014.RobotLimits\022\'\n\014wheel_angles\030\r \001(\0132\021.R"
+  "obotWheelAngles\022$\n\006custom\030\016 \001(\0132\024.google"
+  ".protobuf.Any\"5\n\rRealismConfig\022$\n\006custom"
+  "\030\001 \001(\0132\024.google.protobuf.Any\"\225\001\n\017Simulat"
+  "orConfig\022#\n\010geometry\030\001 \001(\0132\021.SSL_Geometr"
+  "yData\022 \n\013robot_specs\030\002 \003(\0132\013.RobotSpecs\022"
+  "&\n\016realism_config\030\003 \001(\0132\016.RealismConfig\022"
+  "\023\n\013vision_port\030\004 \001(\rB8Z6github.com/RoboC"
+  "up-SSL/ssl-simulation-protocol/pkg/sim"
+  ;
+static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_ssl_5fsimulation_5fconfig_2eproto_deps[3] = {
+  &::descriptor_table_google_2fprotobuf_2fany_2eproto,
+  &::descriptor_table_ssl_5fgc_5fcommon_2eproto,
+  &::descriptor_table_ssl_5fvision_5fgeometry_2eproto,
+};
+static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_ssl_5fsimulation_5fconfig_2eproto_sccs[5] = {
+  &scc_info_RealismConfig_ssl_5fsimulation_5fconfig_2eproto.base,
+  &scc_info_RobotLimits_ssl_5fsimulation_5fconfig_2eproto.base,
+  &scc_info_RobotSpecs_ssl_5fsimulation_5fconfig_2eproto.base,
+  &scc_info_RobotWheelAngles_ssl_5fsimulation_5fconfig_2eproto.base,
+  &scc_info_SimulatorConfig_ssl_5fsimulation_5fconfig_2eproto.base,
+};
+static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_ssl_5fsimulation_5fconfig_2eproto_once;
+const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_ssl_5fsimulation_5fconfig_2eproto = {
+  false, false, descriptor_table_protodef_ssl_5fsimulation_5fconfig_2eproto, "ssl_simulation_config.proto", 958,
+  &descriptor_table_ssl_5fsimulation_5fconfig_2eproto_once, descriptor_table_ssl_5fsimulation_5fconfig_2eproto_sccs, descriptor_table_ssl_5fsimulation_5fconfig_2eproto_deps, 5, 3,
+  schemas, file_default_instances, TableStruct_ssl_5fsimulation_5fconfig_2eproto::offsets,
+  file_level_metadata_ssl_5fsimulation_5fconfig_2eproto, 5, file_level_enum_descriptors_ssl_5fsimulation_5fconfig_2eproto, file_level_service_descriptors_ssl_5fsimulation_5fconfig_2eproto,
+};
 
-void protobuf_AssignDescriptorsOnce() {
-  static ::google::protobuf::internal::once_flag once;
-  ::google::protobuf::internal::call_once(once, protobuf_AssignDescriptors);
-}
-
-void protobuf_RegisterTypes(const ::std::string&) GOOGLE_PROTOBUF_ATTRIBUTE_COLD;
-void protobuf_RegisterTypes(const ::std::string&) {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 5);
-}
-
-void AddDescriptorsImpl() {
-  InitDefaults();
-  static const char descriptor[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-      "\n\033ssl_simulation_config.proto\032\023ssl_gc_co"
-      "mmon.proto\032\031ssl_vision_geometry.proto\032\031g"
-      "oogle/protobuf/any.proto\"\302\001\n\013RobotLimits"
-      "\022 \n\030acc_speedup_absolute_max\030\001 \001(\002\022\037\n\027ac"
-      "c_speedup_angular_max\030\002 \001(\002\022\036\n\026acc_brake"
-      "_absolute_max\030\003 \001(\002\022\035\n\025acc_brake_angular"
-      "_max\030\004 \001(\002\022\030\n\020vel_absolute_max\030\005 \001(\002\022\027\n\017"
-      "vel_angular_max\030\006 \001(\002\"b\n\020RobotWheelAngle"
-      "s\022\023\n\013front_right\030\001 \002(\002\022\022\n\nback_right\030\002 \002"
-      "(\002\022\021\n\tback_left\030\003 \002(\002\022\022\n\nfront_left\030\004 \002("
-      "\002\"\241\002\n\nRobotSpecs\022\024\n\002id\030\001 \002(\0132\010.RobotId\022\024"
-      "\n\006radius\030\002 \001(\002:\0040.09\022\024\n\006height\030\003 \001(\002:\0040."
-      "15\022\014\n\004mass\030\004 \001(\002\022\035\n\025max_linear_kick_spee"
-      "d\030\007 \001(\002\022\033\n\023max_chip_kick_speed\030\010 \001(\002\022\032\n\022"
-      "center_to_dribbler\030\t \001(\002\022\034\n\006limits\030\n \001(\013"
-      "2\014.RobotLimits\022\'\n\014wheel_angles\030\r \001(\0132\021.R"
-      "obotWheelAngles\022$\n\006custom\030\016 \001(\0132\024.google"
-      ".protobuf.Any\"5\n\rRealismConfig\022$\n\006custom"
-      "\030\001 \001(\0132\024.google.protobuf.Any\"\225\001\n\017Simulat"
-      "orConfig\022#\n\010geometry\030\001 \001(\0132\021.SSL_Geometr"
-      "yData\022 \n\013robot_specs\030\002 \003(\0132\013.RobotSpecs\022"
-      "&\n\016realism_config\030\003 \001(\0132\016.RealismConfig\022"
-      "\023\n\013vision_port\030\004 \001(\rB8Z6github.com/RoboC"
-      "up-SSL/ssl-simulation-protocol/pkg/sim"
-  };
-  ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 958);
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
-    "ssl_simulation_config.proto", &protobuf_RegisterTypes);
-  ::protobuf_ssl_5fgc_5fcommon_2eproto::AddDescriptors();
-  ::protobuf_ssl_5fvision_5fgeometry_2eproto::AddDescriptors();
-  ::protobuf_google_2fprotobuf_2fany_2eproto::AddDescriptors();
-}
-
-void AddDescriptors() {
-  static ::google::protobuf::internal::once_flag once;
-  ::google::protobuf::internal::call_once(once, AddDescriptorsImpl);
-}
-// Force AddDescriptors() to be called at dynamic initialization time.
-struct StaticDescriptorInitializer {
-  StaticDescriptorInitializer() {
-    AddDescriptors();
-  }
-} static_descriptor_initializer;
-}  // namespace protobuf_ssl_5fsimulation_5fconfig_2eproto
+// Force running AddDescriptors() at dynamic initialization time.
+static bool dynamic_init_dummy_ssl_5fsimulation_5fconfig_2eproto = (static_cast<void>(::PROTOBUF_NAMESPACE_ID::internal::AddDescriptors(&descriptor_table_ssl_5fsimulation_5fconfig_2eproto)), true);
 
 // ===================================================================
 
-void RobotLimits::InitAsDefaultInstance() {
-}
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int RobotLimits::kAccSpeedupAbsoluteMaxFieldNumber;
-const int RobotLimits::kAccSpeedupAngularMaxFieldNumber;
-const int RobotLimits::kAccBrakeAbsoluteMaxFieldNumber;
-const int RobotLimits::kAccBrakeAngularMaxFieldNumber;
-const int RobotLimits::kVelAbsoluteMaxFieldNumber;
-const int RobotLimits::kVelAngularMaxFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+class RobotLimits::_Internal {
+ public:
+  using HasBits = decltype(std::declval<RobotLimits>()._has_bits_);
+  static void set_has_acc_speedup_absolute_max(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+  static void set_has_acc_speedup_angular_max(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
+  static void set_has_acc_brake_absolute_max(HasBits* has_bits) {
+    (*has_bits)[0] |= 4u;
+  }
+  static void set_has_acc_brake_angular_max(HasBits* has_bits) {
+    (*has_bits)[0] |= 8u;
+  }
+  static void set_has_vel_absolute_max(HasBits* has_bits) {
+    (*has_bits)[0] |= 16u;
+  }
+  static void set_has_vel_angular_max(HasBits* has_bits) {
+    (*has_bits)[0] |= 32u;
+  }
+};
 
-RobotLimits::RobotLimits()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ssl_5fsimulation_5fconfig_2eproto::scc_info_RobotLimits.base);
+RobotLimits::RobotLimits(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:RobotLimits)
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:RobotLimits)
 }
 RobotLimits::RobotLimits(const RobotLimits& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
       _has_bits_(from._has_bits_) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::memcpy(&acc_speedup_absolute_max_, &from.acc_speedup_absolute_max_,
     static_cast<size_t>(reinterpret_cast<char*>(&vel_angular_max_) -
     reinterpret_cast<char*>(&acc_speedup_absolute_max_)) + sizeof(vel_angular_max_));
@@ -340,248 +302,178 @@ RobotLimits::RobotLimits(const RobotLimits& from)
 }
 
 void RobotLimits::SharedCtor() {
-  ::memset(&acc_speedup_absolute_max_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&vel_angular_max_) -
+  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+      reinterpret_cast<char*>(&acc_speedup_absolute_max_) - reinterpret_cast<char*>(this)),
+      0, static_cast<size_t>(reinterpret_cast<char*>(&vel_angular_max_) -
       reinterpret_cast<char*>(&acc_speedup_absolute_max_)) + sizeof(vel_angular_max_));
 }
 
 RobotLimits::~RobotLimits() {
   // @@protoc_insertion_point(destructor:RobotLimits)
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 void RobotLimits::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
 }
 
+void RobotLimits::ArenaDtor(void* object) {
+  RobotLimits* _this = reinterpret_cast< RobotLimits* >(object);
+  (void)_this;
+}
+void RobotLimits::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void RobotLimits::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* RobotLimits::descriptor() {
-  ::protobuf_ssl_5fsimulation_5fconfig_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ssl_5fsimulation_5fconfig_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const RobotLimits& RobotLimits::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ssl_5fsimulation_5fconfig_2eproto::scc_info_RobotLimits.base);
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_RobotLimits_ssl_5fsimulation_5fconfig_2eproto.base);
   return *internal_default_instance();
 }
 
 
 void RobotLimits::Clear() {
 // @@protoc_insertion_point(message_clear_start:RobotLimits)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 63u) {
+  if (cached_has_bits & 0x0000003fu) {
     ::memset(&acc_speedup_absolute_max_, 0, static_cast<size_t>(
         reinterpret_cast<char*>(&vel_angular_max_) -
         reinterpret_cast<char*>(&acc_speedup_absolute_max_)) + sizeof(vel_angular_max_));
   }
   _has_bits_.Clear();
-  _internal_metadata_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-bool RobotLimits::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:RobotLimits)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+const char* RobotLimits::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
       // optional float acc_speedup_absolute_max = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(13u /* 13 & 0xFF */)) {
-          set_has_acc_speedup_absolute_max();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &acc_speedup_absolute_max_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 13)) {
+          _Internal::set_has_acc_speedup_absolute_max(&has_bits);
+          acc_speedup_absolute_max_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
       // optional float acc_speedup_angular_max = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(21u /* 21 & 0xFF */)) {
-          set_has_acc_speedup_angular_max();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &acc_speedup_angular_max_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 21)) {
+          _Internal::set_has_acc_speedup_angular_max(&has_bits);
+          acc_speedup_angular_max_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
       // optional float acc_brake_absolute_max = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(29u /* 29 & 0xFF */)) {
-          set_has_acc_brake_absolute_max();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &acc_brake_absolute_max_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 29)) {
+          _Internal::set_has_acc_brake_absolute_max(&has_bits);
+          acc_brake_absolute_max_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
       // optional float acc_brake_angular_max = 4;
-      case 4: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(37u /* 37 & 0xFF */)) {
-          set_has_acc_brake_angular_max();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &acc_brake_angular_max_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 37)) {
+          _Internal::set_has_acc_brake_angular_max(&has_bits);
+          acc_brake_angular_max_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
       // optional float vel_absolute_max = 5;
-      case 5: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(45u /* 45 & 0xFF */)) {
-          set_has_vel_absolute_max();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &vel_absolute_max_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 45)) {
+          _Internal::set_has_vel_absolute_max(&has_bits);
+          vel_absolute_max_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
       // optional float vel_angular_max = 6;
-      case 6: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(53u /* 53 & 0xFF */)) {
-          set_has_vel_angular_max();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &vel_angular_max_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 53)) {
+          _Internal::set_has_vel_angular_max(&has_bits);
+          vel_angular_max_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
-        if (tag == 0) {
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
           goto success;
         }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
-    }
-  }
+    }  // switch
+  }  // while
 success:
-  // @@protoc_insertion_point(parse_success:RobotLimits)
-  return true;
+  _has_bits_.Or(has_bits);
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:RobotLimits)
-  return false;
-#undef DO_
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-void RobotLimits::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:RobotLimits)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  cached_has_bits = _has_bits_[0];
-  // optional float acc_speedup_absolute_max = 1;
-  if (cached_has_bits & 0x00000001u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(1, this->acc_speedup_absolute_max(), output);
-  }
-
-  // optional float acc_speedup_angular_max = 2;
-  if (cached_has_bits & 0x00000002u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(2, this->acc_speedup_angular_max(), output);
-  }
-
-  // optional float acc_brake_absolute_max = 3;
-  if (cached_has_bits & 0x00000004u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(3, this->acc_brake_absolute_max(), output);
-  }
-
-  // optional float acc_brake_angular_max = 4;
-  if (cached_has_bits & 0x00000008u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(4, this->acc_brake_angular_max(), output);
-  }
-
-  // optional float vel_absolute_max = 5;
-  if (cached_has_bits & 0x00000010u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(5, this->vel_absolute_max(), output);
-  }
-
-  // optional float vel_angular_max = 6;
-  if (cached_has_bits & 0x00000020u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(6, this->vel_angular_max(), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:RobotLimits)
-}
-
-::google::protobuf::uint8* RobotLimits::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::PROTOBUF_NAMESPACE_ID::uint8* RobotLimits::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:RobotLimits)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
   // optional float acc_speedup_absolute_max = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(1, this->acc_speedup_absolute_max(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(1, this->_internal_acc_speedup_absolute_max(), target);
   }
 
   // optional float acc_speedup_angular_max = 2;
   if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(2, this->acc_speedup_angular_max(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(2, this->_internal_acc_speedup_angular_max(), target);
   }
 
   // optional float acc_brake_absolute_max = 3;
   if (cached_has_bits & 0x00000004u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(3, this->acc_brake_absolute_max(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(3, this->_internal_acc_brake_absolute_max(), target);
   }
 
   // optional float acc_brake_angular_max = 4;
   if (cached_has_bits & 0x00000008u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(4, this->acc_brake_angular_max(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(4, this->_internal_acc_brake_angular_max(), target);
   }
 
   // optional float vel_absolute_max = 5;
   if (cached_has_bits & 0x00000010u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(5, this->vel_absolute_max(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(5, this->_internal_vel_absolute_max(), target);
   }
 
   // optional float vel_angular_max = 6;
   if (cached_has_bits & 0x00000020u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(6, this->vel_angular_max(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(6, this->_internal_vel_angular_max(), target);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:RobotLimits)
   return target;
@@ -591,57 +483,61 @@ size_t RobotLimits::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:RobotLimits)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
-  if (_has_bits_[0 / 32] & 63u) {
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x0000003fu) {
     // optional float acc_speedup_absolute_max = 1;
-    if (has_acc_speedup_absolute_max()) {
+    if (cached_has_bits & 0x00000001u) {
       total_size += 1 + 4;
     }
 
     // optional float acc_speedup_angular_max = 2;
-    if (has_acc_speedup_angular_max()) {
+    if (cached_has_bits & 0x00000002u) {
       total_size += 1 + 4;
     }
 
     // optional float acc_brake_absolute_max = 3;
-    if (has_acc_brake_absolute_max()) {
+    if (cached_has_bits & 0x00000004u) {
       total_size += 1 + 4;
     }
 
     // optional float acc_brake_angular_max = 4;
-    if (has_acc_brake_angular_max()) {
+    if (cached_has_bits & 0x00000008u) {
       total_size += 1 + 4;
     }
 
     // optional float vel_absolute_max = 5;
-    if (has_vel_absolute_max()) {
+    if (cached_has_bits & 0x00000010u) {
       total_size += 1 + 4;
     }
 
     // optional float vel_angular_max = 6;
-    if (has_vel_angular_max()) {
+    if (cached_has_bits & 0x00000020u) {
       total_size += 1 + 4;
     }
 
   }
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void RobotLimits::MergeFrom(const ::google::protobuf::Message& from) {
+void RobotLimits::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:RobotLimits)
   GOOGLE_DCHECK_NE(&from, this);
   const RobotLimits* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const RobotLimits>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<RobotLimits>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:RobotLimits)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:RobotLimits)
     MergeFrom(*source);
@@ -651,12 +547,12 @@ void RobotLimits::MergeFrom(const ::google::protobuf::Message& from) {
 void RobotLimits::MergeFrom(const RobotLimits& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:RobotLimits)
   GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 63u) {
+  if (cached_has_bits & 0x0000003fu) {
     if (cached_has_bits & 0x00000001u) {
       acc_speedup_absolute_max_ = from.acc_speedup_absolute_max_;
     }
@@ -679,7 +575,7 @@ void RobotLimits::MergeFrom(const RobotLimits& from) {
   }
 }
 
-void RobotLimits::CopyFrom(const ::google::protobuf::Message& from) {
+void RobotLimits::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:RobotLimits)
   if (&from == this) return;
   Clear();
@@ -697,51 +593,55 @@ bool RobotLimits::IsInitialized() const {
   return true;
 }
 
-void RobotLimits::Swap(RobotLimits* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void RobotLimits::InternalSwap(RobotLimits* other) {
   using std::swap;
-  swap(acc_speedup_absolute_max_, other->acc_speedup_absolute_max_);
-  swap(acc_speedup_angular_max_, other->acc_speedup_angular_max_);
-  swap(acc_brake_absolute_max_, other->acc_brake_absolute_max_);
-  swap(acc_brake_angular_max_, other->acc_brake_angular_max_);
-  swap(vel_absolute_max_, other->vel_absolute_max_);
-  swap(vel_angular_max_, other->vel_angular_max_);
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(RobotLimits, vel_angular_max_)
+      + sizeof(RobotLimits::vel_angular_max_)
+      - PROTOBUF_FIELD_OFFSET(RobotLimits, acc_speedup_absolute_max_)>(
+          reinterpret_cast<char*>(&acc_speedup_absolute_max_),
+          reinterpret_cast<char*>(&other->acc_speedup_absolute_max_));
 }
 
-::google::protobuf::Metadata RobotLimits::GetMetadata() const {
-  protobuf_ssl_5fsimulation_5fconfig_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ssl_5fsimulation_5fconfig_2eproto::file_level_metadata[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata RobotLimits::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
 // ===================================================================
 
-void RobotWheelAngles::InitAsDefaultInstance() {
-}
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int RobotWheelAngles::kFrontRightFieldNumber;
-const int RobotWheelAngles::kBackRightFieldNumber;
-const int RobotWheelAngles::kBackLeftFieldNumber;
-const int RobotWheelAngles::kFrontLeftFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+class RobotWheelAngles::_Internal {
+ public:
+  using HasBits = decltype(std::declval<RobotWheelAngles>()._has_bits_);
+  static void set_has_front_right(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+  static void set_has_back_right(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
+  static void set_has_back_left(HasBits* has_bits) {
+    (*has_bits)[0] |= 4u;
+  }
+  static void set_has_front_left(HasBits* has_bits) {
+    (*has_bits)[0] |= 8u;
+  }
+  static bool MissingRequiredFields(const HasBits& has_bits) {
+    return ((has_bits[0] & 0x0000000f) ^ 0x0000000f) != 0;
+  }
+};
 
-RobotWheelAngles::RobotWheelAngles()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ssl_5fsimulation_5fconfig_2eproto::scc_info_RobotWheelAngles.base);
+RobotWheelAngles::RobotWheelAngles(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:RobotWheelAngles)
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:RobotWheelAngles)
 }
 RobotWheelAngles::RobotWheelAngles(const RobotWheelAngles& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
       _has_bits_(from._has_bits_) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::memcpy(&front_right_, &from.front_right_,
     static_cast<size_t>(reinterpret_cast<char*>(&front_left_) -
     reinterpret_cast<char*>(&front_right_)) + sizeof(front_left_));
@@ -749,200 +649,150 @@ RobotWheelAngles::RobotWheelAngles(const RobotWheelAngles& from)
 }
 
 void RobotWheelAngles::SharedCtor() {
-  ::memset(&front_right_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&front_left_) -
+  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+      reinterpret_cast<char*>(&front_right_) - reinterpret_cast<char*>(this)),
+      0, static_cast<size_t>(reinterpret_cast<char*>(&front_left_) -
       reinterpret_cast<char*>(&front_right_)) + sizeof(front_left_));
 }
 
 RobotWheelAngles::~RobotWheelAngles() {
   // @@protoc_insertion_point(destructor:RobotWheelAngles)
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 void RobotWheelAngles::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
 }
 
+void RobotWheelAngles::ArenaDtor(void* object) {
+  RobotWheelAngles* _this = reinterpret_cast< RobotWheelAngles* >(object);
+  (void)_this;
+}
+void RobotWheelAngles::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void RobotWheelAngles::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* RobotWheelAngles::descriptor() {
-  ::protobuf_ssl_5fsimulation_5fconfig_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ssl_5fsimulation_5fconfig_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const RobotWheelAngles& RobotWheelAngles::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ssl_5fsimulation_5fconfig_2eproto::scc_info_RobotWheelAngles.base);
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_RobotWheelAngles_ssl_5fsimulation_5fconfig_2eproto.base);
   return *internal_default_instance();
 }
 
 
 void RobotWheelAngles::Clear() {
 // @@protoc_insertion_point(message_clear_start:RobotWheelAngles)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 15u) {
+  if (cached_has_bits & 0x0000000fu) {
     ::memset(&front_right_, 0, static_cast<size_t>(
         reinterpret_cast<char*>(&front_left_) -
         reinterpret_cast<char*>(&front_right_)) + sizeof(front_left_));
   }
   _has_bits_.Clear();
-  _internal_metadata_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-bool RobotWheelAngles::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:RobotWheelAngles)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+const char* RobotWheelAngles::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
       // required float front_right = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(13u /* 13 & 0xFF */)) {
-          set_has_front_right();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &front_right_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 13)) {
+          _Internal::set_has_front_right(&has_bits);
+          front_right_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
       // required float back_right = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(21u /* 21 & 0xFF */)) {
-          set_has_back_right();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &back_right_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 21)) {
+          _Internal::set_has_back_right(&has_bits);
+          back_right_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
       // required float back_left = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(29u /* 29 & 0xFF */)) {
-          set_has_back_left();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &back_left_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 29)) {
+          _Internal::set_has_back_left(&has_bits);
+          back_left_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
       // required float front_left = 4;
-      case 4: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(37u /* 37 & 0xFF */)) {
-          set_has_front_left();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &front_left_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 37)) {
+          _Internal::set_has_front_left(&has_bits);
+          front_left_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
-        if (tag == 0) {
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
           goto success;
         }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
-    }
-  }
+    }  // switch
+  }  // while
 success:
-  // @@protoc_insertion_point(parse_success:RobotWheelAngles)
-  return true;
+  _has_bits_.Or(has_bits);
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:RobotWheelAngles)
-  return false;
-#undef DO_
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-void RobotWheelAngles::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:RobotWheelAngles)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  cached_has_bits = _has_bits_[0];
-  // required float front_right = 1;
-  if (cached_has_bits & 0x00000001u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(1, this->front_right(), output);
-  }
-
-  // required float back_right = 2;
-  if (cached_has_bits & 0x00000002u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(2, this->back_right(), output);
-  }
-
-  // required float back_left = 3;
-  if (cached_has_bits & 0x00000004u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(3, this->back_left(), output);
-  }
-
-  // required float front_left = 4;
-  if (cached_has_bits & 0x00000008u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(4, this->front_left(), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:RobotWheelAngles)
-}
-
-::google::protobuf::uint8* RobotWheelAngles::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::PROTOBUF_NAMESPACE_ID::uint8* RobotWheelAngles::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:RobotWheelAngles)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
   // required float front_right = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(1, this->front_right(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(1, this->_internal_front_right(), target);
   }
 
   // required float back_right = 2;
   if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(2, this->back_right(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(2, this->_internal_back_right(), target);
   }
 
   // required float back_left = 3;
   if (cached_has_bits & 0x00000004u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(3, this->back_left(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(3, this->_internal_back_left(), target);
   }
 
   // required float front_left = 4;
   if (cached_has_bits & 0x00000008u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(4, this->front_left(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(4, this->_internal_front_left(), target);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:RobotWheelAngles)
   return target;
@@ -952,22 +802,22 @@ size_t RobotWheelAngles::RequiredFieldsByteSizeFallback() const {
 // @@protoc_insertion_point(required_fields_byte_size_fallback_start:RobotWheelAngles)
   size_t total_size = 0;
 
-  if (has_front_right()) {
+  if (_internal_has_front_right()) {
     // required float front_right = 1;
     total_size += 1 + 4;
   }
 
-  if (has_back_right()) {
+  if (_internal_has_back_right()) {
     // required float back_right = 2;
     total_size += 1 + 4;
   }
 
-  if (has_back_left()) {
+  if (_internal_has_back_left()) {
     // required float back_left = 3;
     total_size += 1 + 4;
   }
 
-  if (has_front_left()) {
+  if (_internal_has_front_left()) {
     // required float front_left = 4;
     total_size += 1 + 4;
   }
@@ -978,11 +828,6 @@ size_t RobotWheelAngles::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:RobotWheelAngles)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
   if (((_has_bits_[0] & 0x0000000f) ^ 0x0000000f) == 0) {  // All required fields are present.
     // required float front_right = 1;
     total_size += 1 + 4;
@@ -999,20 +844,28 @@ size_t RobotWheelAngles::ByteSizeLong() const {
   } else {
     total_size += RequiredFieldsByteSizeFallback();
   }
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void RobotWheelAngles::MergeFrom(const ::google::protobuf::Message& from) {
+void RobotWheelAngles::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:RobotWheelAngles)
   GOOGLE_DCHECK_NE(&from, this);
   const RobotWheelAngles* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const RobotWheelAngles>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<RobotWheelAngles>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:RobotWheelAngles)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:RobotWheelAngles)
     MergeFrom(*source);
@@ -1022,12 +875,12 @@ void RobotWheelAngles::MergeFrom(const ::google::protobuf::Message& from) {
 void RobotWheelAngles::MergeFrom(const RobotWheelAngles& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:RobotWheelAngles)
   GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 15u) {
+  if (cached_has_bits & 0x0000000fu) {
     if (cached_has_bits & 0x00000001u) {
       front_right_ = from.front_right_;
     }
@@ -1044,7 +897,7 @@ void RobotWheelAngles::MergeFrom(const RobotWheelAngles& from) {
   }
 }
 
-void RobotWheelAngles::CopyFrom(const ::google::protobuf::Message& from) {
+void RobotWheelAngles::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:RobotWheelAngles)
   if (&from == this) return;
   Clear();
@@ -1059,94 +912,124 @@ void RobotWheelAngles::CopyFrom(const RobotWheelAngles& from) {
 }
 
 bool RobotWheelAngles::IsInitialized() const {
-  if ((_has_bits_[0] & 0x0000000f) != 0x0000000f) return false;
+  if (_Internal::MissingRequiredFields(_has_bits_)) return false;
   return true;
 }
 
-void RobotWheelAngles::Swap(RobotWheelAngles* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void RobotWheelAngles::InternalSwap(RobotWheelAngles* other) {
   using std::swap;
-  swap(front_right_, other->front_right_);
-  swap(back_right_, other->back_right_);
-  swap(back_left_, other->back_left_);
-  swap(front_left_, other->front_left_);
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(RobotWheelAngles, front_left_)
+      + sizeof(RobotWheelAngles::front_left_)
+      - PROTOBUF_FIELD_OFFSET(RobotWheelAngles, front_right_)>(
+          reinterpret_cast<char*>(&front_right_),
+          reinterpret_cast<char*>(&other->front_right_));
 }
 
-::google::protobuf::Metadata RobotWheelAngles::GetMetadata() const {
-  protobuf_ssl_5fsimulation_5fconfig_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ssl_5fsimulation_5fconfig_2eproto::file_level_metadata[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata RobotWheelAngles::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
 // ===================================================================
 
-void RobotSpecs::InitAsDefaultInstance() {
-  ::_RobotSpecs_default_instance_._instance.get_mutable()->id_ = const_cast< ::RobotId*>(
-      ::RobotId::internal_default_instance());
-  ::_RobotSpecs_default_instance_._instance.get_mutable()->limits_ = const_cast< ::RobotLimits*>(
-      ::RobotLimits::internal_default_instance());
-  ::_RobotSpecs_default_instance_._instance.get_mutable()->wheel_angles_ = const_cast< ::RobotWheelAngles*>(
-      ::RobotWheelAngles::internal_default_instance());
-  ::_RobotSpecs_default_instance_._instance.get_mutable()->custom_ = const_cast< ::google::protobuf::Any*>(
-      ::google::protobuf::Any::internal_default_instance());
+class RobotSpecs::_Internal {
+ public:
+  using HasBits = decltype(std::declval<RobotSpecs>()._has_bits_);
+  static const ::RobotId& id(const RobotSpecs* msg);
+  static void set_has_id(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+  static void set_has_radius(HasBits* has_bits) {
+    (*has_bits)[0] |= 256u;
+  }
+  static void set_has_height(HasBits* has_bits) {
+    (*has_bits)[0] |= 512u;
+  }
+  static void set_has_mass(HasBits* has_bits) {
+    (*has_bits)[0] |= 16u;
+  }
+  static void set_has_max_linear_kick_speed(HasBits* has_bits) {
+    (*has_bits)[0] |= 32u;
+  }
+  static void set_has_max_chip_kick_speed(HasBits* has_bits) {
+    (*has_bits)[0] |= 64u;
+  }
+  static void set_has_center_to_dribbler(HasBits* has_bits) {
+    (*has_bits)[0] |= 128u;
+  }
+  static const ::RobotLimits& limits(const RobotSpecs* msg);
+  static void set_has_limits(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
+  static const ::RobotWheelAngles& wheel_angles(const RobotSpecs* msg);
+  static void set_has_wheel_angles(HasBits* has_bits) {
+    (*has_bits)[0] |= 4u;
+  }
+  static const PROTOBUF_NAMESPACE_ID::Any& custom(const RobotSpecs* msg);
+  static void set_has_custom(HasBits* has_bits) {
+    (*has_bits)[0] |= 8u;
+  }
+  static bool MissingRequiredFields(const HasBits& has_bits) {
+    return ((has_bits[0] & 0x00000001) ^ 0x00000001) != 0;
+  }
+};
+
+const ::RobotId&
+RobotSpecs::_Internal::id(const RobotSpecs* msg) {
+  return *msg->id_;
+}
+const ::RobotLimits&
+RobotSpecs::_Internal::limits(const RobotSpecs* msg) {
+  return *msg->limits_;
+}
+const ::RobotWheelAngles&
+RobotSpecs::_Internal::wheel_angles(const RobotSpecs* msg) {
+  return *msg->wheel_angles_;
+}
+const PROTOBUF_NAMESPACE_ID::Any&
+RobotSpecs::_Internal::custom(const RobotSpecs* msg) {
+  return *msg->custom_;
 }
 void RobotSpecs::clear_id() {
-  if (id_ != NULL) id_->Clear();
-  clear_has_id();
+  if (id_ != nullptr) id_->Clear();
+  _has_bits_[0] &= ~0x00000001u;
 }
 void RobotSpecs::clear_custom() {
-  if (custom_ != NULL) custom_->Clear();
-  clear_has_custom();
+  if (custom_ != nullptr) custom_->Clear();
+  _has_bits_[0] &= ~0x00000008u;
 }
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int RobotSpecs::kIdFieldNumber;
-const int RobotSpecs::kRadiusFieldNumber;
-const int RobotSpecs::kHeightFieldNumber;
-const int RobotSpecs::kMassFieldNumber;
-const int RobotSpecs::kMaxLinearKickSpeedFieldNumber;
-const int RobotSpecs::kMaxChipKickSpeedFieldNumber;
-const int RobotSpecs::kCenterToDribblerFieldNumber;
-const int RobotSpecs::kLimitsFieldNumber;
-const int RobotSpecs::kWheelAnglesFieldNumber;
-const int RobotSpecs::kCustomFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-RobotSpecs::RobotSpecs()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ssl_5fsimulation_5fconfig_2eproto::scc_info_RobotSpecs.base);
+RobotSpecs::RobotSpecs(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:RobotSpecs)
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:RobotSpecs)
 }
 RobotSpecs::RobotSpecs(const RobotSpecs& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
       _has_bits_(from._has_bits_) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  if (from.has_id()) {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_id()) {
     id_ = new ::RobotId(*from.id_);
   } else {
-    id_ = NULL;
+    id_ = nullptr;
   }
-  if (from.has_limits()) {
+  if (from._internal_has_limits()) {
     limits_ = new ::RobotLimits(*from.limits_);
   } else {
-    limits_ = NULL;
+    limits_ = nullptr;
   }
-  if (from.has_wheel_angles()) {
+  if (from._internal_has_wheel_angles()) {
     wheel_angles_ = new ::RobotWheelAngles(*from.wheel_angles_);
   } else {
-    wheel_angles_ = NULL;
+    wheel_angles_ = nullptr;
   }
-  if (from.has_custom()) {
-    custom_ = new ::google::protobuf::Any(*from.custom_);
+  if (from._internal_has_custom()) {
+    custom_ = new PROTOBUF_NAMESPACE_ID::Any(*from.custom_);
   } else {
-    custom_ = NULL;
+    custom_ = nullptr;
   }
   ::memcpy(&mass_, &from.mass_,
     static_cast<size_t>(reinterpret_cast<char*>(&height_) -
@@ -1155,8 +1038,10 @@ RobotSpecs::RobotSpecs(const RobotSpecs& from)
 }
 
 void RobotSpecs::SharedCtor() {
-  ::memset(&id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&center_to_dribbler_) -
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_RobotSpecs_ssl_5fsimulation_5fconfig_2eproto.base);
+  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+      reinterpret_cast<char*>(&id_) - reinterpret_cast<char*>(this)),
+      0, static_cast<size_t>(reinterpret_cast<char*>(&center_to_dribbler_) -
       reinterpret_cast<char*>(&id_)) + sizeof(center_to_dribbler_));
   radius_ = 0.09f;
   height_ = 0.15f;
@@ -1165,366 +1050,255 @@ void RobotSpecs::SharedCtor() {
 RobotSpecs::~RobotSpecs() {
   // @@protoc_insertion_point(destructor:RobotSpecs)
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 void RobotSpecs::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
   if (this != internal_default_instance()) delete id_;
   if (this != internal_default_instance()) delete limits_;
   if (this != internal_default_instance()) delete wheel_angles_;
   if (this != internal_default_instance()) delete custom_;
 }
 
+void RobotSpecs::ArenaDtor(void* object) {
+  RobotSpecs* _this = reinterpret_cast< RobotSpecs* >(object);
+  (void)_this;
+}
+void RobotSpecs::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void RobotSpecs::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* RobotSpecs::descriptor() {
-  ::protobuf_ssl_5fsimulation_5fconfig_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ssl_5fsimulation_5fconfig_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const RobotSpecs& RobotSpecs::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ssl_5fsimulation_5fconfig_2eproto::scc_info_RobotSpecs.base);
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_RobotSpecs_ssl_5fsimulation_5fconfig_2eproto.base);
   return *internal_default_instance();
 }
 
 
 void RobotSpecs::Clear() {
 // @@protoc_insertion_point(message_clear_start:RobotSpecs)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 15u) {
+  if (cached_has_bits & 0x0000000fu) {
     if (cached_has_bits & 0x00000001u) {
-      GOOGLE_DCHECK(id_ != NULL);
+      GOOGLE_DCHECK(id_ != nullptr);
       id_->Clear();
     }
     if (cached_has_bits & 0x00000002u) {
-      GOOGLE_DCHECK(limits_ != NULL);
+      GOOGLE_DCHECK(limits_ != nullptr);
       limits_->Clear();
     }
     if (cached_has_bits & 0x00000004u) {
-      GOOGLE_DCHECK(wheel_angles_ != NULL);
+      GOOGLE_DCHECK(wheel_angles_ != nullptr);
       wheel_angles_->Clear();
     }
     if (cached_has_bits & 0x00000008u) {
-      GOOGLE_DCHECK(custom_ != NULL);
+      GOOGLE_DCHECK(custom_ != nullptr);
       custom_->Clear();
     }
   }
-  if (cached_has_bits & 240u) {
+  if (cached_has_bits & 0x000000f0u) {
     ::memset(&mass_, 0, static_cast<size_t>(
         reinterpret_cast<char*>(&center_to_dribbler_) -
         reinterpret_cast<char*>(&mass_)) + sizeof(center_to_dribbler_));
   }
-  if (cached_has_bits & 768u) {
+  if (cached_has_bits & 0x00000300u) {
     radius_ = 0.09f;
     height_ = 0.15f;
   }
   _has_bits_.Clear();
-  _internal_metadata_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-bool RobotSpecs::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:RobotSpecs)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+const char* RobotSpecs::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
       // required .RobotId id = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-               input, mutable_id()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_id(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       // optional float radius = 2 [default = 0.09];
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(21u /* 21 & 0xFF */)) {
-          set_has_radius();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &radius_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 21)) {
+          _Internal::set_has_radius(&has_bits);
+          radius_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
       // optional float height = 3 [default = 0.15];
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(29u /* 29 & 0xFF */)) {
-          set_has_height();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &height_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 29)) {
+          _Internal::set_has_height(&has_bits);
+          height_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
       // optional float mass = 4;
-      case 4: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(37u /* 37 & 0xFF */)) {
-          set_has_mass();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &mass_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 37)) {
+          _Internal::set_has_mass(&has_bits);
+          mass_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
       // optional float max_linear_kick_speed = 7;
-      case 7: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(61u /* 61 & 0xFF */)) {
-          set_has_max_linear_kick_speed();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &max_linear_kick_speed_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 61)) {
+          _Internal::set_has_max_linear_kick_speed(&has_bits);
+          max_linear_kick_speed_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
       // optional float max_chip_kick_speed = 8;
-      case 8: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(69u /* 69 & 0xFF */)) {
-          set_has_max_chip_kick_speed();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &max_chip_kick_speed_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 8:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 69)) {
+          _Internal::set_has_max_chip_kick_speed(&has_bits);
+          max_chip_kick_speed_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
       // optional float center_to_dribbler = 9;
-      case 9: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(77u /* 77 & 0xFF */)) {
-          set_has_center_to_dribbler();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &center_to_dribbler_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 9:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 77)) {
+          _Internal::set_has_center_to_dribbler(&has_bits);
+          center_to_dribbler_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
       // optional .RobotLimits limits = 10;
-      case 10: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(82u /* 82 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-               input, mutable_limits()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 10:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 82)) {
+          ptr = ctx->ParseMessage(_internal_mutable_limits(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       // optional .RobotWheelAngles wheel_angles = 13;
-      case 13: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(106u /* 106 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-               input, mutable_wheel_angles()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 13:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 106)) {
+          ptr = ctx->ParseMessage(_internal_mutable_wheel_angles(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       // optional .google.protobuf.Any custom = 14;
-      case 14: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(114u /* 114 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-               input, mutable_custom()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 14:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 114)) {
+          ptr = ctx->ParseMessage(_internal_mutable_custom(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
-        if (tag == 0) {
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
           goto success;
         }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
-    }
-  }
+    }  // switch
+  }  // while
 success:
-  // @@protoc_insertion_point(parse_success:RobotSpecs)
-  return true;
+  _has_bits_.Or(has_bits);
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:RobotSpecs)
-  return false;
-#undef DO_
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-void RobotSpecs::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:RobotSpecs)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  cached_has_bits = _has_bits_[0];
-  // required .RobotId id = 1;
-  if (cached_has_bits & 0x00000001u) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->_internal_id(), output);
-  }
-
-  // optional float radius = 2 [default = 0.09];
-  if (cached_has_bits & 0x00000100u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(2, this->radius(), output);
-  }
-
-  // optional float height = 3 [default = 0.15];
-  if (cached_has_bits & 0x00000200u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(3, this->height(), output);
-  }
-
-  // optional float mass = 4;
-  if (cached_has_bits & 0x00000010u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(4, this->mass(), output);
-  }
-
-  // optional float max_linear_kick_speed = 7;
-  if (cached_has_bits & 0x00000020u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(7, this->max_linear_kick_speed(), output);
-  }
-
-  // optional float max_chip_kick_speed = 8;
-  if (cached_has_bits & 0x00000040u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(8, this->max_chip_kick_speed(), output);
-  }
-
-  // optional float center_to_dribbler = 9;
-  if (cached_has_bits & 0x00000080u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(9, this->center_to_dribbler(), output);
-  }
-
-  // optional .RobotLimits limits = 10;
-  if (cached_has_bits & 0x00000002u) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      10, this->_internal_limits(), output);
-  }
-
-  // optional .RobotWheelAngles wheel_angles = 13;
-  if (cached_has_bits & 0x00000004u) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      13, this->_internal_wheel_angles(), output);
-  }
-
-  // optional .google.protobuf.Any custom = 14;
-  if (cached_has_bits & 0x00000008u) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      14, this->_internal_custom(), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:RobotSpecs)
-}
-
-::google::protobuf::uint8* RobotSpecs::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::PROTOBUF_NAMESPACE_ID::uint8* RobotSpecs::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:RobotSpecs)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
   // required .RobotId id = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        1, this->_internal_id(), deterministic, target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        1, _Internal::id(this), target, stream);
   }
 
   // optional float radius = 2 [default = 0.09];
   if (cached_has_bits & 0x00000100u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(2, this->radius(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(2, this->_internal_radius(), target);
   }
 
   // optional float height = 3 [default = 0.15];
   if (cached_has_bits & 0x00000200u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(3, this->height(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(3, this->_internal_height(), target);
   }
 
   // optional float mass = 4;
   if (cached_has_bits & 0x00000010u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(4, this->mass(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(4, this->_internal_mass(), target);
   }
 
   // optional float max_linear_kick_speed = 7;
   if (cached_has_bits & 0x00000020u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(7, this->max_linear_kick_speed(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(7, this->_internal_max_linear_kick_speed(), target);
   }
 
   // optional float max_chip_kick_speed = 8;
   if (cached_has_bits & 0x00000040u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(8, this->max_chip_kick_speed(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(8, this->_internal_max_chip_kick_speed(), target);
   }
 
   // optional float center_to_dribbler = 9;
   if (cached_has_bits & 0x00000080u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(9, this->center_to_dribbler(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(9, this->_internal_center_to_dribbler(), target);
   }
 
   // optional .RobotLimits limits = 10;
   if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        10, this->_internal_limits(), deterministic, target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        10, _Internal::limits(this), target, stream);
   }
 
   // optional .RobotWheelAngles wheel_angles = 13;
   if (cached_has_bits & 0x00000004u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        13, this->_internal_wheel_angles(), deterministic, target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        13, _Internal::wheel_angles(this), target, stream);
   }
 
   // optional .google.protobuf.Any custom = 14;
   if (cached_has_bits & 0x00000008u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        14, this->_internal_custom(), deterministic, target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        14, _Internal::custom(this), target, stream);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:RobotSpecs)
   return target;
@@ -1534,86 +1308,90 @@ size_t RobotSpecs::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:RobotSpecs)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
   // required .RobotId id = 1;
-  if (has_id()) {
+  if (_internal_has_id()) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *id_);
   }
-  if (_has_bits_[0 / 32] & 254u) {
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x000000feu) {
     // optional .RobotLimits limits = 10;
-    if (has_limits()) {
+    if (cached_has_bits & 0x00000002u) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
           *limits_);
     }
 
     // optional .RobotWheelAngles wheel_angles = 13;
-    if (has_wheel_angles()) {
+    if (cached_has_bits & 0x00000004u) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
           *wheel_angles_);
     }
 
     // optional .google.protobuf.Any custom = 14;
-    if (has_custom()) {
+    if (cached_has_bits & 0x00000008u) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
           *custom_);
     }
 
     // optional float mass = 4;
-    if (has_mass()) {
+    if (cached_has_bits & 0x00000010u) {
       total_size += 1 + 4;
     }
 
     // optional float max_linear_kick_speed = 7;
-    if (has_max_linear_kick_speed()) {
+    if (cached_has_bits & 0x00000020u) {
       total_size += 1 + 4;
     }
 
     // optional float max_chip_kick_speed = 8;
-    if (has_max_chip_kick_speed()) {
+    if (cached_has_bits & 0x00000040u) {
       total_size += 1 + 4;
     }
 
     // optional float center_to_dribbler = 9;
-    if (has_center_to_dribbler()) {
+    if (cached_has_bits & 0x00000080u) {
       total_size += 1 + 4;
     }
 
   }
-  if (_has_bits_[8 / 32] & 768u) {
+  if (cached_has_bits & 0x00000300u) {
     // optional float radius = 2 [default = 0.09];
-    if (has_radius()) {
+    if (cached_has_bits & 0x00000100u) {
       total_size += 1 + 4;
     }
 
     // optional float height = 3 [default = 0.15];
-    if (has_height()) {
+    if (cached_has_bits & 0x00000200u) {
       total_size += 1 + 4;
     }
 
   }
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void RobotSpecs::MergeFrom(const ::google::protobuf::Message& from) {
+void RobotSpecs::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:RobotSpecs)
   GOOGLE_DCHECK_NE(&from, this);
   const RobotSpecs* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const RobotSpecs>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<RobotSpecs>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:RobotSpecs)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:RobotSpecs)
     MergeFrom(*source);
@@ -1623,23 +1401,23 @@ void RobotSpecs::MergeFrom(const ::google::protobuf::Message& from) {
 void RobotSpecs::MergeFrom(const RobotSpecs& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:RobotSpecs)
   GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 255u) {
+  if (cached_has_bits & 0x000000ffu) {
     if (cached_has_bits & 0x00000001u) {
-      mutable_id()->::RobotId::MergeFrom(from.id());
+      _internal_mutable_id()->::RobotId::MergeFrom(from._internal_id());
     }
     if (cached_has_bits & 0x00000002u) {
-      mutable_limits()->::RobotLimits::MergeFrom(from.limits());
+      _internal_mutable_limits()->::RobotLimits::MergeFrom(from._internal_limits());
     }
     if (cached_has_bits & 0x00000004u) {
-      mutable_wheel_angles()->::RobotWheelAngles::MergeFrom(from.wheel_angles());
+      _internal_mutable_wheel_angles()->::RobotWheelAngles::MergeFrom(from._internal_wheel_angles());
     }
     if (cached_has_bits & 0x00000008u) {
-      mutable_custom()->::google::protobuf::Any::MergeFrom(from.custom());
+      _internal_mutable_custom()->PROTOBUF_NAMESPACE_ID::Any::MergeFrom(from._internal_custom());
     }
     if (cached_has_bits & 0x00000010u) {
       mass_ = from.mass_;
@@ -1655,7 +1433,7 @@ void RobotSpecs::MergeFrom(const RobotSpecs& from) {
     }
     _has_bits_[0] |= cached_has_bits;
   }
-  if (cached_has_bits & 768u) {
+  if (cached_has_bits & 0x00000300u) {
     if (cached_has_bits & 0x00000100u) {
       radius_ = from.radius_;
     }
@@ -1666,7 +1444,7 @@ void RobotSpecs::MergeFrom(const RobotSpecs& from) {
   }
 }
 
-void RobotSpecs::CopyFrom(const ::google::protobuf::Message& from) {
+void RobotSpecs::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:RobotSpecs)
   if (&from == this) return;
   Clear();
@@ -1681,195 +1459,171 @@ void RobotSpecs::CopyFrom(const RobotSpecs& from) {
 }
 
 bool RobotSpecs::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
-  if (has_wheel_angles()) {
-    if (!this->wheel_angles_->IsInitialized()) return false;
+  if (_Internal::MissingRequiredFields(_has_bits_)) return false;
+  if (_internal_has_wheel_angles()) {
+    if (!wheel_angles_->IsInitialized()) return false;
   }
   return true;
 }
 
-void RobotSpecs::Swap(RobotSpecs* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void RobotSpecs::InternalSwap(RobotSpecs* other) {
   using std::swap;
-  swap(id_, other->id_);
-  swap(limits_, other->limits_);
-  swap(wheel_angles_, other->wheel_angles_);
-  swap(custom_, other->custom_);
-  swap(mass_, other->mass_);
-  swap(max_linear_kick_speed_, other->max_linear_kick_speed_);
-  swap(max_chip_kick_speed_, other->max_chip_kick_speed_);
-  swap(center_to_dribbler_, other->center_to_dribbler_);
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  swap(_has_bits_[0], other->_has_bits_[0]);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(RobotSpecs, center_to_dribbler_)
+      + sizeof(RobotSpecs::center_to_dribbler_)
+      - PROTOBUF_FIELD_OFFSET(RobotSpecs, id_)>(
+          reinterpret_cast<char*>(&id_),
+          reinterpret_cast<char*>(&other->id_));
   swap(radius_, other->radius_);
   swap(height_, other->height_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
-::google::protobuf::Metadata RobotSpecs::GetMetadata() const {
-  protobuf_ssl_5fsimulation_5fconfig_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ssl_5fsimulation_5fconfig_2eproto::file_level_metadata[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata RobotSpecs::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
 // ===================================================================
 
-void RealismConfig::InitAsDefaultInstance() {
-  ::_RealismConfig_default_instance_._instance.get_mutable()->custom_ = const_cast< ::google::protobuf::Any*>(
-      ::google::protobuf::Any::internal_default_instance());
+class RealismConfig::_Internal {
+ public:
+  using HasBits = decltype(std::declval<RealismConfig>()._has_bits_);
+  static const PROTOBUF_NAMESPACE_ID::Any& custom(const RealismConfig* msg);
+  static void set_has_custom(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+};
+
+const PROTOBUF_NAMESPACE_ID::Any&
+RealismConfig::_Internal::custom(const RealismConfig* msg) {
+  return *msg->custom_;
 }
 void RealismConfig::clear_custom() {
-  if (custom_ != NULL) custom_->Clear();
-  clear_has_custom();
+  if (custom_ != nullptr) custom_->Clear();
+  _has_bits_[0] &= ~0x00000001u;
 }
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int RealismConfig::kCustomFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-RealismConfig::RealismConfig()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ssl_5fsimulation_5fconfig_2eproto::scc_info_RealismConfig.base);
+RealismConfig::RealismConfig(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:RealismConfig)
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:RealismConfig)
 }
 RealismConfig::RealismConfig(const RealismConfig& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
       _has_bits_(from._has_bits_) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  if (from.has_custom()) {
-    custom_ = new ::google::protobuf::Any(*from.custom_);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_custom()) {
+    custom_ = new PROTOBUF_NAMESPACE_ID::Any(*from.custom_);
   } else {
-    custom_ = NULL;
+    custom_ = nullptr;
   }
   // @@protoc_insertion_point(copy_constructor:RealismConfig)
 }
 
 void RealismConfig::SharedCtor() {
-  custom_ = NULL;
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_RealismConfig_ssl_5fsimulation_5fconfig_2eproto.base);
+  custom_ = nullptr;
 }
 
 RealismConfig::~RealismConfig() {
   // @@protoc_insertion_point(destructor:RealismConfig)
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 void RealismConfig::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
   if (this != internal_default_instance()) delete custom_;
 }
 
+void RealismConfig::ArenaDtor(void* object) {
+  RealismConfig* _this = reinterpret_cast< RealismConfig* >(object);
+  (void)_this;
+}
+void RealismConfig::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void RealismConfig::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* RealismConfig::descriptor() {
-  ::protobuf_ssl_5fsimulation_5fconfig_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ssl_5fsimulation_5fconfig_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const RealismConfig& RealismConfig::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ssl_5fsimulation_5fconfig_2eproto::scc_info_RealismConfig.base);
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_RealismConfig_ssl_5fsimulation_5fconfig_2eproto.base);
   return *internal_default_instance();
 }
 
 
 void RealismConfig::Clear() {
 // @@protoc_insertion_point(message_clear_start:RealismConfig)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(custom_ != NULL);
+    GOOGLE_DCHECK(custom_ != nullptr);
     custom_->Clear();
   }
   _has_bits_.Clear();
-  _internal_metadata_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-bool RealismConfig::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:RealismConfig)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+const char* RealismConfig::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
       // optional .google.protobuf.Any custom = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-               input, mutable_custom()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_custom(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
-        if (tag == 0) {
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
           goto success;
         }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
-    }
-  }
+    }  // switch
+  }  // while
 success:
-  // @@protoc_insertion_point(parse_success:RealismConfig)
-  return true;
+  _has_bits_.Or(has_bits);
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:RealismConfig)
-  return false;
-#undef DO_
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-void RealismConfig::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:RealismConfig)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  cached_has_bits = _has_bits_[0];
-  // optional .google.protobuf.Any custom = 1;
-  if (cached_has_bits & 0x00000001u) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->_internal_custom(), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:RealismConfig)
-}
-
-::google::protobuf::uint8* RealismConfig::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::PROTOBUF_NAMESPACE_ID::uint8* RealismConfig::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:RealismConfig)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
   // optional .google.protobuf.Any custom = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        1, this->_internal_custom(), deterministic, target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        1, _Internal::custom(this), target, stream);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:RealismConfig)
   return target;
@@ -1879,32 +1633,36 @@ size_t RealismConfig::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:RealismConfig)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // optional .google.protobuf.Any custom = 1;
-  if (has_custom()) {
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *custom_);
   }
 
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void RealismConfig::MergeFrom(const ::google::protobuf::Message& from) {
+void RealismConfig::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:RealismConfig)
   GOOGLE_DCHECK_NE(&from, this);
   const RealismConfig* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const RealismConfig>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<RealismConfig>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:RealismConfig)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:RealismConfig)
     MergeFrom(*source);
@@ -1914,16 +1672,16 @@ void RealismConfig::MergeFrom(const ::google::protobuf::Message& from) {
 void RealismConfig::MergeFrom(const RealismConfig& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:RealismConfig)
   GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.has_custom()) {
-    mutable_custom()->::google::protobuf::Any::MergeFrom(from.custom());
+  if (from._internal_has_custom()) {
+    _internal_mutable_custom()->PROTOBUF_NAMESPACE_ID::Any::MergeFrom(from._internal_custom());
   }
 }
 
-void RealismConfig::CopyFrom(const ::google::protobuf::Message& from) {
+void RealismConfig::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:RealismConfig)
   if (&from == this) return;
   Clear();
@@ -1941,280 +1699,237 @@ bool RealismConfig::IsInitialized() const {
   return true;
 }
 
-void RealismConfig::Swap(RealismConfig* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void RealismConfig::InternalSwap(RealismConfig* other) {
   using std::swap;
-  swap(custom_, other->custom_);
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(custom_, other->custom_);
 }
 
-::google::protobuf::Metadata RealismConfig::GetMetadata() const {
-  protobuf_ssl_5fsimulation_5fconfig_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ssl_5fsimulation_5fconfig_2eproto::file_level_metadata[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata RealismConfig::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
 // ===================================================================
 
-void SimulatorConfig::InitAsDefaultInstance() {
-  ::_SimulatorConfig_default_instance_._instance.get_mutable()->geometry_ = const_cast< ::SSL_GeometryData*>(
-      ::SSL_GeometryData::internal_default_instance());
-  ::_SimulatorConfig_default_instance_._instance.get_mutable()->realism_config_ = const_cast< ::RealismConfig*>(
-      ::RealismConfig::internal_default_instance());
+class SimulatorConfig::_Internal {
+ public:
+  using HasBits = decltype(std::declval<SimulatorConfig>()._has_bits_);
+  static const ::SSL_GeometryData& geometry(const SimulatorConfig* msg);
+  static void set_has_geometry(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+  static const ::RealismConfig& realism_config(const SimulatorConfig* msg);
+  static void set_has_realism_config(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
+  static void set_has_vision_port(HasBits* has_bits) {
+    (*has_bits)[0] |= 4u;
+  }
+};
+
+const ::SSL_GeometryData&
+SimulatorConfig::_Internal::geometry(const SimulatorConfig* msg) {
+  return *msg->geometry_;
+}
+const ::RealismConfig&
+SimulatorConfig::_Internal::realism_config(const SimulatorConfig* msg) {
+  return *msg->realism_config_;
 }
 void SimulatorConfig::clear_geometry() {
-  if (geometry_ != NULL) geometry_->Clear();
-  clear_has_geometry();
+  if (geometry_ != nullptr) geometry_->Clear();
+  _has_bits_[0] &= ~0x00000001u;
 }
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int SimulatorConfig::kGeometryFieldNumber;
-const int SimulatorConfig::kRobotSpecsFieldNumber;
-const int SimulatorConfig::kRealismConfigFieldNumber;
-const int SimulatorConfig::kVisionPortFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-SimulatorConfig::SimulatorConfig()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ssl_5fsimulation_5fconfig_2eproto::scc_info_SimulatorConfig.base);
+SimulatorConfig::SimulatorConfig(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena),
+  robot_specs_(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:SimulatorConfig)
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:SimulatorConfig)
 }
 SimulatorConfig::SimulatorConfig(const SimulatorConfig& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
       _has_bits_(from._has_bits_),
       robot_specs_(from.robot_specs_) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  if (from.has_geometry()) {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_geometry()) {
     geometry_ = new ::SSL_GeometryData(*from.geometry_);
   } else {
-    geometry_ = NULL;
+    geometry_ = nullptr;
   }
-  if (from.has_realism_config()) {
+  if (from._internal_has_realism_config()) {
     realism_config_ = new ::RealismConfig(*from.realism_config_);
   } else {
-    realism_config_ = NULL;
+    realism_config_ = nullptr;
   }
   vision_port_ = from.vision_port_;
   // @@protoc_insertion_point(copy_constructor:SimulatorConfig)
 }
 
 void SimulatorConfig::SharedCtor() {
-  ::memset(&geometry_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&vision_port_) -
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_SimulatorConfig_ssl_5fsimulation_5fconfig_2eproto.base);
+  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+      reinterpret_cast<char*>(&geometry_) - reinterpret_cast<char*>(this)),
+      0, static_cast<size_t>(reinterpret_cast<char*>(&vision_port_) -
       reinterpret_cast<char*>(&geometry_)) + sizeof(vision_port_));
 }
 
 SimulatorConfig::~SimulatorConfig() {
   // @@protoc_insertion_point(destructor:SimulatorConfig)
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 void SimulatorConfig::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
   if (this != internal_default_instance()) delete geometry_;
   if (this != internal_default_instance()) delete realism_config_;
 }
 
+void SimulatorConfig::ArenaDtor(void* object) {
+  SimulatorConfig* _this = reinterpret_cast< SimulatorConfig* >(object);
+  (void)_this;
+}
+void SimulatorConfig::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void SimulatorConfig::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* SimulatorConfig::descriptor() {
-  ::protobuf_ssl_5fsimulation_5fconfig_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ssl_5fsimulation_5fconfig_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const SimulatorConfig& SimulatorConfig::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ssl_5fsimulation_5fconfig_2eproto::scc_info_SimulatorConfig.base);
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_SimulatorConfig_ssl_5fsimulation_5fconfig_2eproto.base);
   return *internal_default_instance();
 }
 
 
 void SimulatorConfig::Clear() {
 // @@protoc_insertion_point(message_clear_start:SimulatorConfig)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   robot_specs_.Clear();
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 3u) {
+  if (cached_has_bits & 0x00000003u) {
     if (cached_has_bits & 0x00000001u) {
-      GOOGLE_DCHECK(geometry_ != NULL);
+      GOOGLE_DCHECK(geometry_ != nullptr);
       geometry_->Clear();
     }
     if (cached_has_bits & 0x00000002u) {
-      GOOGLE_DCHECK(realism_config_ != NULL);
+      GOOGLE_DCHECK(realism_config_ != nullptr);
       realism_config_->Clear();
     }
   }
   vision_port_ = 0u;
   _has_bits_.Clear();
-  _internal_metadata_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-bool SimulatorConfig::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:SimulatorConfig)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+const char* SimulatorConfig::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
       // optional .SSL_GeometryData geometry = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-               input, mutable_geometry()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_geometry(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       // repeated .RobotSpecs robot_specs = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-                input, add_robot_specs()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_robot_specs(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
+        } else goto handle_unusual;
+        continue;
       // optional .RealismConfig realism_config = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-               input, mutable_realism_config()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
+          ptr = ctx->ParseMessage(_internal_mutable_realism_config(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       // optional uint32 vision_port = 4;
-      case 4: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(32u /* 32 & 0xFF */)) {
-          set_has_vision_port();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &vision_port_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 32)) {
+          _Internal::set_has_vision_port(&has_bits);
+          vision_port_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
-        if (tag == 0) {
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
           goto success;
         }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
-    }
-  }
+    }  // switch
+  }  // while
 success:
-  // @@protoc_insertion_point(parse_success:SimulatorConfig)
-  return true;
+  _has_bits_.Or(has_bits);
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:SimulatorConfig)
-  return false;
-#undef DO_
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-void SimulatorConfig::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:SimulatorConfig)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  cached_has_bits = _has_bits_[0];
-  // optional .SSL_GeometryData geometry = 1;
-  if (cached_has_bits & 0x00000001u) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->_internal_geometry(), output);
-  }
-
-  // repeated .RobotSpecs robot_specs = 2;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->robot_specs_size()); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2,
-      this->robot_specs(static_cast<int>(i)),
-      output);
-  }
-
-  // optional .RealismConfig realism_config = 3;
-  if (cached_has_bits & 0x00000002u) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      3, this->_internal_realism_config(), output);
-  }
-
-  // optional uint32 vision_port = 4;
-  if (cached_has_bits & 0x00000004u) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(4, this->vision_port(), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:SimulatorConfig)
-}
-
-::google::protobuf::uint8* SimulatorConfig::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::PROTOBUF_NAMESPACE_ID::uint8* SimulatorConfig::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:SimulatorConfig)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
   // optional .SSL_GeometryData geometry = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        1, this->_internal_geometry(), deterministic, target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        1, _Internal::geometry(this), target, stream);
   }
 
   // repeated .RobotSpecs robot_specs = 2;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->robot_specs_size()); i < n; i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        2, this->robot_specs(static_cast<int>(i)), deterministic, target);
+      n = static_cast<unsigned int>(this->_internal_robot_specs_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(2, this->_internal_robot_specs(i), target, stream);
   }
 
   // optional .RealismConfig realism_config = 3;
   if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        3, this->_internal_realism_config(), deterministic, target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        3, _Internal::realism_config(this), target, stream);
   }
 
   // optional uint32 vision_port = 4;
   if (cached_has_bits & 0x00000004u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(4, this->vision_port(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(4, this->_internal_vision_port(), target);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:SimulatorConfig)
   return target;
@@ -2224,59 +1939,59 @@ size_t SimulatorConfig::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:SimulatorConfig)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // repeated .RobotSpecs robot_specs = 2;
-  {
-    unsigned int count = static_cast<unsigned int>(this->robot_specs_size());
-    total_size += 1UL * count;
-    for (unsigned int i = 0; i < count; i++) {
-      total_size +=
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          this->robot_specs(static_cast<int>(i)));
-    }
+  total_size += 1UL * this->_internal_robot_specs_size();
+  for (const auto& msg : this->robot_specs_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
-  if (_has_bits_[0 / 32] & 7u) {
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000007u) {
     // optional .SSL_GeometryData geometry = 1;
-    if (has_geometry()) {
+    if (cached_has_bits & 0x00000001u) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
           *geometry_);
     }
 
     // optional .RealismConfig realism_config = 3;
-    if (has_realism_config()) {
+    if (cached_has_bits & 0x00000002u) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
           *realism_config_);
     }
 
     // optional uint32 vision_port = 4;
-    if (has_vision_port()) {
+    if (cached_has_bits & 0x00000004u) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::UInt32Size(
-          this->vision_port());
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
+          this->_internal_vision_port());
     }
 
   }
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void SimulatorConfig::MergeFrom(const ::google::protobuf::Message& from) {
+void SimulatorConfig::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:SimulatorConfig)
   GOOGLE_DCHECK_NE(&from, this);
   const SimulatorConfig* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const SimulatorConfig>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<SimulatorConfig>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:SimulatorConfig)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:SimulatorConfig)
     MergeFrom(*source);
@@ -2286,18 +2001,18 @@ void SimulatorConfig::MergeFrom(const ::google::protobuf::Message& from) {
 void SimulatorConfig::MergeFrom(const SimulatorConfig& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:SimulatorConfig)
   GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   robot_specs_.MergeFrom(from.robot_specs_);
   cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 7u) {
+  if (cached_has_bits & 0x00000007u) {
     if (cached_has_bits & 0x00000001u) {
-      mutable_geometry()->::SSL_GeometryData::MergeFrom(from.geometry());
+      _internal_mutable_geometry()->::SSL_GeometryData::MergeFrom(from._internal_geometry());
     }
     if (cached_has_bits & 0x00000002u) {
-      mutable_realism_config()->::RealismConfig::MergeFrom(from.realism_config());
+      _internal_mutable_realism_config()->::RealismConfig::MergeFrom(from._internal_realism_config());
     }
     if (cached_has_bits & 0x00000004u) {
       vision_port_ = from.vision_port_;
@@ -2306,7 +2021,7 @@ void SimulatorConfig::MergeFrom(const SimulatorConfig& from) {
   }
 }
 
-void SimulatorConfig::CopyFrom(const ::google::protobuf::Message& from) {
+void SimulatorConfig::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:SimulatorConfig)
   if (&from == this) return;
   Clear();
@@ -2321,52 +2036,49 @@ void SimulatorConfig::CopyFrom(const SimulatorConfig& from) {
 }
 
 bool SimulatorConfig::IsInitialized() const {
-  if (!::google::protobuf::internal::AllAreInitialized(this->robot_specs())) return false;
-  if (has_geometry()) {
-    if (!this->geometry_->IsInitialized()) return false;
+  if (!::PROTOBUF_NAMESPACE_ID::internal::AllAreInitialized(robot_specs_)) return false;
+  if (_internal_has_geometry()) {
+    if (!geometry_->IsInitialized()) return false;
   }
   return true;
 }
 
-void SimulatorConfig::Swap(SimulatorConfig* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void SimulatorConfig::InternalSwap(SimulatorConfig* other) {
   using std::swap;
-  CastToBase(&robot_specs_)->InternalSwap(CastToBase(&other->robot_specs_));
-  swap(geometry_, other->geometry_);
-  swap(realism_config_, other->realism_config_);
-  swap(vision_port_, other->vision_port_);
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
+  robot_specs_.InternalSwap(&other->robot_specs_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(SimulatorConfig, vision_port_)
+      + sizeof(SimulatorConfig::vision_port_)
+      - PROTOBUF_FIELD_OFFSET(SimulatorConfig, geometry_)>(
+          reinterpret_cast<char*>(&geometry_),
+          reinterpret_cast<char*>(&other->geometry_));
 }
 
-::google::protobuf::Metadata SimulatorConfig::GetMetadata() const {
-  protobuf_ssl_5fsimulation_5fconfig_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ssl_5fsimulation_5fconfig_2eproto::file_level_metadata[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata SimulatorConfig::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
 // @@protoc_insertion_point(namespace_scope)
-namespace google {
-namespace protobuf {
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::RobotLimits* Arena::CreateMaybeMessage< ::RobotLimits >(Arena* arena) {
-  return Arena::CreateInternal< ::RobotLimits >(arena);
+PROTOBUF_NAMESPACE_OPEN
+template<> PROTOBUF_NOINLINE ::RobotLimits* Arena::CreateMaybeMessage< ::RobotLimits >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::RobotLimits >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::RobotWheelAngles* Arena::CreateMaybeMessage< ::RobotWheelAngles >(Arena* arena) {
-  return Arena::CreateInternal< ::RobotWheelAngles >(arena);
+template<> PROTOBUF_NOINLINE ::RobotWheelAngles* Arena::CreateMaybeMessage< ::RobotWheelAngles >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::RobotWheelAngles >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::RobotSpecs* Arena::CreateMaybeMessage< ::RobotSpecs >(Arena* arena) {
-  return Arena::CreateInternal< ::RobotSpecs >(arena);
+template<> PROTOBUF_NOINLINE ::RobotSpecs* Arena::CreateMaybeMessage< ::RobotSpecs >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::RobotSpecs >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::RealismConfig* Arena::CreateMaybeMessage< ::RealismConfig >(Arena* arena) {
-  return Arena::CreateInternal< ::RealismConfig >(arena);
+template<> PROTOBUF_NOINLINE ::RealismConfig* Arena::CreateMaybeMessage< ::RealismConfig >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::RealismConfig >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::SimulatorConfig* Arena::CreateMaybeMessage< ::SimulatorConfig >(Arena* arena) {
-  return Arena::CreateInternal< ::SimulatorConfig >(arena);
+template<> PROTOBUF_NOINLINE ::SimulatorConfig* Arena::CreateMaybeMessage< ::SimulatorConfig >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::SimulatorConfig >(arena);
 }
-}  // namespace protobuf
-}  // namespace google
+PROTOBUF_NAMESPACE_CLOSE
 
 // @@protoc_insertion_point(global_scope)
+#include <google/protobuf/port_undef.inc>

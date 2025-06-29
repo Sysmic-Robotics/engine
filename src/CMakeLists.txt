@@ -8,6 +8,7 @@ add_subdirectory(luainterface)
 add_subdirectory(websocketserver)
 add_subdirectory(consolereader)
 add_subdirectory(logger)
+add_subdirectory(gamecontroller)
 # Specify sources in the src directory
 qt_add_executable(engine
     main.cpp
@@ -36,4 +37,5 @@ target_link_libraries(engine
     PRIVATE websocketserver
     PRIVATE consolereader
     PRIVATE logger
+    PRIVATE gamecontroller
 )

@@ -5,114 +5,81 @@
 
 #include <algorithm>
 
-#include <google/protobuf/stubs/common.h>
-#include <google/protobuf/stubs/port.h>
 #include <google/protobuf/io/coded_stream.h>
-#include <google/protobuf/wire_format_lite_inl.h>
+#include <google/protobuf/extension_set.h>
+#include <google/protobuf/wire_format_lite.h>
 #include <google/protobuf/descriptor.h>
 #include <google/protobuf/generated_message_reflection.h>
 #include <google/protobuf/reflection_ops.h>
 #include <google/protobuf/wire_format.h>
-// This is a temporary google only hack
-#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
-#include "third_party/protobuf/version.h"
-#endif
 // @@protoc_insertion_point(includes)
-
+#include <google/protobuf/port_def.inc>
 class RobotIdDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<RobotId>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<RobotId> _instance;
 } _RobotId_default_instance_;
-namespace protobuf_ssl_5fgc_5fcommon_2eproto {
-static void InitDefaultsRobotId() {
+static void InitDefaultsscc_info_RobotId_ssl_5fgc_5fcommon_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
     void* ptr = &::_RobotId_default_instance_;
     new (ptr) ::RobotId();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::RobotId::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_RobotId =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsRobotId}, {}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_RobotId_ssl_5fgc_5fcommon_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_RobotId_ssl_5fgc_5fcommon_2eproto}, {}};
 
-void InitDefaults() {
-  ::google::protobuf::internal::InitSCC(&scc_info_RobotId.base);
-}
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_ssl_5fgc_5fcommon_2eproto[1];
+static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_ssl_5fgc_5fcommon_2eproto[2];
+static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_ssl_5fgc_5fcommon_2eproto = nullptr;
 
-::google::protobuf::Metadata file_level_metadata[1];
-const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[2];
-
-const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::RobotId, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::RobotId, _internal_metadata_),
+const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_ssl_5fgc_5fcommon_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+  PROTOBUF_FIELD_OFFSET(::RobotId, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::RobotId, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::RobotId, id_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::RobotId, team_),
+  PROTOBUF_FIELD_OFFSET(::RobotId, id_),
+  PROTOBUF_FIELD_OFFSET(::RobotId, team_),
   0,
   1,
 };
-static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
+static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, 7, sizeof(::RobotId)},
 };
 
-static ::google::protobuf::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::google::protobuf::Message*>(&::_RobotId_default_instance_),
+static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::_RobotId_default_instance_),
 };
 
-void protobuf_AssignDescriptors() {
-  AddDescriptors();
-  AssignDescriptors(
-      "ssl_gc_common.proto", schemas, file_default_instances, TableStruct::offsets,
-      file_level_metadata, file_level_enum_descriptors, NULL);
-}
+const char descriptor_table_protodef_ssl_5fgc_5fcommon_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
+  "\n\023ssl_gc_common.proto\"*\n\007RobotId\022\n\n\002id\030\001"
+  " \001(\r\022\023\n\004team\030\002 \001(\0162\005.Team*)\n\004Team\022\013\n\007UNK"
+  "NOWN\020\000\022\n\n\006YELLOW\020\001\022\010\n\004BLUE\020\002*1\n\010Division"
+  "\022\017\n\013DIV_UNKNOWN\020\000\022\t\n\005DIV_A\020\001\022\t\n\005DIV_B\020\002B"
+  "8Z6github.com/RoboCup-SSL/ssl-simulation"
+  "-protocol/pkg/sim"
+  ;
+static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_ssl_5fgc_5fcommon_2eproto_deps[1] = {
+};
+static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_ssl_5fgc_5fcommon_2eproto_sccs[1] = {
+  &scc_info_RobotId_ssl_5fgc_5fcommon_2eproto.base,
+};
+static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_ssl_5fgc_5fcommon_2eproto_once;
+const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_ssl_5fgc_5fcommon_2eproto = {
+  false, false, descriptor_table_protodef_ssl_5fgc_5fcommon_2eproto, "ssl_gc_common.proto", 217,
+  &descriptor_table_ssl_5fgc_5fcommon_2eproto_once, descriptor_table_ssl_5fgc_5fcommon_2eproto_sccs, descriptor_table_ssl_5fgc_5fcommon_2eproto_deps, 1, 0,
+  schemas, file_default_instances, TableStruct_ssl_5fgc_5fcommon_2eproto::offsets,
+  file_level_metadata_ssl_5fgc_5fcommon_2eproto, 1, file_level_enum_descriptors_ssl_5fgc_5fcommon_2eproto, file_level_service_descriptors_ssl_5fgc_5fcommon_2eproto,
+};
 
-void protobuf_AssignDescriptorsOnce() {
-  static ::google::protobuf::internal::once_flag once;
-  ::google::protobuf::internal::call_once(once, protobuf_AssignDescriptors);
-}
-
-void protobuf_RegisterTypes(const ::std::string&) GOOGLE_PROTOBUF_ATTRIBUTE_COLD;
-void protobuf_RegisterTypes(const ::std::string&) {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 1);
-}
-
-void AddDescriptorsImpl() {
-  InitDefaults();
-  static const char descriptor[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-      "\n\023ssl_gc_common.proto\"*\n\007RobotId\022\n\n\002id\030\001"
-      " \001(\r\022\023\n\004team\030\002 \001(\0162\005.Team*)\n\004Team\022\013\n\007UNK"
-      "NOWN\020\000\022\n\n\006YELLOW\020\001\022\010\n\004BLUE\020\002*1\n\010Division"
-      "\022\017\n\013DIV_UNKNOWN\020\000\022\t\n\005DIV_A\020\001\022\t\n\005DIV_B\020\002B"
-      "8Z6github.com/RoboCup-SSL/ssl-simulation"
-      "-protocol/pkg/sim"
-  };
-  ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 217);
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
-    "ssl_gc_common.proto", &protobuf_RegisterTypes);
-}
-
-void AddDescriptors() {
-  static ::google::protobuf::internal::once_flag once;
-  ::google::protobuf::internal::call_once(once, AddDescriptorsImpl);
-}
-// Force AddDescriptors() to be called at dynamic initialization time.
-struct StaticDescriptorInitializer {
-  StaticDescriptorInitializer() {
-    AddDescriptors();
-  }
-} static_descriptor_initializer;
-}  // namespace protobuf_ssl_5fgc_5fcommon_2eproto
-const ::google::protobuf::EnumDescriptor* Team_descriptor() {
-  protobuf_ssl_5fgc_5fcommon_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_ssl_5fgc_5fcommon_2eproto::file_level_enum_descriptors[0];
+// Force running AddDescriptors() at dynamic initialization time.
+static bool dynamic_init_dummy_ssl_5fgc_5fcommon_2eproto = (static_cast<void>(::PROTOBUF_NAMESPACE_ID::internal::AddDescriptors(&descriptor_table_ssl_5fgc_5fcommon_2eproto)), true);
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* Team_descriptor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_ssl_5fgc_5fcommon_2eproto);
+  return file_level_enum_descriptors_ssl_5fgc_5fcommon_2eproto[0];
 }
 bool Team_IsValid(int value) {
   switch (value) {
@@ -125,9 +92,9 @@ bool Team_IsValid(int value) {
   }
 }
 
-const ::google::protobuf::EnumDescriptor* Division_descriptor() {
-  protobuf_ssl_5fgc_5fcommon_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_ssl_5fgc_5fcommon_2eproto::file_level_enum_descriptors[1];
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* Division_descriptor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_ssl_5fgc_5fcommon_2eproto);
+  return file_level_enum_descriptors_ssl_5fgc_5fcommon_2eproto[1];
 }
 bool Division_IsValid(int value) {
   switch (value) {
@@ -143,25 +110,27 @@ bool Division_IsValid(int value) {
 
 // ===================================================================
 
-void RobotId::InitAsDefaultInstance() {
-}
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int RobotId::kIdFieldNumber;
-const int RobotId::kTeamFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+class RobotId::_Internal {
+ public:
+  using HasBits = decltype(std::declval<RobotId>()._has_bits_);
+  static void set_has_id(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+  static void set_has_team(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
+};
 
-RobotId::RobotId()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ssl_5fgc_5fcommon_2eproto::scc_info_RobotId.base);
+RobotId::RobotId(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:RobotId)
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:RobotId)
 }
 RobotId::RobotId(const RobotId& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
       _has_bits_(from._has_bits_) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::memcpy(&id_, &from.id_,
     static_cast<size_t>(reinterpret_cast<char*>(&team_) -
     reinterpret_cast<char*>(&id_)) + sizeof(team_));
@@ -169,160 +138,127 @@ RobotId::RobotId(const RobotId& from)
 }
 
 void RobotId::SharedCtor() {
-  ::memset(&id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&team_) -
+  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+      reinterpret_cast<char*>(&id_) - reinterpret_cast<char*>(this)),
+      0, static_cast<size_t>(reinterpret_cast<char*>(&team_) -
       reinterpret_cast<char*>(&id_)) + sizeof(team_));
 }
 
 RobotId::~RobotId() {
   // @@protoc_insertion_point(destructor:RobotId)
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 void RobotId::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
 }
 
+void RobotId::ArenaDtor(void* object) {
+  RobotId* _this = reinterpret_cast< RobotId* >(object);
+  (void)_this;
+}
+void RobotId::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void RobotId::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* RobotId::descriptor() {
-  ::protobuf_ssl_5fgc_5fcommon_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ssl_5fgc_5fcommon_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const RobotId& RobotId::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ssl_5fgc_5fcommon_2eproto::scc_info_RobotId.base);
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_RobotId_ssl_5fgc_5fcommon_2eproto.base);
   return *internal_default_instance();
 }
 
 
 void RobotId::Clear() {
 // @@protoc_insertion_point(message_clear_start:RobotId)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 3u) {
+  if (cached_has_bits & 0x00000003u) {
     ::memset(&id_, 0, static_cast<size_t>(
         reinterpret_cast<char*>(&team_) -
         reinterpret_cast<char*>(&id_)) + sizeof(team_));
   }
   _has_bits_.Clear();
-  _internal_metadata_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-bool RobotId::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:RobotId)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+const char* RobotId::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
       // optional uint32 id = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
-          set_has_id();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &id_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+          _Internal::set_has_id(&has_bits);
+          id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       // optional .Team team = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
-          int value;
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
-                 input, &value)));
-          if (::Team_IsValid(value)) {
-            set_team(static_cast< ::Team >(value));
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
+          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+          if (PROTOBUF_PREDICT_TRUE(::Team_IsValid(val))) {
+            _internal_set_team(static_cast<::Team>(val));
           } else {
-            mutable_unknown_fields()->AddVarint(
-                2, static_cast< ::google::protobuf::uint64>(value));
+            ::PROTOBUF_NAMESPACE_ID::internal::WriteVarint(2, val, mutable_unknown_fields());
           }
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
-        if (tag == 0) {
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
           goto success;
         }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
-    }
-  }
+    }  // switch
+  }  // while
 success:
-  // @@protoc_insertion_point(parse_success:RobotId)
-  return true;
+  _has_bits_.Or(has_bits);
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:RobotId)
-  return false;
-#undef DO_
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-void RobotId::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:RobotId)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  cached_has_bits = _has_bits_[0];
-  // optional uint32 id = 1;
-  if (cached_has_bits & 0x00000001u) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->id(), output);
-  }
-
-  // optional .Team team = 2;
-  if (cached_has_bits & 0x00000002u) {
-    ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      2, this->team(), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:RobotId)
-}
-
-::google::protobuf::uint8* RobotId::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::PROTOBUF_NAMESPACE_ID::uint8* RobotId::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:RobotId)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
   // optional uint32 id = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->id(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(1, this->_internal_id(), target);
   }
 
   // optional .Team team = 2;
   if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      2, this->team(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+      2, this->_internal_team(), target);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:RobotId)
   return target;
@@ -332,40 +268,44 @@ size_t RobotId::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:RobotId)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
-  if (_has_bits_[0 / 32] & 3u) {
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
     // optional uint32 id = 1;
-    if (has_id()) {
+    if (cached_has_bits & 0x00000001u) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::UInt32Size(
-          this->id());
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
+          this->_internal_id());
     }
 
     // optional .Team team = 2;
-    if (has_team()) {
+    if (cached_has_bits & 0x00000002u) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::EnumSize(this->team());
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_team());
     }
 
   }
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void RobotId::MergeFrom(const ::google::protobuf::Message& from) {
+void RobotId::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:RobotId)
   GOOGLE_DCHECK_NE(&from, this);
   const RobotId* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const RobotId>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<RobotId>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:RobotId)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:RobotId)
     MergeFrom(*source);
@@ -375,12 +315,12 @@ void RobotId::MergeFrom(const ::google::protobuf::Message& from) {
 void RobotId::MergeFrom(const RobotId& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:RobotId)
   GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 3u) {
+  if (cached_has_bits & 0x00000003u) {
     if (cached_has_bits & 0x00000001u) {
       id_ = from.id_;
     }
@@ -391,7 +331,7 @@ void RobotId::MergeFrom(const RobotId& from) {
   }
 }
 
-void RobotId::CopyFrom(const ::google::protobuf::Message& from) {
+void RobotId::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:RobotId)
   if (&from == this) return;
   Clear();
@@ -409,31 +349,29 @@ bool RobotId::IsInitialized() const {
   return true;
 }
 
-void RobotId::Swap(RobotId* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void RobotId::InternalSwap(RobotId* other) {
   using std::swap;
-  swap(id_, other->id_);
-  swap(team_, other->team_);
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(RobotId, team_)
+      + sizeof(RobotId::team_)
+      - PROTOBUF_FIELD_OFFSET(RobotId, id_)>(
+          reinterpret_cast<char*>(&id_),
+          reinterpret_cast<char*>(&other->id_));
 }
 
-::google::protobuf::Metadata RobotId::GetMetadata() const {
-  protobuf_ssl_5fgc_5fcommon_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ssl_5fgc_5fcommon_2eproto::file_level_metadata[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata RobotId::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
 // @@protoc_insertion_point(namespace_scope)
-namespace google {
-namespace protobuf {
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::RobotId* Arena::CreateMaybeMessage< ::RobotId >(Arena* arena) {
-  return Arena::CreateInternal< ::RobotId >(arena);
+PROTOBUF_NAMESPACE_OPEN
+template<> PROTOBUF_NOINLINE ::RobotId* Arena::CreateMaybeMessage< ::RobotId >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::RobotId >(arena);
 }
-}  // namespace protobuf
-}  // namespace google
+PROTOBUF_NAMESPACE_CLOSE
 
 // @@protoc_insertion_point(global_scope)
+#include <google/protobuf/port_undef.inc>

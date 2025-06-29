@@ -12,6 +12,9 @@
 #include "websocketserver.hpp"
 #include "consolereader.hpp"
 #include "logger.hpp"
+#include "gamecontroller.hpp"
+
+
 
 class MainApp : public QObject {
     Q_OBJECT
@@ -58,6 +61,23 @@ public:
         m_updateTimer = new QTimer(this);
         connect(m_updateTimer, &QTimer::timeout, this, &MainApp::update);
         m_updateTimer->start(16); // ~60 FPS
+        
+        //Game controller
+        
+        gameController = new GameController(this);
+
+        
+        gameController->startListen();
+
+        
+        connect(gameController, &GameController::refereeUpdated, this, [](const SSL_Referee &ref) {
+            qDebug() << "[GameController] New Referee Packet:";
+            qDebug() << "Stage:" << ref.stage();
+            qDebug() << "Command:" << ref.command();
+            qDebug() << "Yellow Score:" << ref.yellow().score();
+            qDebug() << "Blue Score:" << ref.blue().score();
+        });
+
     }
 
     ~MainApp() {
@@ -79,7 +99,7 @@ public:
             m_consoleReader->wait();
         }
         delete m_consoleReader;
-
+        delete gameController;
         delete radio;
         delete luaInterface;
     }
@@ -118,6 +138,7 @@ private:
     LuaInterface *luaInterface;
     ConsoleReader *m_consoleReader;
     Logger *logger;
+    GameController *gameController;
 };
 
 int main(int argc, char *argv[]) {

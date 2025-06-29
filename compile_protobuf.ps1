@@ -1,26 +1,35 @@
 # compile_protobuf.ps1
 
-# Requiere que 'protoc.exe' esté en el PATH o se configure manualmente más abajo
-# Puedes cambiar esto si necesitas usar una ruta específica a protoc.exe
-$protoc = "C:/protoc/bin/protoc.exe"
+# Ruta absoluta al compilador protoc.exe (ajústala si cambias de versión)
+$protoc = "C:\protobuf_old\bin\protoc.exe"
 
-# Directorios
+# Carpeta donde se dejarán los .pb.h y .pb.cc
 $dstDir = "./src/protobuf"
 
-# Archivos de RoboCup SSL
-$srcSSL = "./src/protobuf/squemes/robocup_ssl"
-$sslProtos = @(
-    "messages_robocup_ssl_detection.proto",
-    "messages_robocup_ssl_wrapper.proto",
-    "messages_robocup_ssl_geometry.proto"
-)
+# Directorio raíz de los .proto
+$srcSSL = "./src/protobuf/protos"
 
-# Archivos de GrSim
-$srcGrSim = "./src/protobuf/squemes/grsim"
-$grsimProtos = @(
-    "grSim_Commands.proto",
-    "grSim_Packet.proto",
-    "grSim_Replacement.proto"
+# Lista de archivos .proto de SSL Game Controller y otros
+$sslProtos = @(
+    "ssl_game_controller_auto_ref.proto",
+    "ssl_game_controller_common.proto",
+    "ssl_game_controller_geometry.proto",
+    "ssl_game_controller_team.proto",
+    "ssl_game_event_2019.proto",
+    "ssl_referee_game_event.proto",
+    "ssl_gc_common.proto",
+    "ssl_referee.proto",
+    "ssl_gc_common.proto",
+    "ssl_simulation_config.proto",
+    
+    "ssl_simulation_control.proto",
+    "ssl_simulation_error.proto",
+    "ssl_simulation_robot_control.proto",
+    "ssl_simulation_robot_feedback.proto",
+    "ssl_simulation_synchronous.proto",
+    "ssl_vision_detection.proto",
+    "ssl_vision_geometry.proto",
+    "ssl_vision_wrapper.proto"
 )
 
 # Crear carpeta destino si no existe
@@ -39,18 +48,14 @@ function Compile-Protos($srcDir, $protoFiles) {
 
         & $protoc -I="$srcDir" --cpp_out="$dstDir" "$protoPath"
         if ($LASTEXITCODE -ne 0) {
-            Write-Host " Falló la compilación de $proto" -ForegroundColor Yellow
+            Write-Host "Falló la compilación de $proto" -ForegroundColor Yellow
         } else {
             Write-Host "Compilado: $proto"
         }
     }
 }
 
-# Compilar todos los .proto
-Write-Host "Compilando archivos de RoboCup SSL..."
+Write-Host "⏳ Compilando archivos de RoboCup SSL..."
 Compile-Protos $srcSSL $sslProtos
 
-Write-Host "Compilando archivos de GrSim..."
-Compile-Protos $srcGrSim $grsimProtos
-
-Write-Host "Compilación completa. Archivos generados en: $dstDir" -ForegroundColor Green
+Write-Host "`n🎉 Compilación completa. Archivos generados en: $dstDir" -ForegroundColor Green

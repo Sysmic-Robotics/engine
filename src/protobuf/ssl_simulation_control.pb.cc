@@ -5,160 +5,130 @@
 
 #include <algorithm>
 
-#include <google/protobuf/stubs/common.h>
-#include <google/protobuf/stubs/port.h>
 #include <google/protobuf/io/coded_stream.h>
-#include <google/protobuf/wire_format_lite_inl.h>
+#include <google/protobuf/extension_set.h>
+#include <google/protobuf/wire_format_lite.h>
 #include <google/protobuf/descriptor.h>
 #include <google/protobuf/generated_message_reflection.h>
 #include <google/protobuf/reflection_ops.h>
 #include <google/protobuf/wire_format.h>
-// This is a temporary google only hack
-#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
-#include "third_party/protobuf/version.h"
-#endif
 // @@protoc_insertion_point(includes)
-
-namespace protobuf_ssl_5fgc_5fcommon_2eproto {
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_ssl_5fgc_5fcommon_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_RobotId;
-}  // namespace protobuf_ssl_5fgc_5fcommon_2eproto
-namespace protobuf_ssl_5fsimulation_5fconfig_2eproto {
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_ssl_5fsimulation_5fconfig_2eproto ::google::protobuf::internal::SCCInfo<3> scc_info_SimulatorConfig;
-}  // namespace protobuf_ssl_5fsimulation_5fconfig_2eproto
-namespace protobuf_ssl_5fsimulation_5fcontrol_2eproto {
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_ssl_5fsimulation_5fcontrol_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_TeleportBall;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_ssl_5fsimulation_5fcontrol_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_TeleportRobot;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_ssl_5fsimulation_5fcontrol_2eproto ::google::protobuf::internal::SCCInfo<2> scc_info_SimulatorControl;
-}  // namespace protobuf_ssl_5fsimulation_5fcontrol_2eproto
-namespace protobuf_ssl_5fsimulation_5ferror_2eproto {
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_ssl_5fsimulation_5ferror_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_SimulatorError;
-}  // namespace protobuf_ssl_5fsimulation_5ferror_2eproto
+#include <google/protobuf/port_def.inc>
+extern PROTOBUF_INTERNAL_EXPORT_ssl_5fgc_5fcommon_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_RobotId_ssl_5fgc_5fcommon_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_ssl_5fsimulation_5fconfig_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<3> scc_info_SimulatorConfig_ssl_5fsimulation_5fconfig_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_ssl_5fsimulation_5fcontrol_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_SimulatorControl_ssl_5fsimulation_5fcontrol_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_ssl_5fsimulation_5ferror_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_SimulatorError_ssl_5fsimulation_5ferror_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_ssl_5fsimulation_5fcontrol_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_TeleportBall_ssl_5fsimulation_5fcontrol_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_ssl_5fsimulation_5fcontrol_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_TeleportRobot_ssl_5fsimulation_5fcontrol_2eproto;
 class TeleportBallDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<TeleportBall>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<TeleportBall> _instance;
 } _TeleportBall_default_instance_;
 class TeleportRobotDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<TeleportRobot>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<TeleportRobot> _instance;
 } _TeleportRobot_default_instance_;
 class SimulatorControlDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<SimulatorControl>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<SimulatorControl> _instance;
 } _SimulatorControl_default_instance_;
 class SimulatorCommandDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<SimulatorCommand>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<SimulatorCommand> _instance;
 } _SimulatorCommand_default_instance_;
 class SimulatorResponseDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<SimulatorResponse>
-      _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<SimulatorResponse> _instance;
 } _SimulatorResponse_default_instance_;
-namespace protobuf_ssl_5fsimulation_5fcontrol_2eproto {
-static void InitDefaultsTeleportBall() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::_TeleportBall_default_instance_;
-    new (ptr) ::TeleportBall();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::TeleportBall::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<0> scc_info_TeleportBall =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsTeleportBall}, {}};
-
-static void InitDefaultsTeleportRobot() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::_TeleportRobot_default_instance_;
-    new (ptr) ::TeleportRobot();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::TeleportRobot::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<1> scc_info_TeleportRobot =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsTeleportRobot}, {
-      &protobuf_ssl_5fgc_5fcommon_2eproto::scc_info_RobotId.base,}};
-
-static void InitDefaultsSimulatorControl() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::_SimulatorControl_default_instance_;
-    new (ptr) ::SimulatorControl();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::SimulatorControl::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<2> scc_info_SimulatorControl =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 2, InitDefaultsSimulatorControl}, {
-      &protobuf_ssl_5fsimulation_5fcontrol_2eproto::scc_info_TeleportBall.base,
-      &protobuf_ssl_5fsimulation_5fcontrol_2eproto::scc_info_TeleportRobot.base,}};
-
-static void InitDefaultsSimulatorCommand() {
+static void InitDefaultsscc_info_SimulatorCommand_ssl_5fsimulation_5fcontrol_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
     void* ptr = &::_SimulatorCommand_default_instance_;
     new (ptr) ::SimulatorCommand();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::SimulatorCommand::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<2> scc_info_SimulatorCommand =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 2, InitDefaultsSimulatorCommand}, {
-      &protobuf_ssl_5fsimulation_5fcontrol_2eproto::scc_info_SimulatorControl.base,
-      &protobuf_ssl_5fsimulation_5fconfig_2eproto::scc_info_SimulatorConfig.base,}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_SimulatorCommand_ssl_5fsimulation_5fcontrol_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 2, 0, InitDefaultsscc_info_SimulatorCommand_ssl_5fsimulation_5fcontrol_2eproto}, {
+      &scc_info_SimulatorControl_ssl_5fsimulation_5fcontrol_2eproto.base,
+      &scc_info_SimulatorConfig_ssl_5fsimulation_5fconfig_2eproto.base,}};
 
-static void InitDefaultsSimulatorResponse() {
+static void InitDefaultsscc_info_SimulatorControl_ssl_5fsimulation_5fcontrol_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::_SimulatorControl_default_instance_;
+    new (ptr) ::SimulatorControl();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_SimulatorControl_ssl_5fsimulation_5fcontrol_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 2, 0, InitDefaultsscc_info_SimulatorControl_ssl_5fsimulation_5fcontrol_2eproto}, {
+      &scc_info_TeleportBall_ssl_5fsimulation_5fcontrol_2eproto.base,
+      &scc_info_TeleportRobot_ssl_5fsimulation_5fcontrol_2eproto.base,}};
+
+static void InitDefaultsscc_info_SimulatorResponse_ssl_5fsimulation_5fcontrol_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
     void* ptr = &::_SimulatorResponse_default_instance_;
     new (ptr) ::SimulatorResponse();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::SimulatorResponse::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<1> scc_info_SimulatorResponse =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsSimulatorResponse}, {
-      &protobuf_ssl_5fsimulation_5ferror_2eproto::scc_info_SimulatorError.base,}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_SimulatorResponse_ssl_5fsimulation_5fcontrol_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_SimulatorResponse_ssl_5fsimulation_5fcontrol_2eproto}, {
+      &scc_info_SimulatorError_ssl_5fsimulation_5ferror_2eproto.base,}};
 
-void InitDefaults() {
-  ::google::protobuf::internal::InitSCC(&scc_info_TeleportBall.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_TeleportRobot.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_SimulatorControl.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_SimulatorCommand.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_SimulatorResponse.base);
+static void InitDefaultsscc_info_TeleportBall_ssl_5fsimulation_5fcontrol_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::_TeleportBall_default_instance_;
+    new (ptr) ::TeleportBall();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
 }
 
-::google::protobuf::Metadata file_level_metadata[5];
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_TeleportBall_ssl_5fsimulation_5fcontrol_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_TeleportBall_ssl_5fsimulation_5fcontrol_2eproto}, {}};
 
-const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::TeleportBall, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::TeleportBall, _internal_metadata_),
+static void InitDefaultsscc_info_TeleportRobot_ssl_5fsimulation_5fcontrol_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::_TeleportRobot_default_instance_;
+    new (ptr) ::TeleportRobot();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_TeleportRobot_ssl_5fsimulation_5fcontrol_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_TeleportRobot_ssl_5fsimulation_5fcontrol_2eproto}, {
+      &scc_info_RobotId_ssl_5fgc_5fcommon_2eproto.base,}};
+
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_ssl_5fsimulation_5fcontrol_2eproto[5];
+static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_ssl_5fsimulation_5fcontrol_2eproto = nullptr;
+static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_ssl_5fsimulation_5fcontrol_2eproto = nullptr;
+
+const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_ssl_5fsimulation_5fcontrol_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+  PROTOBUF_FIELD_OFFSET(::TeleportBall, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::TeleportBall, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::TeleportBall, x_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::TeleportBall, y_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::TeleportBall, z_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::TeleportBall, vx_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::TeleportBall, vy_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::TeleportBall, vz_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::TeleportBall, teleport_safely_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::TeleportBall, roll_),
+  PROTOBUF_FIELD_OFFSET(::TeleportBall, x_),
+  PROTOBUF_FIELD_OFFSET(::TeleportBall, y_),
+  PROTOBUF_FIELD_OFFSET(::TeleportBall, z_),
+  PROTOBUF_FIELD_OFFSET(::TeleportBall, vx_),
+  PROTOBUF_FIELD_OFFSET(::TeleportBall, vy_),
+  PROTOBUF_FIELD_OFFSET(::TeleportBall, vz_),
+  PROTOBUF_FIELD_OFFSET(::TeleportBall, teleport_safely_),
+  PROTOBUF_FIELD_OFFSET(::TeleportBall, roll_),
   0,
   1,
   2,
@@ -167,19 +137,19 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   5,
   6,
   7,
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::TeleportRobot, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::TeleportRobot, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::TeleportRobot, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::TeleportRobot, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::TeleportRobot, id_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::TeleportRobot, x_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::TeleportRobot, y_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::TeleportRobot, orientation_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::TeleportRobot, v_x_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::TeleportRobot, v_y_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::TeleportRobot, v_angular_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::TeleportRobot, present_),
+  PROTOBUF_FIELD_OFFSET(::TeleportRobot, id_),
+  PROTOBUF_FIELD_OFFSET(::TeleportRobot, x_),
+  PROTOBUF_FIELD_OFFSET(::TeleportRobot, y_),
+  PROTOBUF_FIELD_OFFSET(::TeleportRobot, orientation_),
+  PROTOBUF_FIELD_OFFSET(::TeleportRobot, v_x_),
+  PROTOBUF_FIELD_OFFSET(::TeleportRobot, v_y_),
+  PROTOBUF_FIELD_OFFSET(::TeleportRobot, v_angular_),
+  PROTOBUF_FIELD_OFFSET(::TeleportRobot, present_),
   0,
   1,
   2,
@@ -188,139 +158,134 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   5,
   6,
   7,
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SimulatorControl, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SimulatorControl, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::SimulatorControl, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::SimulatorControl, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SimulatorControl, teleport_ball_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SimulatorControl, teleport_robot_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SimulatorControl, simulation_speed_),
+  PROTOBUF_FIELD_OFFSET(::SimulatorControl, teleport_ball_),
+  PROTOBUF_FIELD_OFFSET(::SimulatorControl, teleport_robot_),
+  PROTOBUF_FIELD_OFFSET(::SimulatorControl, simulation_speed_),
   0,
   ~0u,
   1,
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SimulatorCommand, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SimulatorCommand, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::SimulatorCommand, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::SimulatorCommand, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SimulatorCommand, control_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SimulatorCommand, config_),
+  PROTOBUF_FIELD_OFFSET(::SimulatorCommand, control_),
+  PROTOBUF_FIELD_OFFSET(::SimulatorCommand, config_),
   0,
   1,
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SimulatorResponse, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SimulatorResponse, _internal_metadata_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::SimulatorResponse, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::SimulatorResponse, errors_),
-  ~0u,
+  PROTOBUF_FIELD_OFFSET(::SimulatorResponse, errors_),
 };
-static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
+static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, 13, sizeof(::TeleportBall)},
   { 21, 34, sizeof(::TeleportRobot)},
   { 42, 50, sizeof(::SimulatorControl)},
   { 53, 60, sizeof(::SimulatorCommand)},
-  { 62, 68, sizeof(::SimulatorResponse)},
+  { 62, -1, sizeof(::SimulatorResponse)},
 };
 
-static ::google::protobuf::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::google::protobuf::Message*>(&::_TeleportBall_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::_TeleportRobot_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::_SimulatorControl_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::_SimulatorCommand_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::_SimulatorResponse_default_instance_),
+static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::_TeleportBall_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::_TeleportRobot_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::_SimulatorControl_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::_SimulatorCommand_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::_SimulatorResponse_default_instance_),
 };
 
-void protobuf_AssignDescriptors() {
-  AddDescriptors();
-  AssignDescriptors(
-      "ssl_simulation_control.proto", schemas, file_default_instances, TableStruct::offsets,
-      file_level_metadata, NULL, NULL);
-}
+const char descriptor_table_protodef_ssl_5fsimulation_5fcontrol_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
+  "\n\034ssl_simulation_control.proto\032\023ssl_gc_c"
+  "ommon.proto\032\033ssl_simulation_config.proto"
+  "\032\032ssl_simulation_error.proto\"\210\001\n\014Telepor"
+  "tBall\022\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\022\t\n\001z\030\003 \001(\002\022\n"
+  "\n\002vx\030\004 \001(\002\022\n\n\002vy\030\005 \001(\002\022\n\n\002vz\030\006 \001(\002\022\036\n\017te"
+  "leport_safely\030\007 \001(\010:\005false\022\023\n\004roll\030\010 \001(\010"
+  ":\005false\"\227\001\n\rTeleportRobot\022\024\n\002id\030\001 \002(\0132\010."
+  "RobotId\022\t\n\001x\030\002 \001(\002\022\t\n\001y\030\003 \001(\002\022\023\n\013orienta"
+  "tion\030\004 \001(\002\022\016\n\003v_x\030\005 \001(\002:\0010\022\016\n\003v_y\030\006 \001(\002:"
+  "\0010\022\024\n\tv_angular\030\007 \001(\002:\0010\022\017\n\007present\030\010 \001("
+  "\010\"z\n\020SimulatorControl\022$\n\rteleport_ball\030\001"
+  " \001(\0132\r.TeleportBall\022&\n\016teleport_robot\030\002 "
+  "\003(\0132\016.TeleportRobot\022\030\n\020simulation_speed\030"
+  "\003 \001(\002\"X\n\020SimulatorCommand\022\"\n\007control\030\001 \001"
+  "(\0132\021.SimulatorControl\022 \n\006config\030\002 \001(\0132\020."
+  "SimulatorConfig\"4\n\021SimulatorResponse\022\037\n\006"
+  "errors\030\001 \003(\0132\017.SimulatorErrorB8Z6github."
+  "com/RoboCup-SSL/ssl-simulation-protocol/"
+  "pkg/sim"
+  ;
+static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_ssl_5fsimulation_5fcontrol_2eproto_deps[3] = {
+  &::descriptor_table_ssl_5fgc_5fcommon_2eproto,
+  &::descriptor_table_ssl_5fsimulation_5fconfig_2eproto,
+  &::descriptor_table_ssl_5fsimulation_5ferror_2eproto,
+};
+static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_ssl_5fsimulation_5fcontrol_2eproto_sccs[5] = {
+  &scc_info_SimulatorCommand_ssl_5fsimulation_5fcontrol_2eproto.base,
+  &scc_info_SimulatorControl_ssl_5fsimulation_5fcontrol_2eproto.base,
+  &scc_info_SimulatorResponse_ssl_5fsimulation_5fcontrol_2eproto.base,
+  &scc_info_TeleportBall_ssl_5fsimulation_5fcontrol_2eproto.base,
+  &scc_info_TeleportRobot_ssl_5fsimulation_5fcontrol_2eproto.base,
+};
+static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_ssl_5fsimulation_5fcontrol_2eproto_once;
+const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_ssl_5fsimulation_5fcontrol_2eproto = {
+  false, false, descriptor_table_protodef_ssl_5fsimulation_5fcontrol_2eproto, "ssl_simulation_control.proto", 727,
+  &descriptor_table_ssl_5fsimulation_5fcontrol_2eproto_once, descriptor_table_ssl_5fsimulation_5fcontrol_2eproto_sccs, descriptor_table_ssl_5fsimulation_5fcontrol_2eproto_deps, 5, 3,
+  schemas, file_default_instances, TableStruct_ssl_5fsimulation_5fcontrol_2eproto::offsets,
+  file_level_metadata_ssl_5fsimulation_5fcontrol_2eproto, 5, file_level_enum_descriptors_ssl_5fsimulation_5fcontrol_2eproto, file_level_service_descriptors_ssl_5fsimulation_5fcontrol_2eproto,
+};
 
-void protobuf_AssignDescriptorsOnce() {
-  static ::google::protobuf::internal::once_flag once;
-  ::google::protobuf::internal::call_once(once, protobuf_AssignDescriptors);
-}
-
-void protobuf_RegisterTypes(const ::std::string&) GOOGLE_PROTOBUF_ATTRIBUTE_COLD;
-void protobuf_RegisterTypes(const ::std::string&) {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 5);
-}
-
-void AddDescriptorsImpl() {
-  InitDefaults();
-  static const char descriptor[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-      "\n\034ssl_simulation_control.proto\032\023ssl_gc_c"
-      "ommon.proto\032\033ssl_simulation_config.proto"
-      "\032\032ssl_simulation_error.proto\"\210\001\n\014Telepor"
-      "tBall\022\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\022\t\n\001z\030\003 \001(\002\022\n"
-      "\n\002vx\030\004 \001(\002\022\n\n\002vy\030\005 \001(\002\022\n\n\002vz\030\006 \001(\002\022\036\n\017te"
-      "leport_safely\030\007 \001(\010:\005false\022\023\n\004roll\030\010 \001(\010"
-      ":\005false\"\227\001\n\rTeleportRobot\022\024\n\002id\030\001 \002(\0132\010."
-      "RobotId\022\t\n\001x\030\002 \001(\002\022\t\n\001y\030\003 \001(\002\022\023\n\013orienta"
-      "tion\030\004 \001(\002\022\016\n\003v_x\030\005 \001(\002:\0010\022\016\n\003v_y\030\006 \001(\002:"
-      "\0010\022\024\n\tv_angular\030\007 \001(\002:\0010\022\017\n\007present\030\010 \001("
-      "\010\"z\n\020SimulatorControl\022$\n\rteleport_ball\030\001"
-      " \001(\0132\r.TeleportBall\022&\n\016teleport_robot\030\002 "
-      "\003(\0132\016.TeleportRobot\022\030\n\020simulation_speed\030"
-      "\003 \001(\002\"X\n\020SimulatorCommand\022\"\n\007control\030\001 \001"
-      "(\0132\021.SimulatorControl\022 \n\006config\030\002 \001(\0132\020."
-      "SimulatorConfig\"4\n\021SimulatorResponse\022\037\n\006"
-      "errors\030\001 \003(\0132\017.SimulatorErrorB8Z6github."
-      "com/RoboCup-SSL/ssl-simulation-protocol/"
-      "pkg/sim"
-  };
-  ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 727);
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
-    "ssl_simulation_control.proto", &protobuf_RegisterTypes);
-  ::protobuf_ssl_5fgc_5fcommon_2eproto::AddDescriptors();
-  ::protobuf_ssl_5fsimulation_5fconfig_2eproto::AddDescriptors();
-  ::protobuf_ssl_5fsimulation_5ferror_2eproto::AddDescriptors();
-}
-
-void AddDescriptors() {
-  static ::google::protobuf::internal::once_flag once;
-  ::google::protobuf::internal::call_once(once, AddDescriptorsImpl);
-}
-// Force AddDescriptors() to be called at dynamic initialization time.
-struct StaticDescriptorInitializer {
-  StaticDescriptorInitializer() {
-    AddDescriptors();
-  }
-} static_descriptor_initializer;
-}  // namespace protobuf_ssl_5fsimulation_5fcontrol_2eproto
+// Force running AddDescriptors() at dynamic initialization time.
+static bool dynamic_init_dummy_ssl_5fsimulation_5fcontrol_2eproto = (static_cast<void>(::PROTOBUF_NAMESPACE_ID::internal::AddDescriptors(&descriptor_table_ssl_5fsimulation_5fcontrol_2eproto)), true);
 
 // ===================================================================
 
-void TeleportBall::InitAsDefaultInstance() {
-}
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int TeleportBall::kXFieldNumber;
-const int TeleportBall::kYFieldNumber;
-const int TeleportBall::kZFieldNumber;
-const int TeleportBall::kVxFieldNumber;
-const int TeleportBall::kVyFieldNumber;
-const int TeleportBall::kVzFieldNumber;
-const int TeleportBall::kTeleportSafelyFieldNumber;
-const int TeleportBall::kRollFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+class TeleportBall::_Internal {
+ public:
+  using HasBits = decltype(std::declval<TeleportBall>()._has_bits_);
+  static void set_has_x(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+  static void set_has_y(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
+  static void set_has_z(HasBits* has_bits) {
+    (*has_bits)[0] |= 4u;
+  }
+  static void set_has_vx(HasBits* has_bits) {
+    (*has_bits)[0] |= 8u;
+  }
+  static void set_has_vy(HasBits* has_bits) {
+    (*has_bits)[0] |= 16u;
+  }
+  static void set_has_vz(HasBits* has_bits) {
+    (*has_bits)[0] |= 32u;
+  }
+  static void set_has_teleport_safely(HasBits* has_bits) {
+    (*has_bits)[0] |= 64u;
+  }
+  static void set_has_roll(HasBits* has_bits) {
+    (*has_bits)[0] |= 128u;
+  }
+};
 
-TeleportBall::TeleportBall()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ssl_5fsimulation_5fcontrol_2eproto::scc_info_TeleportBall.base);
+TeleportBall::TeleportBall(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:TeleportBall)
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:TeleportBall)
 }
 TeleportBall::TeleportBall(const TeleportBall& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
       _has_bits_(from._has_bits_) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::memcpy(&x_, &from.x_,
     static_cast<size_t>(reinterpret_cast<char*>(&roll_) -
     reinterpret_cast<char*>(&x_)) + sizeof(roll_));
@@ -328,296 +293,206 @@ TeleportBall::TeleportBall(const TeleportBall& from)
 }
 
 void TeleportBall::SharedCtor() {
-  ::memset(&x_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&roll_) -
+  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+      reinterpret_cast<char*>(&x_) - reinterpret_cast<char*>(this)),
+      0, static_cast<size_t>(reinterpret_cast<char*>(&roll_) -
       reinterpret_cast<char*>(&x_)) + sizeof(roll_));
 }
 
 TeleportBall::~TeleportBall() {
   // @@protoc_insertion_point(destructor:TeleportBall)
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 void TeleportBall::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
 }
 
+void TeleportBall::ArenaDtor(void* object) {
+  TeleportBall* _this = reinterpret_cast< TeleportBall* >(object);
+  (void)_this;
+}
+void TeleportBall::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void TeleportBall::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* TeleportBall::descriptor() {
-  ::protobuf_ssl_5fsimulation_5fcontrol_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ssl_5fsimulation_5fcontrol_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const TeleportBall& TeleportBall::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ssl_5fsimulation_5fcontrol_2eproto::scc_info_TeleportBall.base);
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_TeleportBall_ssl_5fsimulation_5fcontrol_2eproto.base);
   return *internal_default_instance();
 }
 
 
 void TeleportBall::Clear() {
 // @@protoc_insertion_point(message_clear_start:TeleportBall)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 255u) {
+  if (cached_has_bits & 0x000000ffu) {
     ::memset(&x_, 0, static_cast<size_t>(
         reinterpret_cast<char*>(&roll_) -
         reinterpret_cast<char*>(&x_)) + sizeof(roll_));
   }
   _has_bits_.Clear();
-  _internal_metadata_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-bool TeleportBall::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:TeleportBall)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+const char* TeleportBall::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
       // optional float x = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(13u /* 13 & 0xFF */)) {
-          set_has_x();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &x_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 13)) {
+          _Internal::set_has_x(&has_bits);
+          x_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
       // optional float y = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(21u /* 21 & 0xFF */)) {
-          set_has_y();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &y_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 21)) {
+          _Internal::set_has_y(&has_bits);
+          y_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
       // optional float z = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(29u /* 29 & 0xFF */)) {
-          set_has_z();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &z_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 29)) {
+          _Internal::set_has_z(&has_bits);
+          z_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
       // optional float vx = 4;
-      case 4: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(37u /* 37 & 0xFF */)) {
-          set_has_vx();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &vx_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 37)) {
+          _Internal::set_has_vx(&has_bits);
+          vx_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
       // optional float vy = 5;
-      case 5: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(45u /* 45 & 0xFF */)) {
-          set_has_vy();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &vy_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 45)) {
+          _Internal::set_has_vy(&has_bits);
+          vy_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
       // optional float vz = 6;
-      case 6: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(53u /* 53 & 0xFF */)) {
-          set_has_vz();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &vz_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 53)) {
+          _Internal::set_has_vz(&has_bits);
+          vz_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
       // optional bool teleport_safely = 7 [default = false];
-      case 7: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(56u /* 56 & 0xFF */)) {
-          set_has_teleport_safely();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
-                 input, &teleport_safely_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 56)) {
+          _Internal::set_has_teleport_safely(&has_bits);
+          teleport_safely_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       // optional bool roll = 8 [default = false];
-      case 8: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(64u /* 64 & 0xFF */)) {
-          set_has_roll();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
-                 input, &roll_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 8:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 64)) {
+          _Internal::set_has_roll(&has_bits);
+          roll_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
-        if (tag == 0) {
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
           goto success;
         }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
-    }
-  }
+    }  // switch
+  }  // while
 success:
-  // @@protoc_insertion_point(parse_success:TeleportBall)
-  return true;
+  _has_bits_.Or(has_bits);
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:TeleportBall)
-  return false;
-#undef DO_
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-void TeleportBall::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:TeleportBall)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  cached_has_bits = _has_bits_[0];
-  // optional float x = 1;
-  if (cached_has_bits & 0x00000001u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(1, this->x(), output);
-  }
-
-  // optional float y = 2;
-  if (cached_has_bits & 0x00000002u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(2, this->y(), output);
-  }
-
-  // optional float z = 3;
-  if (cached_has_bits & 0x00000004u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(3, this->z(), output);
-  }
-
-  // optional float vx = 4;
-  if (cached_has_bits & 0x00000008u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(4, this->vx(), output);
-  }
-
-  // optional float vy = 5;
-  if (cached_has_bits & 0x00000010u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(5, this->vy(), output);
-  }
-
-  // optional float vz = 6;
-  if (cached_has_bits & 0x00000020u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(6, this->vz(), output);
-  }
-
-  // optional bool teleport_safely = 7 [default = false];
-  if (cached_has_bits & 0x00000040u) {
-    ::google::protobuf::internal::WireFormatLite::WriteBool(7, this->teleport_safely(), output);
-  }
-
-  // optional bool roll = 8 [default = false];
-  if (cached_has_bits & 0x00000080u) {
-    ::google::protobuf::internal::WireFormatLite::WriteBool(8, this->roll(), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:TeleportBall)
-}
-
-::google::protobuf::uint8* TeleportBall::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::PROTOBUF_NAMESPACE_ID::uint8* TeleportBall::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:TeleportBall)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
   // optional float x = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(1, this->x(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(1, this->_internal_x(), target);
   }
 
   // optional float y = 2;
   if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(2, this->y(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(2, this->_internal_y(), target);
   }
 
   // optional float z = 3;
   if (cached_has_bits & 0x00000004u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(3, this->z(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(3, this->_internal_z(), target);
   }
 
   // optional float vx = 4;
   if (cached_has_bits & 0x00000008u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(4, this->vx(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(4, this->_internal_vx(), target);
   }
 
   // optional float vy = 5;
   if (cached_has_bits & 0x00000010u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(5, this->vy(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(5, this->_internal_vy(), target);
   }
 
   // optional float vz = 6;
   if (cached_has_bits & 0x00000020u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(6, this->vz(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(6, this->_internal_vz(), target);
   }
 
   // optional bool teleport_safely = 7 [default = false];
   if (cached_has_bits & 0x00000040u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(7, this->teleport_safely(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(7, this->_internal_teleport_safely(), target);
   }
 
   // optional bool roll = 8 [default = false];
   if (cached_has_bits & 0x00000080u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(8, this->roll(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(8, this->_internal_roll(), target);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:TeleportBall)
   return target;
@@ -627,67 +502,71 @@ size_t TeleportBall::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:TeleportBall)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
-  if (_has_bits_[0 / 32] & 255u) {
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x000000ffu) {
     // optional float x = 1;
-    if (has_x()) {
+    if (cached_has_bits & 0x00000001u) {
       total_size += 1 + 4;
     }
 
     // optional float y = 2;
-    if (has_y()) {
+    if (cached_has_bits & 0x00000002u) {
       total_size += 1 + 4;
     }
 
     // optional float z = 3;
-    if (has_z()) {
+    if (cached_has_bits & 0x00000004u) {
       total_size += 1 + 4;
     }
 
     // optional float vx = 4;
-    if (has_vx()) {
+    if (cached_has_bits & 0x00000008u) {
       total_size += 1 + 4;
     }
 
     // optional float vy = 5;
-    if (has_vy()) {
+    if (cached_has_bits & 0x00000010u) {
       total_size += 1 + 4;
     }
 
     // optional float vz = 6;
-    if (has_vz()) {
+    if (cached_has_bits & 0x00000020u) {
       total_size += 1 + 4;
     }
 
     // optional bool teleport_safely = 7 [default = false];
-    if (has_teleport_safely()) {
+    if (cached_has_bits & 0x00000040u) {
       total_size += 1 + 1;
     }
 
     // optional bool roll = 8 [default = false];
-    if (has_roll()) {
+    if (cached_has_bits & 0x00000080u) {
       total_size += 1 + 1;
     }
 
   }
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void TeleportBall::MergeFrom(const ::google::protobuf::Message& from) {
+void TeleportBall::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:TeleportBall)
   GOOGLE_DCHECK_NE(&from, this);
   const TeleportBall* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const TeleportBall>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<TeleportBall>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:TeleportBall)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:TeleportBall)
     MergeFrom(*source);
@@ -697,12 +576,12 @@ void TeleportBall::MergeFrom(const ::google::protobuf::Message& from) {
 void TeleportBall::MergeFrom(const TeleportBall& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:TeleportBall)
   GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 255u) {
+  if (cached_has_bits & 0x000000ffu) {
     if (cached_has_bits & 0x00000001u) {
       x_ = from.x_;
     }
@@ -731,7 +610,7 @@ void TeleportBall::MergeFrom(const TeleportBall& from) {
   }
 }
 
-void TeleportBall::CopyFrom(const ::google::protobuf::Message& from) {
+void TeleportBall::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:TeleportBall)
   if (&from == this) return;
   Clear();
@@ -749,67 +628,80 @@ bool TeleportBall::IsInitialized() const {
   return true;
 }
 
-void TeleportBall::Swap(TeleportBall* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void TeleportBall::InternalSwap(TeleportBall* other) {
   using std::swap;
-  swap(x_, other->x_);
-  swap(y_, other->y_);
-  swap(z_, other->z_);
-  swap(vx_, other->vx_);
-  swap(vy_, other->vy_);
-  swap(vz_, other->vz_);
-  swap(teleport_safely_, other->teleport_safely_);
-  swap(roll_, other->roll_);
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(TeleportBall, roll_)
+      + sizeof(TeleportBall::roll_)
+      - PROTOBUF_FIELD_OFFSET(TeleportBall, x_)>(
+          reinterpret_cast<char*>(&x_),
+          reinterpret_cast<char*>(&other->x_));
 }
 
-::google::protobuf::Metadata TeleportBall::GetMetadata() const {
-  protobuf_ssl_5fsimulation_5fcontrol_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ssl_5fsimulation_5fcontrol_2eproto::file_level_metadata[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata TeleportBall::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
 // ===================================================================
 
-void TeleportRobot::InitAsDefaultInstance() {
-  ::_TeleportRobot_default_instance_._instance.get_mutable()->id_ = const_cast< ::RobotId*>(
-      ::RobotId::internal_default_instance());
+class TeleportRobot::_Internal {
+ public:
+  using HasBits = decltype(std::declval<TeleportRobot>()._has_bits_);
+  static const ::RobotId& id(const TeleportRobot* msg);
+  static void set_has_id(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+  static void set_has_x(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
+  static void set_has_y(HasBits* has_bits) {
+    (*has_bits)[0] |= 4u;
+  }
+  static void set_has_orientation(HasBits* has_bits) {
+    (*has_bits)[0] |= 8u;
+  }
+  static void set_has_v_x(HasBits* has_bits) {
+    (*has_bits)[0] |= 16u;
+  }
+  static void set_has_v_y(HasBits* has_bits) {
+    (*has_bits)[0] |= 32u;
+  }
+  static void set_has_v_angular(HasBits* has_bits) {
+    (*has_bits)[0] |= 64u;
+  }
+  static void set_has_present(HasBits* has_bits) {
+    (*has_bits)[0] |= 128u;
+  }
+  static bool MissingRequiredFields(const HasBits& has_bits) {
+    return ((has_bits[0] & 0x00000001) ^ 0x00000001) != 0;
+  }
+};
+
+const ::RobotId&
+TeleportRobot::_Internal::id(const TeleportRobot* msg) {
+  return *msg->id_;
 }
 void TeleportRobot::clear_id() {
-  if (id_ != NULL) id_->Clear();
-  clear_has_id();
+  if (id_ != nullptr) id_->Clear();
+  _has_bits_[0] &= ~0x00000001u;
 }
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int TeleportRobot::kIdFieldNumber;
-const int TeleportRobot::kXFieldNumber;
-const int TeleportRobot::kYFieldNumber;
-const int TeleportRobot::kOrientationFieldNumber;
-const int TeleportRobot::kVXFieldNumber;
-const int TeleportRobot::kVYFieldNumber;
-const int TeleportRobot::kVAngularFieldNumber;
-const int TeleportRobot::kPresentFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-TeleportRobot::TeleportRobot()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ssl_5fsimulation_5fcontrol_2eproto::scc_info_TeleportRobot.base);
+TeleportRobot::TeleportRobot(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:TeleportRobot)
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:TeleportRobot)
 }
 TeleportRobot::TeleportRobot(const TeleportRobot& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
       _has_bits_(from._has_bits_) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  if (from.has_id()) {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_id()) {
     id_ = new ::RobotId(*from.id_);
   } else {
-    id_ = NULL;
+    id_ = nullptr;
   }
   ::memcpy(&x_, &from.x_,
     static_cast<size_t>(reinterpret_cast<char*>(&present_) -
@@ -818,302 +710,213 @@ TeleportRobot::TeleportRobot(const TeleportRobot& from)
 }
 
 void TeleportRobot::SharedCtor() {
-  ::memset(&id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&present_) -
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_TeleportRobot_ssl_5fsimulation_5fcontrol_2eproto.base);
+  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+      reinterpret_cast<char*>(&id_) - reinterpret_cast<char*>(this)),
+      0, static_cast<size_t>(reinterpret_cast<char*>(&present_) -
       reinterpret_cast<char*>(&id_)) + sizeof(present_));
 }
 
 TeleportRobot::~TeleportRobot() {
   // @@protoc_insertion_point(destructor:TeleportRobot)
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 void TeleportRobot::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
   if (this != internal_default_instance()) delete id_;
 }
 
+void TeleportRobot::ArenaDtor(void* object) {
+  TeleportRobot* _this = reinterpret_cast< TeleportRobot* >(object);
+  (void)_this;
+}
+void TeleportRobot::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void TeleportRobot::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* TeleportRobot::descriptor() {
-  ::protobuf_ssl_5fsimulation_5fcontrol_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ssl_5fsimulation_5fcontrol_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const TeleportRobot& TeleportRobot::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ssl_5fsimulation_5fcontrol_2eproto::scc_info_TeleportRobot.base);
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_TeleportRobot_ssl_5fsimulation_5fcontrol_2eproto.base);
   return *internal_default_instance();
 }
 
 
 void TeleportRobot::Clear() {
 // @@protoc_insertion_point(message_clear_start:TeleportRobot)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(id_ != NULL);
+    GOOGLE_DCHECK(id_ != nullptr);
     id_->Clear();
   }
-  if (cached_has_bits & 254u) {
+  if (cached_has_bits & 0x000000feu) {
     ::memset(&x_, 0, static_cast<size_t>(
         reinterpret_cast<char*>(&present_) -
         reinterpret_cast<char*>(&x_)) + sizeof(present_));
   }
   _has_bits_.Clear();
-  _internal_metadata_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-bool TeleportRobot::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:TeleportRobot)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+const char* TeleportRobot::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
       // required .RobotId id = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-               input, mutable_id()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_id(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       // optional float x = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(21u /* 21 & 0xFF */)) {
-          set_has_x();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &x_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 21)) {
+          _Internal::set_has_x(&has_bits);
+          x_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
       // optional float y = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(29u /* 29 & 0xFF */)) {
-          set_has_y();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &y_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 29)) {
+          _Internal::set_has_y(&has_bits);
+          y_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
       // optional float orientation = 4;
-      case 4: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(37u /* 37 & 0xFF */)) {
-          set_has_orientation();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &orientation_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 37)) {
+          _Internal::set_has_orientation(&has_bits);
+          orientation_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
       // optional float v_x = 5 [default = 0];
-      case 5: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(45u /* 45 & 0xFF */)) {
-          set_has_v_x();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &v_x_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 45)) {
+          _Internal::set_has_v_x(&has_bits);
+          v_x_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
       // optional float v_y = 6 [default = 0];
-      case 6: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(53u /* 53 & 0xFF */)) {
-          set_has_v_y();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &v_y_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 53)) {
+          _Internal::set_has_v_y(&has_bits);
+          v_y_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
       // optional float v_angular = 7 [default = 0];
-      case 7: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(61u /* 61 & 0xFF */)) {
-          set_has_v_angular();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &v_angular_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 61)) {
+          _Internal::set_has_v_angular(&has_bits);
+          v_angular_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
       // optional bool present = 8;
-      case 8: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(64u /* 64 & 0xFF */)) {
-          set_has_present();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
-                 input, &present_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 8:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 64)) {
+          _Internal::set_has_present(&has_bits);
+          present_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
-        if (tag == 0) {
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
           goto success;
         }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
-    }
-  }
+    }  // switch
+  }  // while
 success:
-  // @@protoc_insertion_point(parse_success:TeleportRobot)
-  return true;
+  _has_bits_.Or(has_bits);
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:TeleportRobot)
-  return false;
-#undef DO_
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-void TeleportRobot::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:TeleportRobot)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  cached_has_bits = _has_bits_[0];
-  // required .RobotId id = 1;
-  if (cached_has_bits & 0x00000001u) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->_internal_id(), output);
-  }
-
-  // optional float x = 2;
-  if (cached_has_bits & 0x00000002u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(2, this->x(), output);
-  }
-
-  // optional float y = 3;
-  if (cached_has_bits & 0x00000004u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(3, this->y(), output);
-  }
-
-  // optional float orientation = 4;
-  if (cached_has_bits & 0x00000008u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(4, this->orientation(), output);
-  }
-
-  // optional float v_x = 5 [default = 0];
-  if (cached_has_bits & 0x00000010u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(5, this->v_x(), output);
-  }
-
-  // optional float v_y = 6 [default = 0];
-  if (cached_has_bits & 0x00000020u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(6, this->v_y(), output);
-  }
-
-  // optional float v_angular = 7 [default = 0];
-  if (cached_has_bits & 0x00000040u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(7, this->v_angular(), output);
-  }
-
-  // optional bool present = 8;
-  if (cached_has_bits & 0x00000080u) {
-    ::google::protobuf::internal::WireFormatLite::WriteBool(8, this->present(), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:TeleportRobot)
-}
-
-::google::protobuf::uint8* TeleportRobot::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::PROTOBUF_NAMESPACE_ID::uint8* TeleportRobot::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:TeleportRobot)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
   // required .RobotId id = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        1, this->_internal_id(), deterministic, target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        1, _Internal::id(this), target, stream);
   }
 
   // optional float x = 2;
   if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(2, this->x(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(2, this->_internal_x(), target);
   }
 
   // optional float y = 3;
   if (cached_has_bits & 0x00000004u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(3, this->y(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(3, this->_internal_y(), target);
   }
 
   // optional float orientation = 4;
   if (cached_has_bits & 0x00000008u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(4, this->orientation(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(4, this->_internal_orientation(), target);
   }
 
   // optional float v_x = 5 [default = 0];
   if (cached_has_bits & 0x00000010u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(5, this->v_x(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(5, this->_internal_v_x(), target);
   }
 
   // optional float v_y = 6 [default = 0];
   if (cached_has_bits & 0x00000020u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(6, this->v_y(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(6, this->_internal_v_y(), target);
   }
 
   // optional float v_angular = 7 [default = 0];
   if (cached_has_bits & 0x00000040u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(7, this->v_angular(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(7, this->_internal_v_angular(), target);
   }
 
   // optional bool present = 8;
   if (cached_has_bits & 0x00000080u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(8, this->present(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(8, this->_internal_present(), target);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:TeleportRobot)
   return target;
@@ -1123,68 +926,72 @@ size_t TeleportRobot::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:TeleportRobot)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
   // required .RobotId id = 1;
-  if (has_id()) {
+  if (_internal_has_id()) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *id_);
   }
-  if (_has_bits_[0 / 32] & 254u) {
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x000000feu) {
     // optional float x = 2;
-    if (has_x()) {
+    if (cached_has_bits & 0x00000002u) {
       total_size += 1 + 4;
     }
 
     // optional float y = 3;
-    if (has_y()) {
+    if (cached_has_bits & 0x00000004u) {
       total_size += 1 + 4;
     }
 
     // optional float orientation = 4;
-    if (has_orientation()) {
+    if (cached_has_bits & 0x00000008u) {
       total_size += 1 + 4;
     }
 
     // optional float v_x = 5 [default = 0];
-    if (has_v_x()) {
+    if (cached_has_bits & 0x00000010u) {
       total_size += 1 + 4;
     }
 
     // optional float v_y = 6 [default = 0];
-    if (has_v_y()) {
+    if (cached_has_bits & 0x00000020u) {
       total_size += 1 + 4;
     }
 
     // optional float v_angular = 7 [default = 0];
-    if (has_v_angular()) {
+    if (cached_has_bits & 0x00000040u) {
       total_size += 1 + 4;
     }
 
     // optional bool present = 8;
-    if (has_present()) {
+    if (cached_has_bits & 0x00000080u) {
       total_size += 1 + 1;
     }
 
   }
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void TeleportRobot::MergeFrom(const ::google::protobuf::Message& from) {
+void TeleportRobot::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:TeleportRobot)
   GOOGLE_DCHECK_NE(&from, this);
   const TeleportRobot* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const TeleportRobot>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<TeleportRobot>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:TeleportRobot)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:TeleportRobot)
     MergeFrom(*source);
@@ -1194,14 +1001,14 @@ void TeleportRobot::MergeFrom(const ::google::protobuf::Message& from) {
 void TeleportRobot::MergeFrom(const TeleportRobot& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:TeleportRobot)
   GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 255u) {
+  if (cached_has_bits & 0x000000ffu) {
     if (cached_has_bits & 0x00000001u) {
-      mutable_id()->::RobotId::MergeFrom(from.id());
+      _internal_mutable_id()->::RobotId::MergeFrom(from._internal_id());
     }
     if (cached_has_bits & 0x00000002u) {
       x_ = from.x_;
@@ -1228,7 +1035,7 @@ void TeleportRobot::MergeFrom(const TeleportRobot& from) {
   }
 }
 
-void TeleportRobot::CopyFrom(const ::google::protobuf::Message& from) {
+void TeleportRobot::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:TeleportRobot)
   if (&from == this) return;
   Clear();
@@ -1243,247 +1050,207 @@ void TeleportRobot::CopyFrom(const TeleportRobot& from) {
 }
 
 bool TeleportRobot::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
+  if (_Internal::MissingRequiredFields(_has_bits_)) return false;
   return true;
 }
 
-void TeleportRobot::Swap(TeleportRobot* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void TeleportRobot::InternalSwap(TeleportRobot* other) {
   using std::swap;
-  swap(id_, other->id_);
-  swap(x_, other->x_);
-  swap(y_, other->y_);
-  swap(orientation_, other->orientation_);
-  swap(v_x_, other->v_x_);
-  swap(v_y_, other->v_y_);
-  swap(v_angular_, other->v_angular_);
-  swap(present_, other->present_);
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(TeleportRobot, present_)
+      + sizeof(TeleportRobot::present_)
+      - PROTOBUF_FIELD_OFFSET(TeleportRobot, id_)>(
+          reinterpret_cast<char*>(&id_),
+          reinterpret_cast<char*>(&other->id_));
 }
 
-::google::protobuf::Metadata TeleportRobot::GetMetadata() const {
-  protobuf_ssl_5fsimulation_5fcontrol_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ssl_5fsimulation_5fcontrol_2eproto::file_level_metadata[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata TeleportRobot::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
 // ===================================================================
 
-void SimulatorControl::InitAsDefaultInstance() {
-  ::_SimulatorControl_default_instance_._instance.get_mutable()->teleport_ball_ = const_cast< ::TeleportBall*>(
-      ::TeleportBall::internal_default_instance());
-}
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int SimulatorControl::kTeleportBallFieldNumber;
-const int SimulatorControl::kTeleportRobotFieldNumber;
-const int SimulatorControl::kSimulationSpeedFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+class SimulatorControl::_Internal {
+ public:
+  using HasBits = decltype(std::declval<SimulatorControl>()._has_bits_);
+  static const ::TeleportBall& teleport_ball(const SimulatorControl* msg);
+  static void set_has_teleport_ball(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+  static void set_has_simulation_speed(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
+};
 
-SimulatorControl::SimulatorControl()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ssl_5fsimulation_5fcontrol_2eproto::scc_info_SimulatorControl.base);
+const ::TeleportBall&
+SimulatorControl::_Internal::teleport_ball(const SimulatorControl* msg) {
+  return *msg->teleport_ball_;
+}
+SimulatorControl::SimulatorControl(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena),
+  teleport_robot_(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:SimulatorControl)
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:SimulatorControl)
 }
 SimulatorControl::SimulatorControl(const SimulatorControl& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
       _has_bits_(from._has_bits_),
       teleport_robot_(from.teleport_robot_) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  if (from.has_teleport_ball()) {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_teleport_ball()) {
     teleport_ball_ = new ::TeleportBall(*from.teleport_ball_);
   } else {
-    teleport_ball_ = NULL;
+    teleport_ball_ = nullptr;
   }
   simulation_speed_ = from.simulation_speed_;
   // @@protoc_insertion_point(copy_constructor:SimulatorControl)
 }
 
 void SimulatorControl::SharedCtor() {
-  ::memset(&teleport_ball_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&simulation_speed_) -
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_SimulatorControl_ssl_5fsimulation_5fcontrol_2eproto.base);
+  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+      reinterpret_cast<char*>(&teleport_ball_) - reinterpret_cast<char*>(this)),
+      0, static_cast<size_t>(reinterpret_cast<char*>(&simulation_speed_) -
       reinterpret_cast<char*>(&teleport_ball_)) + sizeof(simulation_speed_));
 }
 
 SimulatorControl::~SimulatorControl() {
   // @@protoc_insertion_point(destructor:SimulatorControl)
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 void SimulatorControl::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
   if (this != internal_default_instance()) delete teleport_ball_;
 }
 
+void SimulatorControl::ArenaDtor(void* object) {
+  SimulatorControl* _this = reinterpret_cast< SimulatorControl* >(object);
+  (void)_this;
+}
+void SimulatorControl::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void SimulatorControl::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* SimulatorControl::descriptor() {
-  ::protobuf_ssl_5fsimulation_5fcontrol_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ssl_5fsimulation_5fcontrol_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const SimulatorControl& SimulatorControl::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ssl_5fsimulation_5fcontrol_2eproto::scc_info_SimulatorControl.base);
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_SimulatorControl_ssl_5fsimulation_5fcontrol_2eproto.base);
   return *internal_default_instance();
 }
 
 
 void SimulatorControl::Clear() {
 // @@protoc_insertion_point(message_clear_start:SimulatorControl)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   teleport_robot_.Clear();
   cached_has_bits = _has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(teleport_ball_ != NULL);
+    GOOGLE_DCHECK(teleport_ball_ != nullptr);
     teleport_ball_->Clear();
   }
   simulation_speed_ = 0;
   _has_bits_.Clear();
-  _internal_metadata_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-bool SimulatorControl::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:SimulatorControl)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+const char* SimulatorControl::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
       // optional .TeleportBall teleport_ball = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-               input, mutable_teleport_ball()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_teleport_ball(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       // repeated .TeleportRobot teleport_robot = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-                input, add_teleport_robot()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_teleport_robot(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
+        } else goto handle_unusual;
+        continue;
       // optional float simulation_speed = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(29u /* 29 & 0xFF */)) {
-          set_has_simulation_speed();
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &simulation_speed_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 29)) {
+          _Internal::set_has_simulation_speed(&has_bits);
+          simulation_speed_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
-        if (tag == 0) {
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
           goto success;
         }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
-    }
-  }
+    }  // switch
+  }  // while
 success:
-  // @@protoc_insertion_point(parse_success:SimulatorControl)
-  return true;
+  _has_bits_.Or(has_bits);
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:SimulatorControl)
-  return false;
-#undef DO_
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-void SimulatorControl::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:SimulatorControl)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  cached_has_bits = _has_bits_[0];
-  // optional .TeleportBall teleport_ball = 1;
-  if (cached_has_bits & 0x00000001u) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->_internal_teleport_ball(), output);
-  }
-
-  // repeated .TeleportRobot teleport_robot = 2;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->teleport_robot_size()); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2,
-      this->teleport_robot(static_cast<int>(i)),
-      output);
-  }
-
-  // optional float simulation_speed = 3;
-  if (cached_has_bits & 0x00000002u) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(3, this->simulation_speed(), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:SimulatorControl)
-}
-
-::google::protobuf::uint8* SimulatorControl::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::PROTOBUF_NAMESPACE_ID::uint8* SimulatorControl::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:SimulatorControl)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
   // optional .TeleportBall teleport_ball = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        1, this->_internal_teleport_ball(), deterministic, target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        1, _Internal::teleport_ball(this), target, stream);
   }
 
   // repeated .TeleportRobot teleport_robot = 2;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->teleport_robot_size()); i < n; i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        2, this->teleport_robot(static_cast<int>(i)), deterministic, target);
+      n = static_cast<unsigned int>(this->_internal_teleport_robot_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(2, this->_internal_teleport_robot(i), target, stream);
   }
 
   // optional float simulation_speed = 3;
   if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(3, this->simulation_speed(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(3, this->_internal_simulation_speed(), target);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:SimulatorControl)
   return target;
@@ -1493,50 +1260,50 @@ size_t SimulatorControl::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:SimulatorControl)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // repeated .TeleportRobot teleport_robot = 2;
-  {
-    unsigned int count = static_cast<unsigned int>(this->teleport_robot_size());
-    total_size += 1UL * count;
-    for (unsigned int i = 0; i < count; i++) {
-      total_size +=
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          this->teleport_robot(static_cast<int>(i)));
-    }
+  total_size += 1UL * this->_internal_teleport_robot_size();
+  for (const auto& msg : this->teleport_robot_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
-  if (_has_bits_[0 / 32] & 3u) {
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
     // optional .TeleportBall teleport_ball = 1;
-    if (has_teleport_ball()) {
+    if (cached_has_bits & 0x00000001u) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
           *teleport_ball_);
     }
 
     // optional float simulation_speed = 3;
-    if (has_simulation_speed()) {
+    if (cached_has_bits & 0x00000002u) {
       total_size += 1 + 4;
     }
 
   }
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void SimulatorControl::MergeFrom(const ::google::protobuf::Message& from) {
+void SimulatorControl::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:SimulatorControl)
   GOOGLE_DCHECK_NE(&from, this);
   const SimulatorControl* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const SimulatorControl>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<SimulatorControl>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:SimulatorControl)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:SimulatorControl)
     MergeFrom(*source);
@@ -1546,15 +1313,15 @@ void SimulatorControl::MergeFrom(const ::google::protobuf::Message& from) {
 void SimulatorControl::MergeFrom(const SimulatorControl& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:SimulatorControl)
   GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   teleport_robot_.MergeFrom(from.teleport_robot_);
   cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 3u) {
+  if (cached_has_bits & 0x00000003u) {
     if (cached_has_bits & 0x00000001u) {
-      mutable_teleport_ball()->::TeleportBall::MergeFrom(from.teleport_ball());
+      _internal_mutable_teleport_ball()->::TeleportBall::MergeFrom(from._internal_teleport_ball());
     }
     if (cached_has_bits & 0x00000002u) {
       simulation_speed_ = from.simulation_speed_;
@@ -1563,7 +1330,7 @@ void SimulatorControl::MergeFrom(const SimulatorControl& from) {
   }
 }
 
-void SimulatorControl::CopyFrom(const ::google::protobuf::Message& from) {
+void SimulatorControl::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:SimulatorControl)
   if (&from == this) return;
   Clear();
@@ -1578,227 +1345,205 @@ void SimulatorControl::CopyFrom(const SimulatorControl& from) {
 }
 
 bool SimulatorControl::IsInitialized() const {
-  if (!::google::protobuf::internal::AllAreInitialized(this->teleport_robot())) return false;
+  if (!::PROTOBUF_NAMESPACE_ID::internal::AllAreInitialized(teleport_robot_)) return false;
   return true;
 }
 
-void SimulatorControl::Swap(SimulatorControl* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void SimulatorControl::InternalSwap(SimulatorControl* other) {
   using std::swap;
-  CastToBase(&teleport_robot_)->InternalSwap(CastToBase(&other->teleport_robot_));
-  swap(teleport_ball_, other->teleport_ball_);
-  swap(simulation_speed_, other->simulation_speed_);
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
+  teleport_robot_.InternalSwap(&other->teleport_robot_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(SimulatorControl, simulation_speed_)
+      + sizeof(SimulatorControl::simulation_speed_)
+      - PROTOBUF_FIELD_OFFSET(SimulatorControl, teleport_ball_)>(
+          reinterpret_cast<char*>(&teleport_ball_),
+          reinterpret_cast<char*>(&other->teleport_ball_));
 }
 
-::google::protobuf::Metadata SimulatorControl::GetMetadata() const {
-  protobuf_ssl_5fsimulation_5fcontrol_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ssl_5fsimulation_5fcontrol_2eproto::file_level_metadata[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata SimulatorControl::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
 // ===================================================================
 
-void SimulatorCommand::InitAsDefaultInstance() {
-  ::_SimulatorCommand_default_instance_._instance.get_mutable()->control_ = const_cast< ::SimulatorControl*>(
-      ::SimulatorControl::internal_default_instance());
-  ::_SimulatorCommand_default_instance_._instance.get_mutable()->config_ = const_cast< ::SimulatorConfig*>(
-      ::SimulatorConfig::internal_default_instance());
+class SimulatorCommand::_Internal {
+ public:
+  using HasBits = decltype(std::declval<SimulatorCommand>()._has_bits_);
+  static const ::SimulatorControl& control(const SimulatorCommand* msg);
+  static void set_has_control(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+  static const ::SimulatorConfig& config(const SimulatorCommand* msg);
+  static void set_has_config(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
+};
+
+const ::SimulatorControl&
+SimulatorCommand::_Internal::control(const SimulatorCommand* msg) {
+  return *msg->control_;
+}
+const ::SimulatorConfig&
+SimulatorCommand::_Internal::config(const SimulatorCommand* msg) {
+  return *msg->config_;
 }
 void SimulatorCommand::clear_config() {
-  if (config_ != NULL) config_->Clear();
-  clear_has_config();
+  if (config_ != nullptr) config_->Clear();
+  _has_bits_[0] &= ~0x00000002u;
 }
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int SimulatorCommand::kControlFieldNumber;
-const int SimulatorCommand::kConfigFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-SimulatorCommand::SimulatorCommand()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ssl_5fsimulation_5fcontrol_2eproto::scc_info_SimulatorCommand.base);
+SimulatorCommand::SimulatorCommand(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:SimulatorCommand)
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:SimulatorCommand)
 }
 SimulatorCommand::SimulatorCommand(const SimulatorCommand& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
       _has_bits_(from._has_bits_) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  if (from.has_control()) {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_control()) {
     control_ = new ::SimulatorControl(*from.control_);
   } else {
-    control_ = NULL;
+    control_ = nullptr;
   }
-  if (from.has_config()) {
+  if (from._internal_has_config()) {
     config_ = new ::SimulatorConfig(*from.config_);
   } else {
-    config_ = NULL;
+    config_ = nullptr;
   }
   // @@protoc_insertion_point(copy_constructor:SimulatorCommand)
 }
 
 void SimulatorCommand::SharedCtor() {
-  ::memset(&control_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&config_) -
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_SimulatorCommand_ssl_5fsimulation_5fcontrol_2eproto.base);
+  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+      reinterpret_cast<char*>(&control_) - reinterpret_cast<char*>(this)),
+      0, static_cast<size_t>(reinterpret_cast<char*>(&config_) -
       reinterpret_cast<char*>(&control_)) + sizeof(config_));
 }
 
 SimulatorCommand::~SimulatorCommand() {
   // @@protoc_insertion_point(destructor:SimulatorCommand)
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 void SimulatorCommand::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
   if (this != internal_default_instance()) delete control_;
   if (this != internal_default_instance()) delete config_;
 }
 
+void SimulatorCommand::ArenaDtor(void* object) {
+  SimulatorCommand* _this = reinterpret_cast< SimulatorCommand* >(object);
+  (void)_this;
+}
+void SimulatorCommand::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void SimulatorCommand::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* SimulatorCommand::descriptor() {
-  ::protobuf_ssl_5fsimulation_5fcontrol_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ssl_5fsimulation_5fcontrol_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const SimulatorCommand& SimulatorCommand::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ssl_5fsimulation_5fcontrol_2eproto::scc_info_SimulatorCommand.base);
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_SimulatorCommand_ssl_5fsimulation_5fcontrol_2eproto.base);
   return *internal_default_instance();
 }
 
 
 void SimulatorCommand::Clear() {
 // @@protoc_insertion_point(message_clear_start:SimulatorCommand)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 3u) {
+  if (cached_has_bits & 0x00000003u) {
     if (cached_has_bits & 0x00000001u) {
-      GOOGLE_DCHECK(control_ != NULL);
+      GOOGLE_DCHECK(control_ != nullptr);
       control_->Clear();
     }
     if (cached_has_bits & 0x00000002u) {
-      GOOGLE_DCHECK(config_ != NULL);
+      GOOGLE_DCHECK(config_ != nullptr);
       config_->Clear();
     }
   }
   _has_bits_.Clear();
-  _internal_metadata_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-bool SimulatorCommand::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:SimulatorCommand)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+const char* SimulatorCommand::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
       // optional .SimulatorControl control = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-               input, mutable_control()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_control(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       // optional .SimulatorConfig config = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-               input, mutable_config()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          ptr = ctx->ParseMessage(_internal_mutable_config(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
-        if (tag == 0) {
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
           goto success;
         }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
-    }
-  }
+    }  // switch
+  }  // while
 success:
-  // @@protoc_insertion_point(parse_success:SimulatorCommand)
-  return true;
+  _has_bits_.Or(has_bits);
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:SimulatorCommand)
-  return false;
-#undef DO_
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-void SimulatorCommand::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:SimulatorCommand)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  cached_has_bits = _has_bits_[0];
-  // optional .SimulatorControl control = 1;
-  if (cached_has_bits & 0x00000001u) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->_internal_control(), output);
-  }
-
-  // optional .SimulatorConfig config = 2;
-  if (cached_has_bits & 0x00000002u) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, this->_internal_config(), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:SimulatorCommand)
-}
-
-::google::protobuf::uint8* SimulatorCommand::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::PROTOBUF_NAMESPACE_ID::uint8* SimulatorCommand::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:SimulatorCommand)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
   // optional .SimulatorControl control = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        1, this->_internal_control(), deterministic, target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        1, _Internal::control(this), target, stream);
   }
 
   // optional .SimulatorConfig config = 2;
   if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        2, this->_internal_config(), deterministic, target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        2, _Internal::config(this), target, stream);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:SimulatorCommand)
   return target;
@@ -1808,41 +1553,45 @@ size_t SimulatorCommand::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:SimulatorCommand)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
-  if (_has_bits_[0 / 32] & 3u) {
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
     // optional .SimulatorControl control = 1;
-    if (has_control()) {
+    if (cached_has_bits & 0x00000001u) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
           *control_);
     }
 
     // optional .SimulatorConfig config = 2;
-    if (has_config()) {
+    if (cached_has_bits & 0x00000002u) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
           *config_);
     }
 
   }
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void SimulatorCommand::MergeFrom(const ::google::protobuf::Message& from) {
+void SimulatorCommand::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:SimulatorCommand)
   GOOGLE_DCHECK_NE(&from, this);
   const SimulatorCommand* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const SimulatorCommand>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<SimulatorCommand>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:SimulatorCommand)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:SimulatorCommand)
     MergeFrom(*source);
@@ -1852,22 +1601,22 @@ void SimulatorCommand::MergeFrom(const ::google::protobuf::Message& from) {
 void SimulatorCommand::MergeFrom(const SimulatorCommand& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:SimulatorCommand)
   GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 3u) {
+  if (cached_has_bits & 0x00000003u) {
     if (cached_has_bits & 0x00000001u) {
-      mutable_control()->::SimulatorControl::MergeFrom(from.control());
+      _internal_mutable_control()->::SimulatorControl::MergeFrom(from._internal_control());
     }
     if (cached_has_bits & 0x00000002u) {
-      mutable_config()->::SimulatorConfig::MergeFrom(from.config());
+      _internal_mutable_config()->::SimulatorConfig::MergeFrom(from._internal_config());
     }
   }
 }
 
-void SimulatorCommand::CopyFrom(const ::google::protobuf::Message& from) {
+void SimulatorCommand::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:SimulatorCommand)
   if (&from == this) return;
   Clear();
@@ -1882,178 +1631,152 @@ void SimulatorCommand::CopyFrom(const SimulatorCommand& from) {
 }
 
 bool SimulatorCommand::IsInitialized() const {
-  if (has_control()) {
-    if (!this->control_->IsInitialized()) return false;
+  if (_internal_has_control()) {
+    if (!control_->IsInitialized()) return false;
   }
-  if (has_config()) {
-    if (!this->config_->IsInitialized()) return false;
+  if (_internal_has_config()) {
+    if (!config_->IsInitialized()) return false;
   }
   return true;
 }
 
-void SimulatorCommand::Swap(SimulatorCommand* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void SimulatorCommand::InternalSwap(SimulatorCommand* other) {
   using std::swap;
-  swap(control_, other->control_);
-  swap(config_, other->config_);
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(SimulatorCommand, config_)
+      + sizeof(SimulatorCommand::config_)
+      - PROTOBUF_FIELD_OFFSET(SimulatorCommand, control_)>(
+          reinterpret_cast<char*>(&control_),
+          reinterpret_cast<char*>(&other->control_));
 }
 
-::google::protobuf::Metadata SimulatorCommand::GetMetadata() const {
-  protobuf_ssl_5fsimulation_5fcontrol_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ssl_5fsimulation_5fcontrol_2eproto::file_level_metadata[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata SimulatorCommand::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
 // ===================================================================
 
-void SimulatorResponse::InitAsDefaultInstance() {
-}
+class SimulatorResponse::_Internal {
+ public:
+};
+
 void SimulatorResponse::clear_errors() {
   errors_.Clear();
 }
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int SimulatorResponse::kErrorsFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-SimulatorResponse::SimulatorResponse()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_ssl_5fsimulation_5fcontrol_2eproto::scc_info_SimulatorResponse.base);
+SimulatorResponse::SimulatorResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena),
+  errors_(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:SimulatorResponse)
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:SimulatorResponse)
 }
 SimulatorResponse::SimulatorResponse(const SimulatorResponse& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
-      _has_bits_(from._has_bits_),
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
       errors_(from.errors_) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   // @@protoc_insertion_point(copy_constructor:SimulatorResponse)
 }
 
 void SimulatorResponse::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_SimulatorResponse_ssl_5fsimulation_5fcontrol_2eproto.base);
 }
 
 SimulatorResponse::~SimulatorResponse() {
   // @@protoc_insertion_point(destructor:SimulatorResponse)
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 void SimulatorResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
 }
 
+void SimulatorResponse::ArenaDtor(void* object) {
+  SimulatorResponse* _this = reinterpret_cast< SimulatorResponse* >(object);
+  (void)_this;
+}
+void SimulatorResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void SimulatorResponse::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* SimulatorResponse::descriptor() {
-  ::protobuf_ssl_5fsimulation_5fcontrol_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ssl_5fsimulation_5fcontrol_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
 const SimulatorResponse& SimulatorResponse::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_ssl_5fsimulation_5fcontrol_2eproto::scc_info_SimulatorResponse.base);
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_SimulatorResponse_ssl_5fsimulation_5fcontrol_2eproto.base);
   return *internal_default_instance();
 }
 
 
 void SimulatorResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:SimulatorResponse)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   errors_.Clear();
-  _has_bits_.Clear();
-  _internal_metadata_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-bool SimulatorResponse::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:SimulatorResponse)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+const char* SimulatorResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
       // repeated .SimulatorError errors = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-                input, add_errors()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_errors(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
-        if (tag == 0) {
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
           goto success;
         }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
-    }
-  }
+    }  // switch
+  }  // while
 success:
-  // @@protoc_insertion_point(parse_success:SimulatorResponse)
-  return true;
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:SimulatorResponse)
-  return false;
-#undef DO_
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-void SimulatorResponse::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:SimulatorResponse)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // repeated .SimulatorError errors = 1;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->errors_size()); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1,
-      this->errors(static_cast<int>(i)),
-      output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:SimulatorResponse)
-}
-
-::google::protobuf::uint8* SimulatorResponse::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::PROTOBUF_NAMESPACE_ID::uint8* SimulatorResponse::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:SimulatorResponse)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // repeated .SimulatorError errors = 1;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->errors_size()); i < n; i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        1, this->errors(static_cast<int>(i)), deterministic, target);
+      n = static_cast<unsigned int>(this->_internal_errors_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, this->_internal_errors(i), target, stream);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:SimulatorResponse)
   return target;
@@ -2063,36 +1786,35 @@ size_t SimulatorResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:SimulatorResponse)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // repeated .SimulatorError errors = 1;
-  {
-    unsigned int count = static_cast<unsigned int>(this->errors_size());
-    total_size += 1UL * count;
-    for (unsigned int i = 0; i < count; i++) {
-      total_size +=
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          this->errors(static_cast<int>(i)));
-    }
+  total_size += 1UL * this->_internal_errors_size();
+  for (const auto& msg : this->errors_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void SimulatorResponse::MergeFrom(const ::google::protobuf::Message& from) {
+void SimulatorResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:SimulatorResponse)
   GOOGLE_DCHECK_NE(&from, this);
   const SimulatorResponse* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const SimulatorResponse>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<SimulatorResponse>(
           &from);
-  if (source == NULL) {
+  if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:SimulatorResponse)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:SimulatorResponse)
     MergeFrom(*source);
@@ -2102,14 +1824,14 @@ void SimulatorResponse::MergeFrom(const ::google::protobuf::Message& from) {
 void SimulatorResponse::MergeFrom(const SimulatorResponse& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:SimulatorResponse)
   GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   errors_.MergeFrom(from.errors_);
 }
 
-void SimulatorResponse::CopyFrom(const ::google::protobuf::Message& from) {
+void SimulatorResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:SimulatorResponse)
   if (&from == this) return;
   Clear();
@@ -2127,42 +1849,35 @@ bool SimulatorResponse::IsInitialized() const {
   return true;
 }
 
-void SimulatorResponse::Swap(SimulatorResponse* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void SimulatorResponse::InternalSwap(SimulatorResponse* other) {
   using std::swap;
-  CastToBase(&errors_)->InternalSwap(CastToBase(&other->errors_));
-  swap(_has_bits_[0], other->_has_bits_[0]);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  errors_.InternalSwap(&other->errors_);
 }
 
-::google::protobuf::Metadata SimulatorResponse::GetMetadata() const {
-  protobuf_ssl_5fsimulation_5fcontrol_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_ssl_5fsimulation_5fcontrol_2eproto::file_level_metadata[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata SimulatorResponse::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
 // @@protoc_insertion_point(namespace_scope)
-namespace google {
-namespace protobuf {
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::TeleportBall* Arena::CreateMaybeMessage< ::TeleportBall >(Arena* arena) {
-  return Arena::CreateInternal< ::TeleportBall >(arena);
+PROTOBUF_NAMESPACE_OPEN
+template<> PROTOBUF_NOINLINE ::TeleportBall* Arena::CreateMaybeMessage< ::TeleportBall >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::TeleportBall >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::TeleportRobot* Arena::CreateMaybeMessage< ::TeleportRobot >(Arena* arena) {
-  return Arena::CreateInternal< ::TeleportRobot >(arena);
+template<> PROTOBUF_NOINLINE ::TeleportRobot* Arena::CreateMaybeMessage< ::TeleportRobot >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::TeleportRobot >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::SimulatorControl* Arena::CreateMaybeMessage< ::SimulatorControl >(Arena* arena) {
-  return Arena::CreateInternal< ::SimulatorControl >(arena);
+template<> PROTOBUF_NOINLINE ::SimulatorControl* Arena::CreateMaybeMessage< ::SimulatorControl >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::SimulatorControl >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::SimulatorCommand* Arena::CreateMaybeMessage< ::SimulatorCommand >(Arena* arena) {
-  return Arena::CreateInternal< ::SimulatorCommand >(arena);
+template<> PROTOBUF_NOINLINE ::SimulatorCommand* Arena::CreateMaybeMessage< ::SimulatorCommand >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::SimulatorCommand >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::SimulatorResponse* Arena::CreateMaybeMessage< ::SimulatorResponse >(Arena* arena) {
-  return Arena::CreateInternal< ::SimulatorResponse >(arena);
+template<> PROTOBUF_NOINLINE ::SimulatorResponse* Arena::CreateMaybeMessage< ::SimulatorResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::SimulatorResponse >(arena);
 }
-}  // namespace protobuf
-}  // namespace google
+PROTOBUF_NAMESPACE_CLOSE
 
 // @@protoc_insertion_point(global_scope)
+#include <google/protobuf/port_undef.inc>

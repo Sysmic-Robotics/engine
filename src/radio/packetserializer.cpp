@@ -1,6 +1,7 @@
 // packetserializer.cpp
 #include "packetserializer.hpp"
 #include <cmath>
+#include <QDebug>
 
 QByteArray PacketSerializer::serialize(const QHash<int, RobotCommand>& commandMap,
                                        int numRobots)
@@ -18,10 +19,15 @@ QByteArray PacketSerializer::serialize(const QHash<int, RobotCommand>& commandMa
             const MotionCommand& m = cmd.getMotionCommand();
             const KickerCommand& k = cmd.getKickerCommand();
 
-            int vX      = static_cast<int>(m.getVx());
-            int vY      = static_cast<int>(m.getVy());
-            int vTH     = static_cast<int>(m.getAngular());
+            int vX      = static_cast<int>(m.getVx()*100);
+            int vY      = static_cast<int>(m.getVy()*100);
+            int vTH     = static_cast<int>(m.getAngular()*100);
             int dribb   = static_cast<int>(k.getDribbler());
+            qDebug() << " m.getVx():" << m.getVx()
+                     << " m.getVy():" << m.getVy()
+                     << " m.getAngular():" << m.getAngular()
+                     << " k.getDribbler():" << k.getDribbler();
+
             int kick    = k.getKickX() ? 1 : 0;
             int callback= 0;  // si necesitas callback, ajusta aquí
 

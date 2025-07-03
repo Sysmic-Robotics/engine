@@ -1,6 +1,7 @@
 // packetserializer.cpp
 #include "packetserializer.hpp"
 #include <cmath>
+#include <QDebug>
 
 QByteArray PacketSerializer::serialize(const QHash<int, RobotCommand>& commandMap,
                                        int numRobots)
@@ -17,13 +18,23 @@ QByteArray PacketSerializer::serialize(const QHash<int, RobotCommand>& commandMa
             const RobotCommand& cmd = it.value();
             const MotionCommand& m = cmd.getMotionCommand();
             const KickerCommand& k = cmd.getKickerCommand();
-
-            int vX      = static_cast<int>(m.getVx());
-            int vY      = static_cast<int>(m.getVy());
-            int vTH     = static_cast<int>(m.getAngular());
+            // El 100 es para que tome la parte decimal de la velocidad
+            int vX      = static_cast<int>(m.getVx()*100);
+            int vY      = static_cast<int>(m.getVy()*100);
+            int vTH     = static_cast<int>(m.getAngular()*100);
             int dribb   = static_cast<int>(k.getDribbler());
+            qDebug() << " m.getVx():" << m.getVx()
+                     << " m.getVy():" << m.getVy()
+                     << " m.getAngular():" << m.getAngular()
+                     << " k.getDribbler():" << k.getDribbler();
+
             int kick    = k.getKickX() ? 1 : 0;
             int callback= 0;  // si necesitas callback, ajusta aquí
+
+            // Limitar vX, vY, vTH al rango [-511, 511]
+            vX = std::max(-511, std::min(511, vX));
+            vY = std::max(-511, std::min(511, vY));
+            vTH = std::max(-511, std::min(511, vTH));
 
             // Byte 0: ID(3) | dribbler(3) | kick(1) | callback(1)
             bytes[0]  = (id & 0x07) << 5;
@@ -32,7 +43,7 @@ QByteArray PacketSerializer::serialize(const QHash<int, RobotCommand>& commandMa
             bytes[0] |= (callback & 0x01);
 
             // Byte 1: signo vX (1) | 7 bits abs(vX)
-            bytes[1] = ((vX >= 0) ? 1 : 0) << 7
+            bytes[1] = ((vX < 0) ? 1 : 0) << 7
                      | (std::abs(vX) & 0x7F);
 
             // Byte 2: signo vY (1) | 7 bits abs(vY)

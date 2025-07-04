@@ -119,7 +119,7 @@ void World::updateRobot(int id, int team, QVector2D position, float orientation,
 
     if (team == 0){
         if (blueRobots.contains(id)) {
-            blueRobots[id].setVelocity( velocity );
+            blueRobots[id].setVelocity( (position - getRobotState(id, team).getPosition() )/0.016 );
             blueRobots[id].setAngularVelocity(omega);
             blueRobots[id].setPosition(position);
             blueRobots[id].setOrientation(orientation);
@@ -127,7 +127,7 @@ void World::updateRobot(int id, int team, QVector2D position, float orientation,
         }
     }else{
         if (yellowRobots.contains(id)) {
-            yellowRobots[id].setVelocity(  velocity );
+            yellowRobots[id].setVelocity(  (position - getRobotState(id, team).getPosition() )/0.016 );
             yellowRobots[id].setAngularVelocity(omega);
             yellowRobots[id].setPosition(position);
             yellowRobots[id].setOrientation(orientation);

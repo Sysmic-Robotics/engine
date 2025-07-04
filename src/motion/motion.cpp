@@ -62,14 +62,13 @@ MotionCommand Motion::move_to(const RobotState& robotState, QVector2D targetPoin
 }
 
 MotionCommand Motion::motion(const RobotState& robotState, QVector2D targetPoint, const World* world,
-    double Kp_vel, double Ki_vel) {
+    double Kp_x, double Ki_x, double Kp_y, double Ki_y) {
     static BangBangControl bangbangControl(2.5f, 5.0f); // Acceleration & velocity limits
     static FastPathPlanner planner;
 
     QVector2D from = robotState.getPosition();
     QVector2D to = targetPoint;
     int selfId = robotState.getId();
-    int selfTeam = robotState.getTeam();
 
     std::vector<QVector2D> otherRobots;
 
@@ -89,8 +88,10 @@ MotionCommand Motion::motion(const RobotState& robotState, QVector2D targetPoint
     // === Create environment ===
     Environment env(otherRobots, ballPos);
 
+    // === Compute path ===
     std::vector<QVector2D> pathVec = planner.getPath(from, to, env);
 
+    // === Convert to QList for the motion controller ===
     QList<QVector2D> path;
     if (!pathVec.empty()) {
         for (const QVector2D& p : pathVec)
@@ -101,25 +102,21 @@ MotionCommand Motion::motion(const RobotState& robotState, QVector2D targetPoint
 
     double delta = 1.0 / 60.0; // Frame delta time
     // Calcular velocidades de referencia
-    MotionCommand cmd = bangbangControl.computeMotion(robotState, path, delta);
+    MotionCommand ref_vel = bangbangControl.computeMotion(robotState, path, delta);
 
-    QVector2D knownDrift(0.0, 0.0); // This should be set based on your robot's known drift
+    // Vx
+    static PID pidControlX(Kp_x, Ki_x, 0);
+    double error_x = ref_vel.getVx() - robotState.getVelocity().x();
+    double new_vx = pidControlX.compute(error_x, 0.016);
 
-    // error de velocidades
-    QVector2D errorVelocity(
-        cmd.getVx() - robotState.getVelocity().x() - knownDrift.x(),
-        cmd.getVy() - robotState.getVelocity().y() - knownDrift.y()
-    );
+    // Vy
+    static PID pidControlY(Kp_y, Ki_y, 0);
+    double error_y = ref_vel.getVy() - robotState.getVelocity().y();
+    double new_vy = pidControlY.compute(error_y, 0.016);
 
-    static PID piVelControl(Kp_vel, Ki_vel,0); // Example gains, adjust as needed
-    QVector2D pi_velVector(
-        piVelControl.compute(errorVelocity.x(), delta),
-        piVelControl.compute(errorVelocity.y(), delta)
-    );
+    MotionCommand cmd(robotState.getId(), robotState.getTeam(), new_vx, new_vy);
+ 
 
-    // Agregar vector de correccion a priori ya conocido
-    cmd.setVx(cmd.getVx() + pi_velVector.x() + knownDrift.x());
-    cmd.setVy(cmd.getVy() + pi_velVector.y() + knownDrift.y());
 
     return cmd;
 }
@@ -132,16 +129,16 @@ MotionCommand Motion::face_to(const RobotState& robotState, QVector2D targetPoin
 
     // Helper lambda to normalize angles to [-pi, pi]
     auto normalizeAngle = [](double angle) {
-    while (angle > M_PI) angle -= 2 * M_PI;
-    while (angle < -M_PI) angle += 2 * M_PI;
-    return angle;
+        while (angle > M_PI) angle -= 2 * M_PI;
+        while (angle < -M_PI) angle += 2 * M_PI;
+        return angle;
     };
 
     // Normalize angles
     double currentAngle = normalizeAngle(robotState.getOrientation());
     double targetAngle = normalizeAngle(std::atan2(
-    targetPoint.y() - robotState.getPosition().y(),
-    targetPoint.x() - robotState.getPosition().x()
+        targetPoint.y() - robotState.getPosition().y(),
+        targetPoint.x() - robotState.getPosition().x()
     ));
 
     // Compute error

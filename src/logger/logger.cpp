@@ -1,5 +1,6 @@
 #include "logger.hpp"
 #include <QDir>
+#include <QDebug>
 
 Logger::Logger(World* world, Radio* radio, QObject* parent)
     : QObject(parent), m_world(world), m_radio(radio) {}
@@ -64,7 +65,6 @@ void Logger::logFrame() {
     for (int team = 0; team <= 1; ++team) {
         for (int id = 0; id < numRobots; ++id) {
             RobotState state = m_world->getRobotState(id, team);
-
             // Default to zero motion
             double vx = 0.0, vy = 0.0, angular = 0.0;
 

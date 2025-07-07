@@ -11,6 +11,10 @@ add_library(protobuf
     ssl_gc_rcon_team.pb.cc
     ssl_gc_rcon.pb.cc
     ssl_gc_common.pb.cc
+
+    ssl_gc_referee_message.pb.cc
+    ssl_gc_game_event.pb.cc
+    ssl_gc_geometry.pb.cc
 )
 
 # Include the Protobuf generated headers

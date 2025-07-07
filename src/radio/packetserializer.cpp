@@ -23,10 +23,6 @@ QByteArray PacketSerializer::serialize(const QHash<int, RobotCommand>& commandMa
             int vY      = static_cast<int>(m.getVy()*100);
             int vTH     = static_cast<int>(m.getAngular()*100);
             int dribb   = static_cast<int>(k.getDribbler());
-            qDebug() << " m.getVx():" << m.getVx()
-                     << " m.getVy():" << m.getVy()
-                     << " m.getAngular():" << m.getAngular()
-                     << " k.getDribbler():" << k.getDribbler();
 
             int kick    = k.getKickX() ? 1 : 0;
             int callback= 0;  // si necesitas callback, ajusta aquí

@@ -3,6 +3,7 @@ add_library(receivers
     vision.cpp
     kalman/ekf.cpp
     tracker.cpp
+    game_controller_socket.cpp
 )
 
 # Link Qt6 libraries to the Vision library

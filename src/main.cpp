@@ -14,12 +14,15 @@
 #include "websocketserver.hpp"
 #include "consolereader.hpp"
 #include "logger.hpp"
+#include "game_controller_socket.hpp"
 
-class MainApp : public QObject {
+class MainApp : public QObject
+{
     Q_OBJECT
 
 public:
-    MainApp(QObject* parent = nullptr) : QObject(parent) {
+    MainApp(QObject *parent = nullptr) : QObject(parent)
+    {
         // Leer configuración desde config.ini
         QString configPath = QFileInfo(QCoreApplication::applicationDirPath() + "/../config.ini").absoluteFilePath();
         QSettings settings(configPath, QSettings::IniFormat);
@@ -75,24 +78,79 @@ public:
         m_updateTimer = new QTimer(this);
         connect(m_updateTimer, &QTimer::timeout, this, &MainApp::update);
         m_updateTimer->start(16); // ~60 FPS
+
+        m_game_controller_socket = new GameControllerSocket("127.0.0.1", 10008);
+        m_game_controller_socket->connectToController();
+
+        // --- Handle connection ---
+        QObject::connect(m_game_controller_socket, &GameControllerSocket::connected, [=]()
+                         {
+                             qDebug() << "[✔] Connected to GameController.";
+
+                             // Send registration immediately after connection
+                             m_game_controller_socket->sendRegistration("Test Team", "YELLOW"); // Replace with your actual team name and color
+                         });
+
+        // --- Handle successful registration ---
+        QObject::connect(m_game_controller_socket, &GameControllerSocket::registrationSuccess, [=]()
+                         {
+                             qDebug() << "[✔] Registered with GameController.";
+
+                             // Start sending AdvantageChoice messages every 5 seconds
+                             QTimer *timer = new QTimer(m_game_controller_socket);
+                             QObject::connect(timer, &QTimer::timeout, [=]()
+                                              {
+            static bool toggle = false;
+            m_game_controller_socket->sendAdvantageChoice(toggle ? CONTINUE : STOP);
+            qDebug() << "→ Sent advantage choice:" << (toggle ? "CONTINUE" : "STOP");
+            toggle = !toggle; });
+                             timer->start(5000); // every 5 seconds
+                         });
+
+        // --- Handle registration failure ---
+        QObject::connect(m_game_controller_socket, &GameControllerSocket::registrationFailed, [=](const QString &reason)
+                         { qDebug() << "[✘] Registration failed:" << reason; });
+
+        // --- Handle incoming messages (ControllerReply, etc.) ---
+        QObject::connect(m_game_controller_socket, &GameControllerSocket::messageReceived, [=](const ControllerToTeam &message)
+                         {
+            if (message.has_controller_reply()) {
+                const auto& reply = message.controller_reply();
+                QString statusText = (reply.status_code() == 0) ? "OK" : "FAILED";
+                qDebug() << "[?] Controller reply:"
+                        << "Status =" << statusText
+                        << ", Reason =" << QString::fromStdString(reply.reason());
+                            } else {
+                qDebug() << "[↩] Unknown message from GameController.";
+            } });
+
+        // Start connection attempt
+        if (!m_game_controller_socket->connectToController())
+        {
+            qDebug() << "✘ Could not connect to GameController.";
+        }
     }
 
-    ~MainApp() {
+    ~MainApp()
+    {
         // Cleanly stop threads and components
-        if (m_visionThread->isRunning()) {
+        if (m_visionThread->isRunning())
+        {
             m_visionThread->quit();
             m_visionThread->wait();
         }
         m_vision->deleteLater();
 
-        if (m_worldThread->isRunning()) {
+        if (m_worldThread->isRunning())
+        {
             m_worldThread->quit();
             m_worldThread->wait();
         }
         m_world->deleteLater();
 
-        if (m_consoleReader->isRunning()) {
-            m_consoleReader->requestInterruption();  // Signal for graceful stop
+        if (m_consoleReader->isRunning())
+        {
+            m_consoleReader->requestInterruption(); // Signal for graceful stop
             m_consoleReader->wait();
         }
         delete m_consoleReader;
@@ -102,34 +160,35 @@ public:
     }
 
 private slots:
-void update() {
-    QElapsedTimer timer;
-    timer.start();
+    void update()
+    {
+        QElapsedTimer timer;
+        timer.start();
 
-    m_world->update();
+        m_world->update();
 
-    qint64 processTimeUs = 0;
-    luaInterface->callProcess();
+        qint64 processTimeUs = 0;
+        luaInterface->callProcess();
 
-    logger->logFrame();
-    radio->sendCommands();
+        logger->logFrame();
+        radio->sendCommands();
 
-    QJsonObject worldState = m_world->toJson();
+        QJsonObject worldState = m_world->toJson();
 
-    QJsonObject metrics;
-    qint64 updateTimeUs = timer.nsecsElapsed() / 1000;
-    metrics["updateTimeUs"] = static_cast<int>(updateTimeUs);
-    metrics["processTimeUs"] = static_cast<int>(processTimeUs);
-    worldState["metrics"] = metrics;
+        QJsonObject metrics;
+        qint64 updateTimeUs = timer.nsecsElapsed() / 1000;
+        metrics["updateTimeUs"] = static_cast<int>(updateTimeUs);
+        metrics["processTimeUs"] = static_cast<int>(processTimeUs);
+        worldState["metrics"] = metrics;
 
-    m_webSocketServer->broadcast(worldState);
+        m_webSocketServer->broadcast(worldState);
 
-    // Warn if the frame took too long
-    if (updateTimeUs > 16000) {
-        qWarning() << "Update() took too long:" << updateTimeUs << "us";
+        // Warn if the frame took too long
+        if (updateTimeUs > 16000)
+        {
+            qWarning() << "Update() took too long:" << updateTimeUs << "us";
+        }
     }
-}
-
 
 private:
     QThread *m_visionThread;
@@ -142,9 +201,11 @@ private:
     LuaInterface *luaInterface;
     ConsoleReader *m_consoleReader;
     Logger *logger;
+    GameControllerSocket *m_game_controller_socket;
 };
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     QCoreApplication a(argc, argv);
     MainApp app;
     return a.exec();

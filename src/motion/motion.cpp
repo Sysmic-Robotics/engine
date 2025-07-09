@@ -118,7 +118,7 @@ MotionCommand Motion::motion(const RobotState& robotState, QVector2D targetPoint
     double error_y = ref_vel.getVy() - localVelocity.y();
     double new_vy = pidControlY.compute(error_y, 0.016);
 
-    MotionCommand cmd(robotState.getId(), robotState.getTeam(), new_vx, new_vy);
+    MotionCommand cmd(robotState.getId(), robotState.getTeam(), ref_vel.getVx() + new_vx, ref_vel.getVy() + new_vy);
  
 
 

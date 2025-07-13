@@ -25,6 +25,16 @@ bool Environment::collides(const QVector2D& point) const {
     if (point.x() < -4.5 || point.x() > 4.5 || point.y() < -3.0 || point.y() > 3.0)
         return true;
 
+    // Yellow goalie box (x: 3.5 to 4.5, y: -1 to 1)
+    if (point.x() >= 3.5 && point.x() <= 4.5 &&
+        point.y() >= -1.0 && point.y() <= 1.0)
+        return true;
+
+    // Blue goalie box (x: -4.5 to -3.5, y: -1 to 1)
+    if (point.x() >= -4.5 && point.x() <= -3.5 &&
+        point.y() >= -1.0 && point.y() <= 1.0)
+        return true;
+
     // Robot collision check
     for (const auto& robot : robots) {
         if ((point - robot).length() <= 0.2)  // Robot radius

@@ -11,6 +11,7 @@ target_link_libraries(luainterface
     PUBLIC utilities
     PUBLIC motion
     PUBLIC world
+    PUBLIC receivers
 )
 
 target_include_directories(luainterface 

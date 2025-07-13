@@ -7,20 +7,14 @@
 #include <cmath>
 #include <iostream>
 
-GameControllerRef::GameControllerRef(QObject* parent)
-    : QObject(parent)
-{
+GameControllerRef::GameControllerRef(const QString& multicastAddress, quint16 port, QObject* parent)
+    : QObject(parent), m_multicastAddress(multicastAddress), m_port(port){
     connect(&m_socket, &QUdpSocket::readyRead, this, &GameControllerRef::onReadyRead);
 }
 
-bool GameControllerRef::start(const QString& multicastAddress, quint16 port, bool fullScreen, bool verbose)
-{
-    m_multicastAddress = QHostAddress(multicastAddress);
-    m_port = port;
-    m_fullScreen = fullScreen;
-    m_verbose = verbose;
+bool GameControllerRef::startListen(){
 
-    if (!m_socket.bind(QHostAddress::AnyIPv4, port, QUdpSocket::ShareAddress | QUdpSocket::ReuseAddressHint)) {
+    if (!m_socket.bind(QHostAddress::AnyIPv4, m_port, QUdpSocket::ShareAddress | QUdpSocket::ReuseAddressHint)) {
         qWarning() << "Failed to bind UDP socket:" << m_socket.errorString();
         return false;
     }
@@ -29,8 +23,9 @@ bool GameControllerRef::start(const QString& multicastAddress, quint16 port, boo
         qWarning() << "Failed to join multicast group:" << m_multicastAddress.toString();
         return false;
     }
+    
 
-    qDebug() << "[✔] Listening to referee messages on" << multicastAddress << ":" << port;
+    qDebug() << "[✔] Listening to referee messages on" << m_multicastAddress << ":" << m_port;
     return true;
 }
 
@@ -38,7 +33,7 @@ void GameControllerRef::stop()
 {
     m_socket.leaveMulticastGroup(m_multicastAddress);
     m_socket.close();
-    qDebug() << "[✋] Stopped listening.";
+    qDebug() << "[GameControllerRef] Stopped listening.";
 }
 
 void GameControllerRef::onReadyRead()
@@ -59,39 +54,31 @@ void GameControllerRef::processMessage(const QByteArray& data)
         qWarning() << "Failed to parse referee message";
         return;
     }
+    emit onRefCommand(commandToString(refMsg.command()));
+}
 
-    // Only keep recent changes
-    if (m_history.isEmpty() || refMsg.command() != m_history.last()) {
-        m_history.append(refMsg.command());
-    }
-
-    if (m_fullScreen) {
-        printFullScreen(refMsg);
-    } else {
-        printJSON(refMsg);
+QString GameControllerRef::commandToString(Referee::Command cmd) {
+    switch (cmd) {
+        case Referee::HALT: return "HALT";
+        case Referee::STOP: return "STOP";
+        case Referee::NORMAL_START: return "NORMAL_START";
+        case Referee::FORCE_START: return "FORCE_START";
+        case Referee::PREPARE_KICKOFF_YELLOW: return "PREPARE_KICKOFF_YELLOW";
+        case Referee::PREPARE_KICKOFF_BLUE: return "PREPARE_KICKOFF_BLUE";
+        case Referee::PREPARE_PENALTY_YELLOW: return "PREPARE_PENALTY_YELLOW";
+        case Referee::PREPARE_PENALTY_BLUE: return "PREPARE_PENALTY_BLUE";
+        case Referee::DIRECT_FREE_YELLOW: return "DIRECT_FREE_YELLOW";
+        case Referee::DIRECT_FREE_BLUE: return "DIRECT_FREE_BLUE";
+        case Referee::TIMEOUT_YELLOW: return "TIMEOUT_YELLOW";
+        case Referee::TIMEOUT_BLUE: return "TIMEOUT_BLUE";
+        case Referee::GOAL_YELLOW: return "GOAL_YELLOW";
+        case Referee::GOAL_BLUE: return "GOAL_BLUE";
+        case Referee::BALL_PLACEMENT_YELLOW: return "BALL_PLACEMENT_YELLOW";
+        case Referee::BALL_PLACEMENT_BLUE: return "BALL_PLACEMENT_BLUE";
+        default: return "UNKNOWN";
     }
 }
 
-void GameControllerRef::printFullScreen(const Referee& refMsg)
-{
-    // Clear console (ANSI escape)
-    std::cout << "\033[H\033[2J";
-    std::cout.flush();
-
-    std::cout << "Last commands: ";
-    int n = qMin(5, m_history.size());
-    for (int i = 0; i < n; ++i) {
-        std::cout << Referee::Command_Name(m_history[m_history.size() - 1 - i]);
-        if (i != n - 1) std::cout << ", ";
-    }
-    std::cout << "\n\n";
-
-    std::string textFormat;
-    google::protobuf::TextFormat::Printer printer;
-    printer.SetSingleLineMode(false);
-    printer.PrintToString(refMsg, &textFormat);
-    std::cout << textFormat << std::endl;
-}
 
 void GameControllerRef::printJSON(const Referee& refMsg)
 {

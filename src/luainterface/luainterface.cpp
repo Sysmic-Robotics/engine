@@ -5,8 +5,8 @@
 #include <QDir>
 #include <QCoreApplication>
 
-LuaInterface::LuaInterface(Radio* radio, World* world)
-    : m_radio(radio), m_world(world)
+LuaInterface::LuaInterface(Radio* radio, World* world, GameState* game_state)
+    : m_radio(radio), m_world(world), m_gameState(game_state)
 {
     m_lua = sol::state();
     m_lua.open_libraries(
@@ -43,6 +43,14 @@ void LuaInterface::register_functions() {
         static Motion motion;
         MotionCommand cmd = motion.move_to(robotState, QVector2D(x, y), m_world);
         m_radio->addMotionCommand(cmd);
+    });
+
+        m_lua.set_function("get_ref_message", [this]() -> std::string {
+        if (!m_gameState) {
+            std::cerr << "Error: GameState instance is null!" << std::endl;
+            return "ERROR: GameState is null";
+        }
+        return m_gameState->GetRefMessage().toStdString();
     });
 
     m_lua.set_function("move_direct", [this](int robotId, int team, sol::table point) {

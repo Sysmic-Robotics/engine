@@ -1,25 +1,18 @@
 #pragma once
 
-#include "../protobuf/ssl_gc_referee_message.pb.h"
+#include <QObject>
+#include <QString>
 
-enum class GameState {
-    Stopped,
-    BallPlacement,
-    Ready,
-    Play,
-    GoalScored,
-    Unknown
-};
+class GameState : public QObject {
+    Q_OBJECT
 
-class Game {
 public:
-    Game();
+    explicit GameState(QObject* parent = nullptr);
+    QString GetRefMessage() const; // Getter for referee command
 
-    void updateState(const Referee& msg);
-    GameState state() const;
+public slots:
+    void onRefCommand(QString command);
 
 private:
-    GameState m_state;
-
-    GameState mapCommandToGameState(Referee::Command cmd);
+    QString m_refCommand;
 };

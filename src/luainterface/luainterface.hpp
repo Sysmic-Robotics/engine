@@ -5,10 +5,11 @@
 #include <QVector2D>
 #include "radio.hpp"
 #include "world.hpp"
+#include "game_state.hpp"
 
 class LuaInterface {
 public:
-    LuaInterface(Radio* radio_, World* world);
+    LuaInterface(Radio* radio_, World* world, GameState* game_state);
     ~LuaInterface();
 
     // Loads a Lua script file (reinitializes the Lua state)
@@ -27,6 +28,7 @@ private:
     sol::state m_lua;
     Radio* m_radio;
     World* m_world;
+    GameState* m_gameState;
     bool m_haveScript = false;
     bool m_isPaused = false;
 };

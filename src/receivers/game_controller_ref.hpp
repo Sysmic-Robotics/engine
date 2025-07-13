@@ -12,16 +12,19 @@ class GameControllerRef : public QObject {
     Q_OBJECT
 
 public:
-    explicit GameControllerRef(QObject* parent = nullptr);
-    bool start(const QString& multicastAddress = "224.5.23.1", quint16 port = 10003, bool fullScreen = false, bool verbose = false);
+    explicit GameControllerRef(const QString& multicastAddress, quint16 port, QObject* parent = nullptr);
+    bool startListen();
     void stop();
 
 private slots:
     void onReadyRead();
 
+signals:
+    void onRefCommand(const QString& state);
+
 private:
+    QString commandToString(Referee::Command cmd);
     void processMessage(const QByteArray& data);
-    void printFullScreen(const Referee& refMsg);
     void printJSON(const Referee& refMsg);
 
     QUdpSocket m_socket;

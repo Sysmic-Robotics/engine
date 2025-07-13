@@ -15,6 +15,7 @@
 #include "consolereader.hpp"
 #include "logger.hpp"
 #include "game_controller_ref.hpp"
+#include "game_state.hpp"
 
 class MainApp : public QObject
 {
@@ -51,11 +52,23 @@ public:
         QString radio_port = settings.value("Radio/port_name", "/dev/ttyUSB0").toString();
         qint32 radio_baud = settings.value("Radio/baud_rate", QSerialPort::Baud115200).toInt();
 
+
+        // Init game state
+        GameControllerRef* refereeClient = new GameControllerRef("224.5.23.1", 10003);
+        m_refThread = new QThread(this);
+        connect(m_refThread, &QThread::started, refereeClient, &GameControllerRef::startListen);
+        
+
+        GameState* game_state = new GameState();
+        m_gameStateThread = new QThread(this);
+        game_state->moveToThread(m_gameStateThread);
+        connect(refereeClient, &GameControllerRef::onRefCommand, game_state, &GameState::onRefCommand);
+
         // Create Radio and LuaInterface
         radio = new Radio(use_radio, radio_port, radio_baud);
-        luaInterface = new LuaInterface(radio, m_world);
+        luaInterface = new LuaInterface(radio, m_world, game_state);
         m_webSocketServer = new WebSocketServer(radio, luaInterface, this);
-
+        
         // Setup console reader
         m_consoleReader = new ConsoleReader(luaInterface);
         m_consoleReader->start();
@@ -74,15 +87,16 @@ public:
         // Start threads and update loop
         m_visionThread->start();
         m_worldThread->start();
+        m_gameStateThread->start();
+        m_refThread->start();
 
         m_updateTimer = new QTimer(this);
         connect(m_updateTimer, &QTimer::timeout, this, &MainApp::update);
         m_updateTimer->start(16); // ~60 FPS
 
-        GameControllerRef* refereeClient = new GameControllerRef();
-        bool ok = refereeClient->start("224.5.23.1", 10003, true, true);
 
-        
+
+
     }
 
     ~MainApp()
@@ -162,6 +176,10 @@ private:
     ConsoleReader *m_consoleReader;
     Logger *logger;
     GameControllerRef *refereeClient;
+    QThread *m_refThread;
+    GameState *game_state;
+    QThread *m_gameStateThread;
+
 };
 
 int main(int argc, char *argv[])

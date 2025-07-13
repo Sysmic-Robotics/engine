@@ -14,12 +14,15 @@
 #include "websocketserver.hpp"
 #include "consolereader.hpp"
 #include "logger.hpp"
+#include "game_controller_ref.hpp"
 
-class MainApp : public QObject {
+class MainApp : public QObject
+{
     Q_OBJECT
 
 public:
-    MainApp(QObject* parent = nullptr) : QObject(parent) {
+    MainApp(QObject *parent = nullptr) : QObject(parent)
+    {
         // Leer configuración desde config.ini
         QString configPath = QFileInfo(QCoreApplication::applicationDirPath() + "/../config.ini").absoluteFilePath();
         QSettings settings(configPath, QSettings::IniFormat);
@@ -75,24 +78,33 @@ public:
         m_updateTimer = new QTimer(this);
         connect(m_updateTimer, &QTimer::timeout, this, &MainApp::update);
         m_updateTimer->start(16); // ~60 FPS
+
+        GameControllerRef* refereeClient = new GameControllerRef();
+        bool ok = refereeClient->start("224.5.23.1", 10003, true, true);
+
+        
     }
 
-    ~MainApp() {
+    ~MainApp()
+    {
         // Cleanly stop threads and components
-        if (m_visionThread->isRunning()) {
+        if (m_visionThread->isRunning())
+        {
             m_visionThread->quit();
             m_visionThread->wait();
         }
         m_vision->deleteLater();
 
-        if (m_worldThread->isRunning()) {
+        if (m_worldThread->isRunning())
+        {
             m_worldThread->quit();
             m_worldThread->wait();
         }
         m_world->deleteLater();
 
-        if (m_consoleReader->isRunning()) {
-            m_consoleReader->requestInterruption();  // Signal for graceful stop
+        if (m_consoleReader->isRunning())
+        {
+            m_consoleReader->requestInterruption(); // Signal for graceful stop
             m_consoleReader->wait();
         }
         delete m_consoleReader;
@@ -108,34 +120,35 @@ public:
     }
 
 private slots:
-void update() {
-    QElapsedTimer timer;
-    timer.start();
+    void update()
+    {
+        QElapsedTimer timer;
+        timer.start();
 
-    m_world->update();
+        m_world->update();
 
-    qint64 processTimeUs = 0;
-    luaInterface->callProcess();
+        qint64 processTimeUs = 0;
+        luaInterface->callProcess();
 
-    logger->logFrame();
-    radio->sendCommands();
+        logger->logFrame();
+        radio->sendCommands();
 
-    QJsonObject worldState = m_world->toJson();
+        QJsonObject worldState = m_world->toJson();
 
-    QJsonObject metrics;
-    qint64 updateTimeUs = timer.nsecsElapsed() / 1000;
-    metrics["updateTimeUs"] = static_cast<int>(updateTimeUs);
-    metrics["processTimeUs"] = static_cast<int>(processTimeUs);
-    worldState["metrics"] = metrics;
+        QJsonObject metrics;
+        qint64 updateTimeUs = timer.nsecsElapsed() / 1000;
+        metrics["updateTimeUs"] = static_cast<int>(updateTimeUs);
+        metrics["processTimeUs"] = static_cast<int>(processTimeUs);
+        worldState["metrics"] = metrics;
 
-    m_webSocketServer->broadcast(worldState);
+        m_webSocketServer->broadcast(worldState);
 
-    // Warn if the frame took too long
-    if (updateTimeUs > 16000) {
-        qWarning() << "Update() took too long:" << updateTimeUs << "us";
+        // Warn if the frame took too long
+        if (updateTimeUs > 16000)
+        {
+            qWarning() << "Update() took too long:" << updateTimeUs << "us";
+        }
     }
-}
-
 
 private:
     QThread *m_visionThread;
@@ -148,9 +161,11 @@ private:
     LuaInterface *luaInterface;
     ConsoleReader *m_consoleReader;
     Logger *logger;
+    GameControllerRef *refereeClient;
 };
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     QCoreApplication a(argc, argv);
     MainApp app;
 

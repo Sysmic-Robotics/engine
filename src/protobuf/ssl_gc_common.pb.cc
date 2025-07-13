@@ -89,12 +89,10 @@ void AddDescriptorsImpl() {
       "\n\023ssl_gc_common.proto\"*\n\007RobotId\022\n\n\002id\030\001"
       " \001(\r\022\023\n\004team\030\002 \001(\0162\005.Team*)\n\004Team\022\013\n\007UNK"
       "NOWN\020\000\022\n\n\006YELLOW\020\001\022\010\n\004BLUE\020\002*1\n\010Division"
-      "\022\017\n\013DIV_UNKNOWN\020\000\022\t\n\005DIV_A\020\001\022\t\n\005DIV_B\020\002B"
-      "8Z6github.com/RoboCup-SSL/ssl-simulation"
-      "-protocol/pkg/sim"
+      "\022\017\n\013DIV_UNKNOWN\020\000\022\t\n\005DIV_A\020\001\022\t\n\005DIV_B\020\002"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 217);
+      descriptor, 159);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "ssl_gc_common.proto", &protobuf_RegisterTypes);
 }

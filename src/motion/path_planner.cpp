@@ -101,13 +101,27 @@ std::vector<QVector2D> FastPathPlanner::simplifyPath(const std::vector<QVector2D
     return result;
 }
 
-std::vector<QVector2D> FastPathPlanner::getPath(const QVector2D& from, const QVector2D& to, const Environment& env) {
+QList<QVector2D> FastPathPlanner::getPath(const QVector2D& from, const QVector2D& to, const Environment& env) {
     auto raw_path = createPath(from, to, env);
-    if (raw_path.empty()) return {};
+    if (raw_path.empty()) {
+        return { from, to }; // Fallback if path is invalid
+    }
 
     std::vector<QVector2D> points;
-    for (const auto& seg : raw_path) points.push_back(seg.start);
+    for (const auto& seg : raw_path) {
+        points.push_back(seg.start);
+    }
     points.push_back(raw_path.back().goal);
 
-    return simplifyPath(points, env);
+    // Simplify the path
+    std::vector<QVector2D> simplified = simplifyPath(points, env);
+
+    // Convert to QList
+    QList<QVector2D> path;
+    for (const QVector2D& p : simplified) {
+        path.append(p);
+    }
+
+    return path;
 }
+

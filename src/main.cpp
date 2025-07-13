@@ -6,7 +6,7 @@
 #include <QJsonObject>
 #include <QSettings>
 #include <QFileInfo>
-
+#include <QDir>
 #include "vision.hpp"
 #include "world.hpp"
 #include "radio.hpp"
@@ -46,7 +46,7 @@ public:
         // Radio
         bool use_radio = settings.value("Radio/use_radio", true).toBool();
         QString radio_port = settings.value("Radio/port_name", "/dev/ttyUSB0").toString();
-        qint32 radio_baud = settings.value("Radio/baud_rate", QSerialPort::Baud460800).toInt();
+        qint32 radio_baud = settings.value("Radio/baud_rate", QSerialPort::Baud115200).toInt();
 
         // Create Radio and LuaInterface
         radio = new Radio(use_radio, radio_port, radio_baud);
@@ -101,6 +101,12 @@ public:
         delete luaInterface;
     }
 
+    void runScript(const QString& scriptPath) {
+
+        luaInterface->runScript(scriptPath);  // Or whatever method returns status
+
+    }
+
 private slots:
 void update() {
     QElapsedTimer timer;
@@ -147,7 +153,13 @@ private:
 int main(int argc, char *argv[]) {
     QCoreApplication a(argc, argv);
     MainApp app;
+
+    if (argc > 1) {
+        QString scriptPath = QString::fromLocal8Bit(argv[1]);
+        app.runScript(scriptPath);
+        
+    }
+
     return a.exec();
 }
-
 #include "main.moc"

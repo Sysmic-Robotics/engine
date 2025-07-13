@@ -2,10 +2,12 @@
 
 #include <QVector2D>
 #include <vector>
+#include "world.hpp"
+#include "robotstate.hpp"
 
 class Environment {
 public:
-    Environment(const std::vector<QVector2D>& robots, const QVector2D& ball_position);
+    Environment(const World* world, const RobotState& self);
 
     bool collides(const QVector2D& point) const;
 

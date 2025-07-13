@@ -9,7 +9,7 @@ class FastPathPlanner {
 public:
     FastPathPlanner(int max_depth = 10);
 
-    std::vector<QVector2D> getPath(const QVector2D& from, const QVector2D& to, const Environment& env);
+    QList<QVector2D> getPath(const QVector2D& from, const QVector2D& to, const Environment& env);
 
 private:
     struct Trajectory {

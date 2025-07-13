@@ -1,7 +1,24 @@
 #include "environment.hpp"
 
-Environment::Environment(const std::vector<QVector2D>& robots, const QVector2D& ball_position)
-    : robots(robots), ball_position(ball_position) {}
+
+// In Environment.cpp
+Environment::Environment(const World* world, const RobotState& self) {
+    int selfId = self.getId();
+
+    // Gather positions of all other active robots
+    for (int id = 0; id < 12; ++id) {
+        if (id == selfId) continue;
+
+        RobotState rBlue = world->getRobotState(id, 0);
+        if (rBlue.isActive()) robots.push_back(rBlue.getPosition());
+
+        RobotState rYellow = world->getRobotState(id, 1);
+        if (rYellow.isActive()) robots.push_back(rYellow.getPosition());
+    }
+
+    // Get ball position
+    ball_position = world->getBallState().getPosition();
+}
 
 bool Environment::collides(const QVector2D& point) const {
     // Field bounds check

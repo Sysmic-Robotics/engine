@@ -22,37 +22,11 @@ MotionCommand Motion::move_to(const RobotState& robotState, QVector2D targetPoin
 
     QVector2D from = robotState.getPosition();
     QVector2D to = targetPoint;
-    int selfId = robotState.getId();
 
-    std::vector<QVector2D> otherRobots;
-
-    for (int id = 0; id < 12; ++id) {
-        if (id == selfId) continue;
-
-        RobotState rBlue = world->getRobotState(id, 0);
-        if (rBlue.isActive()) otherRobots.push_back(rBlue.getPosition());
-
-        RobotState rYellow = world->getRobotState(id, 1);
-        if (rYellow.isActive()) otherRobots.push_back(rYellow.getPosition());
-    }
-
-    // === Get ball position from the world ===
-    QVector2D ballPos = world->getBallState().getPosition();
-
-    // === Create environment ===
-    Environment env(otherRobots, ballPos);
+    Environment env(world, robotState);
 
     // === Compute path ===
-    std::vector<QVector2D> pathVec = planner.getPath(from, to, env);
-
-    // === Convert to QList for the motion controller ===
-    QList<QVector2D> path;
-    if (!pathVec.empty()) {
-        for (const QVector2D& p : pathVec)
-            path.append(p);
-    } else {
-        path = { from, to }; // fallback if path is invalid
-    }
+    QList<QVector2D> path = planner.getPath(from, to, env);
 
     double delta = 1.0 / 60.0; // Frame delta time
     // Calcular velocidades de referencia
@@ -68,37 +42,11 @@ MotionCommand Motion::motion(const RobotState& robotState, QVector2D targetPoint
 
     QVector2D from = robotState.getPosition();
     QVector2D to = targetPoint;
-    int selfId = robotState.getId();
 
-    std::vector<QVector2D> otherRobots;
-
-    for (int id = 0; id < 12; ++id) {
-        if (id == selfId) continue;
-
-        RobotState rBlue = world->getRobotState(id, 0);
-        if (rBlue.isActive()) otherRobots.push_back(rBlue.getPosition());
-
-        RobotState rYellow = world->getRobotState(id, 1);
-        if (rYellow.isActive()) otherRobots.push_back(rYellow.getPosition());
-    }
-
-    // === Get ball position from the world ===
-    QVector2D ballPos = world->getBallState().getPosition();
-
-    // === Create environment ===
-    Environment env(otherRobots, ballPos);
+    Environment env(world, robotState);
 
     // === Compute path ===
-    std::vector<QVector2D> pathVec = planner.getPath(from, to, env);
-
-    // === Convert to QList for the motion controller ===
-    QList<QVector2D> path;
-    if (!pathVec.empty()) {
-        for (const QVector2D& p : pathVec)
-            path.append(p);
-    } else {
-        path = { from, to }; // fallback if path is invalid
-    }
+    QList<QVector2D> path = planner.getPath(from, to, env);
 
     double delta = 1.0 / 60.0; // Frame delta time
     // Calcular velocidades de referencia
@@ -111,17 +59,15 @@ MotionCommand Motion::motion(const RobotState& robotState, QVector2D targetPoint
     // Vx
     static PID pidControlX(Kp_x, Ki_x, 0);
     double error_x = ref_vel.getVx() - localVelocity.x();
-    double new_vx = pidControlX.compute(error_x, 0.016);
+    double new_vx = pidControlX.compute(error_x, delta);
 
     // Vy
     static PID pidControlY(Kp_y, Ki_y, 0);
     double error_y = ref_vel.getVy() - localVelocity.y();
-    double new_vy = pidControlY.compute(error_y, 0.016);
+    double new_vy = pidControlY.compute(error_y, delta);
 
     MotionCommand cmd(robotState.getId(), robotState.getTeam(), ref_vel.getVx() + new_vx, ref_vel.getVy() + new_vy);
  
-
-
     return cmd;
 }
 
@@ -159,3 +105,81 @@ MotionCommand Motion::face_to(const RobotState& robotState, QVector2D targetPoin
 }
 
 
+double Motion::normalizeAngle(double angle) {
+    while (angle > M_PI) angle -= 2 * M_PI;
+    while (angle < -M_PI) angle += 2 * M_PI;
+    return angle;
+}
+
+MotionCommand Motion::face_to_angle(const RobotState& robotState, double targetAngle,
+    double Kp, double Ki) {
+
+    PID anglePID(Kp, Ki, 0);
+
+    double currentAngle = normalizeAngle(robotState.getOrientation());
+    targetAngle = normalizeAngle(targetAngle);
+
+    double error = normalizeAngle(targetAngle - currentAngle);
+
+    double deltaTime = 1.0 / 60.0;
+    double angularVelocity = anglePID.compute(error, deltaTime);
+
+    MotionCommand cmd(robotState.getId(), robotState.getTeam());
+    cmd.setAngular(angularVelocity);
+    return cmd;
+}
+
+
+MotionCommand Motion::motion_with_orientation(const RobotState& robotState, QVector2D targetPoint, double targetAngle,
+    const World* world,
+    double Kp_x, double Ki_x,
+    double Kp_y, double Ki_y,
+    double Kp_angle, double Ki_angle) {
+
+    static BangBangControl bangbangControl(2.5f, 5.0f); // Acceleration & velocity limits
+    static FastPathPlanner planner;
+
+    QVector2D from = robotState.getPosition();
+    QVector2D to = targetPoint;
+    Environment env(world, robotState);
+
+    // === Compute path ===
+    QList<QVector2D> path = planner.getPath(from, to, env);
+
+    double delta = 1.0 / 60.0;
+
+    // === Reference motion from path planner ===
+    MotionCommand ref_vel = bangbangControl.computeMotion(robotState, path, delta);
+
+    // === Transform velocity to local frame ===
+    double orientation = robotState.getOrientation();
+    QVector2D localVelocity(
+        robotState.getVelocity().x() * std::cos(-orientation) - robotState.getVelocity().y() * std::sin(-orientation),
+        robotState.getVelocity().x() * std::sin(-orientation) + robotState.getVelocity().y() * std::cos(-orientation)
+    );
+
+    // === PID Control for Vx ===
+    static PID pidControlX(Kp_x, Ki_x, 0);
+    double error_x = ref_vel.getVx() - localVelocity.x();
+    double control_vx = pidControlX.compute(error_x, delta);
+
+    // === PID Control for Vy ===
+    static PID pidControlY(Kp_y, Ki_y, 0);
+    double error_y = ref_vel.getVy() - localVelocity.y();
+    double control_vy = pidControlY.compute(error_y, delta);
+
+    // === PID Control for Angular Velocity ===
+    static PID anglePID(Kp_angle, Ki_angle, 0);
+    double currentAngle = normalizeAngle(robotState.getOrientation());
+    targetAngle = normalizeAngle(targetAngle);
+    double error_angle = normalizeAngle(targetAngle - currentAngle);
+    double angularVelocity = anglePID.compute(error_angle, delta);
+
+    // === Construct final motion command ===
+    MotionCommand cmd(robotState.getId(), robotState.getTeam(),
+                      ref_vel.getVx() + control_vx,
+                      ref_vel.getVy() + control_vy);
+    cmd.setAngular(angularVelocity);
+
+    return cmd;
+}

@@ -96,6 +96,15 @@ RobotState World::getRobotState(int id, int team) const {
     return RobotState();  // Return a default RobotState if not found
 }
 
+QList<RobotState> World::getBlueTeamState() const {
+    return blueRobots.values();  // Returns a QList<RobotState> of all yellow robots
+}
+
+QList<RobotState> World::getYellowTeamState() const {
+    return yellowRobots.values();  // Returns a QList<RobotState> of all yellow robots
+}
+
+
 BallState World::getBallState() const {
     return ball;
 }

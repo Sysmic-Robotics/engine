@@ -53,6 +53,59 @@ void LuaInterface::register_functions() {
         return m_gameState->GetRefMessage().toStdString();
     });
 
+
+    m_lua.set_function("get_yellow_team_state", [this]() -> sol::table {
+    sol::table result = m_lua.create_table();
+    if (!m_world) {
+        std::cerr << "Error: World instance is null!" << std::endl;
+        return result;
+    }
+
+    QList<RobotState> team = m_world->getYellowTeamState();
+    for (int i = 0; i < team.size(); ++i) {
+        const RobotState& robot = team[i];
+        sol::table robotTable = m_lua.create_table();
+        robotTable["id"] = robot.getId();
+        robotTable["team"] = 1;
+        robotTable["x"] = robot.getPosition().x();
+        robotTable["y"] = robot.getPosition().y();
+        robotTable["vel_x"] = robot.getVelocity().x();
+        robotTable["vel_y"] = robot.getVelocity().y();
+        robotTable["orientation"] = robot.getOrientation();
+        robotTable["omega"] = robot.getAngularVelocity();
+        robotTable["active"] = robot.isActive();
+        result[i + 1] = robotTable;  // Lua tables are 1-based
+    }
+
+    return result;
+    });
+
+    m_lua.set_function("get_blue_team_state", [this]() -> sol::table {
+    sol::table result = m_lua.create_table();
+    if (!m_world) {
+        std::cerr << "Error: World instance is null!" << std::endl;
+        return result;
+    }
+
+    QList<RobotState> team = m_world->getBlueTeamState();
+    for (int i = 0; i < team.size(); ++i) {
+        const RobotState& robot = team[i];
+        sol::table robotTable = m_lua.create_table();
+        robotTable["id"] = robot.getId();
+        robotTable["team"] = 0;
+        robotTable["x"] = robot.getPosition().x();
+        robotTable["y"] = robot.getPosition().y();
+        robotTable["vel_x"] = robot.getVelocity().x();
+        robotTable["vel_y"] = robot.getVelocity().y();
+        robotTable["orientation"] = robot.getOrientation();
+        robotTable["omega"] = robot.getAngularVelocity();
+        robotTable["active"] = robot.isActive();
+        result[i + 1] = robotTable;
+    }
+
+    return result;
+});
+
     m_lua.set_function("move_direct", [this](int robotId, int team, sol::table point) {
         if (!m_world || !m_radio) {
             std::cerr << "Error: LuaInterface, World, or Radio instance is null!" << std::endl;

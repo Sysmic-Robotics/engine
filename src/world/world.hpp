@@ -23,6 +23,8 @@ class World : public QObject {
         RobotState getRobotState(int id, int team) const;
         BallState getBallState() const;
         QJsonObject toJson() const;
+        QList<RobotState> getYellowTeamState() const;
+        QList<RobotState> getBlueTeamState() const;
 
     public slots:
         void updateRobot(int id, int team, QVector2D position, float orientation, QVector2D velocity, float omega);

@@ -24,8 +24,7 @@ public:
 
     struct RobotRxData {
         int id;
-        bool ballDetected;
-        float wheelSpeeds[4];
+        uint16_t ballDistance;
     };
 
     // Devuelve el último paquete recibido para cada robot

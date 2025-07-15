@@ -29,20 +29,21 @@ RadioRx::~RadioRx()
 }
 
 void RadioRx::readSerial() {
-    while (serialPort.bytesAvailable() >= 32) {
+   while (serialPort.bytesAvailable() >= 32) {
         QByteArray packet = serialPort.read(32);
         if (packet.size() != 32) return;
-        // Parse first byte
+
+        // Parse first byte (ID + flags)
         quint8 b0 = static_cast<quint8>(packet[0]);
-        int id = (b0 & 0xE0) >> 5; // 3 MSB
-        bool ballDetected = (b0 & 0x01);
-        float wheelSpeeds[4];
-        for (int i = 0; i < 4; ++i) {
-            float value;
-            std::memcpy(&value, packet.constData() + 1 + i * 4, 4);
-            wheelSpeeds[i] = value;
-        }
-        RobotRxData data{id, ballDetected, {wheelSpeeds[0], wheelSpeeds[1], wheelSpeeds[2], wheelSpeeds[3]}};
+        int id = (b0 & 0xE0) >> 5;  // 3 MSB
+
+        // Método manual (little-endian): low=packet[1], high=packet[2]
+        quint8 low  = static_cast<quint8>(packet[1]);
+        quint8 high = static_cast<quint8>(packet[2]);
+        uint16_t ballDistance = static_cast<uint16_t>((high << 8) | low);
+
+
+        RobotRxData data{id, ballDistance};
         latestRobotData[id] = data;
     }
 }

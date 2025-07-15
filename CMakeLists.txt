@@ -9,7 +9,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 if(WIN32)
     set(CMAKE_PREFIX_PATH "C:/Qt/6.9.0/mingw_64/lib/cmake" ${CMAKE_PREFIX_PATH})
 else()
-    set(CMAKE_PREFIX_PATH "/opt/Qt/6.9.0/gcc_64/lib/cmake" ${CMAKE_PREFIX_PATH})
+    set(CMAKE_PREFIX_PATH "/home/gerson/Qt/6.9.1/gcc_64/lib/cmake" ${CMAKE_PREFIX_PATH})
 endif()
 
 
@@ -23,6 +23,8 @@ qt_standard_project_setup()
 # Build protobuf
 set(DEPENDENCY_DOWNLOADS "${CMAKE_BINARY_DIR}/downloads")
 set(PROTOBUF_INSTALL_DIR "${CMAKE_BINARY_DIR}/protobuf-install")
+
+# find_package(Protobuf REQUIRED)
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 include(BuildProtobuf)
 

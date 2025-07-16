@@ -30,8 +30,25 @@ MotionCommand Motion::move_to(const RobotState& robotState, QVector2D targetPoin
 
     double delta = 1.0 / 60.0; // Frame delta time
     // Calcular velocidades de referencia
-    MotionCommand cmd = bangbangControl.computeMotion(robotState, path, delta);
+    MotionCommand ref_vel = bangbangControl.computeMotion(robotState, path, delta);
 
+    double orientation = robotState.getOrientation();
+    QVector2D localVelocity(
+        robotState.getVelocity().x() * cos(-orientation) - robotState.getVelocity().y() * sin(-orientation),
+        robotState.getVelocity().x() * sin(-orientation) + robotState.getVelocity().y() * cos(-orientation)
+    );
+    // Vx
+    static PID pidControlX(2.0, 0.02, 0);
+    double error_x = ref_vel.getVx() - localVelocity.x();
+    double new_vx = pidControlX.compute(error_x, delta);
+    new_vx = std::max(0.0, new_vx);  // Apply ReLU
+    // Vy
+    static PID pidControlY(4.0, 0.05, 0);
+    double error_y = ref_vel.getVy() - localVelocity.y();
+    double new_vy = pidControlY.compute(error_y, delta);
+    new_vy = std::max(0.0, new_vy);  // Apply ReLU
+    MotionCommand cmd(robotState.getId(), robotState.getTeam(), ref_vel.getVx() + new_vx, ref_vel.getVy() + new_vy);
+ 
     return cmd;
 }
 

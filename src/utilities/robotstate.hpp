@@ -3,6 +3,7 @@
 
 #include <QVector2D>
 #include <QString>
+#include <QDateTime>  // Add this
 
 class RobotState {
 public:
@@ -24,6 +25,7 @@ public:
     void setOrientation(float orientation);
     void setActive(bool flag);
     void setAngularVelocity(float omega);
+    QDateTime lastUpdate;
 
 private:
     int robotId;

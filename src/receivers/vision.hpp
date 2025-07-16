@@ -20,7 +20,7 @@ public:
 
 signals:
     void robotReceived(int id, int team, QVector2D position, float orientation, QVector2D lineal_velocity, float angular_velocity);  // Signal to notify when packet is received
-    void ballReceived(QVector2D position);
+    void ballReceived(QVector2D position, QVector2D velocity);
 
 private:
     QUdpSocket *m_udpSocket;
@@ -30,6 +30,7 @@ private:
     void deserializePacket(const QByteArray &datagram);
     void processData(const SSL_DetectionRobot& robot,
                     int team);
+    void processBall(const SSL_DetectionBall &ball);
     Tracker* tracker_camera_0;
 
 };

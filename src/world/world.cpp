@@ -2,6 +2,7 @@
 #include <QJsonArray>
 #include <QJsonObject>
 #include <QJsonDocument>
+#include <QDateTime> 
 
 QJsonObject World::toJson() const {
     QJsonObject root;
@@ -132,7 +133,8 @@ void World::updateRobot(int id, int team, QVector2D position, float orientation,
             blueRobots[id].setAngularVelocity(omega);
             blueRobots[id].setPosition(position);
             blueRobots[id].setOrientation(orientation);
-            blueRobots[id].setActive(true);
+            bool is_active = blueRobots[id].lastUpdate.msecsTo(QDateTime::currentDateTime()) <= 2000;
+            blueRobots[id].setActive(is_active);
         }
     }else{
         if (yellowRobots.contains(id)) {
@@ -140,13 +142,13 @@ void World::updateRobot(int id, int team, QVector2D position, float orientation,
             yellowRobots[id].setAngularVelocity(omega);
             yellowRobots[id].setPosition(position);
             yellowRobots[id].setOrientation(orientation);
-            yellowRobots[id].setActive(true);
+            bool is_active = yellowRobots[id].lastUpdate.msecsTo(QDateTime::currentDateTime()) <= 2000;
+            yellowRobots[id].setActive(is_active);
         }
     }
 }
 
-void World::updateBall(QVector2D position){
-    constexpr double timeStep = 0.016; // 1/60 in seconds
-    ball.setVelocity( ( position - ball.getPosition() )/timeStep );
+void World::updateBall(QVector2D position, QVector2D velocity){
+    ball.setVelocity(velocity);
     ball.setPosition(position);
 }

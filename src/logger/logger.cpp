@@ -37,7 +37,7 @@ void Logger::startLogging(const QString& filename) {
                     << "Vx_Actual,"
                     << "Vy_Actual\n";
 
-        m_timer.start();  // ⏱️ Start elapsed timer
+        m_timer.start();
         m_isLogging = true;
         qDebug() << "Logger started:" << filePath;
     } else {
@@ -58,18 +58,17 @@ void Logger::logFrame() {
     if (!m_isLogging || !m_logFile.isOpen()) return;
 
     double elapsedSeconds = m_timer.elapsed() / 1000.0;
-    const QHash<int, RobotCommand>& commands = m_radio->getCommandMap();
 
-    const int numRobots = 6;  // Or use m_world->getNumRobots() if available
+    const QHash<int, RobotCommand>& commands = m_radio->getCommandMap();
+    const int numRobots = 6;
 
     for (int team = 0; team <= 1; ++team) {
         for (int id = 0; id < numRobots; ++id) {
             RobotState state = m_world->getRobotState(id, team);
-            // Default to zero motion
+
             double vx = 0.0, vy = 0.0, angular = 0.0;
 
-            // Only override if a command is found
-            int key = id;  // Assuming team & id together map uniquely
+            int key = id;
             auto it = commands.find(key);
             if (it != commands.end() && it->getId() == id && it->getTeam() == team) {
                 const MotionCommand& m = it->getMotionCommand();
@@ -81,9 +80,9 @@ void Logger::logFrame() {
             m_logStream << QString::number(elapsedSeconds, 'f', 3) << ","
                         << id << ","
                         << team << ","
-                        << vx << ","           // Commanded Vx
-                        << vy << ","           // Commanded Vy
-                        << angular << ","      // Commanded Angular
+                        << vx << ","
+                        << vy << ","
+                        << angular << ","
                         << state.getPosition().x() << ","
                         << state.getPosition().y() << ","
                         << state.getOrientation() << ","
@@ -92,9 +91,21 @@ void Logger::logFrame() {
         }
     }
 
+    // Add ball state as a separate row
+    BallState ball = m_world->getBallState();
+    QVector2D ballPos = ball.getPosition();
+
+    m_logStream << QString::number(elapsedSeconds, 'f', 3) << ","
+                << -1 << ","    // RobotID = -1
+                << -1 << ","    // Team = -1
+                << 0 << ","     // Vx_Command (unused)
+                << 0 << ","     // Vy_Command (unused)
+                << 0 << ","     // Angular_Command (unused)
+                << ballPos.x() << ","
+                << ballPos.y() << ","
+                << 0 << ","     // Orientation (not applicable)
+                << ball.getVelocity().x() << ","
+                << ball.getVelocity().y() << "\n";
+
     m_logStream.flush();
 }
-
-
-
-

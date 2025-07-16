@@ -128,7 +128,6 @@ public:
     }
 
     void runScript(const QString& scriptPath) {
-
         luaInterface->runScript(scriptPath);  // Or whatever method returns status
 
     }
@@ -190,7 +189,6 @@ int main(int argc, char *argv[])
     if (argc > 1) {
         QString scriptPath = QString::fromLocal8Bit(argv[1]);
         app.runScript(scriptPath);
-        
     }
 
     return a.exec();

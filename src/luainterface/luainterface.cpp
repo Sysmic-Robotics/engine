@@ -339,6 +339,15 @@ void LuaInterface::callProcess() {
                 sol::error err = result;
                 std::cerr << "[Lua] Runtime error in process(): " << err.what() << std::endl;
             }
+        }else{
+
+            for(int team = 0; team < 2; team++){
+                for(int id = 0; id < 6; id++){
+                    MotionCommand cmd(id, team, 0, 0);
+                    cmd.setAngular(0);
+                    m_radio->addMotionCommand(cmd);
+                }
+            }
         }
     }
 }

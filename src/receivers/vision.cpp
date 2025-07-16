@@ -70,15 +70,21 @@ void Vision::deserializePacket(const QByteArray &datagram){
             const SSL_DetectionFrame &detectionFrame = wrapperPacket.detection();
 
             for (const SSL_DetectionBall &ball : detectionFrame.balls()){
-                emit ballReceived(QVector2D(ball.x() / 1000.0f, ball.y() / 1000.0f));
+                if (ball.x() >= 0) {
+                    processBall(ball);
+                }
+                
                 }
             
             for (const SSL_DetectionRobot &robot : detectionFrame.robots_yellow()){
-                processData(robot, 1);
-                
+                if (robot.x() >= 0) {
+                    processData(robot, 1);
+                }
             }
             for (const SSL_DetectionRobot &robot : detectionFrame.robots_blue()){
-                processData(robot, 0);
+                if (robot.x() >= 0) {
+                    processData(robot, 0);
+                }
             }
         }
     }
@@ -86,6 +92,13 @@ void Vision::deserializePacket(const QByteArray &datagram){
     {
         qWarning() << "Failed to parse the detection frame.";
     }
+}
+
+void Vision::processBall(const SSL_DetectionBall &ball){
+    float x = ball.x() / 1000.0f;
+    float y = ball.y() / 1000.0f;
+    auto [xf, yf, thetaf, vx, vy, omega] = tracker_camera_0->track(-1, -1, x, y, 0, 0.016);
+    emit ballReceived(QVector2D(xf, yf), QVector2D(vx, vy));
 }
 
 void Vision::processData(const SSL_DetectionRobot& robot, int team){

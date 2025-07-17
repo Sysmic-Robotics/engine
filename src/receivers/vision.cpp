@@ -70,21 +70,19 @@ void Vision::deserializePacket(const QByteArray &datagram){
             const SSL_DetectionFrame &detectionFrame = wrapperPacket.detection();
 
             for (const SSL_DetectionBall &ball : detectionFrame.balls()){
-                if (ball.x() >= 0) {
-                    processBall(ball);
-                }
+
+                processBall(ball);
+                
                 
                 }
             
             for (const SSL_DetectionRobot &robot : detectionFrame.robots_yellow()){
-                if (robot.x() >= 0) {
-                    processData(robot, 1);
-                }
+                processData(robot, 1);
+                
             }
             for (const SSL_DetectionRobot &robot : detectionFrame.robots_blue()){
-                if (robot.x() >= 0) {
-                    processData(robot, 0);
-                }
+                processData(robot, 0);
+                
             }
         }
     }

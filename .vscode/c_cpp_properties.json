@@ -1,25 +1,38 @@
 {
     "configurations": [
-      {
-        "name": "MinGW",
-        "compilerPath": "C:/mingw64/bin/g++.exe",
-        "cStandard": "c11",
-        "cppStandard": "c++17",
-        "intelliSenseMode": "windows-gcc-x64",
-        
-        "includePath": [
-          "${workspaceFolder}/**",
-          "C:/Qt/6.9.0/mingw_64/include",
-          "C:/Qt/6.9.0/mingw_64/include/QtCore",
-          "C:/Qt/6.9.0/mingw_64/include/QtGui",
-          "C:/Qt/6.9.0/mingw_64/include/QtWidgets",
-          "C:/Qt/6.9.0/mingw_64/include/QtNetwork",
-          "C:/Qt/6.9.0/mingw_64/include/QtWebSockets",
-          "C:/Qt/6.9.0/mingw_64/include/QtSerialPort"
-    ]
-      }
+        {
+            "name": "Linux",
+            "compilerPath": "/usr/bin/g++",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "linux-gcc-x64",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/usr/include",
+                "/usr/include/x86_64-linux-gnu",
+                "/usr/include/qt6",
+                "/usr/include/qt6/QtCore",
+                "/usr/include/qt6/QtGui",
+                "/usr/include/qt6/QtWidgets"
+            ]
+        },
+        {
+            "name": "Windows",
+            "compilerPath": "C:/mingw64/bin/g++.exe",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "windows-gcc-x64",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "C:/Qt/6.9.0/mingw_64/include",
+                "C:/Qt/6.9.0/mingw_64/include/QtCore",
+                "C:/Qt/6.9.0/mingw_64/include/QtGui",
+                "C:/Qt/6.9.0/mingw_64/include/QtWidgets",
+                "C:/Qt/6.9.0/mingw_64/include/QtNetwork",
+                "C:/Qt/6.9.0/mingw_64/include/QtWebSockets",
+                "C:/Qt/6.9.0/mingw_64/include/QtSerialPort"
+            ]
+        }
     ],
-    "version": 4,
-
-  }
-  
+    "version": 4
+}

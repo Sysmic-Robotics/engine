@@ -18,7 +18,7 @@
         },
         {
             "name": "Windows",
-            "compilerPath": "C:/mingw64/bin/g++.exe",
+            "compilerPath": "C:/mingw64/bin/gcc.exe",
             "cStandard": "c11",
             "cppStandard": "c++17",
             "intelliSenseMode": "windows-gcc-x64",

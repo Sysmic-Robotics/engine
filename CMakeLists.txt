@@ -6,13 +6,6 @@ set(TARGET engine)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-#if(WIN32)
-#    set(CMAKE_PREFIX_PATH "C:/Qt/6.9.0/mingw_64/lib/cmake" ${CMAKE_PREFIX_PATH})
-#else()
-#    set(CMAKE_PREFIX_PATH "/home/gerson/Qt/6.9.1/gcc_64/lib/cmake" ${CMAKE_PREFIX_PATH})
-#endif()
-
-
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}")
 # Setup Eigen
 include(FetchContent)

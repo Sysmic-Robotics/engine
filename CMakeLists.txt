@@ -6,16 +6,39 @@ set(TARGET engine)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-if(WIN32)
-    set(CMAKE_PREFIX_PATH "C:/Qt/6.9.0/mingw_64/lib/cmake" ${CMAKE_PREFIX_PATH})
-else()
-    set(CMAKE_PREFIX_PATH "/home/gerson/Qt/6.9.1/gcc_64/lib/cmake" ${CMAKE_PREFIX_PATH})
-endif()
+#if(WIN32)
+#    set(CMAKE_PREFIX_PATH "C:/Qt/6.9.0/mingw_64/lib/cmake" ${CMAKE_PREFIX_PATH})
+#else()
+#    set(CMAKE_PREFIX_PATH "/home/gerson/Qt/6.9.1/gcc_64/lib/cmake" ${CMAKE_PREFIX_PATH})
+#endif()
 
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}")
-find_package(Eigen3 REQUIRED)
-link_directories(${Eigen_INCLUDE_DIRS})
+# Setup Eigen
+include(FetchContent)
+
+find_package(Eigen3 3.4 QUIET NO_MODULE)
+
+# 2) Fallback: fetch the source and create an interface target ourselves
+if(NOT Eigen3_FOUND)
+  message(STATUS "Eigen3 not found; fetching headers…")
+  set(FETCHCONTENT_QUIET ON)
+  set(FETCHCONTENT_UPDATES_DISCONNECTED ON)  # don’t re-check every configure
+  FetchContent_Declare(
+    eigen
+    GIT_REPOSITORY https://gitlab.com/libeigen/eigen.git
+    GIT_TAG 3.4.0
+    GIT_SHALLOW TRUE
+  )
+  FetchContent_GetProperties(eigen)
+  if(NOT eigen_POPULATED)
+    FetchContent_Populate(eigen)
+    add_library(Eigen3::Eigen INTERFACE IMPORTED)
+    target_include_directories(Eigen3::Eigen INTERFACE ${eigen_SOURCE_DIR})
+  endif()
+endif()
+
+
 # Setup Qt6
 find_package(Qt6 REQUIRED COMPONENTS Core Network Gui Widgets WebSockets SerialPort Test)
 qt_standard_project_setup()

@@ -26,7 +26,7 @@ ExtendedKalmanFilter Tracker::createInitialFilter() const {
     Q(3, 3) = 1e-4;  // cos(theta)
     Q(4, 4) = 1e-4;  // vx
     Q(5, 5) = 1e-4;  // vy
-    Q(6, 6) = 1e-4;  // omega
+    Q(6, 6) = 1e-2;  // omega
 
     // Measurement noise: x, y, theta sensed accurately
     EKF::Matrix3d R = EKF::Matrix3d::Zero();
@@ -48,7 +48,10 @@ Tracker::track(int team, int id, double x, double y, double theta, double dt) {
         it = result.first;
     }
 
-    
-    return it->second.filterPose(x, y, theta, dt);
-    
+    // Call filter to update internal state and get velocity
+    auto [_, __, ___, vx, vy, omega] = it->second.filterPose(x, y, theta, dt);
+
+    // Return unfiltered pose + filtered velocity
+    return std::make_tuple(x, y, theta, vx, vy, omega);
 }
+

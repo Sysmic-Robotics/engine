@@ -96,6 +96,9 @@ windeployqt C:\CondorSSL\build\engine.exe
 | `reload`       | Reload the last successfully run script          |
 | `exit`         | Exit the console reader thread (does not quit app) |
 
+## Documentation
+
+A brief documentation of the program architecture can be found in docs/architecture. Also there is additional information about Lua functions in the Wiki section of this github repository.
 
 
 
@@ -106,6 +109,9 @@ windeployqt C:\CondorSSL\build\engine.exe
     <img src="https://contrib.rocks/image?repo=Sysmic-Robotics/CondorSSL" />
   </a>
 </p>
+
+
+
 
 
 

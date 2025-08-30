@@ -105,11 +105,10 @@ A brief documentation of the program architecture can be found in docs/architect
 ## 👥 Contributors
 
 <p align="center">
-  <a href="https://github.com/Sysmic-Robotics/CondorSSL/graphs/contributors">
-    <img src="https://contrib.rocks/image?repo=Sysmic-Robotics/CondorSSL" />
+  <a href="https://github.com/Sysmic-Robotics/engine/graphs/contributors">
+    <img src="https://contrib.rocks/image?repo=Sysmic-Robotics/engine" />
   </a>
 </p>
-
 
 
 

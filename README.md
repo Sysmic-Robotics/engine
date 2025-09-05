@@ -47,27 +47,24 @@ Follow platform-specific instructions in the [setup guide](#installation) below.
 
 1. Install:
 
-   * MinGW (https://winlibs.com/)
-   * Qt6 (with SerialPort and WebSockets)
-   * CMake  3.31 (https://cmake.org/files/) 
+   * MinGW (https://winlibs.com/) [Download Linl](https://github.com/brechtsanders/winlibs_mingw/releases/download/15.1.0posix-13.0.0-msvcrt-r4/winlibs-x86_64-posix-seh-gcc-15.1.0-mingw-w64msvcrt-13.0.0-r4.zip)
+   * Qt6 (with SerialPort and WebSockets) [Download Link](https://www.qt.io/download-qt-installer-oss)
+   * CMake  3.31 ([Download Link](https://github.com/Kitware/CMake/releases/download/v3.31.8/cmake-3.31.8-windows-x86_64.msi)) 
    * VSCode with **CMake Tools** extension
    * grSim simulator ([grSim GitHub](https://github.com/RoboCup-SSL/grSim))
 
 2. Configure :
-
-
    * Add MinGW location to CMake Tools using Configure
    * Add Cmake Path to VSCode Settings
-
-3. Run :
+   * Create a build folder inside the project
+3. Use the windeployqt program from qt6 installation directory to copy the .dll qt6 files into the build folder
+   Example:
+    ```cmd
+      windeployqt C:\CondorSSL\build\engine.exe
+      ```
+4. Run :
    * Build using CMake Tools
    * Run code by launching the debugger
-
-4. Opcional use `windeployqt` to bundle dependencies:
-
-```cmd
-windeployqt C:\CondorSSL\build\engine.exe
-```
 
 ---
 

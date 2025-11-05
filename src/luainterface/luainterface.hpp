@@ -6,6 +6,7 @@
 #include "radio.hpp"
 #include "world.hpp"
 #include "game_state.hpp"
+#include "luabindings.hpp"
 
 class LuaInterface {
 public:
@@ -31,6 +32,8 @@ private:
     GameState* m_gameState;
     bool m_haveScript = false;
     bool m_isPaused = false;
+
+    std::unique_ptr<LuaBindings> m_bindings;
 };
 
 #endif // LUA_INTERFACE_SOL_HPP

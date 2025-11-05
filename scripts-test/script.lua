@@ -1,4 +1,4 @@
-local robotId = 12
+local robotId = 0
 local team = 0
 
 function process()

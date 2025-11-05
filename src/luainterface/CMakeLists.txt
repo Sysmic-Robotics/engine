@@ -1,5 +1,6 @@
 add_library(luainterface STATIC
     luainterface.cpp
+    luabindings.cpp
 )
 
 target_link_libraries(luainterface

@@ -330,6 +330,7 @@ void LuaInterface::callProcess() {
             sol::protected_function process = m_lua["process"];
             if (!process.valid()) {
                 std::cerr << "[Lua] Error: process() is not defined in script!" << std::endl;
+                m_isPaused = true;
                 return;
             }
 
@@ -338,6 +339,7 @@ void LuaInterface::callProcess() {
                 m_isPaused = false;
                 sol::error err = result;
                 std::cerr << "[Lua] Runtime error in process(): " << err.what() << std::endl;
+                m_isPaused = true;
             }
         }else{
 

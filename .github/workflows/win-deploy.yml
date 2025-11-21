@@ -30,7 +30,6 @@ jobs:
           host: 'windows'
           target: 'desktop'
           arch: 'win64_mingw' 
-          # CRITICAL FIX: Explicitly request the MinGW compiler toolchain
           tools: 'tools_mingw'
           modules: 'qtserialport qtwebsockets' 
 
@@ -45,26 +44,40 @@ jobs:
 
           # 2. Find the Compiler (G++)
           $gpp = $null
+          $gcc = $null
           
-          # Define the root of the Qt installation (e.g., D:\a\engine\Qt)
           $qtRoot = Split-Path (Split-Path $qtDir -Parent) -Parent
-          Write-Host "Searching for g++.exe in: $qtRoot"
+          $toolsDir = Join-Path $qtRoot "Tools"
+          Write-Host "Searching for modern MinGW in: $toolsDir"
 
-          # Search Strategy: Recursive search in the Qt root. 
-          # This handles varying folder names like 'Tools/mingw1120_64' or 'Tools/mingw900_64'
-          $compiler = Get-ChildItem -Path $qtRoot -Filter "g++.exe" -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1
+          # CRITICAL FIX: Search strategy updated to avoid legacy 'Tools\MinGW'.
+          # We strictly look for directories matching 'mingw*_64' (e.g., mingw1120_64)
+          # and sort descending to pick the newest version if multiple exist.
+          $compilerDir = Get-ChildItem -Path $toolsDir -Directory -Filter "mingw*_64" -ErrorAction SilentlyContinue | 
+                         Sort-Object Name -Descending | 
+                         Select-Object -First 1
           
-          if ($compiler) {
-             $gpp = $compiler.FullName
-             $gcc = $compiler.FullName -replace "g\+\+\.exe", "gcc.exe"
+          if ($compilerDir) {
+             $gpp = Join-Path $compilerDir.FullName "bin\g++.exe"
+             $gcc = Join-Path $compilerDir.FullName "bin\gcc.exe"
+          } else {
+             # Fallback: Try to find any mingw folder that ISN'T just "MinGW"
+             Write-Host "Standard mingw*_64 folder not found. Attempting broader search..."
+             $compiler = Get-ChildItem -Path $toolsDir -Filter "g++.exe" -Recurse -ErrorAction SilentlyContinue | 
+                         Where-Object { $_.FullName -notmatch "\\Tools\\MinGW\\" } |
+                         Select-Object -First 1
+             if ($compiler) {
+                $gpp = $compiler.FullName
+                $gcc = $compiler.FullName -replace "g\+\+\.exe", "gcc.exe"
+             }
           }
 
           # 3. Verify validity
           if (-not $gpp -or -not (Test-Path $gpp)) { 
-             Write-Host "ERROR: Could not find g++.exe recursively in $qtRoot"
-             Write-Host "Listing first level directories in $qtRoot for context:"
-             Get-ChildItem $qtRoot | Select-Object Name, FullName | Format-Table
-             throw "Compiler detection failed. Please ensure 'tools_mingw' is in the tools list." 
+             Write-Host "ERROR: Could not find a suitable g++.exe in $toolsDir"
+             Write-Host "Listing directories in Tools for debugging:"
+             Get-ChildItem $toolsDir | Select-Object Name, FullName | Format-Table
+             throw "Compiler detection failed." 
           }
 
           Write-Host "Compiler found: $gpp"

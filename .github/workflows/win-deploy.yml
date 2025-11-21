@@ -33,23 +33,20 @@ jobs:
           modules: 'qtserialport qtwebsockets' 
         # The Qt installation path is now available in env.Qt6_DIR
 
-      - name: Configure CMake (Forcing Correct MinGW Compilers)
+      - name: Add MinGW to PATH
         run: |
-          # --- CRITICAL FIX: Constructing paths directly and using correct escape sequences ---
-          # 1. Get the absolute path to the MinGW bin folder from the environment variable
-          $QtBinDir = "${{ env.Qt6_DIR }}\bin"
+          # CRITICAL FIX: Explicitly adding the Qt-bundled compiler directory to the system PATH.
+          # This allows CMake to find 'g++.exe' and 'gcc.exe' without explicit path declarations.
+          $mingwBinDir = "${{ env.Qt6_DIR }}\bin"
+          echo "::add-path::$mingwBinDir"
           
-          # 2. Construct the full compiler paths (using Windows backslashes)
-          $GppPath = "$QtBinDir\g++.exe"
-          $GccPath = "$QtBinDir\gcc.exe"
-          
-          # 3. Use the full paths in the CMake command
+      - name: Configure CMake
+        # Reverting to simpler CMake call since the PATH is now correctly set.
+        run: |
           cmake -S . -B build -G "MinGW Makefiles" `
             -DCMAKE_BUILD_TYPE=Release `
-            -DCMAKE_PREFIX_PATH="${{ env.Qt6_DIR }}" `
-            -DCMAKE_C_COMPILER="$GccPath" `
-            -DCMAKE_CXX_COMPILER="$GppPath"
-
+            -DCMAKE_PREFIX_PATH="${{ env.Qt6_DIR }}"
+            
       - name: Build
         run: cmake --build build --config Release --parallel
 

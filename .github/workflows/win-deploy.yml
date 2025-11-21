@@ -36,12 +36,12 @@ jobs:
       - name: Add MinGW to PATH
         run: |
           # CRITICAL FIX: Explicitly adding the Qt-bundled compiler directory to the system PATH.
-          # This allows CMake to find 'g++.exe' and 'gcc.exe' without explicit path declarations.
+          # We use the modern GITHUB_PATH environment file instead of the deprecated ::add-path command.
           $mingwBinDir = "${{ env.Qt6_DIR }}\bin"
-          echo "::add-path::$mingwBinDir"
+          echo "$mingwBinDir" | Out-File -FilePath $env:GITHUB_PATH -Append
           
       - name: Configure CMake
-        # Reverting to simpler CMake call since the PATH is now correctly set.
+        # CMake will now automatically find gcc.exe and g++.exe because they are in the PATH.
         run: |
           cmake -S . -B build -G "MinGW Makefiles" `
             -DCMAKE_BUILD_TYPE=Release `

@@ -34,34 +34,50 @@ jobs:
 
       - name: Configure CMake
         run: |
-          # 1. Attempt to find the Qt directory using standard variables
+          # 1. Attempt to find the Qt directory
           $qtDir = $env:Qt6_DIR
           if (-not $qtDir -or $qtDir -eq "") {
             Write-Host "Qt6_DIR is empty, checking QT_ROOT_DIR..."
             $qtDir = $env:QT_ROOT_DIR
           }
-
-          # 2. Debugging: If still empty, print all env vars to help debug
-          if (-not $qtDir -or $qtDir -eq "") { 
-             Write-Host "ERROR: Could not locate Qt directory. Printing environment variables:"
-             Get-ChildItem env: | Out-String | Write-Host
-             throw "Qt Directory not found in environment variables."
-          }
-
           Write-Host "Qt Directory found at: $qtDir"
 
-          # 3. Construct absolute paths to the compilers using Windows slashes
-          $gpp = "$qtDir\bin\g++.exe"
-          $gcc = "$qtDir\bin\gcc.exe"
+          # 2. Find the Compiler (G++)
+          # Standard Qt structure puts compilers in a 'Tools' folder parallel to the version folder.
+          # Structure: C:\Qt\6.7.2\mingw_64  vs  C:\Qt\Tools\mingw1120_64\bin
           
-          # 4. Verify compilers exist
-          if (-not (Test-Path $gpp)) { 
-            # Try looking in the parent directory if bin structure is different
-            throw "G++ not found at $gpp" 
+          $gpp = $null
+          $gcc = $null
+
+          # Method A: Check explicitly in the Qt bin (sometimes happens, but failed previously)
+          if (Test-Path "$qtDir\bin\g++.exe") {
+             $gpp = "$qtDir\bin\g++.exe"
+             $gcc = "$qtDir\bin\gcc.exe"
+          } 
+          # Method B: Search in the Tools directory (Standard Layout)
+          else {
+             # Go up two levels from .../6.7.2/mingw_64 to root, then into Tools
+             $toolPathPattern = Join-Path (Split-Path (Split-Path $qtDir -Parent) -Parent) "Tools\mingw*\bin\g++.exe"
+             Write-Host "Searching for compiler with pattern: $toolPathPattern"
+             
+             $found = Get-Item $toolPathPattern -ErrorAction SilentlyContinue | Select-Object -First 1
+             if ($found) {
+                $gpp = $found.FullName
+                $gcc = $found.FullName -replace "g\+\+\.exe", "gcc.exe"
+             }
           }
-          
-          # 5. Force CMake to use these specific compilers
-          # Note: We use forward slashes for CMake paths to avoid escape issues
+
+          # 3. Verify validity
+          if (-not $gpp -or -not (Test-Path $gpp)) { 
+             Write-Host "ERROR: Could not find g++.exe. Listing directories near Qt root for debugging:"
+             Get-ChildItem (Split-Path (Split-Path $qtDir -Parent) -Parent) -Recurse -Depth 2 | Select-Object FullName
+             throw "Compiler detection failed." 
+          }
+
+          Write-Host "Compiler found: $gpp"
+
+          # 4. Force CMake to use these specific compilers
+          # Use forward slashes for CMake
           $qtDirCmake = $qtDir -replace '\\', '/'
           $gppCmake = $gpp -replace '\\', '/'
           $gccCmake = $gcc -replace '\\', '/'
@@ -77,7 +93,7 @@ jobs:
 
       - name: Bundle Qt runtime
         run: |
-          # Recover the Qt dir again for this step (vars don't persist between steps unless using env file)
+          # Recover Qt dir
           $qtDir = $env:Qt6_DIR
           if (-not $qtDir) { $qtDir = $env:QT_ROOT_DIR }
           

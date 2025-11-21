@@ -31,15 +31,19 @@ jobs:
           target: 'desktop'
           arch: 'win64_mingw' 
           modules: 'qtserialport qtwebsockets' 
+        # The Qt installation path is now available in env.Qt6_DIR
 
-      - name: Configure CMake (Using Explicit MinGW Compilers)
+      - name: Configure CMake (Forcing Correct MinGW Compilers)
         run: |
-          # Define the path to the compilers installed by the Qt action
+          # --- CRITICAL FIX: Constructing paths directly and using correct escape sequences ---
+          # 1. Get the absolute path to the MinGW bin folder from the environment variable
           $QtBinDir = "${{ env.Qt6_DIR }}\bin"
-          $GccPath = "$QtBinDir\gcc.exe"
-          $GppPath = "$QtBinDir\g++.exe"
           
-          # CRITICAL FIX: Explicitly set the C and C++ compilers to use the Qt-bundled MinGW
+          # 2. Construct the full compiler paths (using Windows backslashes)
+          $GppPath = "$QtBinDir\g++.exe"
+          $GccPath = "$QtBinDir\gcc.exe"
+          
+          # 3. Use the full paths in the CMake command
           cmake -S . -B build -G "MinGW Makefiles" `
             -DCMAKE_BUILD_TYPE=Release `
             -DCMAKE_PREFIX_PATH="${{ env.Qt6_DIR }}" `
@@ -47,9 +51,6 @@ jobs:
             -DCMAKE_CXX_COMPILER="$GppPath"
 
       - name: Build
-        # We need to make sure we use the mingw32-make installed by Qt, 
-        # but the default 'cmake --build' command should find the correct one 
-        # since we set the compiler paths above.
         run: cmake --build build --config Release --parallel
 
       - name: Bundle Qt runtime
@@ -72,7 +73,6 @@ jobs:
           $distDir = "dist/engine-windows"
           New-Item -ItemType Directory -Force -Path $distDir | Out-Null
           
-          # Get the directory where the executable and deployed files reside
           $deployedFilesDir = (Split-Path $exePath)
           
           if (Test-Path "build/config.ini") {

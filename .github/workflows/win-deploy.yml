@@ -1,0 +1,125 @@
+name: Windows Deploy
+
+# The workflow now runs on a push to main (for CI testing) AND 
+# on a tag push (for releases), and manually via workflow_dispatch.
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+*' # Triggers on pushing a tag like v1.0.0 or v1.0.0-beta
+  workflow_dispatch:
+
+permissions:
+  contents: write # Required for the release job to create the tag and upload assets
+
+jobs:
+  build-windows:
+    name: Build and Package (Windows - MinGW/GCC)
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: pwsh
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Qt 6 (MinGW)
+        uses: jurplel/install-qt-action@v4
+        with:
+          version: '6.7.2'
+          host: 'windows'
+          target: 'desktop'
+          # CRITICAL CHANGE: Switched to MinGW (GCC) toolchain
+          arch: 'win64_mingw' 
+          modules: 'qtserialport qtwebsockets' 
+
+      - name: Configure CMake
+        run: |
+          # CRITICAL CHANGE: Switched generator to MinGW Makefiles for GCC compatibility
+          cmake -S . -B build -G "MinGW Makefiles" `
+            -DCMAKE_BUILD_TYPE=Release `
+            -DCMAKE_PREFIX_PATH="${{ env.Qt6_DIR }}"
+
+      - name: Build
+        run: cmake --build build --config Release --parallel
+
+      - name: Bundle Qt runtime
+        run: |
+          # NOTE: MinGW builds often put the executable directly under the build subdirectory
+          $exePath = "build/src/engine.exe"
+          
+          # Fallback check for common MinGW path if the first guess fails
+          if (-Not (Test-Path $exePath)) {
+            $exePath = "build/src/engine/engine.exe" 
+            if (-Not (Test-Path $exePath)) {
+              throw "Executable not found. Please verify the build output path."
+            }
+          }
+          
+          # windeployqt will be found in the Qt installation bin directory
+          & "${{ env.Qt6_DIR }}\bin\windeployqt.exe" $exePath --compiler-runtime --no-translations
+
+      - name: Stage deployment bundle
+        run: |
+          $distDir = "dist/engine-windows"
+          # Ensure the deployment directory exists
+          New-Item -ItemType Directory -Force -Path $distDir | Out-Null
+          
+          # Copy the deployed application files. Since we use MinGW, the deployed 
+          # files are now in the same directory as the executable path (which is $exePath).
+          $deployedFilesDir = (Split-Path $exePath) # Gets the directory containing engine.exe and the deployed DLLs
+          
+          # Assuming 'config.ini' is generated in the build root
+          if (Test-Path "build/config.ini") {
+             Copy-Item "build/config.ini" $distDir -ErrorAction Stop
+          }
+
+          # Copy all deployed files and the executable to the distribution folder
+          Copy-Item "$deployedFilesDir/*" $distDir -Recurse -Force
+          # Remove unnecessary files like PDBs before zipping
+          Get-ChildItem -Path $distDir -Include *.pdb -Recurse | Remove-Item -Force
+          # Also remove .lib files which are not needed for runtime
+          Get-ChildItem -Path $distDir -Include *.lib -Recurse | Remove-Item -Force
+
+      - name: Compress artifact
+        # Compressing the folder into a single ZIP file for cleaner release artifacts
+        run: |
+          $zipName = "engine-${{ github.ref_name }}-windows-mingw-x64.zip"
+          Compress-Archive -Path dist/engine-windows/* -DestinationPath $zipName
+          
+      - name: Upload artifact
+        # This uploads the ZIP file to the GitHub Actions runner environment
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-release-artifact
+          # Using the new zip name pattern to match the MinGW build
+          path: engine-v*-windows-mingw-x64.zip
+          if-no-files-found: error
+
+  release-github:
+    name: Create GitHub Release
+    # This job only runs if the push was a tag (i.e., we are making a formal release)
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-latest
+    needs: [build-windows] # Wait for the Windows build job to complete successfully
+
+    steps:
+      - name: Download Windows Artifact
+        # Downloads the artifact created by the 'build-windows' job
+        uses: actions/download-artifact@v4
+        with:
+          name: windows-release-artifact
+
+      - name: Create Release and Upload Assets
+        # This action creates the release associated with the pushed tag
+        uses: softprops/action-gh-release@v2
+        with:
+          # IMPORTANT: We need to specify the new ZIP file name pattern
+          files: engine-v*-windows-mingw-x64.zip
+          draft: false
+          generate_release_notes: true
+        env:
+          # GITHUB_TOKEN is required to create the release
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

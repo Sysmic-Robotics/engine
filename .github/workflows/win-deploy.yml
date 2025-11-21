@@ -31,31 +31,38 @@ jobs:
           target: 'desktop'
           arch: 'win64_mingw' 
           modules: 'qtserialport qtwebsockets' 
-        # The Qt installation path is now available in env.Qt6_DIR
+        # The Qt installation path is now available in the environment variable 'Qt6_DIR'
 
-      - name: Add MinGW to PATH
-        run: |
-          # CRITICAL FIX: Explicitly adding the Qt-bundled compiler directory to the system PATH.
-          # We use the modern GITHUB_PATH environment file instead of the deprecated ::add-path command.
-          $mingwBinDir = "${{ env.Qt6_DIR }}\bin"
-          echo "$mingwBinDir" | Out-File -FilePath $env:GITHUB_PATH -Append
-          
+      # Removed the 'Add MinGW to PATH' step as explicit compiler paths are safer.
+
       - name: Configure CMake
-        # CMake will now automatically find gcc.exe and g++.exe because they are in the PATH.
         run: |
+          # CRITICAL FIX: Use PowerShell env var logic to get the Qt path at runtime.
+          # This avoids empty string issues with ${{ env.Qt6_DIR }} context expansion.
+          $qtDir = $env:Qt6_DIR
+          Write-Host "Qt Directory found at: $qtDir"
+
+          # Construct absolute paths to the compilers
+          $gpp = "$qtDir/bin/g++.exe"
+          $gcc = "$qtDir/bin/gcc.exe"
+          
+          # Verify compilers exist
+          if (-not (Test-Path $gpp)) { throw "G++ not found at $gpp" }
+          
+          # Force CMake to use these specific compilers
           cmake -S . -B build -G "MinGW Makefiles" `
             -DCMAKE_BUILD_TYPE=Release `
-            -DCMAKE_PREFIX_PATH="${{ env.Qt6_DIR }}"
+            -DCMAKE_PREFIX_PATH="$qtDir" `
+            -DCMAKE_C_COMPILER="$gcc" `
+            -DCMAKE_CXX_COMPILER="$gpp"
             
       - name: Build
         run: cmake --build build --config Release --parallel
 
       - name: Bundle Qt runtime
         run: |
-          # NOTE: MinGW builds often put the executable directly under the build subdirectory
           $exePath = "build/src/engine.exe"
           
-          # Fallback check for common MinGW path if the first guess fails
           if (-Not (Test-Path $exePath)) {
             $exePath = "build/src/engine/engine.exe" 
             if (-Not (Test-Path $exePath)) {
@@ -63,13 +70,17 @@ jobs:
             }
           }
           
-          & "${{ env.Qt6_DIR }}\bin\windeployqt.exe" $exePath --compiler-runtime --no-translations
+          # Use the env var for windeployqt as well
+          & "$env:Qt6_DIR\bin\windeployqt.exe" $exePath --compiler-runtime --no-translations
 
       - name: Stage deployment bundle
         run: |
           $distDir = "dist/engine-windows"
           New-Item -ItemType Directory -Force -Path $distDir | Out-Null
           
+          # Recalculate exePath to be safe (or reuse if variables persist, but safer to locate again)
+          $exePath = "build/src/engine.exe"
+          if (-Not (Test-Path $exePath)) { $exePath = "build/src/engine/engine.exe" }
           $deployedFilesDir = (Split-Path $exePath)
           
           if (Test-Path "build/config.ini") {

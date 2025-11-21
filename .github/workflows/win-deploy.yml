@@ -31,36 +31,56 @@ jobs:
           target: 'desktop'
           arch: 'win64_mingw' 
           modules: 'qtserialport qtwebsockets' 
-        # The Qt installation path is now available in the environment variable 'Qt6_DIR'
-
-      # Removed the 'Add MinGW to PATH' step as explicit compiler paths are safer.
 
       - name: Configure CMake
         run: |
-          # CRITICAL FIX: Use PowerShell env var logic to get the Qt path at runtime.
-          # This avoids empty string issues with ${{ env.Qt6_DIR }} context expansion.
+          # 1. Attempt to find the Qt directory using standard variables
           $qtDir = $env:Qt6_DIR
+          if (-not $qtDir -or $qtDir -eq "") {
+            Write-Host "Qt6_DIR is empty, checking QT_ROOT_DIR..."
+            $qtDir = $env:QT_ROOT_DIR
+          }
+
+          # 2. Debugging: If still empty, print all env vars to help debug
+          if (-not $qtDir -or $qtDir -eq "") { 
+             Write-Host "ERROR: Could not locate Qt directory. Printing environment variables:"
+             Get-ChildItem env: | Out-String | Write-Host
+             throw "Qt Directory not found in environment variables."
+          }
+
           Write-Host "Qt Directory found at: $qtDir"
 
-          # Construct absolute paths to the compilers
-          $gpp = "$qtDir/bin/g++.exe"
-          $gcc = "$qtDir/bin/gcc.exe"
+          # 3. Construct absolute paths to the compilers using Windows slashes
+          $gpp = "$qtDir\bin\g++.exe"
+          $gcc = "$qtDir\bin\gcc.exe"
           
-          # Verify compilers exist
-          if (-not (Test-Path $gpp)) { throw "G++ not found at $gpp" }
+          # 4. Verify compilers exist
+          if (-not (Test-Path $gpp)) { 
+            # Try looking in the parent directory if bin structure is different
+            throw "G++ not found at $gpp" 
+          }
           
-          # Force CMake to use these specific compilers
+          # 5. Force CMake to use these specific compilers
+          # Note: We use forward slashes for CMake paths to avoid escape issues
+          $qtDirCmake = $qtDir -replace '\\', '/'
+          $gppCmake = $gpp -replace '\\', '/'
+          $gccCmake = $gcc -replace '\\', '/'
+
           cmake -S . -B build -G "MinGW Makefiles" `
             -DCMAKE_BUILD_TYPE=Release `
-            -DCMAKE_PREFIX_PATH="$qtDir" `
-            -DCMAKE_C_COMPILER="$gcc" `
-            -DCMAKE_CXX_COMPILER="$gpp"
+            -DCMAKE_PREFIX_PATH="$qtDirCmake" `
+            -DCMAKE_C_COMPILER="$gccCmake" `
+            -DCMAKE_CXX_COMPILER="$gppCmake"
             
       - name: Build
         run: cmake --build build --config Release --parallel
 
       - name: Bundle Qt runtime
         run: |
+          # Recover the Qt dir again for this step (vars don't persist between steps unless using env file)
+          $qtDir = $env:Qt6_DIR
+          if (-not $qtDir) { $qtDir = $env:QT_ROOT_DIR }
+          
           $exePath = "build/src/engine.exe"
           
           if (-Not (Test-Path $exePath)) {
@@ -70,15 +90,13 @@ jobs:
             }
           }
           
-          # Use the env var for windeployqt as well
-          & "$env:Qt6_DIR\bin\windeployqt.exe" $exePath --compiler-runtime --no-translations
+          & "$qtDir\bin\windeployqt.exe" $exePath --compiler-runtime --no-translations
 
       - name: Stage deployment bundle
         run: |
           $distDir = "dist/engine-windows"
           New-Item -ItemType Directory -Force -Path $distDir | Out-Null
           
-          # Recalculate exePath to be safe (or reuse if variables persist, but safer to locate again)
           $exePath = "build/src/engine.exe"
           if (-Not (Test-Path $exePath)) { $exePath = "build/src/engine/engine.exe" }
           $deployedFilesDir = (Split-Path $exePath)

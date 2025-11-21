@@ -94,9 +94,6 @@ public:
         connect(m_updateTimer, &QTimer::timeout, this, &MainApp::update);
         m_updateTimer->start(16); // ~60 FPS
 
-
-
-
     }
 
     ~MainApp()

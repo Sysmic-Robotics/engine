@@ -30,6 +30,8 @@ jobs:
           host: 'windows'
           target: 'desktop'
           arch: 'win64_mingw' 
+          # CRITICAL FIX: Explicitly request the MinGW compiler toolchain
+          tools: 'tools_mingw'
           modules: 'qtserialport qtwebsockets' 
 
       - name: Configure CMake
@@ -37,47 +39,38 @@ jobs:
           # 1. Attempt to find the Qt directory
           $qtDir = $env:Qt6_DIR
           if (-not $qtDir -or $qtDir -eq "") {
-            Write-Host "Qt6_DIR is empty, checking QT_ROOT_DIR..."
             $qtDir = $env:QT_ROOT_DIR
           }
           Write-Host "Qt Directory found at: $qtDir"
 
           # 2. Find the Compiler (G++)
-          # Standard Qt structure puts compilers in a 'Tools' folder parallel to the version folder.
-          # Structure: C:\Qt\6.7.2\mingw_64  vs  C:\Qt\Tools\mingw1120_64\bin
-          
           $gpp = $null
-          $gcc = $null
+          
+          # Define the root of the Qt installation (e.g., D:\a\engine\Qt)
+          $qtRoot = Split-Path (Split-Path $qtDir -Parent) -Parent
+          Write-Host "Searching for g++.exe in: $qtRoot"
 
-          # Method A: Check explicitly in the Qt bin (sometimes happens, but failed previously)
-          if (Test-Path "$qtDir\bin\g++.exe") {
-             $gpp = "$qtDir\bin\g++.exe"
-             $gcc = "$qtDir\bin\gcc.exe"
-          } 
-          # Method B: Search in the Tools directory (Standard Layout)
-          else {
-             # Go up two levels from .../6.7.2/mingw_64 to root, then into Tools
-             $toolPathPattern = Join-Path (Split-Path (Split-Path $qtDir -Parent) -Parent) "Tools\mingw*\bin\g++.exe"
-             Write-Host "Searching for compiler with pattern: $toolPathPattern"
-             
-             $found = Get-Item $toolPathPattern -ErrorAction SilentlyContinue | Select-Object -First 1
-             if ($found) {
-                $gpp = $found.FullName
-                $gcc = $found.FullName -replace "g\+\+\.exe", "gcc.exe"
-             }
+          # Search Strategy: Recursive search in the Qt root. 
+          # This handles varying folder names like 'Tools/mingw1120_64' or 'Tools/mingw900_64'
+          $compiler = Get-ChildItem -Path $qtRoot -Filter "g++.exe" -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1
+          
+          if ($compiler) {
+             $gpp = $compiler.FullName
+             $gcc = $compiler.FullName -replace "g\+\+\.exe", "gcc.exe"
           }
 
           # 3. Verify validity
           if (-not $gpp -or -not (Test-Path $gpp)) { 
-             Write-Host "ERROR: Could not find g++.exe. Listing directories near Qt root for debugging:"
-             Get-ChildItem (Split-Path (Split-Path $qtDir -Parent) -Parent) -Recurse -Depth 2 | Select-Object FullName
-             throw "Compiler detection failed." 
+             Write-Host "ERROR: Could not find g++.exe recursively in $qtRoot"
+             Write-Host "Listing first level directories in $qtRoot for context:"
+             Get-ChildItem $qtRoot | Select-Object Name, FullName | Format-Table
+             throw "Compiler detection failed. Please ensure 'tools_mingw' is in the tools list." 
           }
 
           Write-Host "Compiler found: $gpp"
 
           # 4. Force CMake to use these specific compilers
-          # Use forward slashes for CMake
+          # Use forward slashes for CMake paths to ensure compatibility
           $qtDirCmake = $qtDir -replace '\\', '/'
           $gppCmake = $gpp -replace '\\', '/'
           $gccCmake = $gcc -replace '\\', '/'

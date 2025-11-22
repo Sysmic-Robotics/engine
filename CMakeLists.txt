@@ -46,30 +46,26 @@ include(BuildProtobuf)
 
 # Compile protobuf
 include(CompileProtobuf)
-# --- FIX: Point to the actual Install Directory, not the prefix/build dir ---
-# (Assuming your BuildProtobuf.cmake installs to PROTOBUF_INSTALL_DIR)
-if(EXISTS "${PROTOBUF_INSTALL_DIR}/bin")
-    set(PROTOBUF_ROOT "${PROTOBUF_INSTALL_DIR}")
-else()
-    set(PROTOBUF_ROOT "${CMAKE_BINARY_DIR}/project_protobuf-prefix")
-endif()
+# --- FIX: Always trust the Install Directory ---
+# We cannot use if(EXISTS) here because these files are generated during the build,
+# so they do not exist yet when CMake configures the project.
+set(PROTOBUF_ROOT "${PROTOBUF_INSTALL_DIR}")
 
 set(Protobuf_INCLUDE_DIR "${PROTOBUF_ROOT}/include")
 
-# --- FIX: Handle MinGW vs Visual Studio correctly ---
 if(WIN32)
-    # 1. Executable always needs .exe on Windows (MinGW OR MSVC)
+    # Windows always needs .exe
     set(Protobuf_PROTOC_EXECUTABLE "${PROTOBUF_ROOT}/bin/protoc.exe")
 
     if(MINGW)
-        # 2. MinGW uses .a (Linux style) libraries
+        # MinGW uses .a libraries
         set(Protobuf_LIBRARIES "${PROTOBUF_ROOT}/lib/libprotobuf.a")
     else()
-        # 3. Visual Studio uses .lib libraries
+        # Visual Studio uses .lib libraries
         set(Protobuf_LIBRARIES "${PROTOBUF_ROOT}/lib/libprotobuf.lib")
     endif()
 else()
-    # Linux / macOS
+    # Linux/macOS
     set(Protobuf_PROTOC_EXECUTABLE "${PROTOBUF_ROOT}/bin/protoc")
     set(Protobuf_LIBRARIES "${PROTOBUF_ROOT}/lib/libprotobuf.a")
 endif()

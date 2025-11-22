@@ -40,50 +40,30 @@ jobs:
           if (-not $qtDir -or $qtDir -eq "") {
             $qtDir = $env:QT_ROOT_DIR
           }
-          Write-Host "Qt Directory found at: $qtDir"
 
-          # 2. Find the Compiler (G++)
-          $gpp = $null
-          $gcc = $null
-          
+          # 2. Find the Compiler and Tools directory
           $qtRoot = Split-Path (Split-Path $qtDir -Parent) -Parent
           $toolsDir = Join-Path $qtRoot "Tools"
-          Write-Host "Searching for modern MinGW in: $toolsDir"
-
-          # CRITICAL FIX: Search strategy updated to avoid legacy 'Tools\MinGW'.
-          # We strictly look for directories matching 'mingw*_64' (e.g., mingw1120_64)
-          # and sort descending to pick the newest version if multiple exist.
+          
+          # Search for the modern MinGW directory (mingw*_64)
           $compilerDir = Get-ChildItem -Path $toolsDir -Directory -Filter "mingw*_64" -ErrorAction SilentlyContinue | 
                          Sort-Object Name -Descending | 
                          Select-Object -First 1
           
           if ($compilerDir) {
-             $gpp = Join-Path $compilerDir.FullName "bin\g++.exe"
-             $gcc = Join-Path $compilerDir.FullName "bin\gcc.exe"
+             $compilerBin = Join-Path $compilerDir.FullName "bin"
+             $gpp = Join-Path $compilerBin "g++.exe"
+             $gcc = Join-Path $compilerBin "gcc.exe"
+             
+             # --- CRITICAL FIX: Add MinGW bin to PATH for runtime DLLs ---
+             # This ensures protoc.exe can run during the build step
+             echo "$compilerBin" | Out-File -FilePath $env:GITHUB_PATH -Append
+             Write-Host "Added to PATH: $compilerBin"
           } else {
-             # Fallback: Try to find any mingw folder that ISN'T just "MinGW"
-             Write-Host "Standard mingw*_64 folder not found. Attempting broader search..."
-             $compiler = Get-ChildItem -Path $toolsDir -Filter "g++.exe" -Recurse -ErrorAction SilentlyContinue | 
-                         Where-Object { $_.FullName -notmatch "\\Tools\\MinGW\\" } |
-                         Select-Object -First 1
-             if ($compiler) {
-                $gpp = $compiler.FullName
-                $gcc = $compiler.FullName -replace "g\+\+\.exe", "gcc.exe"
-             }
+             throw "Could not find MinGW directory in $toolsDir"
           }
 
-          # 3. Verify validity
-          if (-not $gpp -or -not (Test-Path $gpp)) { 
-             Write-Host "ERROR: Could not find a suitable g++.exe in $toolsDir"
-             Write-Host "Listing directories in Tools for debugging:"
-             Get-ChildItem $toolsDir | Select-Object Name, FullName | Format-Table
-             throw "Compiler detection failed." 
-          }
-
-          Write-Host "Compiler found: $gpp"
-
-          # 4. Force CMake to use these specific compilers
-          # Use forward slashes for CMake paths to ensure compatibility
+          # 3. Force CMake to use these specific compilers
           $qtDirCmake = $qtDir -replace '\\', '/'
           $gppCmake = $gpp -replace '\\', '/'
           $gccCmake = $gcc -replace '\\', '/'

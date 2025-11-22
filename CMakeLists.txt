@@ -46,22 +46,32 @@ include(BuildProtobuf)
 
 # Compile protobuf
 include(CompileProtobuf)
-set(PROTOBUF_ROOT "${CMAKE_BINARY_DIR}/project_protobuf-prefix")  # <- more correct than using 'build/project_protobuf-prefix'
-set(Protobuf_PROTOC_EXECUTABLE "${PROTOBUF_ROOT}/bin/protoc")
-set(Protobuf_INCLUDE_DIR "${PROTOBUF_ROOT}/include")
-# Check if we are on Windows but NOT using MinGW (i.e., using Visual Studio)
-if(WIN32 AND NOT MINGW)
-    set(Protobuf_LIBRARIES "${PROTOBUF_ROOT}/lib/libprotobuf.lib") # MSVC uses .lib
-    set(Protobuf_PROTOC_EXECUTABLE "${PROTOBUF_ROOT}/bin/protoc.exe")
+# --- FIX: Point to the actual Install Directory, not the prefix/build dir ---
+# (Assuming your BuildProtobuf.cmake installs to PROTOBUF_INSTALL_DIR)
+if(EXISTS "${PROTOBUF_INSTALL_DIR}/bin")
+    set(PROTOBUF_ROOT "${PROTOBUF_INSTALL_DIR}")
 else()
-    # MinGW (Windows) and Linux both use .a for static libs
-    set(Protobuf_LIBRARIES "${PROTOBUF_ROOT}/lib/libprotobuf.a") 
-    
-    if(WIN32)
-        set(Protobuf_PROTOC_EXECUTABLE "${PROTOBUF_ROOT}/bin/protoc.exe")
+    set(PROTOBUF_ROOT "${CMAKE_BINARY_DIR}/project_protobuf-prefix")
+endif()
+
+set(Protobuf_INCLUDE_DIR "${PROTOBUF_ROOT}/include")
+
+# --- FIX: Handle MinGW vs Visual Studio correctly ---
+if(WIN32)
+    # 1. Executable always needs .exe on Windows (MinGW OR MSVC)
+    set(Protobuf_PROTOC_EXECUTABLE "${PROTOBUF_ROOT}/bin/protoc.exe")
+
+    if(MINGW)
+        # 2. MinGW uses .a (Linux style) libraries
+        set(Protobuf_LIBRARIES "${PROTOBUF_ROOT}/lib/libprotobuf.a")
     else()
-        set(Protobuf_PROTOC_EXECUTABLE "${PROTOBUF_ROOT}/bin/protoc")
+        # 3. Visual Studio uses .lib libraries
+        set(Protobuf_LIBRARIES "${PROTOBUF_ROOT}/lib/libprotobuf.lib")
     endif()
+else()
+    # Linux / macOS
+    set(Protobuf_PROTOC_EXECUTABLE "${PROTOBUF_ROOT}/bin/protoc")
+    set(Protobuf_LIBRARIES "${PROTOBUF_ROOT}/lib/libprotobuf.a")
 endif()
 set(PROTO_SRC_DIR "${CMAKE_SOURCE_DIR}/src/protobuf/protos")
 set(PROTO_GEN_DIR "${CMAKE_SOURCE_DIR}/src/protobuf")

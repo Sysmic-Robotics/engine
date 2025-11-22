@@ -46,28 +46,22 @@ include(BuildProtobuf)
 
 # Compile protobuf
 include(CompileProtobuf)
-# --- FIX: Always trust the Install Directory ---
-# We cannot use if(EXISTS) here because these files are generated during the build,
-# so they do not exist yet when CMake configures the project.
-set(PROTOBUF_ROOT "${PROTOBUF_INSTALL_DIR}")
-
+set(PROTOBUF_ROOT "${CMAKE_BINARY_DIR}/project_protobuf-prefix")  # <- more correct than using 'build/project_protobuf-prefix'
+set(Protobuf_PROTOC_EXECUTABLE "${PROTOBUF_ROOT}/bin/protoc")
 set(Protobuf_INCLUDE_DIR "${PROTOBUF_ROOT}/include")
-
-if(WIN32)
-    # Windows always needs .exe
+# Check if we are on Windows but NOT using MinGW (i.e., using Visual Studio)
+if(WIN32 AND NOT MINGW)
+    set(Protobuf_LIBRARIES "${PROTOBUF_ROOT}/lib/libprotobuf.lib") # MSVC uses .lib
     set(Protobuf_PROTOC_EXECUTABLE "${PROTOBUF_ROOT}/bin/protoc.exe")
-
-    if(MINGW)
-        # MinGW uses .a libraries
-        set(Protobuf_LIBRARIES "${PROTOBUF_ROOT}/lib/libprotobuf.a")
-    else()
-        # Visual Studio uses .lib libraries
-        set(Protobuf_LIBRARIES "${PROTOBUF_ROOT}/lib/libprotobuf.lib")
-    endif()
 else()
-    # Linux/macOS
-    set(Protobuf_PROTOC_EXECUTABLE "${PROTOBUF_ROOT}/bin/protoc")
-    set(Protobuf_LIBRARIES "${PROTOBUF_ROOT}/lib/libprotobuf.a")
+    # MinGW (Windows) and Linux both use .a for static libs
+    set(Protobuf_LIBRARIES "${PROTOBUF_ROOT}/lib/libprotobuf.a") 
+    
+    if(WIN32)
+        set(Protobuf_PROTOC_EXECUTABLE "${PROTOBUF_ROOT}/bin/protoc.exe")
+    else()
+        set(Protobuf_PROTOC_EXECUTABLE "${PROTOBUF_ROOT}/bin/protoc")
+    endif()
 endif()
 set(PROTO_SRC_DIR "${CMAKE_SOURCE_DIR}/src/protobuf/protos")
 set(PROTO_GEN_DIR "${CMAKE_SOURCE_DIR}/src/protobuf")

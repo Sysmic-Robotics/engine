@@ -49,10 +49,19 @@ include(CompileProtobuf)
 set(PROTOBUF_ROOT "${CMAKE_BINARY_DIR}/project_protobuf-prefix")  # <- more correct than using 'build/project_protobuf-prefix'
 set(Protobuf_PROTOC_EXECUTABLE "${PROTOBUF_ROOT}/bin/protoc")
 set(Protobuf_INCLUDE_DIR "${PROTOBUF_ROOT}/include")
-if(WIN32)
-    set(Protobuf_LIBRARIES "${PROTOBUF_ROOT}/lib/libprotobuf.lib")  # Use .lib on Windows
+# Check if we are on Windows but NOT using MinGW (i.e., using Visual Studio)
+if(WIN32 AND NOT MINGW)
+    set(Protobuf_LIBRARIES "${PROTOBUF_ROOT}/lib/libprotobuf.lib") # MSVC uses .lib
+    set(Protobuf_PROTOC_EXECUTABLE "${PROTOBUF_ROOT}/bin/protoc.exe")
 else()
-    set(Protobuf_LIBRARIES "${PROTOBUF_ROOT}/lib/libprotobuf.a")  # Use .a on Linux
+    # MinGW (Windows) and Linux both use .a for static libs
+    set(Protobuf_LIBRARIES "${PROTOBUF_ROOT}/lib/libprotobuf.a") 
+    
+    if(WIN32)
+        set(Protobuf_PROTOC_EXECUTABLE "${PROTOBUF_ROOT}/bin/protoc.exe")
+    else()
+        set(Protobuf_PROTOC_EXECUTABLE "${PROTOBUF_ROOT}/bin/protoc")
+    endif()
 endif()
 set(PROTO_SRC_DIR "${CMAKE_SOURCE_DIR}/src/protobuf/protos")
 set(PROTO_GEN_DIR "${CMAKE_SOURCE_DIR}/src/protobuf")

@@ -1,11 +1,14 @@
 name: Windows Deploy
 
+env:
+  PACKAGE_NAME: engine-${{ github.ref_name }}-windows-mingw-x64.zip
+
 on:
   push:
     branches:
-      - main
+      - '**'
     tags:
-      - 'v[0-9]+.[0-9]+.[0-9]+*'
+      - '**'
   workflow_dispatch:
 
 permissions:
@@ -113,19 +116,17 @@ jobs:
 
       - name: Compress artifact
         run: |
-          $zipName = "engine-${{ github.ref_name }}-windows-mingw-x64.zip"
-          Compress-Archive -Path dist/engine-windows/* -DestinationPath $zipName
-          
+          Compress-Archive -Path dist/engine-windows/* -DestinationPath $env:PACKAGE_NAME
+
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: windows-release-artifact
-          path: engine-v*-windows-mingw-x64.zip
+          path: ${{ env.PACKAGE_NAME }}
           if-no-files-found: error
 
   release-github:
     name: Create GitHub Release
-    if: startsWith(github.ref, 'refs/tags/')
     runs-on: ubuntu-latest
     needs: [build-windows]
 
@@ -134,11 +135,26 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: windows-release-artifact
+          path: windows-release-artifact
+
+      - name: Determine release metadata
+        id: meta
+        run: |
+          if [[ "${GITHUB_REF_TYPE}" == "tag" ]]; then
+            echo "tag=${GITHUB_REF_NAME}" >> "$GITHUB_OUTPUT"
+            echo "name=Release ${GITHUB_REF_NAME}" >> "$GITHUB_OUTPUT"
+          else
+            echo "tag=push-${GITHUB_RUN_ID}" >> "$GITHUB_OUTPUT"
+            echo "name=Automated release for ${GITHUB_REF_NAME} (run #${GITHUB_RUN_NUMBER})" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Create Release and Upload Assets
         uses: softprops/action-gh-release@v2
         with:
-          files: engine-v*-windows-mingw-x64.zip
+          tag_name: ${{ steps.meta.outputs.tag }}
+          name: ${{ steps.meta.outputs.name }}
+          files: windows-release-artifact/${{ env.PACKAGE_NAME }}
+          target_commitish: ${{ github.sha }}
           draft: false
           generate_release_notes: true
         env:

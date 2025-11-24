@@ -79,7 +79,12 @@ jobs:
             -DCMAKE_PREFIX_PATH="$qtDirCmake" `
             -DCMAKE_C_COMPILER="$gccCmake" `
             -DCMAKE_CXX_COMPILER="$gppCmake"
-            
+
+      - name: Pre-build bundled Protobuf (serial)
+        run: |
+          # Build the ExternalProject first to avoid racing it against proto generation
+          cmake --build build --config Release --target project_protobuf-install -- -j1
+
       - name: Build
         run: cmake --build build --config Release --parallel
 

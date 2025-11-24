@@ -46,7 +46,7 @@ include(BuildProtobuf)
 
 # Compile protobuf
 include(CompileProtobuf)
-set(PROTOBUF_ROOT "${CMAKE_BINARY_DIR}/project_protobuf-prefix")  # <- more correct than using 'build/project_protobuf-prefix'
+set(PROTOBUF_ROOT "${PROTOBUF_INSTALL_DIR}")
 set(Protobuf_PROTOC_EXECUTABLE "${PROTOBUF_ROOT}/bin/protoc")
 set(Protobuf_INCLUDE_DIR "${PROTOBUF_ROOT}/include")
 # Check if we are on Windows but NOT using MinGW (i.e., using Visual Studio)
@@ -66,9 +66,9 @@ endif()
 set(PROTO_SRC_DIR "${CMAKE_SOURCE_DIR}/src/protobuf/protos")
 set(PROTO_GEN_DIR "${CMAKE_SOURCE_DIR}/src/protobuf")
 define_proto_generation_target(generate_protos ${PROTO_SRC_DIR} ${PROTO_GEN_DIR})
-add_dependencies(generate_protos project_protobuf)
+add_dependencies(generate_protos project_protobuf project_protobuf-install)
 add_library(proto_files STATIC ${generate_protos_SRCS} ${generate_protos_HDRS})
-add_dependencies(proto_files generate_protos)
+add_dependencies(proto_files generate_protos project_protobuf project_protobuf-install)
 target_include_directories(proto_files PUBLIC
     "${PROTO_GEN_DIR}"
     "${Protobuf_INCLUDE_DIR}"

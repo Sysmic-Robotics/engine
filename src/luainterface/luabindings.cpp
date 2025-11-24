@@ -1,4 +1,4 @@
-#include "LuaBindings.hpp"
+#include "luabindings.hpp"
 #include <iostream>
 
 // ---- Include your project headers here ----

@@ -115,12 +115,13 @@ jobs:
         run: |
           $zipName = "engine-${{ github.ref_name }}-windows-mingw-x64.zip"
           Compress-Archive -Path dist/engine-windows/* -DestinationPath $zipName
-          
+          echo "ZIP_NAME=$zipName" | Out-File -FilePath $env:GITHUB_ENV -Append
+
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: windows-release-artifact
-          path: engine-v*-windows-mingw-x64.zip
+          path: ${{ env.ZIP_NAME }}
           if-no-files-found: error
 
   release-github:
@@ -138,7 +139,7 @@ jobs:
       - name: Create Release and Upload Assets
         uses: softprops/action-gh-release@v2
         with:
-          files: engine-v*-windows-mingw-x64.zip
+          files: engine-${{ github.ref_name }}-windows-mingw-x64.zip
           draft: false
           generate_release_notes: true
         env:

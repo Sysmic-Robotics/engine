@@ -27,6 +27,9 @@ if(NOT EXISTS "${PROTOBUF_BUILT_FILE}")
             -DCMAKE_BUILD_TYPE:STRING=Release
             "-DCMAKE_CXX_FLAGS:STRING=${CMAKE_CXX_FLAGS} -std=gnu++11 -w"
             -Dprotobuf_BUILD_TESTS:BOOL=OFF
+            # Disable Zlib to avoid optional dependency failures on the Windows CI runner
+            -Dprotobuf_WITH_ZLIB:BOOL=OFF
+            -DCMAKE_DISABLE_FIND_PACKAGE_ZLIB:BOOL=ON
         STEP_TARGETS install
     )
 

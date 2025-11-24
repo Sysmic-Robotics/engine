@@ -35,9 +35,10 @@ jobs:
           version: '6.7.2'
           host: 'windows'
           target: 'desktop'
-          arch: 'win64_mingw' 
-          tools: 'tools_mingw'
-          modules: 'qtserialport qtwebsockets' 
+          arch: 'win64_mingw'
+          # Pull a modern MinGW toolchain with reliable <filesystem> support (GCC 11.2)
+          tools: 'tools_mingw1120'
+          modules: 'qtserialport qtwebsockets'
 
       - name: Configure CMake
         run: |

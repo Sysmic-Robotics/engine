@@ -6,6 +6,9 @@ on:
       - main
     tags:
       - 'v[0-9]+.[0-9]+.[0-9]+*'
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
@@ -23,15 +26,19 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Ensure submodules are updated
+        run: git submodule update --init --recursive
+
       - name: Install Qt 6 (MinGW)
         uses: jurplel/install-qt-action@v4
         with:
           version: '6.7.2'
           host: 'windows'
           target: 'desktop'
-          arch: 'win64_mingw' 
-          tools: 'tools_mingw'
-          modules: 'qtserialport qtwebsockets' 
+          arch: 'win64_mingw'
+          # Use the newer MinGW 11.2 toolchain to ensure stable <filesystem> support
+          tools: 'tools_mingw1120'
+          modules: 'qtserialport qtwebsockets'
 
       - name: Configure CMake
         run: |
@@ -73,7 +80,12 @@ jobs:
             -DCMAKE_PREFIX_PATH="$qtDirCmake" `
             -DCMAKE_C_COMPILER="$gccCmake" `
             -DCMAKE_CXX_COMPILER="$gppCmake"
-            
+
+      - name: Pre-build bundled Protobuf (serial)
+        run: |
+          # Build the ExternalProject first to avoid racing it against proto generation
+          cmake --build build --config Release --target project_protobuf-install -- -j1
+
       - name: Build
         run: cmake --build build --config Release --parallel
 
@@ -115,12 +127,13 @@ jobs:
         run: |
           $zipName = "engine-${{ github.ref_name }}-windows-mingw-x64.zip"
           Compress-Archive -Path dist/engine-windows/* -DestinationPath $zipName
-          
+          echo "ZIP_NAME=$zipName" | Out-File -FilePath $env:GITHUB_ENV -Append
+
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: windows-release-artifact
-          path: engine-v*-windows-mingw-x64.zip
+          path: ${{ env.ZIP_NAME }}
           if-no-files-found: error
 
   release-github:
@@ -138,7 +151,7 @@ jobs:
       - name: Create Release and Upload Assets
         uses: softprops/action-gh-release@v2
         with:
-          files: engine-v*-windows-mingw-x64.zip
+          files: engine-${{ github.ref_name }}-windows-mingw-x64.zip
           draft: false
           generate_release_notes: true
         env:

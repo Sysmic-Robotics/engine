@@ -23,3 +23,6 @@ target_include_directories(protobuf PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 # Link Protobuf to the library
 #find_package(Protobuf REQUIRED)
 target_link_libraries(protobuf PUBLIC protobuf::libprotobuf)
+
+# Ensure the external Protobuf build/install completes before this target
+add_dependencies(protobuf project_protobuf project_protobuf-install)

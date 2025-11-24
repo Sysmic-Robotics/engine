@@ -94,27 +94,54 @@ jobs:
           # Recover Qt dir
           $qtDir = $env:Qt6_DIR
           if (-not $qtDir) { $qtDir = $env:QT_ROOT_DIR }
-          
-          $exePath = "build/src/engine.exe"
-          
-          if (-Not (Test-Path $exePath)) {
-            $exePath = "build/src/engine/engine.exe" 
-            if (-Not (Test-Path $exePath)) {
-              throw "Executable not found. Tried build/src/engine.exe and build/src/engine/engine.exe"
-            }
+
+          # Prefer common locations, but fall back to a recursive search to avoid path
+          # mismatches between generators/configurations.
+          $exePath = @(
+            "build/src/engine.exe",
+            "build/src/engine/engine.exe"
+          ) | Where-Object { Test-Path $_ } | Select-Object -First 1
+
+          if (-not $exePath) {
+            $found = Get-ChildItem -Path "build" -Filter "engine.exe" -Recurse -File -ErrorAction SilentlyContinue |
+                     Select-Object -First 1
+            if ($found) { $exePath = $found.FullName }
           }
-          
+
+          if (-not $exePath) {
+            throw "Executable not found under build/. Checked build/src/engine.exe and build/src/engine/engine.exe, and no engine.exe was discovered recursively."
+          }
+
+          # Persist the resolved path for later steps (normalize slashes for downstream tooling)
+          "ENGINE_EXE=$($exePath -replace '\\','/')" | Out-File -FilePath $env:GITHUB_ENV -Append
+
           & "$qtDir\bin\windeployqt.exe" $exePath --compiler-runtime --no-translations
 
       - name: Stage deployment bundle
         run: |
           $distDir = "dist/engine-windows"
           New-Item -ItemType Directory -Force -Path $distDir | Out-Null
-          
-          $exePath = "build/src/engine.exe"
-          if (-Not (Test-Path $exePath)) { $exePath = "build/src/engine/engine.exe" }
+
+          $exePath = $env:ENGINE_EXE
+          if (-not $exePath) {
+            $exePath = @(
+              "build/src/engine.exe",
+              "build/src/engine/engine.exe"
+            ) | Where-Object { Test-Path $_ } | Select-Object -First 1
+          }
+
+          if (-not $exePath) {
+            $found = Get-ChildItem -Path "build" -Filter "engine.exe" -Recurse -File -ErrorAction SilentlyContinue |
+                     Select-Object -First 1
+            if ($found) { $exePath = $found.FullName }
+          }
+
+          if (-not $exePath) {
+            throw "Executable not found under build/. Checked build/src/engine.exe and build/src/engine/engine.exe, and no engine.exe was discovered recursively."
+          }
+
           $deployedFilesDir = (Split-Path $exePath)
-          
+
           if (Test-Path "build/config.ini") {
              Copy-Item "build/config.ini" $distDir -ErrorAction Stop
           }

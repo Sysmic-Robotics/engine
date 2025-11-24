@@ -28,6 +28,10 @@ function(define_proto_generation_target TARGET_NAME PROTO_SRC_DIR OUT_DIR)
         list(APPEND GENERATED_HDRS ${proto_hdr})
     endforeach()
 
+    # Mark generated sources so CMake does not expect them to exist at configure time
+    set_source_files_properties(${GENERATED_SRCS} ${GENERATED_HDRS}
+        PROPERTIES GENERATED TRUE)
+
     add_custom_target(${TARGET_NAME} DEPENDS ${GENERATED_SRCS})
     
     # Export file lists back to parent

@@ -152,7 +152,10 @@ jobs:
 
       - name: Compress artifact
         run: |
-          $zipName = "engine-${{ github.ref_name }}-windows-mingw-x64.zip"
+          $refName = "${{ github.ref_name }}"
+          # Replace path separators (e.g., feature/foo) to avoid treating the zip name as a directory path
+          $safeRef = $refName -replace "[\\/]+", "-"
+          $zipName = "engine-$safeRef-windows-mingw-x64.zip"
           Compress-Archive -Path dist/engine-windows/* -DestinationPath $zipName
           echo "ZIP_NAME=$zipName" | Out-File -FilePath $env:GITHUB_ENV -Append
 

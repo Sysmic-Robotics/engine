@@ -26,6 +26,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Ensure submodules are updated
+        run: git submodule update --init --recursive
+
       - name: Install Qt 6 (MinGW)
         uses: jurplel/install-qt-action@v4
         with:
